@@ -1,8 +1,32 @@
 body {
     margin: 0;
     background-color: #F6F7F8;
+    font-family: 'Inter';
 }
 
 .d-none {
     display: none;
+}
+
+
+/*styling add task start*/
+.add-task-whole-page {
+    display: flex;
+}
+
+.add-task-right-side {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-task-left-side {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-task-headline {
+    font-weight: 700;
+    font-size: 60px;
+    margin-left: 120px;
+    margin-top: 80px;
 }
