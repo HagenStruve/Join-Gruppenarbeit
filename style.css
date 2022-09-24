@@ -8,25 +8,97 @@ body {
     display: none;
 }
 
+h1 {
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-top: 35px;
+}
+
 
 /*styling add task start*/
 .add-task-whole-page {
     display: flex;
 }
 
-.add-task-right-side {
-    display: flex;
-    flex-direction: column;
+.add-task-whole-page input {
+    width: 400px;
+    padding: 10px 18px;
+    font-size: 17px;
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
 }
 
 .add-task-left-side {
     display: flex;
     flex-direction: column;
+    margin-left: 60px;
 }
 
-.add-task-headline {
-    font-weight: 700;
-    font-size: 60px;
-    margin-left: 120px;
-    margin-top: 80px;
+.little-headlines {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.enter-title {
+    height: 36px;
+    margin-bottom: 35px;
+}
+
+.enter-description {
+    margin-bottom: 35px;
+    height: 110px;
+    padding: 10px 18px;
+    font-size: 17px;
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
+    resize: none;
+    font-family: 'Inter';
+}
+
+select {
+    width: 400px;
+    font-size: 17px;
+    padding: 10px 18px;
+    appearance: none;
+}
+
+select option {
+    font-size: 17px;
+    height: 36px;
+    padding: 10px 18px;
+}
+
+.select-div {
+    width: 400px;
+    overflow: hidden;
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
+    position: relative;
+    background-color: white;
+    margin-bottom: 35px;
+}
+
+.select-div:after {
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid black;
+    position: absolute;
+    top: 44%;
+    right: 20px;
+    content: "";
+    z-index: 98;
+}
+
+.select-div select {
+    border: 0;
+    outline: none;
+    position: relative;
+    z-index: 99;
+    background: none;
+}
+
+
+.add-task-right-side {
+    display: flex;
+    flex-direction: column;
 }
