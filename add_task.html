@@ -30,14 +30,18 @@
                 <span class="little-headlines">Category</span>
                 <div class="select-div">
                     <select>
-                        <option value="">Select task Category</option>
+                        <option value disabled selected hidden>Select task Category</option>
+                        <option value="">Management</option>
+                        <option value="">Sales</option>
+                        <option value="">Product</option>
+                        <option value="">Marketing</option>
                     </select>
                 </div>
 
                 <span class="little-headlines">Assigned to</span>
                 <div class="select-div">
                     <select>
-                        <option value="">Select contacts to assign</option>
+                        <option value disabled selected hidden>Select contacts to assign</option>
                     </select>
                 </div>
             </div>
@@ -45,8 +49,36 @@
 
         <div class="add-task-right-side">
             <span class="little-headlines">Due Date</span>
-            <input type="date" placeholder="dd/mm/yyyy">
+            <input class="input-date" type="date" placeholder="dd/mm/yyyy">
+            <span class="little-headlines">Prio</span>
 
+            <div class="prio-div">
+                <div>
+                    <span>Urgent</span>
+                    <img src="./img/orange-arrow-up.png" alt="arrow-up">
+                </div>
+                <div>
+                    <span>Medium</span>
+                    <img src="./img/orange-equal.png" alt="equal">
+                </div>
+                <div>
+                    <span>Low</span>
+                    <img src="./img/green-arrow-down.png" alt="arrow-down">
+                </div>
+            </div>
+
+            <span class="little-headlines">Subtasks</span>
+
+            <div>
+                <div>
+                    <span>Clear</span>
+                    <img src="./img/close-icon.png" alt="close-icon">
+                </div>
+                <div>
+                    <span>Create Task</span>
+                    <img src="./img/checkmark.png" alt="checkmark-icon">
+                </div>
+            </div>
 
         </div>
 

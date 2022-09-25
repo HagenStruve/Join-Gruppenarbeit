@@ -111,3 +111,35 @@ select option {
     margin-left: 50px;
     margin-top: 109px;
 }
+
+.input-date {
+    margin-bottom: 35px;
+}
+
+.prio-div {
+    display: flex;
+    margin-bottom: 35px;
+}
+
+.prio-div div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 10px;
+    border: 1px solid #d1d1d1;
+    background-color: white;
+    margin-right: 10px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 80px;
+}
+
+.prio-div span {
+    font-size: 15px;
+    margin-right: 5px;
+}
+
+.prio-div img {
+    height: 23px;
+    width: 23px;
+}
