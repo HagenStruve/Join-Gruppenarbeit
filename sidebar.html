@@ -15,8 +15,8 @@
     }
 
     body {
-        margin-left: 232px;
-        margin-top: 90px;
+        margin-left: 232px !important;
+        margin-top: 90px !important;
     }
 
     header {
@@ -97,8 +97,16 @@
     .nav-properties {
         display: flex;
         justify-content: flex-end;
+        align-items: center;
         width: 100%;
         padding-bottom: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    
+    .nav-properties:hover {
+        cursor: pointer; 
+        background: #091931;
     }
 
     .nav-icons {
@@ -124,6 +132,15 @@
         height: 60%;
         justify-content: center;
         flex-direction: row;
+        width: 100%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-bottom: 60px;
+    }
+
+    .nav-notice:hover {
+        cursor: pointer; 
+        background: #091931;
     }
 </style>
 
@@ -157,7 +174,7 @@
                 Summary
             </span>
         </div>
-        <div class="nav-properties">
+        <div class="nav-properties" onclick="showBoard()">
             <div class="nav-icons">
                 <img src="/Join-Gruppenarbeit/img/board-icon.svg">
             </div>
@@ -182,7 +199,7 @@
             </span>
         </div>
 
-        <div class="nav-properties nav-notice">
+        <div class="nav-notice">
             <div class="nav-icons">
                 <img src="/Join-Gruppenarbeit/img/legal-notice-icon.png">
             </div>
