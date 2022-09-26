@@ -21,7 +21,6 @@ async function includeHTML() {
 }
 
 function showAddTask() {
-
     document.getElementById('render').innerHTML = '<div w3-include-html="add_task.html"></div>';
     includeHTML();
     }
