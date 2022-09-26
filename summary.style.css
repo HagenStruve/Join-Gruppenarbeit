@@ -26,88 +26,99 @@ body {
 
 .task-card {
     display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-padding: 25px 0px;
-gap: 13px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 0px;
+    gap: 13px;
 
-width: 170px;
-height: 170px;
+    width: 170px;
+    height: 170px;
 
-/* white */
+    /* white */
 
-background: #FFFFFF;
-/* nuevo */
+    background: #FFFFFF;
+    /* nuevo */
 
-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
-border-radius: 30px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
 
-/* Inside auto layout */
+    /* Inside auto layout */
 
-flex: none;
-order: 0;
-flex-grow: 0;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
 }
 
 .upcomming-card {
     /* Urgency summary v1 */
 
 
-/* Auto layout */
+    /* Auto layout */
 
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: 28px 48px;
-gap: 61px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 28px 48px;
+    gap: 61px;
 
-width: 580px;
-height: 150px;
+    width: 580px;
+    height: 150px;
 
-/* white */
+    /* white */
 
-background: #FFFFFF;
-/* nuevo */
+    background: #FFFFFF;
+    /* nuevo */
 
-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
-border-radius: 30px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
 
-/* Inside auto layout */
+    /* Inside auto layout */
 
-flex: none;
-order: 1;
-flex-grow: 0;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
 }
 
 .to-do-card {
     /* check rectangle button v1 */
 
 
-/* Auto layout */
+    /* Auto layout */
 
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: 38px 58px;
-gap: 18px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 38px 58px;
+    gap: 18px;
 
-width: 272.5px;
-height: 150px;
+    width: 272.5px;
+    height: 150px;
 
-/* white */
+    /* white */
 
-background: #FFFFFF;
-/* nuevo */
+    background: #FFFFFF;
+    /* nuevo */
 
-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
-border-radius: 30px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
 
-/* Inside auto layout */
+    /* Inside auto layout */
 
-flex: none;
-order: 1;
-flex-grow: 0;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.to-do-img-box {
+    /* Ellipse 4 */
+    width: 69px;
+    height: 69px;
+    left: 0px;
+    top: 0px;
+    border-radius: 100px;
+
+    background: #2A3647;
 }
