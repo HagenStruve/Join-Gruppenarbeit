@@ -1,0 +1,10 @@
+.header {
+    display: flex;
+    align-items: center;
+}
+
+.header-subtext {
+    border-left-color: blue;
+    border-left-style: solid;
+    border-left-width: 1px;
+}
