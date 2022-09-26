@@ -31,3 +31,8 @@ function showBoard() {
     document.getElementById('render').innerHTML = '<div w3-include-html="board.html"></div>';
     includeHTML();
 }
+
+function showSummary() {
+    document.getElementById('render').innerHTML = '<div w3-include-html="summary.html"></div>';
+    includeHTML();
+}
