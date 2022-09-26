@@ -1,6 +1,6 @@
 
 :root {
-    --width-task-size: 250px;
+    --width-task-size: 250px; /* use for sizing tasks */ 
 }
 
 
@@ -34,6 +34,7 @@
     border-radius: 10px;
     box-shadow: 0px 0px 1px grey;
     background-color: white;
+    height: 34px;
 
 }
 
@@ -51,15 +52,19 @@
 }
 
 .find-task-button {
-     height: 50px;
-        border-radius: 10px;
-        background-color: #253141;
-        color: white;
-        font-weight: bold;
-        width: 120px;
-        margin-left: 25px;
+    height: 42px;
+    border-radius: 10px;
+    background-color: #253141;
+    color: white;
+    font-weight: bold;
+    width: 120px;
+    margin-left: 25px;
 }
 
+.find-task-button:hover {
+    background-color: #2a3a50;
+    cursor: pointer;
+}
 
 .second-row {
     display: flex;
