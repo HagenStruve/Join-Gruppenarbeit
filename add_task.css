@@ -15,7 +15,6 @@ h1 {
 }
 
 
-/*styling add task start*/
 .add-task-whole-page {
     display: flex;
 }
@@ -49,6 +48,7 @@ h1 {
 .enter-title {
     height: 28px;
     margin-bottom: 35px;
+    outline: none;
 }
 
 .enter-description {
@@ -60,6 +60,7 @@ h1 {
     border-radius: 10px;
     resize: none;
     font-family: 'Inter';
+    outline: none;
 }
 
 select {
@@ -70,7 +71,7 @@ select {
 }
 
 select option {
-    font-size: 17px;
+    font-size: 15px;
     height: 36px;
     padding: 10px 18px;
 }
@@ -102,14 +103,21 @@ select option {
     position: relative;
     z-index: 99;
     background: none;
+    cursor: pointer;
 }
 
 
 .add-task-right-side {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     margin-left: 50px;
     margin-top: 109px;
+}
+
+.right-side-first-half {
+    display: flex;
+    flex-direction: column;
 }
 
 .input-date {
@@ -132,6 +140,12 @@ select option {
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     width: 80px;
+    cursor: pointer;
+    transition: box-shadow 150ms ease-in-out;
+}
+
+.blue-border {
+    box-shadow: 0px 0px 0px 3px rgba(11, 68, 93, 0.4) !important;
 }
 
 .prio-div span {
@@ -142,4 +156,47 @@ select option {
 .prio-div img {
     height: 23px;
     width: 23px;
+}
+
+.clear-create-div {
+    display: flex;
+    justify-content: flex-end;
+    width: 400px;
+    margin-bottom: 35px;
+}
+
+.clear-div {
+    display: flex;
+    align-items: center;
+    padding: 12px 10px;
+    font-size: 16px;
+    background-color: white;
+    border: 1px solid #2A3647;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.clear-div img {
+    width: 18px;
+    height: 18px;
+    margin-left: 5px;
+}
+
+.create-div {
+    display: flex;
+    align-items: center;
+    padding: 12px 10px;
+    font-size: 16px;
+    background-color: #2A3647;
+    color: white;
+    margin-left: 30px;
+    border: 1px solid #2A3647;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.create-div img {
+    width: 14px;
+    height: 14px;
+    margin-left: 10px;
 }
