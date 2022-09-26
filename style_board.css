@@ -3,6 +3,8 @@
     --width-task-size: 250px;
 }
 
+
+
 /* Headline-section */ 
 
 .headline-section {
@@ -15,7 +17,7 @@
     justify-content: space-between;
     align-items: center;
     font-size: 23px;
-    margin-bottom: 20px;
+    margin-bottom: 20pxf;
     padding-left: 5%;
     padding-right: 5%;
 }
