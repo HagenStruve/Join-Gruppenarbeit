@@ -2,26 +2,87 @@ body {
     font-family: 'Inter';
 }
 
+h1 {
+    /* Summary */
+
+
+    width: 315px;
+    height: 73px;
+
+    /* Version 2/t1 */
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 61px;
+    line-height: 120%;
+    /* or 73px */
+
+
+    color: #000000;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
 .header {
     display: flex;
     align-items: center;
+    margin-left: 123px;
+    margin-top: 83px;
+    margin-bottom: 87px;
 }
 
 .header-subtext {
-    border-left-color: blue;
+    border-left-color: #29ABE2;
     border-left-style: solid;
     border-left-width: 1px;
-    padding-left: 20px;
-    margin-left: 20px;
+    padding-left: 30px;
+    margin-left: 30px;
+    display: flex;
+    align-items: center;
+
+    /* Everything in a nutshell! */
+
+height: 59px;
+
+/* Version 2/t5 */
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 27px;
+line-height: 120%;
+/* or 32px */
+
+
+color: #2A3647;
+
+
+/* Inside auto layout */
+
+flex: none;
+order: 2;
+flex-grow: 0;
 }
 
 .content-box {
     display: flex;
+    margin-left: 123px;
+}
+
+.content-left {
+    width: 580px;
 }
 
 .task-card-box {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 32px;
 }
 
 .task-card {
@@ -121,4 +182,30 @@ body {
     border-radius: 100px;
 
     background: #2A3647;
+}
+
+.numbers {
+    /* 6 */
+
+
+width: 41px;
+height: 77px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 64px;
+line-height: 120%;
+/* identical to box height, or 77px */
+
+text-align: center;
+
+color: #000000;
+
+
+/* Inside auto layout */
+
+flex: none;
+order: 0;
+flex-grow: 0;
 }
