@@ -30,6 +30,8 @@
     padding: 4px;
     border: 1px solid gray;
     border-radius: 10px;
+    box-shadow: 0px 0px 1px grey;
+    background-color: white;
 
 }
 
@@ -59,14 +61,17 @@
 
 .second-row {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding-left: 5%;
+    padding-right: 5%;
+    gap: 17px;
 }
 
 .kanban-management-headlines {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 250px;
+    width: var(--width-task-size);
 }
 
 .kanban-management-headlines img {
@@ -82,7 +87,10 @@
     display: flex;
     font-family: 'Inter';
     font-style: normal;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding-left: 5%;
+    padding-right: 5%;
+    gap: 17px;
 }
 
 .current-status {
@@ -96,6 +104,7 @@
     border-radius: 15px;
     padding: 15px;
     margin-bottom: 20px;
+    box-sizing: border-box;
 }
 
 .task-type {
@@ -118,7 +127,7 @@
 }
 
 .progress-border {
-    width: 75%;
+    width: 69%;
     height: 6px;
     border: 1px solid gray;
     border-radius: 15px;
