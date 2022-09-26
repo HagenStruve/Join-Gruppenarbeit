@@ -1,0 +1,139 @@
+
+/* Headline-section */ 
+
+.headline-section {
+    width: 100%; 
+    height: 30%;
+    background-color: white;
+}
+
+.first-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 23px;
+    margin-bottom: 20px;
+}
+
+.form-fields {
+    display: flex;
+}
+
+.find-task-div {
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    border: 1px solid gray;
+    border-radius: 10px;
+
+}
+
+.find-task-div img {
+    object-fit: cover;
+    filter: invert(0.2);
+    padding-left: 8px;
+    border-left: 1px solid white;
+}
+
+.find-task-input  {
+    height: 40px;
+    border: none;
+
+}
+
+.find-task-button {
+     height: 50px;
+        border-radius: 10px;
+        background-color: #253141;
+        color: white;
+        font-weight: bold;
+        width: 120px;
+        margin-left: 25px;
+}
+
+
+.second-row {
+    display: flex;
+    justify-content: space-around;
+}
+
+.kanban-management-headlines {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 20%;
+}
+
+.kanban-management-headlines img {
+    height: 22px;
+    width: 25px;
+    object-fit: contain;
+}
+
+
+/* Kanban Overview Section */ 
+
+.kanban-overview {
+    display: flex;
+    padding: 50px;
+}
+
+.kanban-task-container {
+    width: 250px;
+    height: 240px;
+    background-color: white;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.task-type {
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: orange;
+    border-radius: 15px;
+    color: white;
+}
+
+.task-description {
+    color:gray; 
+}
+
+.progress-border {
+    width: 75%;
+    height: 6px;
+    border: 1px solid gray;
+    border-radius: 15px;
+    margin-right: 10px;
+}
+
+.gray {
+    background-color: gray;
+}
+
+.progress-section {
+    display: flex;
+    align-items: center;
+}
+
+.assigned-employees {
+    display: flex;
+}
+
+.assigned-employees img {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 550px;
+    margin-top: 10px;
+}
+
+.second-picture {
+    position: relative;
+    right: 10px;
+}
+
+.third-picture {
+    position: relative;
+    right: 20px;
+}
