@@ -1,3 +1,25 @@
+body {
+    margin: 0;
+    background-color: #F6F7F8;
+    font-family: 'Inter';
+}
+
+.d-none {
+    display: none !important;
+}
+
+.no-margin-bottom {
+    margin-bottom: 0px !important;
+}
+
+
+h1 {
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-top: 35px;
+}
+
+
 .height-520px {
     height: 520px !important;
 }
@@ -184,4 +206,14 @@ form {
     color: #2A3647;
     background-color: #FFFFFF;
     margin-right: 12px;
+}
+
+.button-without-onclick {
+    width: 145px;
+    height: 51px;
+    padding: 4px 0px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 21px;
+    opacity: 0.4;
 }

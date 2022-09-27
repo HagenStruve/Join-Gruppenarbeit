@@ -8,9 +8,8 @@
 
     <link rel="icon" type="image/x-icon" href="../img/join-logo.svg">
 
-    <script src="login.js"></script>
+    <script src="../js/login.js"></script>
     <link rel="stylesheet" href="../css/login.css">
-    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../fonts/fonts.css">
 
     <title>Join</title>
@@ -25,7 +24,7 @@
             <button onclick="showSignUp()">Sign up</button>
         </div>
 
-        <div id="login-field" class="login-container">
+        <div id="login-field" class="login-container d-none">
             <span class="login-headline">Log in</span>
             <div class="login-headline-border"></div>
 
@@ -50,16 +49,26 @@
             </form>
         </div>
 
-        <div id="register-field" class="login-container height-520px d-none">
+        <div id="register-field" class="login-container height-520px">
             <img onclick="showLogin()" class="back-arrow" src="../img/blue-back-arrow.png" alt="blue-back-arrow">
             <span class="login-headline">Sign up</span>
             <div class="login-headline-border"></div>
-            <form onsubmit="">
-                <input class="login-input login-name-input-bg" type="text" placeholder="Name">
-                <input class="login-input login-email-input-bg" type="email" placeholder="Email">
-                <input class="login-input login-password-input-bg" type="password" placeholder="Password">
-                <button type="submit" class="login-signup-buttons button-bg-black">Sign up</button>
+
+            <form onkeyup="proofInputs()" onsubmit="successfulRegistration(); return false;">
+                <input id="name" class="login-input login-name-input-bg" type="text" placeholder="Name">
+                <input id="email" class="login-input login-email-input-bg" type="email"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Geben Sie eine gültige E-Mail Adresse ein"
+                    placeholder="Email">
+
+                <input id="password" class="login-input login-password-input-bg" type="password" pattern=".{8,}"
+                    title="Passwort ist zu kurz (mindestens 8 Zeichen)" placeholder="Password">
+
+                <span id="successful-registration" class="d-none">Registration successful. Click here
+                    to login</span>
+                <button id="submit-button" type="submit" class="login-signup-buttons button-bg-black d-none">Sign
+                    up</button>
             </form>
+            <button id="no-submit-button" class="button-bg-black button-without-onclick">Sign up</button>
         </div>
 
     </div>

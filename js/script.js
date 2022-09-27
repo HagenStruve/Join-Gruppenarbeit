@@ -36,6 +36,11 @@ function showSummary() {
     includeHTML();
 }
 
+function showContacts() {
+    document.getElementById('render').innerHTML = '<div w3-include-html="contacts.html"></div>';
+    includeHTML();
+}
+
 function showLegalNotice() {
     document.getElementById('render').innerHTML = '<div w3-include-html="legal_notice.html"></div>';
     includeHTML();
