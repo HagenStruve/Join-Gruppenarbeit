@@ -1,5 +1,6 @@
 body {
     font-family: 'Inter';
+    font-size: 16px;
 }
 
 h1 {
@@ -40,7 +41,7 @@ h1 {
 .header-subtext {
     border-left-color: #29ABE2;
     border-left-style: solid;
-    border-left-width: 1px;
+    border-left-width: 3px;
     padding-left: 30px;
     margin-left: 30px;
     display: flex;
@@ -83,6 +84,7 @@ flex-grow: 0;
     display: flex;
     justify-content: space-between;
     margin-bottom: 32px;
+    text-align: center;
 }
 
 .task-card {
@@ -90,7 +92,6 @@ flex-grow: 0;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 25px 0px;
     gap: 13px;
 
     width: 170px;
@@ -121,10 +122,8 @@ flex-grow: 0;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 28px 48px;
     gap: 61px;
 
-    width: 580px;
     height: 150px;
 
     /* white */
@@ -140,6 +139,7 @@ flex-grow: 0;
     flex: none;
     order: 1;
     flex-grow: 0;
+    margin-bottom: 35px;
 }
 
 .to-do-card {
@@ -152,7 +152,6 @@ flex-grow: 0;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 38px 58px;
     gap: 18px;
 
     width: 272.5px;
@@ -207,5 +206,87 @@ color: #000000;
 
 flex: none;
 order: 0;
+flex-grow: 0;
+}
+
+.to-do-card-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.upcomming-date-container {
+    border-left-color: #D1D1D1;
+    border-left-style: solid;
+    border-left-width: 2px;
+    padding-left: 61px;
+    height: 102.02px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.fontsize-21{
+    font-size: 21px;
+}
+
+.content-right {
+    margin-left: 67px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.good-morning {
+    /* Good morning, */
+
+
+width: 338px;
+height: 56px;
+
+/* Version 2/t2 */
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 47px;
+line-height: 120%;
+/* or 56px */
+
+
+color: #2A3647;
+
+
+/* Inside auto layout */
+
+flex: none;
+order: 0;
+flex-grow: 0;
+}
+
+.name{
+    /* Sofia Müller */
+
+
+width: 385px;
+height: 77px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 64px;
+line-height: 120%;
+/* identical to box height, or 77px */
+
+
+/* Ligth blue */
+
+color: #29ABE2;
+
+
+/* Inside auto layout */
+
+flex: none;
+order: 1;
 flex-grow: 0;
 }
