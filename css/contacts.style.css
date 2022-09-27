@@ -1,0 +1,105 @@
+body {
+    font-size: 16px;
+    font-family: 'Inter';
+    font-style: normal;
+    display: flex;
+}
+
+.fontsice-21 {
+    font-size: 21px;
+}
+
+.content-left {
+    margin-left: 48px;
+    padding-top: 12px;
+}
+
+.content-right {
+    display: flex;
+}
+
+.member-box {
+    display: flex;
+    margin-top: 53px;
+}
+
+.shortcut-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 12px;
+
+    box-sizing: border-box;
+    width: 42px;
+    height: 42px;
+    border-radius: 100px;
+    text-align: center;
+    background: #FF7A00;
+    border: 1px solid #FFFFFF;
+    margin-right: 35px;
+}
+
+.email {
+    width: 140px;
+    height: 19px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+
+    display: flex;
+    align-items: center;
+
+    color: #007CEE;
+    cursor: pointer;
+    margin-bottom: 25px;
+    margin-top: 5px;
+}
+
+.border {
+    width: 0px;
+    height: 53px;
+    left: 14px;
+    top: 77px;
+    margin-top: 77px;
+    margin-left: 150px;
+    border: 3px solid #A8A8A8;
+    border-radius: 3px;
+}
+
+.contacts {
+    width: 274px;
+    height: 59px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 61px;
+    line-height: 120%;
+    color: #000000;
+    margin-top: 82px;
+    margin-left: 71px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    border-right: 3px solid #29ABE2;
+    margin-right: 30px;
+    padding-right: 30px;
+}
+
+.team-text {
+    width: 235px;
+    height: 59px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 27px;
+    line-height: 120%;
+    color: #2A3647;
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+    margin-top: 102.5px;
+}
