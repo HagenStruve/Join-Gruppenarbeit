@@ -16,6 +16,7 @@ body {
 
 .content-right {
     display: flex;
+    flex-direction: column;
 }
 
 .member-box {
@@ -90,7 +91,7 @@ body {
 }
 
 .team-text {
-    width: 235px;
+    width: 335px;
     height: 59px;
     font-family: 'Inter';
     font-style: normal;
@@ -102,4 +103,51 @@ body {
     order: 2;
     flex-grow: 0;
     margin-top: 102.5px;
+}
+
+.content-right-header {
+    display: flex;
+}
+
+.member-info {
+    display: flex;
+    margin-top: 127px;
+    margin-left: 71px;
+    flex-direction: column;
+}
+
+.shortcut-name-info {
+    width: 120px;
+    height: 120px;
+    left: 0px;
+    top: 0px;
+    background: #FF7A00;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 47px;
+    margin-right: 54px;
+    margin-bottom: 21px;
+}
+
+.member {
+    display: flex;
+}
+
+.contact-info-edit {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 21px;
+}
+
+.edit-contact {
+    margin-left: 61px;
+}
+
+.plus {
+    width: 15px;
+    height: auto;
+    margin-right: 13px;
 }
