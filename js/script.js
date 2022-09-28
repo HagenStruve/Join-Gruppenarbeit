@@ -6,17 +6,37 @@ let tasks = [{
     'subtasks': 2,
     'assigned' : '../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png',
     'importance' : 'urgent',
-    'category' : 'open'
+    'category' : 'to-do'
 },
 {
     'id': 1 ,
     'area' : 'Sales',
     'title': 'Call Clients',
-    'description' : 'Make the product amazing and shoot throug the finances', 
+    'description' : 'Sells so much that we drown in money', 
     'subtasks': 0,
     'assigned' : '../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png',
     'importance' : 'medium',
-    'category' : 'open'
+    'category' : 'in-progress'
+}, 
+{
+    'id': 2 ,
+    'area' : 'Backoffice',
+    'title': 'Call Clients',
+    'description' : 'and teaches them good things', 
+    'subtasks': 0,
+    'assigned' : '../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png',
+    'importance' : 'medium',
+    'category' : 'awaiting-feedback'
+},
+{
+    'id': 3 ,
+    'area' : 'Marketing',
+    'title': 'Call Clients',
+    'description' : 'Market yourself so well that you dont need marketing anymore', 
+    'subtasks': 0,
+    'assigned' : '../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png',
+    'importance' : 'medium',
+    'category' : 'done'
 }]; 
 
 

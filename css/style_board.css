@@ -102,6 +102,7 @@
 
 .current-status {
     width: var(--width-task-size);
+    min-height: 100vh;
 }
 
 .kanban-task-container {
