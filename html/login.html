@@ -19,7 +19,7 @@
     <div class="whole-login-page">
         <img class="logo" src="../img/join-logo.svg" alt="join-logo">
 
-        <div id="sign-up-field" class="sign-up-container">
+        <div id="sign-up-field" class="sign-up-container d-none">
             <span>Not a Join user?</span>
             <button onclick="showSignUp()">Sign up</button>
         </div>
@@ -63,7 +63,8 @@
                 <input id="password" class="login-input login-password-input-bg" type="password" pattern=".{8,}"
                     title="Passwort ist zu kurz (mindestens 8 Zeichen)" placeholder="Password">
 
-                <span id="successful-registration" class="d-none">Registration successful. Click here
+                <span onclick="showLogin()" id="successful-registration" class="d-none">Registration successful. Click
+                    here
                     to login</span>
                 <button id="submit-button" type="submit" class="login-signup-buttons button-bg-black d-none">Sign
                     up</button>
