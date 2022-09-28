@@ -19,20 +19,21 @@
     <div class="whole-login-page">
         <img class="logo" src="../img/join-logo.svg" alt="join-logo">
 
-        <div id="sign-up-field" class="sign-up-container d-none">
+        <div id="sign-up-field" class="sign-up-container">
             <span>Not a Join user?</span>
             <button onclick="showSignUp()">Sign up</button>
         </div>
 
-        <div id="login-field" class="login-container d-none">
+        <!-- log in field -->
+        <div id="login-field" class="login-container">
             <span class="login-headline">Log in</span>
             <div class="login-headline-border"></div>
 
-            <form onsubmit="">
-                <input class="login-input login-email-input-bg" min="5" max="100" type="email" placeholder="E-Mail"
-                    required>
-                <input class="login-input login-password-input-bg" min="8" type="password" placeholder="Password"
-                    required>
+            <form onsubmit="proofLogin(); return false;">
+                <input id="login-email" class="login-input login-email-input-bg" min="5" max="100" type="email"
+                    placeholder="E-Mail" required>
+                <input id="login-password" class="login-input login-password-input-bg" min="8" type="password"
+                    placeholder="Password" required>
 
                 <div class="login-checkbox-forgot">
                     <div class="login-checkbox-container">
@@ -43,13 +44,15 @@
                 </div>
 
                 <div class="login-buttons">
-                    <button type="submit" class="login-signup-buttons button-bg-black">Log in</button>
-                    <button class="login-signup-buttons login-guest-button">Guest Log in</button>
+                    <button class="login-signup-buttons button-bg-black">Log
+                        in</button>
+                    <button onclick="guestLogin()" class="login-signup-buttons login-guest-button">Guest Log in</button>
                 </div>
             </form>
         </div>
 
-        <div id="register-field" class="login-container height-520px">
+        <!-- sign up field -->
+        <div id="register-field" class="login-container height-520px d-none">
             <img onclick="showLogin()" class="back-arrow" src="../img/blue-back-arrow.png" alt="blue-back-arrow">
             <span class="login-headline">Sign up</span>
             <div class="login-headline-border"></div>
@@ -63,13 +66,21 @@
                 <input id="password" class="login-input login-password-input-bg" type="password" pattern=".{8,}"
                     title="Passwort ist zu kurz (mindestens 8 Zeichen)" placeholder="Password">
 
+                <!-- span appears when the email address already be used  -->
+                <span id="email-in-use" class="d-none">E-mail address will already be used</span>
+
+                <!-- span appears when registration was successful, onclick span redirect to login field, default is display:none; -->
                 <span onclick="showLogin()" id="successful-registration" class="d-none">Registration successful. Click
                     here
                     to login</span>
-                <button id="submit-button" type="submit" class="login-signup-buttons button-bg-black d-none">Sign
+
+                <!-- button appears when something is written in the input fields, default is display:none; -->
+                <button id="submit-button" type="submit" class="login-signup-buttons button-bg-black">Sign
                     up</button>
+
+                <!-- button will be showed when the input fields above are empty, this is the default button -->
+                <span id="no-submit-button" class="button-bg-black fake-button-without-onclick">Sign up</span>
             </form>
-            <button id="no-submit-button" class="button-bg-black button-without-onclick">Sign up</button>
         </div>
 
     </div>
