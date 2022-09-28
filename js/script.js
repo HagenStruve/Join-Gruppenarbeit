@@ -1,3 +1,26 @@
+let tasks = [{
+    'id': 0 ,
+    'area' : 'media',
+    'title': 'Redesign Website',
+    'description' : 'Modify contents of the website und und und nur ein Testtext', 
+    'subtasks': 2,
+    'assigned' : '../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png',
+    'importance' : 'urgent',
+    'category' : 'open'
+},
+{
+    'id': 1 ,
+    'area' : 'Sales',
+    'title': 'Call Clients',
+    'description' : 'Make the product amazing and shoot throug the finances', 
+    'subtasks': 0,
+    'assigned' : '../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png',
+    'importance' : 'medium',
+    'category' : 'open'
+}]; 
+
+
+
 async function init() {
     await includeHTML();
 }
