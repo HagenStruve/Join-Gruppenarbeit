@@ -1,4 +1,11 @@
-let users = []
+let users = [];
+
+async function initLogin() {
+    setURL("https://gruppe-313.developerakademie.net/Join/smallest_backend_ever-master");
+    await downloadFromServer();
+    users = await JSON.parse(backend.getItem('users')) || [];
+}
+
 
 
 function showSignUp() {
@@ -15,11 +22,7 @@ function guestLogin() {
 
 
 function successfulRegistration() {
-    let name = document.getElementById('name');
-    let email = document.getElementById('email');
-    let password = document.getElementById('password');
-
-    users.push({ name: name.value, email: email.value, password: password.value });
+    addUser();
 
     document.getElementById('overlay').classList.remove('d-none');
     document.getElementById('successful-registration').classList.remove('d-none');
@@ -27,11 +30,22 @@ function successfulRegistration() {
 }
 
 
-function proofLogin() {
+function addUser() {
+    let name = document.getElementById('name');
     let email = document.getElementById('email');
     let password = document.getElementById('password');
 
-    let user = users.find(u => u.email == email.value && u.password == password.value);
+    users.push({ name: name.value, email: email.value, password: password.value });
+    backend.setItem('users', JSON.stringify(users));
+    console.log(users);
+}
+
+
+function proofLogin() {
+    let loginEmail = document.getElementById('login-email');
+    let loginPassword = document.getElementById('login-password');
+
+    let user = users.find(u => u.email == loginEmail.value && u.password == loginPassword.value);
     if (user) {
         window.location.href = "../html/summary.html";
     }
