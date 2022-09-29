@@ -5,6 +5,10 @@ body {
     display: flex;
 }
 
+.render {
+    display: flex;
+}
+
 .fontsice-21 {
     font-size: 21px;
 }
