@@ -40,9 +40,6 @@ let tasks = [{
 }]; 
 
 
-setURL('http://developerakademie.com/smallest_backend_ever');
-
-
 async function init() {
     await includeHTML();
 }
