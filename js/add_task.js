@@ -1,4 +1,4 @@
-
+setURL('http://developerakademie.com/smallest_backend_ever');
 
 function blueBorder(id) {
     document.getElementById('prio-urgent').classList.remove('blue-border');
