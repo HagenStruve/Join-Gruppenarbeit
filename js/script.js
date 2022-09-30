@@ -2,7 +2,7 @@
 
 let tasks = [{
     'id': 0,
-    'area': 'media',
+    'area': 'Media',
     'title': 'Redesign Website',
     'description': 'Modify contents of the website und und und nur ein Testtext',
     'subtasks': 2,

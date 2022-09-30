@@ -172,3 +172,22 @@
     position: relative;
     right: 20px;
 }
+
+
+/* Colors */
+
+.orange {
+    background-color: rgba(255, 122, 0, 1) !important;
+}
+.pink {
+    background-color: rgba(252, 113, 255, 1) !important;
+}
+.cyan {
+    background-color: rgba(31, 215, 193, 1) !important;
+}
+.blue {
+    background-color: rgba(0, 56, 255, 1) !important;
+}
+.yellow {
+    background-color: rgba(255, 199, 1, 1) !important;
+}
