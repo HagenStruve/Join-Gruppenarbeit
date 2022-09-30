@@ -1,6 +1,9 @@
 
 let currentDraggedElement; 
-// filters tasks and displays them assigned // Funktion wird noch kleiner gemacht 
+
+/** filters tasks-json and displays them assigned on board site
+ * @param {string} todos - and other subvariables descripe the filter code to extract which task is in which category 
+ */
 function updateHTML() {
 
     let todos = tasks.filter(t => t['category'] == 'to-do'); 
