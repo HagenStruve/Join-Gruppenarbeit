@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/x-icon" href="../img/join-logo.svg">
+
+    <script src="../js/login.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../mini_backend.js"></script>
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../fonts/fonts.css">
+
+    <title>Join</title>
+</head>
+
+<body onload="initLogin()">
+    <div id="overlay" class="overlay d-none">
+        <!-- div appears when registration was successful, onclick button redirect to login field, default is display:none; -->
+        <div id="successful-registration" class="successful-registration d-none">
+            <img src="../img/square-check-solid.svg" alt="checkmark">
+            <span class="success">Success!</span>
+            <span class="registered-successfully">Registered successfully</span>
+            <button onclick="showLogin()">Back to login</button>
+        </div>
+    </div>
+
+    <div class="whole-login-page">
+        <img class="logo" src="../img/join-logo.svg" alt="join-logo">
+
+
+        <!-- sign up field -->
+        <div id="register-field" class="login-container height-520px">
+            <img onclick="showLogin()" class="back-arrow" src="../img/blue-back-arrow.png" alt="blue-back-arrow">
+            <span class="login-headline">Sign up</span>
+            <div class="login-headline-border"></div>
+
+            <form onkeyup="proofInputSignUp()" onsubmit="successfulRegistration(); return false;">
+                <input id="name" class="login-input login-name-input-bg" type="text" placeholder="Name">
+                <input id="email" class="login-input login-email-input-bg" type="email"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Geben Sie eine gültige E-Mail Adresse ein"
+                    placeholder="Email">
+
+                <input id="password" class="login-input login-password-input-bg" type="password" pattern=".{8,}"
+                    title="Passwort ist zu kurz (mindestens 8 Zeichen)" placeholder="Password">
+
+                <!-- span appears when the email address already be used  -->
+                <span id="email-in-use" class="wrong-login-or-register d-none">E-mail address will already be
+                    used</span>
+
+                <!-- button appears when something is written in the input fields, default is display:none; -->
+                <button id="submit-button" type="submit" class="login-signup-buttons button-bg-black d-none">Sign
+                    up</button>
+
+                <!-- button will be showed when the input fields above are empty, this is the default button -->
+                <span id="no-submit-button" class="button-bg-black fake-button-without-onclick">Sign up</span>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

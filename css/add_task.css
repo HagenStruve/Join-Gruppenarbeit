@@ -14,7 +14,6 @@ h1 {
     margin-top: 35px;
 }
 
-
 .add-task-whole-page {
     display: flex;
 }
@@ -199,4 +198,13 @@ select option {
     width: 14px;
     height: 14px;
     margin-left: 10px;
+}
+
+.create-button {
+    font-size: 16px;
+    background-color: #2A3647;
+    color: white;
+    border: 1px solid #2A3647;
+    border-radius: 10px;
+    cursor: pointer;
 }

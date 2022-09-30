@@ -15,7 +15,7 @@
     <script src="../js/script.js"></script>
     <script src="../js/add_task.js"></script>
 
-   
+
 
     <title>Join</title>
 </head>
@@ -26,18 +26,18 @@
     <div id="render">
         <!-- Div id to display-none the Code for nav bar -->
 
-        <div class="add-task-whole-page">
+        <form onsubmit="addTask(); return false;" class="add-task-whole-page">
             <div class="add-task-left-side">
                 <h1>Add Task</h1>
                 <div class="left-side-without-h1">
                     <span class="little-headlines">Title</span>
-                    <input class="enter-title" type="text" placeholder="Enter a title">
+                    <input id="title" required class="enter-title" type="text" placeholder="Enter a title">
                     <span class="little-headlines">Description</span>
-                    <textarea class="enter-description" placeholder="Enter a description"></textarea>
+                    <textarea id="descripton" class="enter-description" placeholder="Enter a description"></textarea>
 
                     <span class="little-headlines">Category</span>
                     <div class="select-div">
-                        <select>
+                        <select id="category">
                             <option value disabled selected hidden>Select task Category</option>
                             <option value="">Management</option>
                             <option value="">Sales</option>
@@ -48,7 +48,7 @@
 
                     <span class="little-headlines">Assigned to</span>
                     <div class="select-div">
-                        <select>
+                        <select id="assingedTo">
                             <!-- optionen (Kontakte) hinzufügen -->
                             <option value disabled selected hidden>Select contacts to assign</option>
                         </select>
@@ -59,7 +59,7 @@
             <div class="add-task-right-side">
                 <div class="right-side-first-half">
                     <span class="little-headlines">Due Date</span>
-                    <input class="input-date" type="date" placeholder="dd/mm/yyyy">
+                    <input id="dueDate" required class="input-date" type="date" placeholder="dd/mm/yyyy">
                     <span class="little-headlines">Prio</span>
 
                     <div class="prio-div">
@@ -82,12 +82,12 @@
                  evenuell noch hinzufügen-->
 
                 <div class="clear-create-div">
-                    <div class="clear-div">
+                    <div onclick="clearInput()" class="clear-div">
                         <span>Clear</span>
                         <img src="../img/close-icon.png" alt="close-icon">
                     </div>
                     <div class="create-div">
-                        <span>Create Task</span>
+                        <button class="create-button">Create Task</button>
                         <img src="../img/checkmark.png" alt="checkmark-icon">
                     </div>
                 </div>
@@ -95,7 +95,7 @@
             </div>
 
 
-        </div>
+        </form>
     </div>
 </body>
 

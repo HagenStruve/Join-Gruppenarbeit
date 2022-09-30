@@ -1,79 +1,74 @@
-let users = []
+let users = [];
+
+async function initLogin() {
+    setURL("https://gruppe-313.developerakademie.net/Join/smallest_backend_ever-master");
+    await downloadFromServer();
+    users = await JSON.parse(backend.getItem('users')) || [];
+}
+
 
 
 function showSignUp() {
-    removeValueSignUpInput();
-    defaultViewSignUp();
-    loginDisappear();
-    document.getElementById('password').classList.remove('no-margin-bottom');
-    document.getElementById('email-in-use').classList.add('d-none');
+    window.location.href = "../html/sign_up.html";
 }
-
-
-function removeValueSignUpInput() {
-    let name = document.getElementById('name');
-    let email = document.getElementById('email');
-    let password = document.getElementById('password');
-
-    name.value = '';
-    email.value = '';
-    password.value = '';
-}
-
-
-function defaultViewSignUp() {
-    document.getElementById('submit-button').classList.add('d-none');
-    document.getElementById('no-submit-button').classList.remove('d-none');
-    document.getElementById('password').classList.remove('no-margin-bottom');
-    document.getElementById('successful-registration').classList.add('d-none');
-}
-
-
-function loginDisappear() {
-    document.getElementById('login-field').classList.add('d-none');
-    document.getElementById('sign-up-field').classList.add('d-none');
-    document.getElementById('register-field').classList.remove('d-none');
-}
-
-
 
 function showLogin() {
-    document.getElementById('login-field').classList.remove('d-none');
-    document.getElementById('sign-up-field').classList.remove('d-none');
-    document.getElementById('register-field').classList.add('d-none');
+    window.location.href = "../html/login.html";
 }
-
-
-function successfulRegistration() {
-    let name = document.getElementById('name');
-    let email = document.getElementById('email');
-    let password = document.getElementById('password');
-
-    users.push({ name: name.value, email: email.value, password: password.value });
-
-    document.getElementById('password').classList.add('no-margin-bottom');
-    document.getElementById('successful-registration').classList.remove('d-none');
-    console.log(users);
-}
-
-
-function proofLogin() {
-    let email = document.getElementById('email');
-    let password = document.getElementById('password');
-
-    let user = users.find(u => u.email == email.value && u.password == password.value);
-    if (user) {
-        window.location.href = "../html/summary.html";
-    }
-}
-
 
 function guestLogin() {
     window.location.href = "../html/summary.html";
 }
 
 
-function proofInputs() {
+function successfulRegistration() {
+    addUser();
+
+    document.getElementById('overlay').classList.remove('d-none');
+    document.getElementById('successful-registration').classList.remove('d-none');
+    console.log(users);
+}
+
+
+function addUser() {
+    let name = document.getElementById('name');
+    let email = document.getElementById('email');
+    let password = document.getElementById('password');
+
+    users.push({ name: name.value, email: email.value, password: password.value });
+    backend.setItem('users', JSON.stringify(users));
+    console.log(users);
+}
+
+
+function proofLogin() {
+    let loginEmail = document.getElementById('login-email');
+    let loginPassword = document.getElementById('login-password');
+
+    let user = users.find(u => u.email == loginEmail.value && u.password == loginPassword.value);
+    if (user) {
+        window.location.href = "../html/summary.html";
+    }
+
+    else {
+        document.getElementById('login-password').classList.add('no-margin-bottom');
+        document.getElementById('wrong-login-dates').classList.remove('d-none');
+    }
+}
+
+
+function proofInputLogin() {
+    let loginEmail = document.getElementById('login-email');
+    let loginPassword = document.getElementById('login-password');
+
+    if (loginEmail.value.length < 1 || loginPassword.value.length < 1) {
+        document.getElementById('login-password').classList.remove('no-margin-bottom');
+        document.getElementById('wrong-login-dates').classList.add('d-none');
+    }
+}
+
+
+function proofInputSignUp() {
     let name = document.getElementById('name');
     let email = document.getElementById('email');
     let password = document.getElementById('password');
@@ -83,6 +78,8 @@ function proofInputs() {
     if (user) {
         document.getElementById('password').classList.add('no-margin-bottom');
         document.getElementById('email-in-use').classList.remove('d-none');
+        document.getElementById('submit-button').classList.add('d-none');
+        document.getElementById('no-submit-button').classList.remove('d-none');
     }
 
     else if (name.value.length >= 1 && email.value.length >= 1 && password.value.length >= 1) {
