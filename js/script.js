@@ -1,3 +1,5 @@
+
+
 let tasks = [{
     'id': 0 ,
     'area' : 'media',
@@ -71,6 +73,8 @@ function showAddTask() {
 function showBoard() {
     document.getElementById('render').innerHTML = '<div w3-include-html="board.html"></div>';
     includeHTML();
+    updateHTML(); 
+
 }
 
 function showSummary() {
