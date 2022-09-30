@@ -19,7 +19,7 @@
 
 <body onload="initLogin()">
     <div id="overlay" class="overlay d-none">
-        <!-- div appears when registration was successful, onclick button redirect to login field, default is display:none; -->
+        <!-- dvs with id=overlay and id=successful-registration appears when registration was successful, onclick button redirect to login field, default is display:none; -->
         <div id="successful-registration" class="successful-registration d-none">
             <img src="../img/square-check-solid.svg" alt="checkmark">
             <span class="success">Success!</span>
@@ -30,7 +30,6 @@
 
     <div class="whole-login-page">
         <img class="logo" src="../img/join-logo.svg" alt="join-logo">
-
 
         <!-- sign up field -->
         <div id="register-field" class="login-container height-520px">
@@ -55,7 +54,7 @@
                 <button id="submit-button" type="submit" class="login-signup-buttons button-bg-black d-none">Sign
                     up</button>
 
-                <!-- button will be showed when the input fields above are empty, this is the default button -->
+                <!--span (aka fake-button) will be showed when the input fields above are empty, this is the default "button" -->
                 <span id="no-submit-button" class="button-bg-black fake-button-without-onclick">Sign up</span>
             </form>
         </div>
