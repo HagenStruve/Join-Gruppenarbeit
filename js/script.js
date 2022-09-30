@@ -70,9 +70,9 @@ function showAddTask() {
 }
 
 
-function showBoard() {
+async function showBoard() {
     document.getElementById('render').innerHTML = '<div w3-include-html="board.html"></div>';
-    includeHTML();
+    await includeHTML();
     updateHTML(); 
 
 }
