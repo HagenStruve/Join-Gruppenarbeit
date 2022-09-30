@@ -38,7 +38,7 @@
             <span class="login-headline">Sign up</span>
             <div class="login-headline-border"></div>
 
-            <form onkeyup="proofInputs()" onsubmit="successfulRegistration(); return false;">
+            <form onkeyup="proofInputSignUp()" onsubmit="successfulRegistration(); return false;">
                 <input id="name" class="login-input login-name-input-bg" type="text" placeholder="Name">
                 <input id="email" class="login-input login-email-input-bg" type="email"
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Geben Sie eine gültige E-Mail Adresse ein"
@@ -48,7 +48,8 @@
                     title="Passwort ist zu kurz (mindestens 8 Zeichen)" placeholder="Password">
 
                 <!-- span appears when the email address already be used  -->
-                <span id="email-in-use" class="d-none">E-mail address will already be used</span>
+                <span id="email-in-use" class="wrong-login-or-register d-none">E-mail address will already be
+                    used</span>
 
                 <!-- button appears when something is written in the input fields, default is display:none; -->
                 <button id="submit-button" type="submit" class="login-signup-buttons button-bg-black d-none">Sign

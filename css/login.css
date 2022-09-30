@@ -282,7 +282,7 @@ form {
     margin-top: 10px;
 }
 
-#email-in-use {
+.wrong-login-or-register {
     padding: 14px;
     border-radius: 8px;
     background-color: rgba(235, 77, 96, 0.3);
