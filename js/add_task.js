@@ -44,7 +44,7 @@ async function saveOnServer() {
 function clearInput() {
     title.value = '';
     descripton.value = '';
-    category.value = '';
-    assingedTo.value = '';
+    category.value = 'Select task Category';
+    assingedTo.value = 'Select contacts to assign';
     dueDate.value = '';
 }
