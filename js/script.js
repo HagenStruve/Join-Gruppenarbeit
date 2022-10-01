@@ -73,7 +73,7 @@ function showAddTask() {
 async function showBoard() {
     document.getElementById('render').innerHTML = '<div w3-include-html="board.html"></div>';
     await includeHTML();
-    updateHTML(); 
+    updateHTML();
 
 }
 
@@ -87,12 +87,17 @@ function showContacts() {
     includeHTML();
 }
 
+function showHelp() {
+    document.getElementById('render').innerHTML = '<div w3-include-html="help.html"></div>';
+    includeHTML();
+}
+
 function showLegalNotice() {
     document.getElementById('render').innerHTML = '<div w3-include-html="legal_notice.html"></div>';
     includeHTML();
 }
 
-function showHelp() {
-    document.getElementById('render').innerHTML = '<div w3-include-html="help.html"></div>';
+function showPrivacy() {
+    document.getElementById('render').innerHTML = '<div w3-include-html="privacy.html"></div>';
     includeHTML();
 }

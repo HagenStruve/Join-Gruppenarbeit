@@ -16,5 +16,8 @@ h1 {
 
 .legal-notice-whole-page {
     display: flex;
-    margin-left: 35px;
+    flex-direction: column;
+    word-break: break-word;
+    margin-left: 60px;
+    margin-right: 60px;
 }
