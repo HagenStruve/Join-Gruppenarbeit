@@ -45,6 +45,9 @@ async function saveOnServer() {
 
 
 function clearInput() {
+    document.getElementById('prio-urgent').classList.remove('blue-border');
+    document.getElementById('prio-medium').classList.remove('blue-border');
+    document.getElementById('prio-low').classList.remove('blue-border');
     title.value = '';
     descripton.value = '';
     category.value = 'Select task Category';
