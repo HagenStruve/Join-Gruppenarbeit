@@ -37,7 +37,7 @@
 
                     <span class="little-headlines">Category</span>
                     <div class="select-div">
-                        <select id="category">
+                        <select required id="category">
                             <option value disabled selected hidden>Select task Category</option>
                             <option value="">Management</option>
                             <option value="">Sales</option>
@@ -63,15 +63,15 @@
                     <span class="little-headlines">Prio</span>
 
                     <div class="prio-div">
-                        <div onclick="blueBorder(id)" id="prio-urgent">
+                        <div onclick="markedPrio(id)" id="prio-urgent">
                             <span>Urgent</span>
                             <img src="../img/orange-arrow-up.png" alt="arrow-up">
                         </div>
-                        <div onclick="blueBorder(id)" id="prio-medium">
+                        <div onclick="markedPrio(id)" id="prio-medium">
                             <span>Medium</span>
                             <img src="../img/orange-equal.png" alt="equal">
                         </div>
-                        <div onclick="blueBorder(id)" id="prio-low">
+                        <div onclick="markedPrio(id)" id="prio-low">
                             <span>Low</span>
                             <img src="../img/green-arrow-down.png" alt="arrow-down">
                         </div>

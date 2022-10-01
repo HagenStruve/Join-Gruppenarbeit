@@ -1,14 +1,15 @@
 let task = [];
+let prio = [];
 
-
-setURL('smallest_backend_ever-master');
-
-function blueBorder(id) {
+function markedPrio(id) {
+    prio = [];
     document.getElementById('prio-urgent').classList.remove('blue-border');
     document.getElementById('prio-medium').classList.remove('blue-border');
     document.getElementById('prio-low').classList.remove('blue-border');
     document.getElementById(id).classList.add('blue-border');
 
+    let prioId = document.getElementById(id);
+    prio.push(prioId)
 }
 
 
@@ -18,6 +19,7 @@ async function addTask() {
     let category = document.getElementById('category');
     let assingedTo = document.getElementById('assingedTo');
     let dueDate = document.getElementById('dueDate');
+    let prioId = prio[0];
 
     let addTask = {
         "title": title.value,
@@ -25,6 +27,7 @@ async function addTask() {
         "category": category.value,
         "assingedTo": assingedTo.value,
         "dueDate": dueDate.value,
+        "prio": prioId,
     };
 
     task.push(addTask);
@@ -47,4 +50,6 @@ function clearInput() {
     category.value = 'Select task Category';
     assingedTo.value = 'Select contacts to assign';
     dueDate.value = '';
+
+    prio = [];
 }
