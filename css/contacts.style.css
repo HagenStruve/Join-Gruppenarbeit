@@ -21,7 +21,7 @@ body {
 }
 
 .content-left {
-    
+
     padding-top: 12px;
     background-color: white;
     height: 100vh;
@@ -76,7 +76,7 @@ body {
     margin-top: 5px;
 }
 
-.border-container{
+.border-container {
     background-color: white;
     width: 30px;
     padding-left: 70px;
@@ -163,7 +163,7 @@ body {
     margin-bottom: 21px;
 }
 
-.edit-contact {
+.edit-contact-pencil {
     margin-left: 61px;
 }
 
@@ -196,3 +196,54 @@ body {
     cursor: pointer;
 }
 
+.edit-contact {
+    display: flex;
+    position: absolute;
+    width: 900px;
+    height: 594px;
+    left: 30%;
+    top: 30%;
+}
+
+.edit-contact-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 350px;
+    height: 100%;
+    background: #2A3647;
+    border-radius: 10px 0px 0px 10px;
+    padding-left: 40px;
+}
+
+.edit-contact-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: white;
+    width: 550px;
+    height: 100%;
+    border-radius: 0px 10px 10px 0px;
+}
+
+.join-logo {
+    width: auto;
+    height: 100px;
+    object-fit: cover;
+}
+
+.header-edit-contact {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 61px;
+}
+
+.text-edit-contact {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 27px;
+}
