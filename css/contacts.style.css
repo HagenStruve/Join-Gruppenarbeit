@@ -13,9 +13,19 @@ body {
     font-size: 21px;
 }
 
-.content-left {
+.abc {
+    font-size: 21px;
     margin-left: 48px;
+    border-bottom: 1px solid #D1D1D1;
+    padding-bottom: 30px;
+}
+
+.content-left {
+    
     padding-top: 12px;
+    background-color: white;
+    height: 100vh;
+    width: 453px;
 }
 
 .content-right {
@@ -26,6 +36,7 @@ body {
 .member-box {
     display: flex;
     margin-top: 53px;
+    margin-left: 48px;
 }
 
 .shortcut-name {
@@ -64,15 +75,18 @@ body {
     margin-top: 5px;
 }
 
+.border-container{
+    background-color: white;
+    width: 30px;
+}
+
 .border {
     width: 0px;
     height: 53px;
-    left: 14px;
-    top: 77px;
     margin-top: 77px;
-    margin-left: 150px;
     border: 3px solid #A8A8A8;
     border-radius: 3px;
+    background-color: white;
 }
 
 .contacts {
@@ -155,3 +169,27 @@ body {
     height: auto;
     margin-right: 13px;
 }
+
+.new-contact {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    position: absolute;
+    width: 193px;
+    height: 53px;
+    left: 1195px;
+    top: 904px;
+    background: #2A3647;
+    border: 1px solid #2A3647;
+    border-radius: 10px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
