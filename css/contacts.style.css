@@ -31,6 +31,7 @@ body {
 .content-right {
     display: flex;
     flex-direction: column;
+    width: 1206px;
 }
 
 .member-box {
@@ -78,6 +79,7 @@ body {
 .border-container{
     background-color: white;
     width: 30px;
+    padding-left: 70px;
 }
 
 .border {
@@ -91,11 +93,11 @@ body {
 
 .contacts {
     width: 274px;
-    height: 59px;
+    height: 125px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
-    font-size: 61px;
+    font-size: 100px;
     line-height: 120%;
     color: #000000;
     margin-top: 82px;
@@ -105,7 +107,7 @@ body {
     flex-grow: 0;
     border-right: 3px solid #29ABE2;
     margin-right: 30px;
-    padding-right: 30px;
+    padding-right: 313px;
 }
 
 .team-text {
@@ -114,7 +116,7 @@ body {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 27px;
+    font-size: 37px;
     line-height: 120%;
     color: #2A3647;
     flex: none;
@@ -125,6 +127,7 @@ body {
 
 .content-right-header {
     display: flex;
+    justify-content: space-between;
 }
 
 .member-info {
@@ -180,7 +183,7 @@ body {
     position: absolute;
     width: 193px;
     height: 53px;
-    left: 1195px;
+    right: 100px;
     top: 904px;
     background: #2A3647;
     border: 1px solid #2A3647;
