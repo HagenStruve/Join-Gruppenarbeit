@@ -58,7 +58,7 @@ function updateHTML() {
     setColorType();
 }
 
-
+// function to allow dragging 
 function allowDrop(ev) { // from W3School predefined // 
     ev.preventDefault();
 }
@@ -77,6 +77,39 @@ function startDragging(id) {
 }
 
 
+/** Function assigns the corresponding colors to the appropriate categories
+ * 
+ * @param tasktype - variable checks what the task-category is
+ */
+function setColorType() {
+    
+
+    for (let c = 0; c < NumberOfCurrentTasks; c++) {
+    
+        let taskType = document.getElementById(`task-type${c}`).innerHTML;  
+
+    
+    if (taskType === 'Design') {
+        document.getElementById(`task-type${c}`).classList.add("orange"); 
+    } 
+    if (taskType === 'Sales') {
+        document.getElementById(`task-type${c}`).classList.add("pink"); 
+    } 
+    if (taskType === 'Backoffice') {
+        document.getElementById(`task-type${c}`).classList.add("cyan"); 
+    } 
+    if (taskType === 'Marketing') {
+        document.getElementById(`task-type${c}`).classList.add("blue"); 
+    } 
+    if (taskType === 'Media') {
+        document.getElementById(`task-type${c}`).classList.add("yellow"); 
+    } 
+
+    else {
+        stop; 
+    }
+    }
+}
    
 
 function addTaskToKanbanHTML(element) {
@@ -117,35 +150,4 @@ function addTaskToKanbanHTML(element) {
     </div>
 </div>
     `; 
-}
-
-
-function setColorType() {
-    
-
-    for (let c = 0; c < NumberOfCurrentTasks; c++) {
-    
-        let taskType = document.getElementById(`task-type${c}`).value;  
-
-    
-    if (taskType === 'Design') {
-        document.getElementById(`task-type${c}`).classList.add("orange"); 
-    } 
-    if (taskType === 'Sales') {
-        document.getElementById(`task-type${c}`).classList.add("pink"); 
-    } 
-    if (taskType === 'Backoffice') {
-        document.getElementById(`task-type${c}`).classList.add("cyan"); 
-    } 
-    if (taskType === 'Marketing') {
-        document.getElementById(`task-type${c}`).classList.add("blue"); 
-    } 
-    if (taskType === 'Media') {
-        document.getElementById(`task-type${c}`).classList.add("yellow"); 
-    } 
-
-    else {
-        stop; 
-    }
-    }
 }
