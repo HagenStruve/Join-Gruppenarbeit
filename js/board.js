@@ -66,7 +66,7 @@ async function loadTasksFromServer() {
 }
 
 async function updateHTML() {
-    await loadTasksFromServer();
+    //await loadTasksFromServer();
 
     NumberOfCurrentTasks = 0;
     let todos = tasks.filter(t => t['category'] == 'to-do'); 
