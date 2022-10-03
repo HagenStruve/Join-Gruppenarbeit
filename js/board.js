@@ -1,4 +1,47 @@
 
+
+let tasks = [{
+    'id': 0,
+    'area': 'Media',
+    'title': 'Redesign Website',
+    'description': 'Modify contents of the website und und und nur ein Testtext',
+    'subtasks': 2,
+    'assigned': '../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png',
+    'importance': 'urgent',
+    'category': 'to-do'
+},
+{
+    'id': 1,
+    'area': 'Sales',
+    'title': 'Call Clients',
+    'description': 'Sells so much that we drown in money',
+    'subtasks': 0,
+    'assigned': '../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png',
+    'importance': 'medium',
+    'category': 'in-progress'
+},
+{
+    'id': 2,
+    'area': 'Backoffice',
+    'title': 'Call Clients',
+    'description': 'and teaches them good things',
+    'subtasks': 0,
+    'assigned': '../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png',
+    'importance': 'medium',
+    'category': 'awaiting-feedback'
+},
+{
+    'id': 3,
+    'area': 'Marketing',
+    'title': 'Call Clients',
+    'description': 'Market yourself so well that you dont need marketing anymore',
+    'subtasks': 0,
+    'assigned': '../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png',
+    'importance': 'medium',
+    'category': 'done'
+}];
+
+
 let currentDraggedElement; 
 let NumberOfCurrentTasks = 0; // is needed to differ between the tasks
 
@@ -10,11 +53,25 @@ let NumberOfCurrentTasks = 0; // is needed to differ between the tasks
  * @param {string} element - tells html code which json array part need to be shown
  * 
  */
-function updateHTML() {
+
+
+async function loadTasksFromServer() {
+    let TasksAsString = await backend.getItem('task');
+    let allTasks = JSON.parse(TasksAsString); 
+
+    console.log('loaded tasks'); 
+    tasks.push(allTasks);
+
+    console.log('pushed tasks')
+}
+
+async function updateHTML() {
+    await loadTasksFromServer();
 
     NumberOfCurrentTasks = 0;
     let todos = tasks.filter(t => t['category'] == 'to-do'); 
-    document.getElementById('to-do').innerHTML = ''; 
+    allTasks = document.getElementById('to-do').innerHTML = ''; 
+    console.log('loaded all Tasks');
 
     for (let i = 0; i < todos.length; i++) {
         const element = todos[i];
