@@ -65,7 +65,7 @@
             </div>
         </div>
 
-        <div class="edit-contact">
+        <div id="edit-contact" class="d-none">
             <div class="edit-contact-left">
                 <img class="join-logo" src="../img\logo.png">
                 <div class="header-edit-contact">Add contact</div>
@@ -78,12 +78,12 @@
                         <img class="member-img" src="../img\member.png">
                     </div>
                 </div>
-                <form class="edit-contact-input">
-                    <input class="inputs-name" placeholder="Name" type="text">
-                    <input class="inputs-email" placeholder="Email" type="email">
-                    <input class="inputs-phone" placeholder="Phone" type="number">
+                <form onsubmit="addContact(); return false;" class="edit-contact-input">
+                    <input id="name" required class="inputs-name" placeholder="Name" type="text">
+                    <input id="email" required class="inputs-email" placeholder="Email" type="email">
+                    <input id="phone" required class="inputs-phone" placeholder="Phone" type="number">
                     <div class="button-box">
-                        <button class="cancel-button">Cancel<img src="../img\close-icon.png"></button>
+                        <div onclick="cancel()" class="cancel-button">Cancel<img src="../img\close-icon.png"></div>
                         <button class="creat-button">Creat contact<img src="../img\checkmark.png"></button>
                     </div>
                 </form>

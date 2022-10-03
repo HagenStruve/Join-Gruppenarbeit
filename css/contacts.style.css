@@ -5,6 +5,10 @@ body {
     display: flex;
 }
 
+.d-none {
+    display: none;
+}
+
 .render {
     display: flex;
 }
@@ -348,12 +352,12 @@ body {
     font-size: 21px;
     line-height: 120%;
     color: #2A3647;
-    padding: 18px 10px;
     border-radius: 10px;
     border-color: #2A3647;
     border: 1px solid;
     background-color: white;
     margin-right: 40px;
+    cursor: pointer;
 }
 
 .creat-button {
@@ -372,4 +376,5 @@ body {
     font-weight: 700;
     font-size: 21px;
     color: #FFFFFF;
+    cursor: pointer;
 }
