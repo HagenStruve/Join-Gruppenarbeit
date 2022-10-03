@@ -219,9 +219,9 @@ body {
 
 .edit-contact-right {
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    background-color: white;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #FFFFFF;
     width: 900px;
     height: 100%;
     border-radius: 0px 10px 10px 0px;
@@ -262,4 +262,114 @@ body {
 .edit-contact-input {
     display: flex;
     flex-direction: column;
+}
+
+.member-img-container {
+    width: 120px;
+    height: 120px;
+    background: #D1D1D1;
+    border: 3px white solid;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.member-img {
+    width: auto;
+    height: 70px;
+    object-fit: cover;
+}
+
+.inputs-name {
+    background: url(../img/name-icon.png) no-repeat;
+    background-position: 95%;
+    box-sizing: border-box;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 13px 21px;
+    gap: 10px;
+    width: 422px;
+    height: 51px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+}
+
+.inputs-email {
+    background: url(../img/email-icon.png) no-repeat;
+    background-position: 95%;
+    box-sizing: border-box;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 13px 21px;
+    gap: 10px;
+    width: 422px;
+    height: 51px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+}
+
+.inputs-phone {
+    background: url(../img/phone-icon.png) no-repeat;
+    background-position: 95%;
+    box-sizing: border-box;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 13px 21px;
+    gap: 10px;
+    width: 422px;
+    height: 51px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+}
+
+.button-box {
+    display: flex;
+    width: 422px;
+}
+
+.cancel-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 61px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    color: #2A3647;
+    padding: 18px 10px;
+    border-radius: 10px;
+    border-color: #2A3647;
+    border: 1px solid;
+    background-color: white;
+    margin-right: 40px;
+}
+
+.creat-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    width: 208px;
+    height: 61px;
+    background: #2A3647;
+    border-radius: 10px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    color: #FFFFFF;
 }

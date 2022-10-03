@@ -74,14 +74,19 @@
             </div>
             <div class="edit-contact-right">
                 <div>
-                    <img src="../img\name-icon.png">
+                    <div class="member-img-container">
+                        <img class="member-img" src="../img\member.png">
+                    </div>
                 </div>
-                <div class="edit-contact-input">
-                    <input placeholder="Name">
-                    <input placeholder="Email">
-                    <input placeholder="Phone">
-                    <div></div>
-                </div>
+                <form class="edit-contact-input">
+                    <input class="inputs-name" placeholder="Name" type="text">
+                    <input class="inputs-email" placeholder="Email" type="email">
+                    <input class="inputs-phone" placeholder="Phone" type="number">
+                    <div class="button-box">
+                        <button class="cancel-button">Cancel<img src="../img\close-icon.png"></button>
+                        <button class="creat-button">Creat contact<img src="../img\checkmark.png"></button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
