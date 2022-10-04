@@ -3,11 +3,11 @@ let contact = [];
 let alphabet = [];
 
 
-async function init() {
-    await downloadFromServer();
-    contact = JSON.parse(backend.getItem('contact')) || [];
-    loadContacts();
-}
+//async function init() {
+//    await downloadFromServer();
+//    contact = JSON.parse(backend.getItem('contact')) || [];
+//    loadContacts();
+//}
 
 
 async function saveOnServer() {
@@ -74,6 +74,7 @@ function loadContacts(filter) {
         }
     }
     loadAbc();
+    getFirstLetters(firstLetter)
 }
 
 
@@ -87,6 +88,16 @@ function loadAbc() {
         abc.innerHTML += abcHTML(letter);
     }
 }
+
+
+//function getFirstLetters(firstLetter) {
+ //   const firstLetters = firstLetter
+ //     firstLetters.split(' ')
+ //     firstLetters.map(word => word[0])
+ //     firstLetters.join('');
+ // 
+ //   return firstLetters;
+  //}
 
 /////////////////////////////////////////// HTML ////////////////////////////////////////
 
