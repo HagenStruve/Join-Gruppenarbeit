@@ -3,11 +3,11 @@ let contact = [];
 let alphabet = [];
 
 
-//async function init() {
-//    await downloadFromServer();
-//    contact = JSON.parse(backend.getItem('contact')) || [];
-//    loadContacts();
-//}
+async function init() {
+    await downloadFromServer();
+    contact = JSON.parse(backend.getItem('contact')) || [];
+    loadContacts();
+}
 
 
 async function saveOnServer() {
