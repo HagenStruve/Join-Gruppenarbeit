@@ -41,8 +41,8 @@ let tasks = [{
     'category': 'done'
 }];
 
-let downloadedTasks = []; 
-let currentDraggedElement; 
+let downloadedTasks = [];
+let currentDraggedElement;
 let NumberOfCurrentTasks = 0; // is needed to differ between the tasks
 
 /** 
@@ -56,71 +56,86 @@ let NumberOfCurrentTasks = 0; // is needed to differ between the tasks
 
 
 async function loadTasksFromServer() {
-        setURL("https://gruppe-313.developerakademie.net/Join/smallest_backend_ever-master");
-        await downloadFromServer();
-        downloadedTasks = JSON.parse(backend.getItem('task')) || [];
+    setURL("https://gruppe-313.developerakademie.net/Join/smallest_backend_ever-master");
+    await downloadFromServer();
+    downloadedTasks = JSON.parse(backend.getItem('task')) || [];
 
     console.log('loaded 123 tasks')
 }
 
 
 async function renderBoardSite() {
-   // await loadTasksFromServer();
+    // await loadTasksFromServer();
     displayAllTasks();
-    
-} 
 
-async function displayAllTasks() {
+}
+
+/** Shows all Tasks on Website 
+ * 
+ * @param NumberOfCurrentTasks -// is needed to differ between the tasks and to assign the colors to the tasks
+ */
+function displayAllTasks() {
     NumberOfCurrentTasks = 0;
-    let todos = tasks.filter(t => t['category'] == 'to-do'); 
-    allTasks = document.getElementById('to-do').innerHTML = ''; 
-    console.log('loaded all Tasks');
-
-    for (let i = 0; i < todos.length; i++) {
-        const element = todos[i];
-
-        document.getElementById('to-do').innerHTML += addTaskToKanbanHTML(element);
-         NumberOfCurrentTasks++; 
-    }
-
-
-    let inProgress = tasks.filter(t => t['category'] == 'in-progress'); 
-    document.getElementById('in-progress').innerHTML = ''; 
-
-    for (let p = 0; p < inProgress.length; p++) {
-        const element = inProgress[p];
-
-        document.getElementById('in-progress').innerHTML += addTaskToKanbanHTML(element);
-         NumberOfCurrentTasks++;  
-        
-    }
-
-    let awaitingFeedback = tasks.filter(t => t['category'] == 'awaiting-feedback'); 
-    document.getElementById('awaiting-feedback').innerHTML = '';
-    
-    for (let a = 0; a < awaitingFeedback.length; a++) {
-        const element = awaitingFeedback[a];
-        
-        document.getElementById('awaiting-feedback').innerHTML += addTaskToKanbanHTML(element);
-         NumberOfCurrentTasks++;  
-    }
-
-    let done = tasks.filter(t => t['category'] == 'done'); 
-
-    document.getElementById('done').innerHTML = ''; 
-
-    for (let d = 0; d < done.length; d++) {
-        const element = done[d];
-        
-        document.getElementById('done').innerHTML += addTaskToKanbanHTML(element); 
-        NumberOfCurrentTasks++; 
-    }
+    displayToDos();
+    displayInProgressTasks();
+    displayAwaitingFeedbackTasks();
+    displayDoneTasks();
 
     setColorTypeTasks();
 }
 
 
+function displayToDos() {
+    let todos = tasks.filter(t => t['category'] == 'to-do');
 
+    allTasks = document.getElementById('to-do').innerHTML = '';
+
+    for (let i = 0; i < todos.length; i++) {
+        const element = todos[i];
+
+        document.getElementById('to-do').innerHTML += addTaskToKanbanHTML(element);
+        NumberOfCurrentTasks++;
+    }
+}
+
+
+function displayInProgressTasks() {
+    let inProgress = tasks.filter(t => t['category'] == 'in-progress');
+    document.getElementById('in-progress').innerHTML = '';
+    for (let p = 0; p < inProgress.length; p++) {
+        const element = inProgress[p];
+
+        document.getElementById('in-progress').innerHTML += addTaskToKanbanHTML(element);
+        NumberOfCurrentTasks++;
+
+    }
+}
+
+
+function displayAwaitingFeedbackTasks() {
+    let awaitingFeedback = tasks.filter(t => t['category'] == 'awaiting-feedback');
+    document.getElementById('awaiting-feedback').innerHTML = '';
+
+    for (let a = 0; a < awaitingFeedback.length; a++) {
+        const element = awaitingFeedback[a];
+
+        document.getElementById('awaiting-feedback').innerHTML += addTaskToKanbanHTML(element);
+        NumberOfCurrentTasks++;
+    }
+}
+
+
+function displayDoneTasks() {
+    let done = tasks.filter(t => t['category'] == 'done');
+
+    document.getElementById('done').innerHTML = '';
+    for (let d = 0; d < done.length; d++) {
+        const element = done[d];
+
+        document.getElementById('done').innerHTML += addTaskToKanbanHTML(element);
+        NumberOfCurrentTasks++;
+    }
+}
 
 // function to allow dragging 
 function allowDrop(ev) { // from W3School predefined // 
@@ -130,9 +145,9 @@ function allowDrop(ev) { // from W3School predefined //
 
 // change the category to dropped task
 function moveTo(category) {
-    tasks[currentDraggedElement]['category'] = category; 
-    displayAllTasks(); 
-} 
+    tasks[currentDraggedElement]['category'] = category;
+    displayAllTasks();
+}
 
 
 // specify current dragged element
@@ -146,32 +161,31 @@ function startDragging(id) {
  * @param tasktype - variable checks what the task-category is
  */
 function setColorTypeTasks() {
-    
+
 
     for (let c = 0; c < NumberOfCurrentTasks; c++) {
-    
-        let taskType = document.getElementById(`task-type${c}`).innerHTML;  
 
-    
-    if (taskType === 'Design') {
-        document.getElementById(`task-type${c}`).classList.add("orange"); 
-    } 
-    if (taskType === 'Sales') {
-        document.getElementById(`task-type${c}`).classList.add("pink"); 
-    } 
-    if (taskType === 'Backoffice') {
-        document.getElementById(`task-type${c}`).classList.add("cyan"); 
-    } 
-    if (taskType === 'Marketing') {
-        document.getElementById(`task-type${c}`).classList.add("blue"); 
-    } 
-    if (taskType === 'Media') {
-        document.getElementById(`task-type${c}`).classList.add("yellow"); 
-    } 
+        let taskType = document.getElementById(`task-type${c}`).innerHTML;
 
-    else {
-        stop; 
-    }
+        if (taskType === 'Design') {
+            document.getElementById(`task-type${c}`).classList.add("orange");
+        }
+        if (taskType === 'Sales') {
+            document.getElementById(`task-type${c}`).classList.add("pink");
+        }
+        if (taskType === 'Backoffice') {
+            document.getElementById(`task-type${c}`).classList.add("cyan");
+        }
+        if (taskType === 'Marketing') {
+            document.getElementById(`task-type${c}`).classList.add("blue");
+        }
+        if (taskType === 'Media') {
+            document.getElementById(`task-type${c}`).classList.add("yellow");
+        }
+
+        else {
+            stop;
+        }
     }
 }
 
@@ -208,7 +222,7 @@ function searchFunction(nameid) {
     }
 }
 
-   
+
 
 function addTaskToKanbanHTML(element) {
     return `
@@ -247,5 +261,5 @@ function addTaskToKanbanHTML(element) {
         <img src="../img/orange-arrow-up.png">
     </div>
 </div>
-    `; 
+    `;
 }
