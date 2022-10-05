@@ -67,8 +67,8 @@ async function loadTasksFromServer() {
 async function renderBoardSite() {
     // await loadTasksFromServer();
     displayAllTasks();
-
 }
+
 
 /** Shows all Tasks on Website 
  * 
@@ -86,9 +86,12 @@ function displayAllTasks() {
 
 
 function displayToDos() {
+    // hier filtere ich den tasks JSON (in welchem alle Tasks stehen) in der Kategorie 'categorys'
+    // somit sind alle JSON die in der category = "to-do" sind als Array definiert "todos"
+    //siehe hier drunter
     let todos = tasks.filter(t => t['category'] == 'to-do');
 
-    allTasks = document.getElementById('to-do').innerHTML = '';
+    document.getElementById('to-do').innerHTML = '';
 
     for (let i = 0; i < todos.length; i++) {
         const element = todos[i];
@@ -123,7 +126,6 @@ function displayAwaitingFeedbackTasks() {
         NumberOfCurrentTasks++;
     }
 }
-
 
 function displayDoneTasks() {
     let done = tasks.filter(t => t['category'] == 'done');
@@ -192,8 +194,8 @@ function setColorTypeTasks() {
 
 
 // Function for filtering the search bar
-function searchFunction(nameid) {
-    let search = document.getElementById(nameid).value;
+function searchFunction() {
+    let search = document.getElementById('input-search').value;
     search = search.toLowerCase();
     console.log(search);
 
