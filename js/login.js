@@ -10,6 +10,9 @@ async function initLogin() {
     setURL("https://gruppe-313.developerakademie.net/Join/smallest_backend_ever-master");
     await downloadFromServer();
     users = await JSON.parse(backend.getItem('users')) || [];
+    setTimeout(() => {
+        document.getElementById('overlay-login').classList.remove('overlay-login');
+    }, 1000);
 }
 
 
@@ -71,6 +74,7 @@ function proofLogin() {
 
     else {
         document.getElementById('login-password').classList.add('no-margin-bottom');
+        document.getElementById('login-buttons').classList.add('no-margin-top');
         document.getElementById('wrong-login-dates').classList.remove('d-none');
     }
 }
@@ -87,6 +91,7 @@ function proofInputLogin() {
 
     if (loginEmail.value.length < 1 || loginPassword.value.length < 1) {
         document.getElementById('login-password').classList.remove('no-margin-bottom');
+        document.getElementById('login-buttons').classList.remove('no-margin-top');
         document.getElementById('wrong-login-dates').classList.add('d-none');
     }
 }
@@ -99,17 +104,13 @@ function proofInputSignUp() {
     let name = document.getElementById('name');
     let email = document.getElementById('email');
     let password = document.getElementById('password');
-
     let user = users.find(u => u.email == email.value);
-
     if (user) {
         showEmailInUseWarning();
     }
-
     else if (name.value.length >= 1 && email.value.length >= 1 && password.value.length >= 1) {
         showSubmitButton();
     }
-
     if (!user) {
         removeEmailInUseWarning();
     }
@@ -122,6 +123,7 @@ function proofInputSignUp() {
  */
 function showEmailInUseWarning() {
     document.getElementById('password').classList.add('no-margin-bottom');
+    document.getElementById('no-submit-button').classList.add('no-margin-top');
     document.getElementById('email-in-use').classList.remove('d-none');
     document.getElementById('submit-button').classList.add('d-none');
     document.getElementById('no-submit-button').classList.remove('d-none');
@@ -134,6 +136,7 @@ function showEmailInUseWarning() {
  */
 function removeEmailInUseWarning() {
     document.getElementById('password').classList.remove('no-margin-bottom');
+    document.getElementById('no-submit-button').classList.remove('no-margin-top');
     document.getElementById('email-in-use').classList.add('d-none');
 }
 

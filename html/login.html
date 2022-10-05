@@ -18,44 +18,41 @@
 </head>
 
 <body onload="initLogin()">
-    <div class="whole-login-page">
-        <img class="logo" src="../img/join-logo.svg" alt="join-logo">
+    <div id="overlay-login" class="overlay-login">
+        <div class="whole-login-page">
+            <img class="logo" src="../img/join-logo.svg" alt="join-logo">
 
-        <div id="sign-up-field" class="sign-up-container">
-            <span>Not a Join user?</span>
-            <button onclick="showSignUp()">Sign up</button>
-        </div>
+            <div id="sign-up-field" class="sign-up-container">
+                <span>Not a Join user?</span>
+                <button onclick="showSignUp()">Sign up</button>
+            </div>
 
-        <!-- log in field -->
-        <div id="login-field" class="login-container">
-            <span class="login-headline">Log in</span>
-            <div class="login-headline-border"></div>
+            <!-- log in field -->
+            <div id="login-field" class="login-container">
+                <span class="login-headline">Log in</span>
+                <div class="login-headline-border"></div>
 
-            <form onkeyup="proofInputLogin()" onsubmit="proofLogin(); return false;">
-                <input id="login-email" class="login-input login-email-input-bg" min="5" max="100" type="email"
-                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Geben Sie eine gültige E-Mail Adresse ein"
-                    placeholder="E-Mail" required>
-                <input id="login-password" class="login-input login-password-input-bg" min="8" type="password"
-                    pattern=".{8,}" title="Passwort ist zu kurz (mindestens 8 Zeichen)" placeholder="Password" required>
+                <form onkeyup="proofInputLogin()" onsubmit="proofLogin(); return false;">
+                    <input id="login-email" class="login-input login-email-input-bg" min="5" max="100" type="email"
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                        title="Geben Sie eine gültige E-Mail Adresse ein" placeholder="E-Mail" required>
+                    <input id="login-password" class="login-input login-password-input-bg" min="8" type="password"
+                        pattern=".{8,}" title="Passwort ist zu kurz (mindestens 8 Zeichen)" placeholder="Password"
+                        required>
 
-                <!-- span appears when the email address or password are wrong  -->
-                <span id="wrong-login-dates" class="wrong-login-or-register d-none">Your E-Mail address or password is
-                    wrong</span>
+                    <!-- span appears when the email address or password are wrong  -->
+                    <span id="wrong-login-dates" class="wrong-login-or-register d-none">Your E-Mail address or password
+                        is
+                        wrong</span>
 
-                <div class="login-checkbox-forgot">
-                    <div class="login-checkbox-container">
-                        <input type="checkbox">
-                        <span>Remember me</span>
+                    <div id="login-buttons" class="login-buttons">
+                        <button class="login-signup-buttons button-bg-black">Log
+                            in</button>
+                        <button onclick="guestLogin()" class="login-signup-buttons login-guest-button">Guest Log
+                            in</button>
                     </div>
-                    <a>Forgot my password</a>
-                </div>
-
-                <div class="login-buttons">
-                    <button class="login-signup-buttons button-bg-black">Log
-                        in</button>
-                    <button onclick="guestLogin()" class="login-signup-buttons login-guest-button">Guest Log in</button>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 
