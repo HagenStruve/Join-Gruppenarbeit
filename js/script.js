@@ -6,7 +6,7 @@ async function init() {
     await includeHTML();
 }
 
-
+//function to display header and sidebar in any-* site
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
 
@@ -33,7 +33,7 @@ function showAddTask() {
 async function showBoard() {
     document.getElementById('render').innerHTML = '<div w3-include-html="board.html"></div>';
     await includeHTML();
-    updateHTML();
+    renderBoardSite();
 
 }
 

@@ -41,7 +41,7 @@ let tasks = [{
     'category': 'done'
 }];
 
-
+let downloadedTasks = []; 
 let currentDraggedElement; 
 let NumberOfCurrentTasks = 0; // is needed to differ between the tasks
 
@@ -56,18 +56,21 @@ let NumberOfCurrentTasks = 0; // is needed to differ between the tasks
 
 
 async function loadTasksFromServer() {
-    let TasksAsString = await backend.getItem('task');
-    let allTasks = JSON.parse(TasksAsString); 
+        setURL("https://gruppe-313.developerakademie.net/Join/smallest_backend_ever-master");
+        await downloadFromServer();
+        downloadedTasks = JSON.parse(backend.getItem('task')) || [];
 
-    console.log('loaded tasks'); 
-    tasks.push(allTasks);
-
-    console.log('pushed tasks')
+    console.log('loaded 123 tasks')
 }
 
-async function updateHTML() {
-    //await loadTasksFromServer();
 
+async function renderBoardSite() {
+   // await loadTasksFromServer();
+    displayAllTasks();
+    
+} 
+
+async function displayAllTasks() {
     NumberOfCurrentTasks = 0;
     let todos = tasks.filter(t => t['category'] == 'to-do'); 
     allTasks = document.getElementById('to-do').innerHTML = ''; 
@@ -79,6 +82,7 @@ async function updateHTML() {
         document.getElementById('to-do').innerHTML += addTaskToKanbanHTML(element);
          NumberOfCurrentTasks++; 
     }
+
 
     let inProgress = tasks.filter(t => t['category'] == 'in-progress'); 
     document.getElementById('in-progress').innerHTML = ''; 
@@ -112,8 +116,11 @@ async function updateHTML() {
         NumberOfCurrentTasks++; 
     }
 
-    setColorType();
+    setColorTypeTasks();
 }
+
+
+
 
 // function to allow dragging 
 function allowDrop(ev) { // from W3School predefined // 
@@ -124,7 +131,7 @@ function allowDrop(ev) { // from W3School predefined //
 // change the category to dropped task
 function moveTo(category) {
     tasks[currentDraggedElement]['category'] = category; 
-    updateHTML(); 
+    displayAllTasks(); 
 } 
 
 
@@ -138,7 +145,7 @@ function startDragging(id) {
  * 
  * @param tasktype - variable checks what the task-category is
  */
-function setColorType() {
+function setColorTypeTasks() {
     
 
     for (let c = 0; c < NumberOfCurrentTasks; c++) {
@@ -167,6 +174,40 @@ function setColorType() {
     }
     }
 }
+
+
+
+// Function for filtering the search bar
+function searchFunction(nameid) {
+    let search = document.getElementById(nameid).value;
+    search = search.toLowerCase();
+    console.log(search);
+
+    let posting = document.getElementById('postings');
+    posting.innerHTML = '';
+
+    if (search == "") {
+        showPosts();
+    }
+    else {
+        let found = posts.filter(e => e.username.toLowerCase().includes(search));
+        console.log(found);
+
+        for (let i = 0; i < found.length; i++) {
+
+            let post = found[i]['username'];
+
+            if (post.toLowerCase().includes(search)) {
+                hTMLshowPosts(i, found);
+            }
+        }
+        if (found.length == 0) {
+            posting.innerHTML = `<div class="notfound"> Es wurde kein entsprechender Creator gefunden </div> `;
+        }
+
+    }
+}
+
    
 
 function addTaskToKanbanHTML(element) {
