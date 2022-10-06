@@ -1,18 +1,23 @@
-let contact = [];
+let contact = [{
+    'name': 'Hagen',
+    'email': 'Struve@mmail.de',
+    'phone': 3464536,
+}];
 
 let alphabet = [];
 
 
-//async function init() {
-//    await downloadFromServer();
-//    contact = JSON.parse(backend.getItem('contact')) || [];
-//    loadContacts();
-//}
+async function init() {
+    await downloadFromServer();
+    contact = JSON.parse(backend.getItem('contact')) || [];
+    alphabet = JSON.parse(backend.getItem('alphabet')) || [];
+}
 
 
 async function saveOnServer() {
     setURL("https://gruppe-313.developerakademie.net/Join/smallest_backend_ever-master");
-    await backend.setItem('task', JSON.stringify(contact));
+    await backend.setItem('contact', JSON.stringify(contact));
+    await backend.setItem('alphabet', JSON.stringify(alphabet));
 }
 
 
@@ -46,7 +51,9 @@ function addContact() {
 
     saveOnServer();
     clearInput();
-    loadContacts(); 
+    clearContentLeft();
+    pushFirstLetterJSON();
+    loadABCContainer();
 }
 
 
@@ -57,47 +64,65 @@ function clearInput() {
 }
 
 
-function loadContacts(filter) {
-    let contactContainer = document.getElementById('member-box');
-
-    contactContainer.innerHTML = ``
+function pushFirstLetterJSON() {
+    alphabet = [];
     for (let i = 0; i < contact.length; i++) {
         const member = contact[i];
-        const firstLetter = member['name'].charAt(0);
+        const memberFistLetter = member['name'].charAt(0);    /*Übernimmt den ersten Buchstaben aus dem string (position 0) */
+        const firstLetter = memberFistLetter.toUpperCase(); /* schreibt den Buchstaben Groß */
 
-        if (!filter || filter == firstLetter) {
-            contactContainer.innerHTML += memberHTML(member);
-        }
-
-        if (!alphabet.includes(firstLetter)) {
+        if (!alphabet.includes(firstLetter)) {   /*Wenn nicht vorhanden dann... */
             alphabet.push(firstLetter);
         }
     }
-    loadAbc();
-    getFirstLetters(firstLetter)
 }
 
 
+function clearContentLeft() {
+    document.getElementById('content-left').innerHTML = ``;
+}
 
-function loadAbc() {
-    let abc = document.getElementById('abc');
-    abc.innerHTML = '';
 
-    for (let j = 0; j < alphabet.length; j++) {
-        let letter = alphabet[j];
-        abc.innerHTML += abcHTML(letter);
+function loadABCContainer() {
+    let contactContainer = document.getElementById('content-left');
+
+    for (let i = 0; i < alphabet.length; i++) {
+        const abc = alphabet[i];
+        contactContainer.innerHTML += abcHTML(abc);
+    }   
+
+    loadContacts(abc);
+}
+
+////////////////// Nicht Fertig //////////////////////////////////
+
+
+
+function loadContacts(abc) {
+
+    let contactContainer = document.getElementById('member-container' + i);
+    for (let i = 0; i < contact.length; i++) {
+        const member = contact[i];
+        let firstLetter = contact['name'].charAt(0)
+
+        if (!abc || abc == firstLettercontact['name'].charAt(0)) {
+            contactContainer.innerHTML += memberHTML(member);
+        }
     }
 }
 
+function filterFirstLetter() {
+    let letters = contact.filter(t => t['name'] == 'to-do');
 
-//function getFirstLetters(firstLetter) {
- //   const firstLetters = firstLetter
- //     firstLetters.split(' ')
- //     firstLetters.map(word => word[0])
- //     firstLetters.join('');
- // 
- //   return firstLetters;
-  //}
+    document.getElementById('firstLetters').innerHTML = '';
+
+    for (let i = 0; i < letters.length; i++) {
+        const element = letters[i];
+
+        document.getElementById('firstLetters').innerHTML += addFirstLetters(element);
+        //NumberOfCurrentTasks++;
+    }
+}
 
 /////////////////////////////////////////// HTML ////////////////////////////////////////
 
@@ -115,6 +140,13 @@ function memberHTML(member) {
 
 function abcHTML(letter) {
     return /*HTML*/`
-                <b>${letter}</b>
+    <div id="member-container${letter}">
+    <div id="abc${letter}" class="abc"><b>${letter}</b></div>
+            </div>
             `;
+}
+
+
+function addFirstLetters(element) {
+    return /*HTML*/ `${letters}`
 }

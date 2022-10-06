@@ -32,6 +32,7 @@ body {
     width: 453px;
 }
 
+
 .content-right {
     display: flex;
     flex-direction: column;
@@ -40,9 +41,9 @@ body {
 
 .member-box {
     display: flex;
-    flex-direction: column;
     margin-top: 53px;
     margin-left: 48px;
+    margin-bottom: 40px;
 }
 
 .shortcut-name {
