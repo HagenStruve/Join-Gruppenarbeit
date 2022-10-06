@@ -138,7 +138,10 @@
         font-size: 16px;
         display: flex;
         align-items: center;
+    }
 
+    a {
+        all: unset;
     }
 
     .nav-notice {
@@ -188,86 +191,71 @@
             <img src="../img/logo-white.png">
         </div>
 
-        <div class="nav-properties" onclick="showSummary()">
+        <a href="summary.html" class="nav-properties">
             <div class="nav-icons">
                 <img src="../img/summary-icon.svg">
             </div>
             <span class="nav-text">
                 Summary
             </span>
-        </div>
-        <div class="nav-properties" onclick="showBoard()">
+        </a>
+
+        <a href="board.html" class="nav-properties">
             <div class="nav-icons">
                 <img src="../img/board-icon.svg">
             </div>
             <span class="nav-text">
                 Board
             </span>
-        </div>
-        <div class="nav-properties" onclick="showAddTask()">
+        </a>
+
+        <a href="add_task.html" class="nav-properties">
             <div class="nav-icons">
                 <img src="../img/add-task-icon.svg">
             </div>
             <span class="nav-text">
                 Add Task
             </span>
-        </div>
-        <div class="nav-properties" onclick="showContacts()">
-            <div class="nav-icons">
-                <img src="../img/contacts-icon.svg">
-            </div>
-            <span class="nav-text">
-                Contacts
-            </span>
-        </div>
-        <div class="nav-properties" onclick="showHelp()">
-            <div class="nav-icons">
-                <img src="../img/question-mark-icon.svg">
-            </div>
-            <span class="nav-text">
-                Help
-            </span>
-        </div>
+            <a>
 
-        <div class="nav-notice">
-            <div class="legal-notice" onclick="showLegalNotice()">
-                <div class="nav-icons">
-                    <img src="../img/legal-notice-icon.png">
+                <a href="contacts.html" class="nav-properties">
+                    <div class="nav-icons">
+                        <img src="../img/contacts-icon.svg">
+                    </div>
+                    <span class="nav-text">
+                        Contacts
+                    </span>
+                </a>
+
+                <a href="help.html" class="nav-properties">
+                    <div class="nav-icons">
+                        <img src="../img/question-mark-icon.svg">
+                    </div>
+                    <span class="nav-text">
+                        Help
+                    </span>
+                </a>
+
+                <div class="nav-notice">
+                    <a href="legal_notice.html" class="legal-notice">
+                        <div class="nav-icons">
+                            <img src="../img/legal-notice-icon.png">
+                        </div>
+                        <span class="nav-text">
+                            Legal notice
+                        </span>
+                    </a>
+
+                    <a href="privacy.html" class="legal-notice">
+                        <div class="nav-icons">
+                            <img class="filter-invert" src="../img/privacy-icon.svg">
+                        </div>
+                        <span class="nav-text">
+                            Privacy
+                        </span>
+                    </a>
                 </div>
-                <span class="nav-text">
-                    Legal notice
-                </span>
-            </div>
-
-            <div class="legal-notice" onclick="showPrivacy()">
-                <div class="nav-icons">
-                    <img class="filter-invert" src="../img/privacy-icon.svg">
-                </div>
-                <span class="nav-text">
-                    Privacy
-                </span>
-            </div>
-        </div>
-
-
-
     </nav>
-
-
-    <!-- necessary body margin in CSS  "body"
-    <h1>Hier kann nun unser Join erstellt werden </h1>
-
-
-
-
-
-
-
-
-
-
-
-
 
 </body>
 

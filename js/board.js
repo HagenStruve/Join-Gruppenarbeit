@@ -54,6 +54,11 @@ let NumberOfCurrentTasks = 0; // is needed to differ between the tasks
  * 
  */
 
+async function initBoard() {
+    await includeHTML();
+    await renderBoardSite();
+    loadTasksFromServer();
+}
 
 async function loadTasksFromServer() {
     setURL("https://gruppe-313.developerakademie.net/Join/smallest_backend_ever-master");

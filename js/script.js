@@ -24,40 +24,5 @@ async function includeHTML() {
     }
 }
 
-function showAddTask() {
-    document.getElementById('render').innerHTML = '<div w3-include-html="add_task.html"></div>';
-    includeHTML();
-}
 
 
-async function showBoard() {
-    document.getElementById('render').innerHTML = '<div w3-include-html="board.html"></div>';
-    await includeHTML();
-    renderBoardSite();
-
-}
-
-function showSummary() {
-    document.getElementById('render').innerHTML = '<div w3-include-html="summary.html"></div>';
-    includeHTML();
-}
-
-function showContacts() {
-    document.getElementById('render').innerHTML = '<div w3-include-html="contacts.html"></div>';
-    includeHTML();
-}
-
-function showHelp() {
-    document.getElementById('render').innerHTML = '<div w3-include-html="help.html"></div>';
-    includeHTML();
-}
-
-function showLegalNotice() {
-    document.getElementById('render').innerHTML = '<div w3-include-html="legal_notice.html"></div>';
-    includeHTML();
-}
-
-function showPrivacy() {
-    document.getElementById('render').innerHTML = '<div w3-include-html="privacy.html"></div>';
-    includeHTML();
-}

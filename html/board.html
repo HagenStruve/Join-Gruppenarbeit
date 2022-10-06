@@ -14,7 +14,7 @@
     <title>Join</title>
 </head>
 
-<body onload="init()">
+<body onload="initBoard()">
     <div w3-include-html="sidebar.html"></div>
     <div id="render">
         <div class="headline-section">
@@ -26,7 +26,8 @@
                 <div> </div>
                 <div class="form-fields">
                     <div class="find-task-div">
-                        <input placeholder="Find Task" class="find-task-input" id="input-search" onkeyup="searchFunction()">
+                        <input placeholder="Find Task" class="find-task-input" id="input-search"
+                            onkeyup="searchFunction()">
                         <img src="../img/magnifying-glass.png">
                     </div>
 
@@ -75,11 +76,13 @@
                 </div>
 
 
-                <div class="current-status" id="in-progress" ondrop="moveTo('in-progress')" ondragover="allowDrop(event)" >
+                <div class="current-status" id="in-progress" ondrop="moveTo('in-progress')"
+                    ondragover="allowDrop(event)">
                 </div>
 
 
-                <div class="current-status" id="awaiting-feedback" ondrop="moveTo('awaiting-feedback')" ondragover="allowDrop(event)">
+                <div class="current-status" id="awaiting-feedback" ondrop="moveTo('awaiting-feedback')"
+                    ondragover="allowDrop(event)">
                 </div>
 
 

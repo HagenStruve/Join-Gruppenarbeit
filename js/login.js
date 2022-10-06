@@ -10,9 +10,8 @@ async function initLogin() {
     setURL("https://gruppe-313.developerakademie.net/Join/smallest_backend_ever-master");
     await downloadFromServer();
     users = await JSON.parse(backend.getItem('users')) || [];
-    setTimeout(() => {
-        document.getElementById('overlay-login').classList.remove('overlay-login');
-    }, 1000);
+    document.body.style.opacity = '1';
+    document.getElementById('logo').style = 'transform: translateX(-100%) translateY(-100%); left: 120px; top: 130px; scale: 1.0;';
 }
 
 
