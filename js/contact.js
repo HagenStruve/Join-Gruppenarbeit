@@ -1,6 +1,6 @@
 let contact = [{
-    'name': 'Hagen',
-    'email': 'Struve@mmail.de',
+    'name': 'Rudolf Hans Krause',
+    'email': 'Krause@mmail.de',
     'phone': 3464536,
 }];
 
@@ -95,9 +95,6 @@ function loadABCContainer() {
 
 }
 
-////////////////// Nicht Fertig //////////////////////////////////
-
-
 
 function loadContacts(abc) {
 
@@ -109,20 +106,22 @@ function loadContacts(abc) {
         if (!abc || abc == firstLetter) {
             contactContainer.innerHTML += memberHTML(member);
         }
+        getFirstLetters(member);
     }
 }
 
-function filterFirstLetter() {
-    let letters = contact.filter(t => t['name'] == 'to-do');
+////////////////// Nicht Fertig //////////////////////////////////
 
-    document.getElementById('firstLetters').innerHTML = '';
 
-    for (let i = 0; i < letters.length; i++) {
-        const element = letters[i];
+function getFirstLetters(i) {
+    document.getElementById('shortcut-name' + i).innerHTML = ``;
+    const member = i;
+    let firstLetters = member['name'];
+    let firstAndLastName = firstLetters.split(' ');
+    let firstletterOfName = firstAndLastName.map(word => word[0]);
+    let letters =  firstletterOfName.join('');
 
-        document.getElementById('firstLetters').innerHTML += addFirstLetters(element);
-        //NumberOfCurrentTasks++;
-    }
+    document.getElementById('shortcut-name' + i).innerHTML += letters;
 }
 
 /////////////////////////////////////////// HTML ////////////////////////////////////////
@@ -130,7 +129,7 @@ function filterFirstLetter() {
 
 function memberHTML(member) {
     return /*HTML*/` 
-    <div class="shortcut-name">AM</div>
+    <div id="shortcut-name${member}" class="shortcut-name">AM</div>
                 <div>
                     <div class="fontsice-21">${member['name']}</div>
                     <div class="email">${member['email']}</div>
@@ -147,7 +146,7 @@ function abcHTML(letter) {
             `;
 }
 
-
+////////////////// Nicht Fertig //////////////////////////////////
 function addFirstLetters(element) {
     return /*HTML*/ `${letters}`
 }
