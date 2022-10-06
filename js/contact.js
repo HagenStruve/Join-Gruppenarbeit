@@ -7,7 +7,7 @@ let contact = [{
 let alphabet = [];
 
 
-async function init() {
+async function InitContacs() {
     await downloadFromServer();
     contact = JSON.parse(backend.getItem('contact')) || [];
     alphabet = JSON.parse(backend.getItem('alphabet')) || [];
