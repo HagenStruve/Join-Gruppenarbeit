@@ -89,9 +89,10 @@ function loadABCContainer() {
     for (let i = 0; i < alphabet.length; i++) {
         const abc = alphabet[i];
         contactContainer.innerHTML += abcHTML(abc);
+
+        loadContacts(abc);
     }   
 
-    loadContacts(abc);
 }
 
 ////////////////// Nicht Fertig //////////////////////////////////
@@ -100,12 +101,12 @@ function loadABCContainer() {
 
 function loadContacts(abc) {
 
-    let contactContainer = document.getElementById('member-container' + i);
+    let contactContainer = document.getElementById('member-container' + abc);
     for (let i = 0; i < contact.length; i++) {
         const member = contact[i];
-        let firstLetter = contact['name'].charAt(0)
+        let firstLetter = member['name'].charAt(0)
 
-        if (!abc || abc == firstLettercontact['name'].charAt(0)) {
+        if (!abc || abc == firstLetter) {
             contactContainer.innerHTML += memberHTML(member);
         }
     }
