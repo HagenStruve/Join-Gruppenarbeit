@@ -101,9 +101,10 @@ function loadContacts(abc) {
     let contactContainer = document.getElementById('member-container' + abc);
     for (let i = 0; i < contact.length; i++) {
         const member = contact[i];
-        let firstLetter = member['name'].charAt(0)
+        let firstLetter = member['name'].charAt(0);
+        const bigFirstLetter = firstLetter.toUpperCase();
 
-        if (!abc || abc == firstLetter) {
+        if (!abc || abc == bigFirstLetter) {
             contactContainer.innerHTML += memberHTML(i);
             getFirstLetters(i);
         }
