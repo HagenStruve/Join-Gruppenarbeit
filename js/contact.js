@@ -7,7 +7,11 @@ let contact = [{
 let alphabet = [];
 
 
+<<<<<<< HEAD
 async function InitContacs() {
+=======
+async function initContacs() {
+>>>>>>> 026e940b3143bac9e64f3b5f97976d3560acbee8
     await includeHTML();
     await downloadFromServer();
     contact = JSON.parse(backend.getItem('contact')) || [];
@@ -92,7 +96,7 @@ function loadABCContainer() {
         contactContainer.innerHTML += abcHTML(abc);
 
         loadContacts(abc);
-    }   
+    }
 
 }
 
@@ -118,7 +122,7 @@ function getFirstLetters(j) {
     let firstLetters = member['name'];
     let firstAndLastName = firstLetters.split(' ');
     let firstletterOfName = firstAndLastName.map(word => word[0]);
-    let letters =  firstletterOfName.join('');
+    let letters = firstletterOfName.join('');
 
     document.getElementById('shortcut-name' + j).innerHTML += addFirstLetters(letters);
 }

@@ -23,7 +23,7 @@ let tasks = [{
 {
     'id': 2,
     'area': 'Backoffice',
-    'title': 'Call Clients',
+    'title': 'Do Something',
     'description': 'and teaches them good things',
     'subtasks': 0,
     'assigned': '../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png',
@@ -33,7 +33,7 @@ let tasks = [{
 {
     'id': 3,
     'area': 'Marketing',
-    'title': 'Call Clients',
+    'title': 'Sell Products',
     'description': 'Market yourself so well that you dont need marketing anymore',
     'subtasks': 0,
     'assigned': '../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png',
@@ -79,43 +79,55 @@ async function renderBoardSite() {
  * 
  * @param NumberOfCurrentTasks -// is needed to differ between the tasks and to assign the colors to the tasks
  */
-function displayAllTasks() {
+function displayAllTasks(search) {
     NumberOfCurrentTasks = 0;
-    displayToDos();
-    displayInProgressTasks();
-    displayAwaitingFeedbackTasks();
-    displayDoneTasks();
+    displayToDos(search);
+    displayInProgressTasks(search);
+    displayAwaitingFeedbackTasks(search);
+    displayDoneTasks(search);
 
     setColorTypeTasks();
 }
 
-
-function displayToDos() {
-    // hier filtere ich den tasks JSON (in welchem alle Tasks stehen) in der Kategorie 'categorys'
-    // somit sind alle JSON die in der category = "to-do" sind als Array definiert "todos"
-    //siehe hier drunter
+/** displays all todos in HTML 
+ * 
+ * @param {string} todos - variable contains all arrays which have the category "to-do"
+ * 
+ * @param {Array} search - contains every letter that typed in input field "find task"
+ * 
+ * @param {array} 
+ */
+function displayToDos(search) {
     let todos = tasks.filter(t => t['category'] == 'to-do');
-
     document.getElementById('to-do').innerHTML = '';
 
+    
     for (let i = 0; i < todos.length; i++) {
+        let title = todos[i]['title'].toLowerCase();
+        if (!search || title.includes(search)) {
+            // wenn es search nicht gibt dann führe aus, und wenn title etwas von der suche beinhaltet dann führe ebenfalls aus, wenn nicht dann zeigt er auch nichts an 
+
         const element = todos[i];
 
         document.getElementById('to-do').innerHTML += addTaskToKanbanHTML(element);
         NumberOfCurrentTasks++;
     }
 }
+}
 
 
-function displayInProgressTasks() {
+function displayInProgressTasks(search) {
     let inProgress = tasks.filter(t => t['category'] == 'in-progress');
     document.getElementById('in-progress').innerHTML = '';
+
     for (let p = 0; p < inProgress.length; p++) {
+        let title =  inProgress[p]['title'].toLowerCase();
+        if (!search || title.includes(search)) {
         const element = inProgress[p];
 
         document.getElementById('in-progress').innerHTML += addTaskToKanbanHTML(element);
         NumberOfCurrentTasks++;
-
+        }
     }
 }
 
@@ -198,38 +210,14 @@ function setColorTypeTasks() {
 
 
 
-// Function for filtering the search bar
-function searchFunction() {
+
+function searchTask() {
     let search = document.getElementById('input-search').value;
     search = search.toLowerCase();
     console.log(search);
 
-    let posting = document.getElementById('postings');
-    posting.innerHTML = '';
-
-    if (search == "") {
-        showPosts();
-    }
-    else {
-        let found = posts.filter(e => e.username.toLowerCase().includes(search));
-        console.log(found);
-
-        for (let i = 0; i < found.length; i++) {
-
-            let post = found[i]['username'];
-
-            if (post.toLowerCase().includes(search)) {
-                hTMLshowPosts(i, found);
-            }
-        }
-        if (found.length == 0) {
-            posting.innerHTML = `<div class="notfound"> Es wurde kein entsprechender Creator gefunden </div> `;
-        }
-
-    }
+    displayAllTasks(search) 
 }
-
-
 
 function addTaskToKanbanHTML(element) {
     return `
@@ -240,12 +228,12 @@ function addTaskToKanbanHTML(element) {
 
     <div>
         <h3 class="kanban-task-title">
-            Website redesign
+            ${element['title']}
         </h3>
     </div>
 
     <p class="task-description">
-        Modify the contents of our Website and ...
+        ${element['description']}...
     </p>
     <div class="progress-section">
         <div class="progress-border">
