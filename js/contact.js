@@ -8,6 +8,7 @@ let alphabet = [];
 
 
 async function InitContacs() {
+    await includeHTML();
     await downloadFromServer();
     contact = JSON.parse(backend.getItem('contact')) || [];
     alphabet = JSON.parse(backend.getItem('alphabet')) || [];
@@ -87,7 +88,7 @@ function loadABCContainer() {
     let contactContainer = document.getElementById('content-left');
 
     for (let i = 0; i < alphabet.length; i++) {
-        const abc = alphabet[i];
+        let abc = alphabet[i];
         contactContainer.innerHTML += abcHTML(abc);
 
         loadContacts(abc);
@@ -104,35 +105,33 @@ function loadContacts(abc) {
         let firstLetter = member['name'].charAt(0)
 
         if (!abc || abc == firstLetter) {
-            contactContainer.innerHTML += memberHTML(member);
+            contactContainer.innerHTML += memberHTML(i);
+            getFirstLetters(i);
         }
-        getFirstLetters(member);
     }
 }
 
-////////////////// Nicht Fertig //////////////////////////////////
 
-
-function getFirstLetters(i) {
-    document.getElementById('shortcut-name' + i).innerHTML = ``;
-    const member = i;
+function getFirstLetters(j) {
+    document.getElementById('shortcut-name' + j).innerHTML = ``;
+    const member = contact[j];
     let firstLetters = member['name'];
     let firstAndLastName = firstLetters.split(' ');
     let firstletterOfName = firstAndLastName.map(word => word[0]);
     let letters =  firstletterOfName.join('');
 
-    document.getElementById('shortcut-name' + i).innerHTML += letters;
+    document.getElementById('shortcut-name' + j).innerHTML += addFirstLetters(letters);
 }
 
 /////////////////////////////////////////// HTML ////////////////////////////////////////
 
 
-function memberHTML(member) {
+function memberHTML(i) {
     return /*HTML*/` 
-    <div id="shortcut-name${member}" class="shortcut-name">AM</div>
+    <div id="shortcut-name${i}" class="shortcut-name">AM</div>
                 <div>
-                    <div class="fontsice-21">${member['name']}</div>
-                    <div class="email">${member['email']}</div>
+                    <div class="fontsice-21">${contact[i]['name']}</div>
+                    <div class="email">${contact[i]['email']}</div>
                 </div>
                 `;
 }
@@ -146,7 +145,7 @@ function abcHTML(letter) {
             `;
 }
 
-////////////////// Nicht Fertig //////////////////////////////////
-function addFirstLetters(element) {
+
+function addFirstLetters(letters) {
     return /*HTML*/ `${letters}`
 }
