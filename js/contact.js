@@ -6,12 +6,7 @@ let contact = [{
 
 let alphabet = [];
 
-
-<<<<<<< HEAD
-async function InitContacs() {
-=======
 async function initContacs() {
->>>>>>> 026e940b3143bac9e64f3b5f97976d3560acbee8
     await includeHTML();
     await downloadFromServer();
     contact = JSON.parse(backend.getItem('contact')) || [];
