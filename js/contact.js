@@ -75,6 +75,7 @@ function pushFirstLetterJSON() {
             alphabet.push(firstLetter);
         }
     }
+    alphabet.sort();
 }
 
 
