@@ -129,10 +129,12 @@ function getFirstLetters(j) {
 
 function memberHTML(i) {
     return /*HTML*/` 
+    <div  class="member-box">
     <div id="shortcut-name${i}" class="shortcut-name">AM</div>
                 <div>
                     <div class="fontsice-21">${contact[i]['name']}</div>
                     <div class="email">${contact[i]['email']}</div>
+                </div>
                 </div>
                 `;
 }
