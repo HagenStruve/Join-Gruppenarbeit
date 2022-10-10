@@ -90,6 +90,7 @@ body {
     cursor: pointer;
     margin-bottom: 25px;
     margin-top: 5px;
+    cursor: pointer;
 }
 
 .border-container {
@@ -181,6 +182,7 @@ body {
 
 .edit-contact-pencil {
     margin-left: 61px;
+    cursor: pointer;
 }
 
 .plus {

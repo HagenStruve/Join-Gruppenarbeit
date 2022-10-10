@@ -5,7 +5,6 @@ let contact = [{
 }];
 
 let alphabet = [];
-let firstLetters = [];
 
 async function initContacs() {
     await includeHTML();
@@ -23,14 +22,14 @@ async function saveOnServer() {
 
 
 function newConatct() {
-    document.getElementById('edit-contact').classList.remove('d-none');
-    document.getElementById('edit-contact').classList.add('edit-contact');
+    document.getElementById('add-contact').classList.remove('d-none');
+    document.getElementById('add-contact').classList.add('edit-contact');
 }
 
 
 function cancel() {
-    document.getElementById('edit-contact').classList.remove('edit-contact');
-    document.getElementById('edit-contact').classList.add('d-none');
+    document.getElementById('add-contact').classList.remove('edit-contact');
+    document.getElementById('add-contact').classList.add('d-none');
     document.getElementById('name').value = "";
     document.getElementById('email').value = "";
     document.getElementById('phone').value = "";
@@ -123,19 +122,22 @@ function getFirstLetters(j) {
     let letters = firstletterOfName.join('');
 
     document.getElementById('shortcut-name' + j).innerHTML += addFirstLetters(letters);
-    let firstLetter = {
-        "letters": letters,
-    };
-
-    firstLetters.push(firstLetter);
-    saveOnServer();
 }
 
 
 function showMemberInfo(i) {
+    let letters = document.getElementById('shortcut-name' + i).innerHTML;
     let infoBox = document.getElementById('member-info');
     infoBox.innerHTML = ``;
-    infoBox.innerHTML = memberInfoHtml(i);
+    infoBox.innerHTML = memberInfoHtml(i, letters);
+}
+
+
+function editContact(i) {
+    let letters = document.getElementById('shortcut-name' + i).innerHTML;
+    document.getElementById('edit-contact').classList.remove('d-none');
+    document.getElementById('edit-contact').classList.add('edit-contact');
+    document.getElementById('edit-contact').innerHTML += editContactHTML(i, letters);
 }
 
 /////////////////////////////////////////// HTML ////////////////////////////////////////
@@ -168,10 +170,10 @@ function addFirstLetters(letters) {
 }
 
 
-function memberInfoHtml(i) {
+function memberInfoHtml(i, letters) {
     return /*HTML*/`
     <div class="member">
-                    <div class="shortcut-name-info">${firstLetters['letters']}</div>
+                    <div class="shortcut-name-info">${letters}</div>
                     <div>
                         <div class="fontsice-21">${contact[i]['name']}</div>
                         <div class="email"><img class="plus" src="../img/blue-plus.png">Add Task</div>
@@ -180,7 +182,7 @@ function memberInfoHtml(i) {
 
                 <div class="contact-info-edit">
                     <div class="fontsice-21">Contact Information</div>
-                    <div class="edit-contact-pencil"><img src="../img/pencil.png"> Contact</div>
+                    <div onclick="editContact(${i})" class="edit-contact-pencil"><img src="../img/pencil.png"> Contact</div>
                 </div>
                 <div>
                     <b>Email</b>
@@ -196,4 +198,31 @@ function memberInfoHtml(i) {
                     <img src="../img/new-contact-icon.png">
                 </button>
                 `;
+}
+
+
+function editContactHTML(i, letters) {
+    return /*HTML*/`
+    <div class="edit-contact-left">
+    <img class="join-logo" src="../img/logo.png">
+    <div class="header-edit-contact">Edit contact</div>
+    <div class="blue-border"></div>
+</div>
+<div class="edit-contact-right">
+    <div>
+        <div class="member-img-container">
+        ${letters}
+        </div>
+    </div>
+    <form onsubmit="addContact(); return false;" class="edit-contact-input">
+        <input id="name${i}" required class="inputs-name" type="text" value="${contact[i]['name']}">
+        <input id="email${i}" required class="inputs-email" type="email" value="${contact[i]['email']}">
+        <input id="phone${i}" required class="inputs-phone" type="number" value="${contact[i]['phone']}">
+        <div class="button-box">
+            <div onclick="cancel()" class="cancel-button">Cancel<img src="../img/close-icon.png"></div>
+            <button class="creat-button">Save<img src="../img/checkmark.png"></button>
+        </div>
+    </form>
+</div>
+`;
 }
