@@ -140,7 +140,39 @@ function editContact(i) {
     document.getElementById('edit-contact').innerHTML += editContactHTML(i, letters);
 }
 
-/////////////////////////////////////////// HTML ////////////////////////////////////////
+
+function closeEdit(i) {
+    document.getElementById('edit-contact').innerHTML = ``;
+    document.getElementById('edit-contact').classList.remove('edit-contact');
+    document.getElementById('edit-contact').classList.add('d-none');
+    document.getElementById('name' + i).value = "";
+    document.getElementById('email' + i).value = "";
+    document.getElementById('phone' + i).value = "";
+}
+
+
+function save(i) {
+    contact[i] = [];
+    let name = document.getElementById('name' + i);
+    let email = document.getElementById('email' + i);
+    let phone = document.getElementById('phone' + i);
+
+    let addContact = {
+        "name": name.value,
+        "email": email.value,
+        "phone": phone.value,
+    };
+
+    contact.push(addContact);
+    console.log(contact);
+
+    saveOnServer();
+    clearContentLeft();
+    pushFirstLetterJSON();
+    loadABCContainer();
+}
+
+/////////////////////////////////////////// HTML /////////////////////////////////////////////////////////////
 
 
 function memberHTML(i) {
@@ -210,16 +242,16 @@ function editContactHTML(i, letters) {
 </div>
 <div class="edit-contact-right">
     <div>
-        <div class="member-img-container">
+        <div class="member-firstLetter-container">
         ${letters}
         </div>
     </div>
-    <form onsubmit="addContact(); return false;" class="edit-contact-input">
+    <form onsubmit="save(${i}); return false;" class="edit-contact-input">
         <input id="name${i}" required class="inputs-name" type="text" value="${contact[i]['name']}">
         <input id="email${i}" required class="inputs-email" type="email" value="${contact[i]['email']}">
         <input id="phone${i}" required class="inputs-phone" type="number" value="${contact[i]['phone']}">
         <div class="button-box">
-            <div onclick="cancel()" class="cancel-button">Cancel<img src="../img/close-icon.png"></div>
+            <div onclick="closeEdit(${i})" class="cancel-button">Cancel<img src="../img/close-icon.png"></div>
             <button class="creat-button">Save<img src="../img/checkmark.png"></button>
         </div>
     </form>

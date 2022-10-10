@@ -392,3 +392,17 @@ body {
     color: #FFFFFF;
     cursor: pointer;
 }
+
+.member-firstLetter-container {
+    width: 120px;
+    height: 120px;
+    background: orange;
+    border: 3px white solid;
+    box-shadow: 0px 0px 4px rgb(0 0 0 / 10%);
+    border-radius: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 38px;
+    color: white;
+}
