@@ -5,6 +5,7 @@ let contact = [{
 }];
 
 let alphabet = [];
+let firstLetters = [];
 
 async function initContacs() {
     await includeHTML();
@@ -122,6 +123,19 @@ function getFirstLetters(j) {
     let letters = firstletterOfName.join('');
 
     document.getElementById('shortcut-name' + j).innerHTML += addFirstLetters(letters);
+    let firstLetter = {
+        "letters": letters,
+    };
+
+    firstLetters.push(firstLetter);
+    saveOnServer();
+}
+
+
+function showMemberInfo(i) {
+    let infoBox = document.getElementById('member-info');
+    infoBox.innerHTML = ``;
+    infoBox.innerHTML = memberInfoHtml(i);
 }
 
 /////////////////////////////////////////// HTML ////////////////////////////////////////
@@ -129,13 +143,13 @@ function getFirstLetters(j) {
 
 function memberHTML(i) {
     return /*HTML*/` 
-    <div  class="member-box">
+    <button onclick="showMemberInfo(${i})" class="member-box">
     <div id="shortcut-name${i}" class="shortcut-name">AM</div>
                 <div>
                     <div class="fontsice-21">${contact[i]['name']}</div>
                     <div class="email">${contact[i]['email']}</div>
                 </div>
-                </div>
+                </button>
                 `;
 }
 
@@ -151,4 +165,35 @@ function abcHTML(letter) {
 
 function addFirstLetters(letters) {
     return /*HTML*/ `${letters}`
+}
+
+
+function memberInfoHtml(i) {
+    return /*HTML*/`
+    <div class="member">
+                    <div class="shortcut-name-info">${firstLetters['letters']}</div>
+                    <div>
+                        <div class="fontsice-21">${contact[i]['name']}</div>
+                        <div class="email"><img class="plus" src="../img/blue-plus.png">Add Task</div>
+                    </div>
+                </div>
+
+                <div class="contact-info-edit">
+                    <div class="fontsice-21">Contact Information</div>
+                    <div class="edit-contact-pencil"><img src="../img/pencil.png"> Contact</div>
+                </div>
+                <div>
+                    <b>Email</b>
+                    <div class="email">${contact[i]['email']}</div>
+                </div>
+                <div>
+                    <b>Phone</b>
+                    <div>+${contact[i]['phone']}</div>
+                </div>
+
+                <button onclick="newConatct()" class="new-contact">
+                    <span>New contact</span>
+                    <img src="../img/new-contact-icon.png">
+                </button>
+                `;
 }

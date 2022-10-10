@@ -41,9 +41,19 @@ body {
 
 .member-box {
     display: flex;
-    margin-top: 53px;
+    margin-top: 43px;
+    padding-top: 10px;
     margin-left: 48px;
     margin-bottom: 40px;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: white;
+    border: none;
+    width: 405px;
+}
+
+.member-box:hover {
+    background-color: rgb(233, 233, 233);
 }
 
 .shortcut-name {
