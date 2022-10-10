@@ -8,6 +8,7 @@ let alphabet = [];
 
 async function initContacs() {
     await includeHTML();
+    setURL("https://gruppe-313.developerakademie.net/Join/smallest_backend_ever-master");
     await downloadFromServer();
     contact = JSON.parse(backend.getItem('contact')) || [];
     alphabet = JSON.parse(backend.getItem('alphabet')) || [];
