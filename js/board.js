@@ -94,8 +94,7 @@ function displayAllTasks(search) {
  * @param {string} todos - variable contains all arrays which have the category "to-do"
  * 
  * @param {Array} search - contains every letter that typed in input field "find task"
- * 
- * @param {array} 
+
  */
 function displayToDos(search) {
     let todos = tasks.filter(t => t['category'] == 'to-do');
@@ -132,27 +131,33 @@ function displayInProgressTasks(search) {
 }
 
 
-function displayAwaitingFeedbackTasks() {
+function displayAwaitingFeedbackTasks(search) {
     let awaitingFeedback = tasks.filter(t => t['category'] == 'awaiting-feedback');
     document.getElementById('awaiting-feedback').innerHTML = '';
 
     for (let a = 0; a < awaitingFeedback.length; a++) {
+        let title = awaitingFeedback[a]['title'].toLowerCase();
+        if (!search || title.includes(search)) {
         const element = awaitingFeedback[a];
 
         document.getElementById('awaiting-feedback').innerHTML += addTaskToKanbanHTML(element);
         NumberOfCurrentTasks++;
+        }
     }
 }
 
-function displayDoneTasks() {
+function displayDoneTasks(search) {
     let done = tasks.filter(t => t['category'] == 'done');
-
     document.getElementById('done').innerHTML = '';
+
     for (let d = 0; d < done.length; d++) {
+        let title = done[d]['title'].toLowerCase();
+        if (!search || title.includes(search)) {
         const element = done[d];
 
         document.getElementById('done').innerHTML += addTaskToKanbanHTML(element);
-        NumberOfCurrentTasks++;
+        NumberOfCurrentTasks++; 
+        }
     }
 }
 
@@ -208,9 +213,10 @@ function setColorTypeTasks() {
     }
 }
 
-
-
-
+/**gets Value of Input Field "search Task" and hands over to displayAllTasks()
+ * 
+ * @param {string} search - contains value of input field "search Task"
+ */
 function searchTask() {
     let search = document.getElementById('input-search').value;
     search = search.toLowerCase();
@@ -219,6 +225,11 @@ function searchTask() {
     displayAllTasks(search) 
 }
 
+/**
+ * 
+ * @param {array} element - beinhaltet den gefilterten Array mit forschleifen Zahl der jeweiligen Kategorie
+ * @returns 
+ */
 function addTaskToKanbanHTML(element) {
     return `
     <div class="kanban-task-container" draggable="true" ondragstart="startDragging(${element['id']})">
