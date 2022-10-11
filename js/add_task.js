@@ -1,6 +1,6 @@
 let task = [];
 let prio = [];
-
+let createdTasks = 0; 
 function markedPrio(id) {
     prio = [];
     document.getElementById('prio-urgent').classList.remove('blue-border');
@@ -22,6 +22,7 @@ async function addTask() {
     let prioId = prio[0];
 
     let addTask = {
+        "id": createdTasks,
         "title": title.value,
         "descripton": descripton.value,
         "category": category.value,
@@ -35,6 +36,7 @@ async function addTask() {
     
     saveOnServer();
     clearInput();
+    createdTasks++;
 }
 
 

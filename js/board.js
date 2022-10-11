@@ -41,7 +41,18 @@ let tasks = [{
     'category': 'done'
 }];
 
+
 let downloadedTasks = [];
+
+let tasksOnServer = {
+    "title": '',
+    "descripton": '',
+    "category": '',
+    "assingedTo": '',
+    "dueDate": '',
+    "prio": '',
+};
+
 let currentDraggedElement;
 let NumberOfCurrentTasks = 0; // is needed to differ between the tasks
 
@@ -64,13 +75,15 @@ async function loadTasksFromServer() {
     setURL("https://gruppe-313.developerakademie.net/Join/smallest_backend_ever-master");
     await downloadFromServer();
     downloadedTasks = JSON.parse(backend.getItem('task')) || [];
+    
+    console.log('loaded 123 tasks');
+    console.log(downloadedTasks);
 
-    console.log('loaded 123 tasks')
 }
 
 
 async function renderBoardSite() {
-    // await loadTasksFromServer();
+    await loadTasksFromServer();
     displayAllTasks();
 }
 
