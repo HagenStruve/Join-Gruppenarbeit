@@ -8,14 +8,21 @@ let alphabet = [];
 
 async function initContacs() {
     await includeHTML();
+    setURL("https://gruppe-313.developerakademie.net/Join/smallest_backend_ever-master");
     await downloadFromServer();
     contact = JSON.parse(backend.getItem('contact')) || [];
     alphabet = JSON.parse(backend.getItem('alphabet')) || [];
 }
 
 
+function loadContactside() {
+    clearContentLeft();
+    pushFirstLetterJSON();
+    loadABCContainer();
+}
+
+
 async function saveOnServer() {
-    setURL("https://gruppe-313.developerakademie.net/Join/smallest_backend_ever-master");
     await backend.setItem('contact', JSON.stringify(contact));
     await backend.setItem('alphabet', JSON.stringify(alphabet));
 }
@@ -208,7 +215,7 @@ function memberInfoHtml(i, letters) {
                     <div class="shortcut-name-info">${letters}</div>
                     <div>
                         <div class="fontsice-21">${contact[i]['name']}</div>
-                        <div class="email"><img class="plus" src="../img/blue-plus.png">Add Task</div>
+                        <a href="add_task.html" class="email"><img class="plus" src="../img/blue-plus.png">Add Task</a>
                     </div>
                 </div>
 
