@@ -159,12 +159,11 @@ function closeEdit(i) {
 
 
 function save(i) {
-    contact[i] = [];
     let name = document.getElementById('name' + i);
     let email = document.getElementById('email' + i);
     let phone = document.getElementById('phone' + i);
 
-    let addContact = {
+    contact[i] = {
         "name": name.value,
         "email": email.value,
         "phone": phone.value,
