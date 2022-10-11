@@ -15,8 +15,14 @@ async function initContacs() {
 }
 
 
+function loadContactside() {
+    clearContentLeft();
+    pushFirstLetterJSON();
+    loadABCContainer();
+}
+
+
 async function saveOnServer() {
-    setURL("https://gruppe-313.developerakademie.net/Join/smallest_backend_ever-master");
     await backend.setItem('contact', JSON.stringify(contact));
     await backend.setItem('alphabet', JSON.stringify(alphabet));
 }
@@ -153,12 +159,11 @@ function closeEdit(i) {
 
 
 function save(i) {
-    contact[i] = [];
     let name = document.getElementById('name' + i);
     let email = document.getElementById('email' + i);
     let phone = document.getElementById('phone' + i);
 
-    let addContact = {
+    contact[i] = {
         "name": name.value,
         "email": email.value,
         "phone": phone.value,
@@ -209,7 +214,7 @@ function memberInfoHtml(i, letters) {
                     <div class="shortcut-name-info">${letters}</div>
                     <div>
                         <div class="fontsice-21">${contact[i]['name']}</div>
-                        <div class="email"><img class="plus" src="../img/blue-plus.png">Add Task</div>
+                        <a href="add_task.html" class="email"><img class="plus" src="../img/blue-plus.png">Add Task</a>
                     </div>
                 </div>
 
