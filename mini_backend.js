@@ -1,6 +1,7 @@
 let jsonFromServer = {};
 let BASE_SERVER_URL;
 
+
 const backend = {
     setItem: function (key, item) {
         jsonFromServer[key] = item;
@@ -45,8 +46,6 @@ function loadJSONFromServerOld() {
         let xhttp = new XMLHttpRequest();
         let proxy = determineProxySettings();
         let serverURL = proxy + BASE_SERVER_URL + '/nocors.php?json=database&noache=' + (new Date().getTime());
-
-
 
 
         xhttp.open('GET', serverURL);
