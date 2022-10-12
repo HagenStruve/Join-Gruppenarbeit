@@ -137,43 +137,55 @@ select option {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 6px 10px;
-    border: 1px solid #d1d1d1;
+    padding: 18px 10px;
     background-color: white;
     margin-right: 10px;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    width: 80px;
+    width: 136px;
     cursor: pointer;
-    transition: box-shadow 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
 }
 
-.blue-border {
-    box-shadow: 0px 0px 0px 3px rgba(11, 68, 93, 0.4) !important;
+.prio-div div:hover {
+    scale: 1.05;
+    box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.1);
 }
+
 
 .prio-div span {
-    font-size: 15px;
+    font-size: 21px;
     margin-right: 5px;
 }
 
-.prio-div img {
-    height: 23px;
-    width: 23px;
+.bg-orange {
+    background-color: #FF3D00 !important;
+    color: white !important;
+}
+
+.bg-yellow {
+    background-color: #FFA800 !important;
+    color: white !important;
+}
+
+.bg-green {
+    background-color: #7AE229 !important;
+    color: white !important;
 }
 
 .clear-create-div {
     display: flex;
     justify-content: flex-end;
     width: 400px;
-    margin-bottom: 35px;
 }
 
 .clear-div {
     display: flex;
     align-items: center;
-    padding: 12px 10px;
-    font-size: 16px;
+    justify-content: center;
+    width: 136px;
+    padding: 18px 10px;
+    font-size: 21px;
     background-color: white;
     border: 1px solid #2A3647;
     border-radius: 10px;
@@ -181,15 +193,16 @@ select option {
 }
 
 .clear-div img {
-    width: 18px;
-    height: 18px;
+    width: 24px;
+    height: 24px;
     margin-left: 5px;
+    margin-top: 1px;
 }
 
 .create-div {
     display: flex;
     align-items: center;
-    padding: 12px 10px;
+    padding: 18px 10px;
     font-size: 16px;
     background-color: #2A3647;
     color: white;
@@ -199,19 +212,30 @@ select option {
     cursor: pointer;
 }
 
+.clear-div:hover {
+    border: 2px solid #29ABE2 !important;
+    box-shadow: 2px 4px 4px 0px rgb(0 0 0 / 20%) !important;
+    background-color: white !important;
+    color: #29ABE2;
+}
+
 .create-div img {
-    width: 14px;
-    height: 14px;
+    width: 15px;
+    height: 15px;
     margin-left: 10px;
 }
 
 .create-button {
     height: 100%;
     width: 100%;
-    font-size: 16px;
-    background-color: #2A3647;
+    font-size: 21px;
     color: white;
-    border: 1px solid #2A3647;
     border-radius: 10px;
     cursor: pointer;
+}
+
+.create-div:hover {
+    background-color: #29ABE2 !important;
+    border: none;
+    box-shadow: 2px 4px 4px 0px rgb(0 0 0 / 20%);
 }

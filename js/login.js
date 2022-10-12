@@ -7,7 +7,7 @@ let users = [];
  * load the URL and then the registered users from the backend
  */
 async function initLogin() {
-    setURL("https://gruppe-313.developerakademie.net/Join/smallest_backend_ever-master");
+    setURL("https://gruppe-313.developerakademie.net/Join-Gruppenarbeit/smallest_backend_ever-master");
     await downloadFromServer();
     users = await JSON.parse(backend.getItem('users')) || [];
     document.body.style.opacity = '1';

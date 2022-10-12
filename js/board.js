@@ -72,10 +72,10 @@ async function initBoard() {
 }
 
 async function loadTasksFromServer() {
-    setURL("https://gruppe-313.developerakademie.net/Join/smallest_backend_ever-master");
+    setURL("https://gruppe-313.developerakademie.net/Join-Gruppenarbeit/smallest_backend_ever-master");
     await downloadFromServer();
     downloadedTasks = JSON.parse(backend.getItem('task')) || [];
-    
+
     console.log('loaded 123 tasks');
     console.log(downloadedTasks);
 
@@ -113,18 +113,18 @@ function displayToDos(search) {
     let todos = tasks.filter(t => t['category'] == 'to-do');
     document.getElementById('to-do').innerHTML = '';
 
-    
+
     for (let i = 0; i < todos.length; i++) {
         let title = todos[i]['title'].toLowerCase();
         if (!search || title.includes(search)) {
             // wenn es search nicht gibt dann führe aus, und wenn title etwas von der suche beinhaltet dann führe ebenfalls aus, wenn nicht dann zeigt er auch nichts an 
 
-        const element = todos[i];
+            const element = todos[i];
 
-        document.getElementById('to-do').innerHTML += addTaskToKanbanHTML(element);
-        NumberOfCurrentTasks++;
+            document.getElementById('to-do').innerHTML += addTaskToKanbanHTML(element);
+            NumberOfCurrentTasks++;
+        }
     }
-}
 }
 
 
@@ -133,12 +133,12 @@ function displayInProgressTasks(search) {
     document.getElementById('in-progress').innerHTML = '';
 
     for (let p = 0; p < inProgress.length; p++) {
-        let title =  inProgress[p]['title'].toLowerCase();
+        let title = inProgress[p]['title'].toLowerCase();
         if (!search || title.includes(search)) {
-        const element = inProgress[p];
+            const element = inProgress[p];
 
-        document.getElementById('in-progress').innerHTML += addTaskToKanbanHTML(element);
-        NumberOfCurrentTasks++;
+            document.getElementById('in-progress').innerHTML += addTaskToKanbanHTML(element);
+            NumberOfCurrentTasks++;
         }
     }
 }
@@ -151,10 +151,10 @@ function displayAwaitingFeedbackTasks(search) {
     for (let a = 0; a < awaitingFeedback.length; a++) {
         let title = awaitingFeedback[a]['title'].toLowerCase();
         if (!search || title.includes(search)) {
-        const element = awaitingFeedback[a];
+            const element = awaitingFeedback[a];
 
-        document.getElementById('awaiting-feedback').innerHTML += addTaskToKanbanHTML(element);
-        NumberOfCurrentTasks++;
+            document.getElementById('awaiting-feedback').innerHTML += addTaskToKanbanHTML(element);
+            NumberOfCurrentTasks++;
         }
     }
 }
@@ -166,10 +166,10 @@ function displayDoneTasks(search) {
     for (let d = 0; d < done.length; d++) {
         let title = done[d]['title'].toLowerCase();
         if (!search || title.includes(search)) {
-        const element = done[d];
+            const element = done[d];
 
-        document.getElementById('done').innerHTML += addTaskToKanbanHTML(element);
-        NumberOfCurrentTasks++; 
+            document.getElementById('done').innerHTML += addTaskToKanbanHTML(element);
+            NumberOfCurrentTasks++;
         }
     }
 }
@@ -235,7 +235,7 @@ function searchTask() {
     search = search.toLowerCase();
     console.log(search);
 
-    displayAllTasks(search) 
+    displayAllTasks(search)
 }
 
 /**
