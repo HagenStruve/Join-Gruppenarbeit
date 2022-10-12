@@ -169,7 +169,7 @@ function save(i) {
         "phone": phone.value,
     };
 
-    contact.push(addContact);
+    //contact.push(contact[i]);
     console.log(contact);
 
     saveOnServer();
