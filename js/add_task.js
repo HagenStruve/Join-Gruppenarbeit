@@ -1,15 +1,44 @@
 let task = [];
 let prio = [];
-let createdTasks = 0; 
+let createdTasks = 0;
 function markedPrio(id) {
     prio = [];
-    document.getElementById('prio-urgent').classList.remove('blue-border');
-    document.getElementById('prio-medium').classList.remove('blue-border');
-    document.getElementById('prio-low').classList.remove('blue-border');
-    document.getElementById(id).classList.add('blue-border');
+    changeBg(id);
 
     let prioId = document.getElementById(id);
     prio.push(prioId)
+}
+
+function changeBg(id) {
+    let urgent = document.getElementById('prio-urgent');
+    let medium = document.getElementById('prio-medium');
+    let low = document.getElementById('prio-low');
+    if (id == 'prio-urgent') {
+        document.getElementById('urgent-img').src = "../img/arrow_urgent_white.svg";
+        document.getElementById('medium-img').src = "../img/medium.svg";
+        document.getElementById('low-img').src = "../img/arrow_low.svg";
+        urgent.classList.add('bg-orange');
+        medium.classList.remove('bg-yellow');
+        low.classList.remove('bg-green');
+    }
+
+    if (id == 'prio-medium') {
+        document.getElementById('urgent-img').src = "../img/arrow_urgent.svg";
+        document.getElementById('medium-img').src = "../img/medium_white.svg";
+        document.getElementById('low-img').src = "../img/arrow_low.svg";
+        urgent.classList.remove('bg-orange');
+        medium.classList.add('bg-yellow');
+        low.classList.remove('bg-green');
+    }
+
+    if (id == 'prio-low') {
+        document.getElementById('urgent-img').src = "../img/arrow_urgent.svg";
+        document.getElementById('medium-img').src = "../img/medium.svg";
+        document.getElementById('low-img').src = "../img/arrow_low_white.svg";
+        urgent.classList.remove('bg-orange');
+        medium.classList.remove('bg-yellow');
+        low.classList.add('bg-green');
+    }
 }
 
 
@@ -33,7 +62,7 @@ async function addTask() {
 
     task.push(addTask);
     console.log(task);
-    
+
     saveOnServer();
     clearInput();
     createdTasks++;
@@ -41,15 +70,19 @@ async function addTask() {
 
 
 async function saveOnServer() {
-    setURL("https://gruppe-313.developerakademie.net/Join/smallest_backend_ever-master");
+    setURL("https://gruppe-313.developerakademie.net/Join-Gruppenarbeit/smallest_backend_ever-master");
     await backend.setItem('task', JSON.stringify(task));
 }
 
 
 function clearInput() {
-    document.getElementById('prio-urgent').classList.remove('blue-border');
-    document.getElementById('prio-medium').classList.remove('blue-border');
-    document.getElementById('prio-low').classList.remove('blue-border');
+    document.getElementById('urgent-img').src = "../img/arrow_urgent.svg";
+    document.getElementById('medium-img').src = "../img/medium.svg";
+    document.getElementById('low-img').src = "../img/arrow_low.svg";
+    document.getElementById('prio-urgent').classList.remove('bg-orange');
+    document.getElementById('prio-medium').classList.remove('bg-yellow');
+    document.getElementById('prio-low').classList.remove('bg-green');
+
     title.value = '';
     descripton.value = '';
     category.value = 'Select task Category';

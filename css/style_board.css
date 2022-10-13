@@ -191,3 +191,106 @@
 .yellow {
     background-color: rgba(255, 199, 1, 1) !important;
 }
+
+/* clicked-task window */ 
+
+
+.clicked-task-bg {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.3);
+    top: 0; 
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 200;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.clicked-task-window {
+    padding: 60px;
+    margin-left: 232px;
+    width: 433px;
+    height: 600px;
+    border-radius: 20px;
+    background-color: white;
+}
+
+.c-t-category {
+    font-size: 22px;
+    width: max-content;
+    background-color: deeppink;
+    padding: 6px;
+    padding-left: 35px;
+    padding-right: 35px;
+    border-radius: 14px;
+    color: white;
+}
+
+.c-t-title {
+    font-size: 50px;
+    color: #253141;
+    margin-top:20px;
+}
+
+.c-t-description {
+    color: #253141;
+    font-weight: 600;
+    font-family: 'Inter';
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 150%;
+}
+
+.c-t-infos {
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.c-t-space {
+    width: 50%;
+}
+
+
+.priority-box{
+    padding: 4px 18px;
+    margin-left: 18px;
+    gap: 10px;
+    background-color: FF3d00;
+    box-shadow: 0px 0px 4px rgb(0 0 0 / 10%);
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.c-t-priority-icon {
+object-fit: contain;
+width: 16px;
+}
+
+.c-t-assignedTo {
+    display: flex;
+    flex-direction: column;
+}
+
+.c-t-profilimages {
+    width: 46px;
+    height: 46px;
+    border-radius: 559px;
+    object-fit: cover;
+}
+
+.c-t-contact {
+    display: flex;
+    gap: 20px;
+    padding-bottom: 20px;
+    align-items: center;
+    font-weight: 500;
+}

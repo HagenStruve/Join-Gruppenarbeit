@@ -50,7 +50,7 @@
                     <div class="select-div">
                         <select required id="assingedTo">
                             <!-- optionen (Kontakte) hinzufügen -->
-                            <option  value disabled selected hidden>Select contacts to assign</option>
+                            <option value disabled selected hidden>Select contacts to assign</option>
                             <option value="Kontakt">Test Kontakt</option>
                         </select>
                     </div>
@@ -66,15 +66,15 @@
                     <div class="prio-div">
                         <div onclick="markedPrio(id)" id="prio-urgent">
                             <span>Urgent</span>
-                            <img src="../img/orange-arrow-up.png" alt="arrow-up">
+                            <img id="urgent-img" src="../img/arrow_urgent.svg" alt="arrow-up">
                         </div>
                         <div onclick="markedPrio(id)" id="prio-medium">
                             <span>Medium</span>
-                            <img src="../img/orange-equal.png" alt="equal">
+                            <img id="medium-img" src="../img/medium.svg" alt="equal">
                         </div>
                         <div onclick="markedPrio(id)" id="prio-low">
                             <span>Low</span>
-                            <img src="../img/green-arrow-down.png" alt="arrow-down">
+                            <img id="low-img" src="../img/arrow_low.svg" alt="arrow-down">
                         </div>
                     </div>
                 </div>
