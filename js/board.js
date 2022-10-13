@@ -75,7 +75,7 @@ async function loadTasksFromServer() {
     setURL("https://gruppe-313.developerakademie.net/Join/smallest_backend_ever-master");
     await downloadFromServer();
     downloadedTasks = JSON.parse(backend.getItem('task')) || [];
-    
+
     console.log('loaded 123 tasks');
     console.log(downloadedTasks);
 
@@ -83,7 +83,7 @@ async function loadTasksFromServer() {
 
 
 async function renderBoardSite() {
-    await loadTasksFromServer();
+    // await loadTasksFromServer();
     displayAllTasks();
 }
 
@@ -113,18 +113,18 @@ function displayToDos(search) {
     let todos = tasks.filter(t => t['category'] == 'to-do');
     document.getElementById('to-do').innerHTML = '';
 
-    
+
     for (let i = 0; i < todos.length; i++) {
         let title = todos[i]['title'].toLowerCase();
         if (!search || title.includes(search)) {
             // wenn es search nicht gibt dann führe aus, und wenn title etwas von der suche beinhaltet dann führe ebenfalls aus, wenn nicht dann zeigt er auch nichts an 
 
-        const element = todos[i];
+            const element = todos[i];
 
-        document.getElementById('to-do').innerHTML += addTaskToKanbanHTML(element);
-        NumberOfCurrentTasks++;
+            document.getElementById('to-do').innerHTML += addTaskToKanbanHTML(element);
+            NumberOfCurrentTasks++;
+        }
     }
-}
 }
 
 
@@ -133,12 +133,12 @@ function displayInProgressTasks(search) {
     document.getElementById('in-progress').innerHTML = '';
 
     for (let p = 0; p < inProgress.length; p++) {
-        let title =  inProgress[p]['title'].toLowerCase();
+        let title = inProgress[p]['title'].toLowerCase();
         if (!search || title.includes(search)) {
-        const element = inProgress[p];
+            const element = inProgress[p];
 
-        document.getElementById('in-progress').innerHTML += addTaskToKanbanHTML(element);
-        NumberOfCurrentTasks++;
+            document.getElementById('in-progress').innerHTML += addTaskToKanbanHTML(element);
+            NumberOfCurrentTasks++;
         }
     }
 }
@@ -151,10 +151,10 @@ function displayAwaitingFeedbackTasks(search) {
     for (let a = 0; a < awaitingFeedback.length; a++) {
         let title = awaitingFeedback[a]['title'].toLowerCase();
         if (!search || title.includes(search)) {
-        const element = awaitingFeedback[a];
+            const element = awaitingFeedback[a];
 
-        document.getElementById('awaiting-feedback').innerHTML += addTaskToKanbanHTML(element);
-        NumberOfCurrentTasks++;
+            document.getElementById('awaiting-feedback').innerHTML += addTaskToKanbanHTML(element);
+            NumberOfCurrentTasks++;
         }
     }
 }
@@ -166,10 +166,10 @@ function displayDoneTasks(search) {
     for (let d = 0; d < done.length; d++) {
         let title = done[d]['title'].toLowerCase();
         if (!search || title.includes(search)) {
-        const element = done[d];
+            const element = done[d];
 
-        document.getElementById('done').innerHTML += addTaskToKanbanHTML(element);
-        NumberOfCurrentTasks++; 
+            document.getElementById('done').innerHTML += addTaskToKanbanHTML(element);
+            NumberOfCurrentTasks++;
         }
     }
 }
@@ -235,7 +235,82 @@ function searchTask() {
     search = search.toLowerCase();
     console.log(search);
 
-    displayAllTasks(search) 
+    displayAllTasks(search)
+}
+
+
+
+function displayClickedTask(id) {
+
+    document.getElementById('open-clicked-task').style.display = "flex";
+
+    document.getElementById('c-t-window').innerHTML = `
+        <div class="c-t-category"> 
+            <span> ${area} </span>
+        </div>
+
+        <div class="c-t-title">
+            <b>  Call Potential Clients </b>
+        </div>
+
+        <div class="c-t-description">
+            <p> 
+                Make the Product presentation to prospective buyers. 
+            </p>
+        </div>
+
+        <div class="c-t-infos"> 
+            <span>
+                <b>
+                    Due date:
+                </b>
+            </span>
+            <span class="c-t-space"> 
+                05-08-2022
+            </span> 
+        </div>
+
+        <div class="c-t-infos"> 
+            <span>
+                <b>
+                    Priority:
+                </b>
+            </span>
+            <span class="c-t-space priority-box"> 
+                Urgent <img src="/img/urgent-white.png" class="c-t-priority-icon"> 
+            </span> 
+        </div>
+
+        <div class="c-t-infos"> 
+            <span>
+                <b>
+                    Assigned to:
+                </b>
+            </span>
+        </div>
+
+        <div class="c-t-assignedTo">
+            <div class="c-t-contact"> 
+                <img src="/img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png" class="c-t-profilimages"> 
+                <span>
+                    Sarah Eisenberg
+                </span> 
+            </div>
+
+            <div class="c-t-contact"> 
+                <img src="/img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png" class="c-t-profilimages"> 
+                <span>
+                    Sarah Eisenberg
+                </span> 
+            </div>
+
+        </div> 
+    `;
+
+}
+
+function hideClickedTask() {
+    document.getElementById('open-clicked-task').style.display = "none";
 }
 
 /**
@@ -245,18 +320,18 @@ function searchTask() {
  */
 function addTaskToKanbanHTML(element) {
     return `
-    <div class="kanban-task-container" draggable="true" ondragstart="startDragging(${element['id']})">
+    <div class="kanban-task-container" draggable="true" ondragstart="startDragging(${element['id']})" onclick="displayClickedTask(id)" id="${element['id']}">
     <div>
         <span class="task-type" id="task-type${NumberOfCurrentTasks}">${element['area']}</span>
     </div>
 
     <div>
-        <h3 class="kanban-task-title">
+        <h3 class="kanban-task-title" ">
             ${element['title']}
         </h3>
     </div>
 
-    <p class="task-description">
+    <p class="task-description"> 
         ${element['description']}...
     </p>
     <div class="progress-section">
