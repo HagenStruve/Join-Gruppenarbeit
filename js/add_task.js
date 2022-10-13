@@ -9,6 +9,12 @@ function markedPrio(id) {
     prio.push(prioId)
 }
 
+
+async function initAddTask() {
+    await includeHTML();
+    generateDate();
+}
+
 function changeBg(id) {
     let urgent = document.getElementById('prio-urgent');
     let medium = document.getElementById('prio-medium');
@@ -90,4 +96,29 @@ function clearInput() {
     dueDate.value = '';
 
     prio = [];
+}
+
+
+function generateDate() {
+    document.getElementById("dueDate").valueAsDate = new Date();
+}
+
+
+function showCategories() {
+    if (document.getElementById("ul-category").classList.contains('d-none')) {
+        document.getElementById("ul-category").classList.remove('d-none');
+        document.getElementById("select-div").classList.add('no-border-bottom');
+    }
+    else {
+        document.getElementById("ul-category").classList.add('d-none');
+        document.getElementById("select-div").classList.remove('no-border-bottom');
+    }
+}
+
+function selectCategory(id) {
+    id = id.replace('div-', '');
+    let category = document.getElementById(id).innerHTML;
+    document.getElementById("selected-category").innerHTML = category;
+    document.getElementById("ul-category").classList.add('d-none');
+    document.getElementById("select-div").classList.remove('no-border-bottom');
 }

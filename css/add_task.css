@@ -65,47 +65,67 @@ h1 {
     outline: none;
 }
 
-select {
-    width: 422px;
-    font-size: 21px;
-    appearance: none;
-}
-
-select option {
-    font-size: 21px;
-    height: 36px;
-}
-
 .select-div {
     width: 422px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 18px 21px;
-    overflow: hidden;
-    border: 1px solid #d1d1d1;
-    border-radius: 10px;
-    position: relative;
     background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 10px;
     margin-bottom: 34px;
-}
-
-.select-div:after {
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-top: 6px solid black;
-    position: absolute;
-    top: 44%;
-    right: 20px;
-    content: "";
-    z-index: 98;
-}
-
-.select-div select {
-    font-size: 21px;
-    border: 0;
-    outline: none;
-    position: relative;
-    z-index: 99;
-    background: none;
     cursor: pointer;
+}
+
+.no-border-bottom {
+    margin-bottom: 0px !important;
+    border-bottom: 0px !important;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+}
+
+
+.select-div span {
+    font-size: 21px;
+}
+
+ul {
+    list-style-type: none;
+    width: 464px;
+    background-color: white;
+    border-bottom: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+    border-top: 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-top: 0;
+    margin-bottom: 34px;
+    padding-left: 0;
+}
+
+.div-li-style {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.div-li-style:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+li {
+    font-size: 21px;
+    margin: 10px 20px;
+}
+
+.li-point {
+    display: flex;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
 }
 
 
@@ -127,6 +147,11 @@ select option {
     outline: none;
     margin-bottom: 34px;
 }
+
+input::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+}
+
 
 .prio-div {
     display: flex;
@@ -173,6 +198,18 @@ select option {
     color: white !important;
 }
 
+.bg-pink {
+    background-color: #FC71FF;
+}
+
+.bg-turquoise {
+    background-color: #1FD7C1;
+}
+
+.bg-blue {
+    background-color: #0038FF;
+}
+
 .clear-create-div {
     display: flex;
     justify-content: flex-end;
@@ -197,6 +234,10 @@ select option {
     height: 24px;
     margin-left: 5px;
     margin-top: 1px;
+}
+
+.clear-div:hover img {
+    filter: invert(74%) sepia(83%) saturate(3935%) hue-rotate(165deg) brightness(96%) contrast(84%);
 }
 
 .create-div {

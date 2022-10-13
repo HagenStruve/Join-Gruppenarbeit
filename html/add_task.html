@@ -20,7 +20,7 @@
     <title>Join</title>
 </head>
 
-<body onload="init()">
+<body onload="initAddTask()">
     <div w3-include-html="sidebar.html"></div>
 
     <div id="render">
@@ -36,15 +36,42 @@
                     <textarea id="descripton" class="enter-description" placeholder="Enter a description"></textarea>
 
                     <span class="little-headlines">Category</span>
-                    <div class="select-div">
+                    <div onclick="showCategories()" id="select-div" class="select-div">
+                        <span id="selected-category">Select Task Category</span>
+                        <img src="../img/dropdown_arrow.svg" alt="dropdown_arrow">
+                    </div>
+                    <ul id="ul-category" class="d-none">
+                        <div onclick="selectCategory(id)" id="div-media" class="div-li-style">
+                            <li id="media">Media</li>
+                            <div class="li-point bg-yellow"> </div>
+                        </div>
+
+                        <div onclick="selectCategory(id)" id="div-sales" class="div-li-style">
+                            <li id="sales">Sales</li>
+                            <div class="li-point bg-pink"> </div>
+                        </div>
+
+                        <div onclick="selectCategory(id)" id="div-backoffice" class="div-li-style">
+                            <li id="backoffice">Backoffice</li>
+                            <div class="li-point bg-turquoise"> </div>
+                        </div>
+
+                        <div onclick="selectCategory(id)" id="div-marketing" class="div-li-style">
+                            <li id="marketing">Marketing</li>
+                            <div class="li-point bg-blue"> </div>
+                        </div>
+                    </ul>
+
+                    <!-- <span class="little-headlines">Category</span>
+                    <div id="select-div" class="select-div">
                         <select required id="category">
-                            <option value disabled selected hidden>Select task Category</option>
+                            <option value>Select task Category</option>
                             <option value="Management">Management</option>
                             <option value="Sales">Sales</option>
                             <option value="Product">Product</option>
                             <option value="Marketing">Marketing</option>
                         </select>
-                    </div>
+                    </div> -->
 
                     <span class="little-headlines">Assigned to</span>
                     <div class="select-div">
@@ -60,7 +87,7 @@
             <div class="add-task-right-side">
                 <div class="right-side-first-half">
                     <span class="little-headlines">Due Date</span>
-                    <input id="dueDate" required class="input-date" type="date" placeholder="dd/mm/yyyy">
+                    <input id="dueDate" required class="input-date" type="date">
                     <span class="little-headlines">Prio</span>
 
                     <div class="prio-div">
