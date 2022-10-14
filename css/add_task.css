@@ -15,6 +15,13 @@ h1 {
     margin-bottom: 41px;
 }
 
+.hidden-input {
+    width: 0 !important;
+    height: 0 !important;
+    padding: 0 !important;
+    opacity: 0;
+}
+
 .add-task-whole-page {
     display: flex;
 }
@@ -84,7 +91,6 @@ h1 {
     border-bottom-left-radius: 0px !important;
     border-bottom-right-radius: 0px !important;
 }
-
 
 .select-div span {
     font-size: 21px;

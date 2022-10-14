@@ -86,6 +86,7 @@
         background-color: #2A3647;
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
         align-items: center;
         color: white;
         z-index: 100;
@@ -97,8 +98,10 @@
         object-fit: cover;
         justify-content: center;
         align-items: center;
-        height: 290px;
+        height: 200px;
         margin-right: 30px;
+        margin-top: 50px;
+        margin-bottom: 70px;
     }
 
     .nav-properties {
@@ -142,6 +145,7 @@
 
     a {
         all: unset;
+        cursor: pointer;
     }
 
     .nav-notice {
@@ -151,7 +155,7 @@
         flex-direction: column;
         height: 60%;
         width: 100%;
-        margin-top: 50px;
+        margin-top: 120px;
     }
 
     .legal-notice {
@@ -176,10 +180,10 @@
 
     <header>
         <span>
-            Kanban project Management Tool
+            Kanban Project Management Tool
         </span>
         <div class="header-right">
-            <img src="../img/questions_mark.png" class="question-mark">
+            <a href="help.html"><img src="../img/questions_mark.png" class="question-mark"></a>
             <div class="pp-container">
                 <img src="../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png" class="profil-picture">
             </div>
@@ -227,14 +231,6 @@
                     </span>
                 </a>
 
-                <a href="help.html" class="nav-properties">
-                    <div class="nav-icons">
-                        <img src="../img/question-mark-icon.svg">
-                    </div>
-                    <span class="nav-text">
-                        Help
-                    </span>
-                </a>
 
                 <div class="nav-notice">
                     <a href="legal_notice.html" class="legal-notice">

@@ -3,13 +3,6 @@ let prio = [];
 let createdTasks = 0;
 let liCategory;
 let liContact;
-function markedPrio(id) {
-    prio = [];
-    changeBg(id);
-
-    let prioId = document.getElementById(id);
-    prio.push(prioId)
-}
 
 
 async function initAddTask() {
@@ -17,36 +10,59 @@ async function initAddTask() {
     generateDate();
 }
 
+
+function markedPrio(id) {
+    prio = [];
+    changeBg(id);
+    document.getElementById("hidden-prio-input").value = '.';
+    let prioId = document.getElementById(id);
+    prio.push(prioId)
+}
+
+
 function changeBg(id) {
     let urgent = document.getElementById('prio-urgent');
     let medium = document.getElementById('prio-medium');
     let low = document.getElementById('prio-low');
     if (id == 'prio-urgent') {
-        document.getElementById('urgent-img').src = "../img/arrow_urgent_white.svg";
-        document.getElementById('medium-img').src = "../img/medium.svg";
-        document.getElementById('low-img').src = "../img/arrow_low.svg";
-        urgent.classList.add('bg-orange');
-        medium.classList.remove('bg-yellow');
-        low.classList.remove('bg-green');
+        changeBgUrgent(urgent, medium, low);
     }
-
     if (id == 'prio-medium') {
-        document.getElementById('urgent-img').src = "../img/arrow_urgent.svg";
-        document.getElementById('medium-img').src = "../img/medium_white.svg";
-        document.getElementById('low-img').src = "../img/arrow_low.svg";
-        urgent.classList.remove('bg-orange');
-        medium.classList.add('bg-yellow');
-        low.classList.remove('bg-green');
+        changeBgMedium(urgent, medium, low);
     }
-
     if (id == 'prio-low') {
-        document.getElementById('urgent-img').src = "../img/arrow_urgent.svg";
-        document.getElementById('medium-img').src = "../img/medium.svg";
-        document.getElementById('low-img').src = "../img/arrow_low_white.svg";
-        urgent.classList.remove('bg-orange');
-        medium.classList.remove('bg-yellow');
-        low.classList.add('bg-green');
+        changeBgLow(urgent, medium, low);
     }
+}
+
+
+function changeBgUrgent(urgent, medium, low) {
+    document.getElementById('urgent-img').src = "../img/arrow_urgent_white.svg";
+    document.getElementById('medium-img').src = "../img/medium.svg";
+    document.getElementById('low-img').src = "../img/arrow_low.svg";
+    urgent.classList.add('bg-orange');
+    medium.classList.remove('bg-yellow');
+    low.classList.remove('bg-green');
+}
+
+
+function changeBgMedium(urgent, medium, low) {
+    document.getElementById('urgent-img').src = "../img/arrow_urgent.svg";
+    document.getElementById('medium-img').src = "../img/medium_white.svg";
+    document.getElementById('low-img').src = "../img/arrow_low.svg";
+    urgent.classList.remove('bg-orange');
+    medium.classList.add('bg-yellow');
+    low.classList.remove('bg-green');
+}
+
+
+function changeBgLow(urgent, medium, low) {
+    document.getElementById('urgent-img').src = "../img/arrow_urgent.svg";
+    document.getElementById('medium-img').src = "../img/medium.svg";
+    document.getElementById('low-img').src = "../img/arrow_low_white.svg";
+    urgent.classList.remove('bg-orange');
+    medium.classList.remove('bg-yellow');
+    low.classList.add('bg-green');
 }
 
 
@@ -57,7 +73,6 @@ async function addTask() {
     let assingedTo = document.getElementById(liContact).innerHTML;
     let dueDate = document.getElementById('dueDate');
     let prioId = prio[0];
-    console.log(liCategory);
 
     let addTask = {
         "id": createdTasks,
@@ -70,7 +85,6 @@ async function addTask() {
     };
 
     task.push(addTask);
-    console.log(task);
 
     saveOnServer();
     clearInput();
@@ -94,6 +108,9 @@ function clearInput() {
 
     title.value = '';
     descripton.value = '';
+    document.getElementById("hidden-category-input").value = '';
+    document.getElementById("hidden-contact-input").value = '';
+    document.getElementById("hidden-prio-input").value = '';
     document.getElementById('selected-category').innerHTML = 'Select task Category';
     document.getElementById('selected-contact').innerHTML = 'Select contacts to assign';
     generateDate();
@@ -108,46 +125,80 @@ function generateDate() {
 
 
 function showCategories() {
-    if (document.getElementById("ul-category").classList.contains('d-none')) {
-        document.getElementById("ul-category").classList.remove('d-none');
-        document.getElementById("select-div").classList.add('no-border-bottom');
+    let ulCategory = document.getElementById("ul-category");
+    if (ulCategory.classList.contains('d-none')) {
+        showSelectionCategories(ulCategory);
     }
     else {
-        document.getElementById("ul-category").classList.add('d-none');
-        document.getElementById("select-div").classList.remove('no-border-bottom');
+        hideSelectionCategories(ulCategory);
     }
 }
 
 
+function showSelectionCategories(ulCategory) {
+    ulCategory.classList.remove('d-none');
+    document.getElementById("select-div-category").classList.add('no-border-bottom');
+}
+
+
+function hideSelectionCategories(ulCategory) {
+    ulCategory.classList.add('d-none');
+    document.getElementById("select-div-category").classList.remove('no-border-bottom');
+}
+
+
 function showContacts() {
-    if (document.getElementById("ul-contact").classList.contains('d-none')) {
-        document.getElementById("ul-contact").classList.remove('d-none');
-        document.getElementById("select-div-contact").classList.add('no-border-bottom');
+    let ulContact = document.getElementById("ul-contact");
+    if (ulContact.classList.contains('d-none')) {
+        showSelectionContacts(ulContact);
     }
     else {
-        document.getElementById("ul-contact").classList.add('d-none');
-        document.getElementById("select-div-contact").classList.remove('no-border-bottom');
+        hideSelectionContacts(ulContact);
     }
+}
+
+
+function showSelectionContacts(ulContact) {
+    ulContact.classList.remove('d-none');
+    document.getElementById("select-div-contact").classList.add('no-border-bottom');
+}
+
+
+function hideSelectionContacts(ulContact) {
+    ulContact.classList.add('d-none');
+    document.getElementById("select-div-contact").classList.remove('no-border-bottom');
 }
 
 
 function selectCategory(id) {
     liCategory = id.replace('div-', '');
+    let ulCategory = document.getElementById("ul-category");
     let category = document.getElementById(id).innerHTML;
+    showSelectedCategory(category, liCategory);
+    hideSelectionCategories(ulCategory);
+}
+
+
+function showSelectedCategory(category, liCategory) {
     document.getElementById('selected-category').style = 'display: flex; align-items: center; list-style-type: none;';
     document.getElementById("selected-category").innerHTML = category;
+    document.getElementById("hidden-category-input").value = '.';
     document.getElementById(liCategory).style = 'margin:0; margin-right: 20px';
-    document.getElementById("ul-category").classList.add('d-none');
-    document.getElementById("select-div").classList.remove('no-border-bottom');
 }
 
 
 function selectContact(id) {
     liContact = id.replace('div-', '');
+    let ulContact = document.getElementById("ul-contact");
     let contact = document.getElementById(id).innerHTML;
+    showSelectedContacts(contact, liContact);
+    showSelectionContacts(ulContact);
+}
+
+
+function showSelectedContacts(contact, liContact) {
     document.getElementById('selected-contact').style = 'display: flex; align-items: center; list-style-type: none;';
     document.getElementById("selected-contact").innerHTML = contact;
+    document.getElementById("hidden-contact-input").value = '.';
     document.getElementById(liContact).style = 'margin:0; margin-right: 20px';
-    document.getElementById("ul-contact").classList.add('d-none');
-    document.getElementById("select-div-contact").classList.remove('no-border-bottom');
 }
