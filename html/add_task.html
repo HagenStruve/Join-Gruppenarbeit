@@ -62,25 +62,18 @@
                         </div>
                     </ul>
 
-                    <!-- <span class="little-headlines">Category</span>
-                    <div id="select-div" class="select-div">
-                        <select required id="category">
-                            <option value>Select task Category</option>
-                            <option value="Management">Management</option>
-                            <option value="Sales">Sales</option>
-                            <option value="Product">Product</option>
-                            <option value="Marketing">Marketing</option>
-                        </select>
-                    </div> -->
 
                     <span class="little-headlines">Assigned to</span>
-                    <div class="select-div">
-                        <select required id="assingedTo">
-                            <!-- optionen (Kontakte) hinzufügen -->
-                            <option value disabled selected hidden>Select contacts to assign</option>
-                            <option value="Kontakt">Test Kontakt</option>
-                        </select>
+                    <div onclick="showContacts()" id="select-div-contact" class="select-div">
+                        <span id="selected-contact">Select contacts to assign</span>
+                        <img src="../img/dropdown_arrow.svg" alt="dropdown_arrow">
                     </div>
+                    <ul id="ul-contact" class="d-none">
+                        <div onclick="selectContact(id)" id="div-contact-1" class="div-li-style">
+                            <li id="contact-1">Test Kontakt</li>
+                        </div>
+                    </ul>
+
                 </div>
             </div>
 

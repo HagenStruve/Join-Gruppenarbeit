@@ -1,6 +1,8 @@
 let task = [];
 let prio = [];
 let createdTasks = 0;
+let liCategory;
+let liContact;
 function markedPrio(id) {
     prio = [];
     changeBg(id);
@@ -51,17 +53,18 @@ function changeBg(id) {
 async function addTask() {
     let title = document.getElementById('title');
     let descripton = document.getElementById('descripton');
-    let category = document.getElementById('category');
-    let assingedTo = document.getElementById('assingedTo');
+    let category = liCategory;
+    let assingedTo = document.getElementById(liContact).innerHTML;
     let dueDate = document.getElementById('dueDate');
     let prioId = prio[0];
+    console.log(liCategory);
 
     let addTask = {
         "id": createdTasks,
         "title": title.value,
         "descripton": descripton.value,
-        "category": category.value,
-        "assingedTo": assingedTo.value,
+        "category": category,
+        "assingedTo": assingedTo,
         "dueDate": dueDate.value,
         "prio": prioId,
     };
@@ -91,9 +94,9 @@ function clearInput() {
 
     title.value = '';
     descripton.value = '';
-    category.value = 'Select task Category';
-    assingedTo.value = 'Select contacts to assign';
-    dueDate.value = '';
+    document.getElementById('selected-category').innerHTML = 'Select task Category';
+    document.getElementById('selected-contact').innerHTML = 'Select contacts to assign';
+    generateDate();
 
     prio = [];
 }
@@ -115,10 +118,36 @@ function showCategories() {
     }
 }
 
+
+function showContacts() {
+    if (document.getElementById("ul-contact").classList.contains('d-none')) {
+        document.getElementById("ul-contact").classList.remove('d-none');
+        document.getElementById("select-div-contact").classList.add('no-border-bottom');
+    }
+    else {
+        document.getElementById("ul-contact").classList.add('d-none');
+        document.getElementById("select-div-contact").classList.remove('no-border-bottom');
+    }
+}
+
+
 function selectCategory(id) {
-    id = id.replace('div-', '');
+    liCategory = id.replace('div-', '');
     let category = document.getElementById(id).innerHTML;
+    document.getElementById('selected-category').style = 'display: flex; align-items: center; list-style-type: none;';
     document.getElementById("selected-category").innerHTML = category;
+    document.getElementById(liCategory).style = 'margin:0; margin-right: 20px';
     document.getElementById("ul-category").classList.add('d-none');
     document.getElementById("select-div").classList.remove('no-border-bottom');
+}
+
+
+function selectContact(id) {
+    liContact = id.replace('div-', '');
+    let contact = document.getElementById(id).innerHTML;
+    document.getElementById('selected-contact').style = 'display: flex; align-items: center; list-style-type: none;';
+    document.getElementById("selected-contact").innerHTML = contact;
+    document.getElementById(liContact).style = 'margin:0; margin-right: 20px';
+    document.getElementById("ul-contact").classList.add('d-none');
+    document.getElementById("select-div-contact").classList.remove('no-border-bottom');
 }
