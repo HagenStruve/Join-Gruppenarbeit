@@ -368,6 +368,16 @@ body {
     border-radius: 10px;
 }
 
+.inputs-phone::-webkit-outer-spin-button,
+.inputs-phone::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.inputs-phone[type=number] {
+    -moz-appearance: textfield;
+}
+
 .button-box {
     display: flex;
     width: 422px;
@@ -425,4 +435,8 @@ body {
     align-items: center;
     font-size: 38px;
     color: white;
+}
+
+.blue-background {
+    background-color: #2A3647;
 }
