@@ -11,11 +11,7 @@
 
     <link rel="stylesheet" href="../css/summary.style.css">
     <link rel="stylesheet" href="../fonts/fonts.css">
-    <script src="../js/board.js"></script>
     <script src="../js/script.js"></script>
-    <script src="../js/contact.js"></script>
-    <script src="../js/add_task.js"></script>
-    <script src="../js/login.js"></script>
     <script src="../mini_backend.js"></script>
 
     <title>Join</title>
@@ -23,78 +19,76 @@
 
 <body onload="init()">
     <div w3-include-html="sidebar.html"></div>
-    <!-- nessasary to use function in sidebar-->
-    <div id="render">
 
 
-        <div class="header">
-            <div>
-                <h1>Summary</h1>
+
+    <div class="header">
+        <div>
+            <h1>Summary</h1>
+        </div>
+        <div class="header-subtext">
+            Everything in a nutshell!
+        </div>
+    </div>
+    <div class="content-box">
+        <div class="content-left">
+            <div class="task-card-box">
+                <div class="task-card">
+                    <div class="numbers">5</div>
+                    <div class="fontsize-21">Tasks in<br>Board</div>
+                </div>
+                <div class="task-card">
+                    <div class="numbers">2</div>
+                    <div class="fontsize-21">Task in<br>Progress</div>
+                </div>
+                <div class="task-card">
+                    <div class="numbers">2</div>
+                    <div class="fontsize-21">Awaiting Feedback</div>
+                </div>
             </div>
-            <div class="header-subtext">
-                Everything in a nutshell!
+            <div>
+                <div class="upcomming-card">
+                    <div>
+                        <img src="../img/urgent-arrow.png">
+                    </div>
+                    <div>
+                        <div class="numbers">1</div>
+                        <div>Ugent</div>
+                    </div>
+
+                    <div class="upcomming-date-container">
+                        <b>October 16, 2022</b>
+                        <div>Upcomming Deadline</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="to-do-card-box">
+                <div class="to-do-card">
+                    <div class="to-do-img-box">
+                        <img src="../img/to-do-icon.png">
+                    </div>
+                    <div>
+                        <div class="numbers">1</div>
+                        <div class="fontsize-21">To-do</div>
+                    </div>
+                </div>
+                <div class="to-do-card">
+                    <div class="to-do-img-box">
+                        <img src="../img/done-icon.png">
+                    </div>
+                    <div>
+                        <div class="numbers">1</div>
+                        <div class="fontsize-21">Done</div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="content-box">
-            <div class="content-left">
-                <div class="task-card-box">
-                    <div class="task-card">
-                        <div class="numbers">5</div>
-                        <div class="fontsize-21">Tasks in<br>Board</div>
-                    </div>
-                    <div class="task-card">
-                        <div class="numbers">2</div>
-                        <div class="fontsize-21">Task in<br>Progress</div>
-                    </div>
-                    <div class="task-card">
-                        <div class="numbers">2</div>
-                        <div class="fontsize-21">Awaiting Feedback</div>
-                    </div>
-                </div>
-                <div>
-                    <div class="upcomming-card">
-                        <div>
-                            <img src="../img/urgent-arrow.png">
-                        </div>
-                        <div>
-                            <div class="numbers">1</div>
-                            <div>Ugent</div>
-                        </div>
-
-                        <div class="upcomming-date-container">
-                            <b>October 16, 2022</b>
-                            <div>Upcomming Deadline</div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="to-do-card-box">
-                    <div class="to-do-card">
-                        <div class="to-do-img-box">
-                            <img src="../img/to-do-icon.png">
-                        </div>
-                        <div>
-                            <div class="numbers">1</div>
-                            <div class="fontsize-21">To-do</div>
-                        </div>
-                    </div>
-                    <div class="to-do-card">
-                        <div class="to-do-img-box">
-                            <img src="../img/done-icon.png">
-                        </div>
-                        <div>
-                            <div class="numbers">1</div>
-                            <div class="fontsize-21">Done</div>
-                        </div>
-                    </div>
-                </div>
+        <div class="content-right">
+            <div class="good-morning">
+                Good morning,
             </div>
-            <div class="content-right">
-                <div class="good-morning">
-                    Good morning,
-                </div>
-                <div class="name">Sofia Müller</div>
-            </div>
+            <div class="name">Sofia Müller</div>
         </div>
     </div>
 </body>
