@@ -75,7 +75,7 @@ async function loadTasksFromServer() {
     setURL("https://gruppe-313.developerakademie.net/Join-Gruppenarbeit/smallest_backend_ever-master");
     await downloadFromServer();
     downloadedTasks = JSON.parse(backend.getItem('task')) || [];
-    
+
     console.log('loaded 123 tasks');
     console.log(downloadedTasks);
 
@@ -119,12 +119,12 @@ function displayToDos(search) {
         if (!search || title.includes(search)) {
             // wenn es search nicht gibt dann führe aus, und wenn title etwas von der suche beinhaltet dann führe ebenfalls aus, wenn nicht dann zeigt er auch nichts an 
 
-                const element = todos[i];
+            const element = todos[i];
 
-                document.getElementById('to-do').innerHTML += addTaskToKanbanHTML(element);
-                NumberOfCurrentTasks++;
-            }
+            document.getElementById('to-do').innerHTML += addTaskToKanbanHTML(element);
+            NumberOfCurrentTasks++;
         }
+    }
 }
 
 
@@ -135,10 +135,10 @@ function displayInProgressTasks(search) {
     for (let p = 0; p < inProgress.length; p++) {
         let title = inProgress[p]['title'].toLowerCase();
         if (!search || title.includes(search)) {
-                const element = inProgress[p];
+            const element = inProgress[p];
 
-                document.getElementById('in-progress').innerHTML += addTaskToKanbanHTML(element);
-                NumberOfCurrentTasks++;
+            document.getElementById('in-progress').innerHTML += addTaskToKanbanHTML(element);
+            NumberOfCurrentTasks++;
         }
     }
 }
@@ -352,7 +352,7 @@ function addTaskToKanbanHTML(element) {
                 class="third-picture">
         </div>
 
-        <img src="../img/orange-arrow-up.png">
+        <img src="../img/arrow_urgent.svg">
     </div>
 </div>
     `;
