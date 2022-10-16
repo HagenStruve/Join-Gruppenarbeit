@@ -3,6 +3,7 @@ let prio = [];
 let createdTasks = 0;
 let liCategory;
 let liContact;
+let twoSubtaskIcons = false;
 
 
 async function initAddTask() {
@@ -200,4 +201,32 @@ function proofCheck(id) {
     else {
         document.getElementById(initial).classList.add('d-none');
     }
+}
+
+
+function showXandCheckmark() {
+    if (twoSubtaskIcons == false) {
+        document.getElementById('subtask-icons').innerHTML = /*html*/ `
+        <img onclick="closeSubtask()" id="close-icon" src="../img/close-icon.png" alt="close">
+        <img onclick="addSubtask()" id="checkmark-icon" src="../img/checkmark.png" alt="checkmark">`;
+        document.getElementById('subtask-icons').style = 'width: 116px !important;'
+        twoSubtaskIcons = true;
+    }
+
+    else {
+        twoSubtaskIcons = false;
+    }
+}
+
+
+function closeSubtask() {
+    document.getElementById('subtask-input').value = '';
+    document.getElementById('subtask-icons').innerHTML = /*html*/ `
+    <img id="plus-icon" src="../img/plus-icon.png" alt="plus">`;
+    document.getElementById('subtask-icons').style = 'width: 50px;'
+}
+
+
+function addSubtask() {
+
 }
