@@ -1,5 +1,5 @@
 
-let tasks = [{
+/* let downloadedTasks = [{
     'id': 0,
     'sector': 'Media',
     'title': 'Redesign Website',
@@ -39,8 +39,7 @@ let tasks = [{
     'importance': 'medium',
     'category': 'done'
 }];
-
-
+*/ 
 
 let downloadedTasks = [];
 
@@ -70,9 +69,7 @@ let NumberOfCurrentTasks = 0; // is needed to differ between the tasks
 
 async function initBoard() {
     await includeHTML();
-    await loadTasksFromServer();
     renderBoardSite();
-
 }
 
 async function loadTasksFromServer() {
@@ -87,7 +84,7 @@ async function loadTasksFromServer() {
 
 
 async function renderBoardSite() {
-    // await loadTasksFromServer();
+    await loadTasksFromServer();
     displayAllTasks();
 }
 
@@ -190,6 +187,14 @@ function allowDrop(ev) { // from W3School predefined //
 function moveTo(category) {
     downloadedTasks[currentDraggedElement]['category'] = category;
     displayAllTasks();
+    saveNewOnServer();
+    
+}
+
+
+async function saveNewOnServer() {
+    setURL("https://gruppe-313.developerakademie.net/Join-Gruppenarbeit/smallest_backend_ever-master");
+    await backend.setItem('task', JSON.stringify(downloadedTasks));
 }
 
 
@@ -346,6 +351,12 @@ function displayClickedTask(id) {
 function hideClickedTask() {
     document.getElementById('open-clicked-task').style.display = "none";
 }
+
+
+async function newTaskReload() {
+    await addTask(); 
+    renderBoardSite(); 
+} 
 
 
 /** to show the add task window on board site
