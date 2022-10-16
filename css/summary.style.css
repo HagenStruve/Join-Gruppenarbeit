@@ -32,6 +32,10 @@ h1 {
     flex-grow: 0;
 }
 
+a {
+    text-decoration: none;
+}
+
 .header {
     display: flex;
     align-items: center;
