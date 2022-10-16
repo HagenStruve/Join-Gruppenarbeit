@@ -213,7 +213,14 @@ function setColorTypeTasks(categoryID, classID) {
 }
 
 
-
+/** responsible to set the correct color for the specific Category
+ * 
+ * @param {string} innerHTML - variable checks what the task-category is
+ *
+ * @param {string} classID - hands over ID for Category Div to add the class specific color
+ * 
+ * @param {string} categoryID - hands over ID for HTHML inside Category Div  
+ */
 function setColor(categoryID, classID, c) {
 
     let innerHTML = document.getElementById(`${categoryID}${c}`).innerHTML;
@@ -237,7 +244,7 @@ function setColor(categoryID, classID, c) {
 }
 
 
-/**gets Value of Input Field "search Task" and hands over to displayAllTasks()
+/**gets Value of Input Field "search Task" and hands over to displayAllTasks() // which leads to display only tasks that match the search 
  * 
  * @param {string} search - contains value of input field "search Task"
  */
@@ -250,7 +257,7 @@ function searchTask() {
 }
 
 
-/** shows a bigger window when task is clicked
+/** shows a bigger window of the Task, when it's clicked
  * 
  * @param {number} id - contains number id which task is clicked
  */
@@ -328,13 +335,39 @@ function displayClickedTask(id) {
 
 }
 
+
+/** to hide the clickedTask
+ * 
+ */
 function hideClickedTask() {
     document.getElementById('open-clicked-task').style.display = "none";
 }
 
-/**
+
+/** to show the add task window on board site
+ * 
+ */
+function displayAddTaskWindow() {
+
+    document.getElementById('open-clicked-addtask').style.display = "flex";
+    document.getElementById('c-t-addtask-window').style.display = "flex"
+}
+
+/** to hide the add task window on board site
+ * 
+ */
+function hideClickedAddTaskWindow() {
+
+    document.getElementById('open-clicked-addtask').style.display = "none";
+    document.getElementById('c-t-addtask-window').style.display = "none"
+}
+
+
+
+/** HTML to generate a task
  * 
  * @param {array} element - beinhaltet den gefilterten Array mit forschleifen Zahl der jeweiligen Kategorie
+ * 
  * @returns 
  */
 function addTaskToKanbanHTML(element) {
