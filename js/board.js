@@ -2,41 +2,41 @@
 
 let tasks = [{
     'id': 0,
-    'area': 'Media',
+    'sector': 'Media',
     'title': 'Redesign Website',
     'description': 'Modify contents of the website und und und nur ein Testtext',
     'subtasks': 2,
-    'assigned': '../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png',
+    'assignedTo': '../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png',
     'importance': 'urgent',
     'category': 'to-do'
 },
 {
     'id': 1,
-    'area': 'Sales',
+    'sector': 'Sales',
     'title': 'Call Clients',
     'description': 'Sells so much that we drown in money',
     'subtasks': 0,
-    'assigned': '../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png',
+    'assignedTo': '../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png',
     'importance': 'medium',
     'category': 'in-progress'
 },
 {
     'id': 2,
-    'area': 'Backoffice',
+    'sector': 'Backoffice',
     'title': 'Do Something',
     'description': 'and teaches them good things',
     'subtasks': 0,
-    'assigned': '../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png',
+    'assignedTo': '../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png',
     'importance': 'medium',
     'category': 'awaiting-feedback'
 },
 {
     'id': 3,
-    'area': 'Marketing',
+    'sector': 'Marketing',
     'title': 'Sell Products',
     'description': 'Market yourself so well that you dont need marketing anymore',
     'subtasks': 0,
-    'assigned': '../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png',
+    'assignedTo': '../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png',
     'importance': 'medium',
     'category': 'done'
 }];
@@ -45,12 +45,13 @@ let tasks = [{
 let downloadedTasks = [];
 
 let tasksOnServer = {
+    "id" : 0,
     "title": '',
     "descripton": '',
     "category": '',
     "assingedTo": '',
     "dueDate": '',
-    "prio": '',
+    "importance": '',
 };
 
 let currentDraggedElement;
@@ -267,7 +268,7 @@ function displayClickedTask(id) {
 
     document.getElementById('c-t-window').innerHTML = `
         <div class="c-t-category" id="c-t-category${id}"> 
-            <span id="c-t-category-html${id}">${tasks[id]['area']}</span>
+            <span id="c-t-category-html${id}">${tasks[id]['category']}</span>
         </div>
 
         <div class="c-t-title" >
@@ -374,7 +375,7 @@ function addTaskToKanbanHTML(element) {
     return `
     <div class="kanban-task-container" draggable="true" ondragstart="startDragging(${element['id']})" onclick="displayClickedTask(id)" id="${element['id']}">
     <div>
-        <span class="task-type" id="task-type${NumberOfCurrentTasks}">${element['area']}</span>
+        <span class="task-type" id="task-type${NumberOfCurrentTasks}">${element['sector']}</span>
     </div>
 
     <div>

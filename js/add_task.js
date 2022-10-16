@@ -69,7 +69,7 @@ function changeBgLow(urgent, medium, low) {
 async function addTask() {
     let title = document.getElementById('title');
     let descripton = document.getElementById('descripton');
-    let category = liCategory;
+    let sector = liCategory;
     let assingedTo = document.getElementById(liContact).innerHTML;
     let dueDate = document.getElementById('dueDate');
     let prioId = prio[0];
@@ -78,7 +78,7 @@ async function addTask() {
         "id": createdTasks,
         "title": title.value,
         "descripton": descripton.value,
-        "category": category,
+        "sector": sector,
         "assingedTo": assingedTo,
         "dueDate": dueDate.value,
         "prio": prioId,
