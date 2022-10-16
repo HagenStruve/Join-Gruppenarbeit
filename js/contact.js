@@ -79,8 +79,12 @@ function addContact() {
     };
 
     contact.push(addContact);
-    console.log(contact);
 
+    addAndSaveContact();
+}
+
+
+function addAndSaveContact() {
     saveOnServer();
     clearInput();
     clearContentLeft();
@@ -261,6 +265,11 @@ function save(i) {
         "phone": phone.value,
     };
 
+    saveAndLoadContact(i)
+}
+
+
+function saveAndLoadContact(i){
     saveOnServer();
     clearContentLeft();
     pushFirstLetterJSON();
