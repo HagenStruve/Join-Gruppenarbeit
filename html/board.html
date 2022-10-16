@@ -8,9 +8,11 @@
 
     <link rel="stylesheet" href="../css/style_board.css">
     <link rel="stylesheet" href="../fonts/fonts.css">
+        <link rel="stylesheet" href="../css/add_task.css">
     <script src="../js/script.js"></script>
     <script src="../js/board.js"></script>
     <script src="../mini_backend.js"></script>
+    <script src="../js/add_task.js"></script>
 
     <title>Join</title>
 </head>
@@ -31,7 +33,7 @@
                         <img src="../img/magnifying-glass.png">
                     </div>
 
-                    <button class="find-task-button"> Add Task + </button>
+                    <button class="find-task-button" onclick="displayAddTaskWindow()"> Add Task + </button>
                 </div>
             </div>
 
@@ -92,6 +94,7 @@
             </div>
         </div>
 
+ 
         <div class="clicked-task-bg" id="open-clicked-task" onclick="hideClickedTask()">
             <div class="clicked-task-window" id="c-t-window">
                 <div class="c-t-category">
@@ -156,6 +159,108 @@
                 </div>
             </div>
         </div>
+
+        <!-- TEst --> 
+        <div class="clicked-addtask-bg" id="open-clicked-addtask" onclick="hideClickedAddTaskWindow()" > 
+        </div>
+            <div class="clicked-addtask-window" id="c-t-addtask-window">
+                
+                <form onsubmit="addTask(); return false;" class="add-task-whole-page">
+                    <div class="add-task-left-side">
+                        <h1>Add Task</h1>
+                        <div class="left-side-without-h1">
+                            <span class="little-headlines">Title</span>
+                            <input id="title" required class="enter-title" type="text" placeholder="Enter a title">
+                            <span class="little-headlines">Description</span>
+                            <textarea id="descripton" class="enter-description" placeholder="Enter a description"></textarea>
+            
+                            <span class="little-headlines">Category</span>
+                            <div onclick="showCategories()" id="select-div-category" class="select-div">
+                                <span id="selected-category"> Select Task Category</span>
+                                <input class="hidden-input" id="hidden-category-input" type="text" required>
+                                <img src="../img/dropdown_arrow.svg" alt="dropdown_arrow">
+                            </div>
+            
+                            <ul id="ul-category" class="d-none">
+                                <div onclick="selectCategory(id)" id="div-media" class="div-li-style">
+                                    <li id="media">Media</li>
+                                    <div class="li-point bg-yellow"> </div>
+                                </div>
+            
+                                <div onclick="selectCategory(id)" id="div-sales" class="div-li-style">
+                                    <li id="sales">Sales</li>
+                                    <div class="li-point bg-pink"> </div>
+                                </div>
+            
+                                <div onclick="selectCategory(id)" id="div-backoffice" class="div-li-style">
+                                    <li id="backoffice">Backoffice</li>
+                                    <div class="li-point bg-turquoise"> </div>
+                                </div>
+            
+                                <div onclick="selectCategory(id)" id="div-marketing" class="div-li-style">
+                                    <li id="marketing">Marketing</li>
+                                    <div class="li-point bg-blue"> </div>
+                                </div>
+                            </ul>
+            
+                            <span class="little-headlines">Assigned to</span>
+                            <div onclick="showContacts()" id="select-div-contact" class="select-div">
+                                <span id="selected-contact">Select contacts to assign</span>
+                                <input class="hidden-input" id="hidden-contact-input" type="text" required>
+                                <img src="../img/dropdown_arrow.svg" alt="dropdown_arrow">
+                            </div>
+                            <ul id="ul-contact" class="d-none">
+                                <div onclick="selectContact(id)" id="div-contact-1" class="div-li-style">
+                                    <li id="contact-1">Test Kontakt</li>
+                                </div>
+                            </ul>
+            
+                        </div>
+                    </div>
+            
+                    <div class="add-task-right-side">
+                        <div class="right-side-first-half">
+                            <span class="little-headlines">Due Date</span>
+                            <input id="dueDate" required class="input-date" type="date">
+                            <span class="little-headlines">Prio</span>
+                            <input class="hidden-input" id="hidden-prio-input" type="text" required>
+                            <div class="prio-div">
+                                <div onclick="markedPrio(id)" id="prio-urgent">
+                                    <span>Urgent</span>
+                                    <img id="urgent-img" src="../img/arrow_urgent.svg" alt="arrow-up">
+                                </div>
+                                <div onclick="markedPrio(id)" id="prio-medium">
+                                    <span>Medium</span>
+                                    <img id="medium-img" src="../img/medium.svg" alt="equal">
+                                </div>
+                                <div onclick="markedPrio(id)" id="prio-low">
+                                    <span>Low</span>
+                                    <img id="low-img" src="../img/arrow_low.svg" alt="arrow-down">
+                                </div>
+                            </div>
+                        </div>
+       
+                        <!-- To Do <span class="little-headlines">Subtasks</span>
+                             evenuell noch hinzufügen-->
+            
+                        <div class="clear-create-div">
+                            <div onclick="clearInput()" class="clear-div">
+                                <span>Clear</span>
+                                <img src="../img/close-icon.png" alt="close-icon">
+                            </div>
+                            <button class="create-div" onclick="initBoard()">
+                                <div class="create-button">Create Task</div>
+                                <img src="../img/checkmark.png" alt="checkmark-icon">
+                            </button>
+                        </div>
+            
+                    </div>
+            
+            
+                </form> 
+
+            </div>
+       
 
 
     </div>
