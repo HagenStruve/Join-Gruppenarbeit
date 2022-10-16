@@ -1,8 +1,4 @@
-let contact = [{
-    'name': 'Rudolf Hans Krause',
-    'email': 'Krause@mmail.de',
-    'phone': 3464536,
-}];
+let contact = [];
 
 let alphabet = [];
 let idNumberMemberBox = [];
@@ -21,6 +17,10 @@ async function initContacs() {
 }
 
 
+/**
+ * Führ Funktionen aus um die Kontakte aufzulisten.
+ * 
+ */
 function loadContactside() {
     clearContentLeft();
     pushFirstLetterJSON();
@@ -28,18 +28,30 @@ function loadContactside() {
 }
 
 
+/**
+ * Speichert Daten auf dem Server.
+ * 
+ */
 async function saveOnServer() {
     await backend.setItem('contact', JSON.stringify(contact));
     await backend.setItem('alphabet', JSON.stringify(alphabet));
 }
 
 
+/**
+ * Durch veränderung der css Klassen wird ein Eingabefeld für neue Kontakte geöffnet.
+ * 
+ */
 function newConatct() {
     document.getElementById('add-contact').classList.remove('d-none');
     document.getElementById('add-contact').classList.add('edit-contact');
 }
 
 
+/**
+ * Eine Button Funktion um ein Eingabefeld zu schließen.
+ * 
+ */
 function cancel() {
     document.getElementById('add-contact').classList.remove('edit-contact');
     document.getElementById('add-contact').classList.add('d-none');
@@ -48,6 +60,13 @@ function cancel() {
     document.getElementById('phone').value = "";
 }
 
+
+/**
+ * Nimmt die inhalte der Eingabefelder und pusht sie als Array in das JSON contact.
+ * Es werden Funktionen zur speicherung auf dem Server, leerung einiger inhalte 
+ * und das Anzeigen der Kontakte ausgeführt.
+ * 
+ */
 function addContact() {
     let name = document.getElementById('name');
     let email = document.getElementById('email');
@@ -70,6 +89,10 @@ function addContact() {
 }
 
 
+/**
+ * Leert die Inputfelder mit der jeweigen ID.
+ * 
+ */
 function clearInput() {
     document.getElementById('name').value = "";
     document.getElementById('email').value = "";
@@ -77,12 +100,17 @@ function clearInput() {
 }
 
 
+/**
+ * Diese Funktion liest die ersten Buchstaben der Konrackte aus und pusht
+ * sie in das Array alphabet, dabei werden die Buchstaben groß geschrieben.
+ * 
+ */
 function pushFirstLetterJSON() {
     alphabet = [];
     for (let i = 0; i < contact.length; i++) {
         const member = contact[i];
-        const memberFistLetter = member['name'].charAt(0);    /*Übernimmt den ersten Buchstaben aus dem string (position 0) */
-        const firstLetter = memberFistLetter.toUpperCase(); /* schreibt den Buchstaben Groß */
+        const memberFistLetter = member['name'].charAt(0);  
+        const firstLetter = memberFistLetter.toUpperCase(); 
 
         if (!alphabet.includes(firstLetter)) {   /*Wenn nicht vorhanden dann... */
             alphabet.push(firstLetter);
@@ -91,12 +119,21 @@ function pushFirstLetterJSON() {
     alphabet.sort();
 }
 
-
+/**
+ * Leert den kompletten Container mit den aufgelisteten Kontakten.
+ * 
+ */
 function clearContentLeft() {
     document.getElementById('content-left').innerHTML = ``;
 }
 
 
+/**
+ * Iterriert durch das alphabet Array, wo die anfangsbuchstaben von den Kontakten 
+ * enthalten sind. Anschließend wird ein Container in HTML geschrieben, dort
+ * werden die Kontakte aufgelistet.
+ * 
+ */
 function loadABCContainer() {
     let contactContainer = document.getElementById('content-left');
 
@@ -108,6 +145,7 @@ function loadABCContainer() {
     }
 
 }
+
 
 /**
  * Iterriert durch das Array contact und filtert die ersten Buchchstaben aus.
@@ -131,6 +169,12 @@ function loadContacts(abc) {
 }
 
 
+/**
+ * Filtert die ersten Buchstaben aus allen eingegebenen Namen.
+ * Die Buchstaben werden zu einem string zusammengeführt und als HTML Text geschrieben.
+ * 
+ * @param {string} j - Variable um die Zugehörigkeit des Kontaktest weiterzugeben.
+ */
 function getFirstLetters(j) {
     document.getElementById('shortcut-name' + j).innerHTML = ``;
     const member = contact[j];
@@ -143,6 +187,11 @@ function getFirstLetters(j) {
 }
 
 
+/**
+ * Buttonfuktion um den Angeklickten Kontakt auf einem anderem Container anzuzeigen.
+ * 
+ * @param {string} i - Variable um die Zugehörigkeit des Kontaktest weiterzugeben.
+ */
 function showMemberInfo(i) {
     idNumberMemberBox.push(i);
     backgroundMemberBox(i);
@@ -154,6 +203,11 @@ function showMemberInfo(i) {
 }
 
 
+/**
+ * Verädert die Hintergrundfarbe des angeklickten Containers.
+ * 
+ * @param {string} i - Variable um die Zugehörigkeit des Kontaktest weiterzugeben. 
+ */
 function backgroundMemberBox(i) {
     for (let y = 0; y < idNumberMemberBox.length; y++) {
         document.getElementById('member-box' + idNumberMemberBox[y]).classList.remove('blue-background');
@@ -163,6 +217,11 @@ function backgroundMemberBox(i) {
 }
 
 
+/**
+ * Durch veränderung der css Klassen wird ein Eingabefeld geöffnet um den Kontakt zu Bearbeiten.
+ * 
+ * @param {string} i - Variable um die Zugehörigkeit des Kontaktest weiterzugeben.
+ */
 function editContact(i) {
     let letters = document.getElementById('shortcut-name' + i).innerHTML;
     document.getElementById('edit-contact').classList.remove('d-none');
@@ -171,6 +230,11 @@ function editContact(i) {
 }
 
 
+/**
+ * Schließt das Eingabefeld und leert die Inputfelder.
+ * 
+ * @param {string} i - Variable um die Zugehörigkeit des Kontaktest weiterzugeben. 
+ */
 function closeEdit(i) {
     document.getElementById('edit-contact').innerHTML = ``;
     document.getElementById('edit-contact').classList.remove('edit-contact');
@@ -181,6 +245,11 @@ function closeEdit(i) {
 }
 
 
+/**
+ * Speichert die veränderten Daten des Kontaktes.
+ * 
+ * @param {string} i -Variable um die Zugehörigkeit des Kontaktest weiterzugeben. 
+ */
 function save(i) {
     let name = document.getElementById('name' + i);
     let email = document.getElementById('email' + i);
@@ -192,13 +261,12 @@ function save(i) {
         "phone": phone.value,
     };
 
-    //contact.push(contact[i]);
-    console.log(contact);
-
     saveOnServer();
     clearContentLeft();
     pushFirstLetterJSON();
     loadABCContainer();
+    showMemberInfo(i);
+    closeEdit(i);
 }
 
 /////////////////////////////////////////// HTML /////////////////////////////////////////////////////////////
