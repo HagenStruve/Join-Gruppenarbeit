@@ -1,5 +1,4 @@
 
-
 let tasks = [{
     'id': 0,
     'sector': 'Media',
@@ -42,8 +41,10 @@ let tasks = [{
 }];
 
 
+
 let downloadedTasks = [];
 
+/* 
 let tasksOnServer = {
     "id" : 0,
     "title": '',
@@ -53,6 +54,7 @@ let tasksOnServer = {
     "dueDate": '',
     "importance": '',
 };
+*/ 
 
 let currentDraggedElement;
 let NumberOfCurrentTasks = 0; // is needed to differ between the tasks
@@ -269,7 +271,7 @@ function displayClickedTask(id) {
 
     document.getElementById('c-t-window').innerHTML = `
         <div class="c-t-category" id="c-t-category${id}"> 
-            <span id="c-t-category-html${id}">${downloadedTasks[id]['category']}</span>
+            <span id="c-t-category-html${id}">${downloadedTasks[id]['sector']}</span>
         </div>
 
         <div class="c-t-title" >
