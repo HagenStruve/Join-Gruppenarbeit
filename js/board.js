@@ -99,7 +99,9 @@ function displayAllTasks(search) {
     displayAwaitingFeedbackTasks(search);
     displayDoneTasks(search);
 
-    setColorTypeTasks();
+    let titleID = 'task-type'; 
+    let classID = 'task-type'; 
+    setColorTypeTasks(titleID, classID);
 }
 
 /** displays all todos in HTML 
@@ -195,36 +197,45 @@ function startDragging(id) {
 
 /** Function assigns the corresponding colors to the appropriate categories
  * 
- * @param tasktype - variable checks what the task-category is
+ * @param {string} innerHTML - variable checks what the task-category is
+ *
+ * @param {string} classID - hands over ID for Category Div to add the class specific color
+ * 
+ * @param {string} categoryID - hands over ID for HTHML inside Category Div  
+ * 
+
+ * 
  */
-function setColorTypeTasks() {
-
-
+function setColorTypeTasks(categoryID, classID) {
     for (let c = 0; c < NumberOfCurrentTasks; c++) {
-
-        let taskType = document.getElementById(`task-type${c}`).innerHTML;
-
-        if (taskType === 'Design') {
-            document.getElementById(`task-type${c}`).classList.add("orange");
-        }
-        if (taskType === 'Sales') {
-            document.getElementById(`task-type${c}`).classList.add("pink");
-        }
-        if (taskType === 'Backoffice') {
-            document.getElementById(`task-type${c}`).classList.add("cyan");
-        }
-        if (taskType === 'Marketing') {
-            document.getElementById(`task-type${c}`).classList.add("blue");
-        }
-        if (taskType === 'Media') {
-            document.getElementById(`task-type${c}`).classList.add("yellow");
-        }
-
-        else {
-            stop;
-        }
+        setColor(categoryID, classID, c); 
     }
 }
+
+
+
+function setColor(categoryID, classID, c) {
+
+    let innerHTML = document.getElementById(`${categoryID}${c}`).innerHTML;
+    let getID = document.getElementById(`${classID}${c}`); 
+
+    if (innerHTML === 'Design') {
+        getID.classList.add("orange");
+    }
+    if (innerHTML === 'Sales') {
+        getID.classList.add("pink");
+    }
+    if (innerHTML === 'Backoffice') {
+        getID.classList.add("cyan");
+    }
+    if (innerHTML === 'Marketing') {
+        getID.classList.add("blue");
+    }
+    if (innerHTML === 'Media') {
+        getID.classList.add("yellow");
+    }
+}
+
 
 /**gets Value of Input Field "search Task" and hands over to displayAllTasks()
  * 
@@ -239,23 +250,26 @@ function searchTask() {
 }
 
 
-
+/** shows a bigger window when task is clicked
+ * 
+ * @param {number} id - contains number id which task is clicked
+ */
 function displayClickedTask(id) {
 
     document.getElementById('open-clicked-task').style.display = "flex";
 
     document.getElementById('c-t-window').innerHTML = `
-        <div class="c-t-category"> 
-            <span> ${area} </span>
+        <div class="c-t-category" id="c-t-category${id}"> 
+            <span id="c-t-category-html${id}">${tasks[id]['area']}</span>
         </div>
 
-        <div class="c-t-title">
-            <b>  Call Potential Clients </b>
+        <div class="c-t-title" >
+            <b>  ${tasks[id]['title']} </b>
         </div>
 
         <div class="c-t-description">
             <p> 
-                Make the Product presentation to prospective buyers. 
+                ${tasks[id]['description']} 
             </p>
         </div>
 
@@ -277,7 +291,7 @@ function displayClickedTask(id) {
                 </b>
             </span>
             <span class="c-t-space priority-box"> 
-                Urgent <img src="/img/urgent-white.png" class="c-t-priority-icon"> 
+                ${tasks[id]['importance']} <img src="/img/urgent-white.png" class="c-t-priority-icon"> 
             </span> 
         </div>
 
@@ -306,6 +320,11 @@ function displayClickedTask(id) {
 
         </div> 
     `;
+
+    let classID = `c-t-category`
+    let categoryID = `c-t-category-html`;
+    let c = id; 
+    setColor(categoryID, classID, c);
 
 }
 
@@ -352,7 +371,7 @@ function addTaskToKanbanHTML(element) {
                 class="third-picture">
         </div>
 
-        <img src="../img/orange-arrow-up.png">
+        <img src="../img/arrow_low.svg">
     </div>
 </div>
     `;
