@@ -294,3 +294,39 @@ width: 16px;
     align-items: center;
     font-weight: 500;
 }
+
+
+
+/* ADD TASK WINDOW */ 
+
+.clicked-addtask-bg {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.3);
+    top: 0; 
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 200;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.clicked-addtask-window {
+    position: fixed;
+    padding: 60px;
+    left: 10%;
+    right: 10%;
+    top: 4%;
+    bottom: 4%;
+    border-radius: 20px;
+    background-color: white;
+    z-index: 1000;
+    display: none;
+}
+
+.add-task-whole-page {
+    display: flex;
+    margin-top: -90px;
+}
