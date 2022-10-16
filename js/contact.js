@@ -7,6 +7,10 @@ let contact = [{
 let alphabet = [];
 let idNumberMemberBox = [];
 
+/**
+ * Verbindet die App mit dem Server und startet das Programm
+ * 
+ */
 async function initContacs() {
     await includeHTML();
     setURL("https://gruppe-313.developerakademie.net/Join-Gruppenarbeit/smallest_backend_ever-master");
@@ -105,7 +109,12 @@ function loadABCContainer() {
 
 }
 
-
+/**
+ * Iterriert durch das Array contact und filtert die ersten Buchchstaben aus.
+ * Anschließend wird HTML Text geschrieben mit Alphabetisch sortierten Kontakten.
+ * 
+ * @param {string} abc - Dies sind die Anfangsbuchstaben von den Konatkten.
+ */
 function loadContacts(abc) {
 
     let contactContainer = document.getElementById('member-container' + abc);
