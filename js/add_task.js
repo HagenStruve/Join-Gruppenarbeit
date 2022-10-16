@@ -69,15 +69,16 @@ function changeBgLow(urgent, medium, low) {
 async function addTask() {
     let title = document.getElementById('title');
     let descripton = document.getElementById('descripton');
-    let sector = liCategory;
+    let sector = liCategory; 
     let assingedTo = document.getElementById(liContact).innerHTML;
     let dueDate = document.getElementById('dueDate');
     let prioId = prio[0];
 
     let addTask = {
+        "category" : 'to-do',
         "id": createdTasks,
         "title": title.value,
-        "descripton": descripton.value,
+        "description": descripton.value,
         "sector": sector,
         "assingedTo": assingedTo,
         "dueDate": dueDate.value,
@@ -172,6 +173,7 @@ function hideSelectionContacts(ulContact) {
 
 function selectCategory(id) {
     liCategory = id.replace('div-', '');
+    liCategory = liCategory.charAt(0).toUpperCase() + liCategory.slice(1);  
     let ulCategory = document.getElementById("ul-category");
     let category = document.getElementById(id).innerHTML;
     showSelectedCategory(category, liCategory);

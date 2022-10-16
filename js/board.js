@@ -68,8 +68,9 @@ let NumberOfCurrentTasks = 0; // is needed to differ between the tasks
 
 async function initBoard() {
     await includeHTML();
-    await renderBoardSite();
-    loadTasksFromServer();
+    await loadTasksFromServer();
+    renderBoardSite();
+
 }
 
 async function loadTasksFromServer() {
@@ -113,7 +114,7 @@ function displayAllTasks(search) {
 
  */
 function displayToDos(search) {
-    let todos = tasks.filter(t => t['category'] == 'to-do');
+    let todos = downloadedTasks.filter(t => t['category'] == 'to-do');
     document.getElementById('to-do').innerHTML = '';
 
 
@@ -132,7 +133,7 @@ function displayToDos(search) {
 
 
 function displayInProgressTasks(search) {
-    let inProgress = tasks.filter(t => t['category'] == 'in-progress');
+    let inProgress = downloadedTasks.filter(t => t['category'] == 'in-progress');
     document.getElementById('in-progress').innerHTML = '';
 
     for (let p = 0; p < inProgress.length; p++) {
@@ -148,7 +149,7 @@ function displayInProgressTasks(search) {
 
 
 function displayAwaitingFeedbackTasks(search) {
-    let awaitingFeedback = tasks.filter(t => t['category'] == 'awaiting-feedback');
+    let awaitingFeedback = downloadedTasks.filter(t => t['category'] == 'awaiting-feedback');
     document.getElementById('awaiting-feedback').innerHTML = '';
 
     for (let a = 0; a < awaitingFeedback.length; a++) {
@@ -163,7 +164,7 @@ function displayAwaitingFeedbackTasks(search) {
 }
 
 function displayDoneTasks(search) {
-    let done = tasks.filter(t => t['category'] == 'done');
+    let done = downloadedTasks.filter(t => t['category'] == 'done');
     document.getElementById('done').innerHTML = '';
 
     for (let d = 0; d < done.length; d++) {
@@ -185,7 +186,7 @@ function allowDrop(ev) { // from W3School predefined //
 
 // change the category to dropped task
 function moveTo(category) {
-    tasks[currentDraggedElement]['category'] = category;
+    downloadedTasks[currentDraggedElement]['category'] = category;
     displayAllTasks();
 }
 
@@ -268,16 +269,16 @@ function displayClickedTask(id) {
 
     document.getElementById('c-t-window').innerHTML = `
         <div class="c-t-category" id="c-t-category${id}"> 
-            <span id="c-t-category-html${id}">${tasks[id]['category']}</span>
+            <span id="c-t-category-html${id}">${downloadedTasks[id]['category']}</span>
         </div>
 
         <div class="c-t-title" >
-            <b>  ${tasks[id]['title']} </b>
+            <b>  ${downloadedTasks[id]['title']} </b>
         </div>
 
         <div class="c-t-description">
             <p> 
-                ${tasks[id]['description']} 
+                ${downloadedTasks[id]['description']} 
             </p>
         </div>
 
@@ -288,7 +289,7 @@ function displayClickedTask(id) {
                 </b>
             </span>
             <span class="c-t-space"> 
-                05-08-2022
+            ${downloadedTasks[id]['dueDate']}
             </span> 
         </div>
 
@@ -299,7 +300,7 @@ function displayClickedTask(id) {
                 </b>
             </span>
             <span class="c-t-space priority-box"> 
-                ${tasks[id]['importance']} <img src="/img/urgent-white.png" class="c-t-priority-icon"> 
+                ${downloadedTasks[id]['importance']} <img src="/img/urgent-white.png" class="c-t-priority-icon"> 
             </span> 
         </div>
 
