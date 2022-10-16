@@ -307,7 +307,7 @@ function displayClickedTask(id) {
                 </b>
             </span>
             <span class="c-t-space priority-box"> 
-                ${downloadedTasks[id]['importance']} <img src="/img/urgent-white.png" class="c-t-priority-icon"> 
+                ${downloadedTasks[id]['importance']} <img src="img/urgent-white.png" class="c-t-priority-icon"> 
             </span> 
         </div>
 
@@ -321,14 +321,14 @@ function displayClickedTask(id) {
 
         <div class="c-t-assignedTo">
             <div class="c-t-contact"> 
-                <img src="/img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png" class="c-t-profilimages"> 
+                <img src="img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png" class="c-t-profilimages"> 
                 <span>
                     Sarah Eisenberg
                 </span> 
             </div>
 
             <div class="c-t-contact"> 
-                <img src="/img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png" class="c-t-profilimages"> 
+                <img src="img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png" class="c-t-profilimages"> 
                 <span>
                     Sarah Eisenberg
                 </span> 
