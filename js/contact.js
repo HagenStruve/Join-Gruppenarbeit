@@ -1,14 +1,10 @@
-let contact = [{
-    'name': 'Rudolf Hans Krause',
-    'email': 'Krause@mmail.de',
-    'phone': 3464536,
-}];
+let contact = [];
 
 let alphabet = [];
 let idNumberMemberBox = [];
 
 /**
- * Verbindet die App mit dem Server und startet das Programm
+ * Connects the app to the server and starts the program
  * 
  */
 async function initContacs() {
@@ -21,6 +17,10 @@ async function initContacs() {
 }
 
 
+/**
+ * Execute functions to list the contacts.
+ * 
+ */
 function loadContactside() {
     clearContentLeft();
     pushFirstLetterJSON();
@@ -28,18 +28,30 @@ function loadContactside() {
 }
 
 
+/**
+ * Stores data on the server.
+ * 
+ */
 async function saveOnServer() {
     await backend.setItem('contact', JSON.stringify(contact));
     await backend.setItem('alphabet', JSON.stringify(alphabet));
 }
 
 
+/**
+ * By changing the css classes, an input field for new contacts is opened.
+ * 
+ */
 function newConatct() {
     document.getElementById('add-contact').classList.remove('d-none');
     document.getElementById('add-contact').classList.add('edit-contact');
 }
 
 
+/**
+ * A button function to close an input field.
+ * 
+ */
 function cancel() {
     document.getElementById('add-contact').classList.remove('edit-contact');
     document.getElementById('add-contact').classList.add('d-none');
@@ -48,6 +60,13 @@ function cancel() {
     document.getElementById('phone').value = "";
 }
 
+
+/**
+ * Takes the contents of the input fields and pushes them into the JSON contact as an array.
+ * There will be functions to save on the server, emptying some content
+ * and displaying the contacts is carried out.
+ * 
+ */
 function addContact() {
     let name = document.getElementById('name');
     let email = document.getElementById('email');
@@ -60,8 +79,12 @@ function addContact() {
     };
 
     contact.push(addContact);
-    console.log(contact);
 
+    addAndSaveContact();
+}
+
+
+function addAndSaveContact() {
     saveOnServer();
     clearInput();
     clearContentLeft();
@@ -70,6 +93,10 @@ function addContact() {
 }
 
 
+/**
+ * Empties the input fields with the respective ID.
+ * 
+ */
 function clearInput() {
     document.getElementById('name').value = "";
     document.getElementById('email').value = "";
@@ -77,12 +104,17 @@ function clearInput() {
 }
 
 
+/**
+ * This function reads the first letters of the Konrackte and pushes
+ * into the array alphabet, with the letters capitalized.
+ * 
+ */
 function pushFirstLetterJSON() {
     alphabet = [];
     for (let i = 0; i < contact.length; i++) {
         const member = contact[i];
-        const memberFistLetter = member['name'].charAt(0);    /*Übernimmt den ersten Buchstaben aus dem string (position 0) */
-        const firstLetter = memberFistLetter.toUpperCase(); /* schreibt den Buchstaben Groß */
+        const memberFistLetter = member['name'].charAt(0);  
+        const firstLetter = memberFistLetter.toUpperCase(); 
 
         if (!alphabet.includes(firstLetter)) {   /*Wenn nicht vorhanden dann... */
             alphabet.push(firstLetter);
@@ -91,12 +123,21 @@ function pushFirstLetterJSON() {
     alphabet.sort();
 }
 
-
+/**
+ * Empties the entire container with the listed contacts.
+ * 
+ */
 function clearContentLeft() {
     document.getElementById('content-left').innerHTML = ``;
 }
 
 
+/**
+ * Iterates through the alphabet array, where the first letters of the contacts
+ * are included. Then a container is written in HTML, there
+ * the contacts are listed.
+ * 
+ */
 function loadABCContainer() {
     let contactContainer = document.getElementById('content-left');
 
@@ -109,11 +150,12 @@ function loadABCContainer() {
 
 }
 
+
 /**
- * Iterriert durch das Array contact und filtert die ersten Buchchstaben aus.
- * Anschließend wird HTML Text geschrieben mit Alphabetisch sortierten Kontakten.
+ * Iterates through the array contact and filters out the first few letters.
+ * Then HTML text is written with alphabetically sorted contacts.
  * 
- * @param {string} abc - Dies sind die Anfangsbuchstaben von den Konatkten.
+ * @param {string} abc - These are the first letters of the contacts.
  */
 function loadContacts(abc) {
 
@@ -131,6 +173,12 @@ function loadContacts(abc) {
 }
 
 
+/**
+ * Filters the first letters from all entered names.
+ * The letters are merged into a string and written as HTML text.
+ * 
+ * @param {string} j - Variable to pass the affiliation of the contact test.
+ */
 function getFirstLetters(j) {
     document.getElementById('shortcut-name' + j).innerHTML = ``;
     const member = contact[j];
@@ -143,6 +191,11 @@ function getFirstLetters(j) {
 }
 
 
+/**
+ * Button function to display the clicked contact on another container.
+ * 
+ * @param {string} i - Variable to pass the affiliation of the contact test.
+ */
 function showMemberInfo(i) {
     idNumberMemberBox.push(i);
     backgroundMemberBox(i);
@@ -154,6 +207,11 @@ function showMemberInfo(i) {
 }
 
 
+/**
+ * Changes the background color of the clicked container.
+ * 
+ * @param {string} i - Variable to pass the affiliation of the contact test.
+ */
 function backgroundMemberBox(i) {
     for (let y = 0; y < idNumberMemberBox.length; y++) {
         document.getElementById('member-box' + idNumberMemberBox[y]).classList.remove('blue-background');
@@ -163,6 +221,11 @@ function backgroundMemberBox(i) {
 }
 
 
+/**
+ * By changing the css classes, an input field is opened to edit the contact.
+ * 
+ * @param {string} i - Variable to pass the affiliation of the contact test.
+ */
 function editContact(i) {
     let letters = document.getElementById('shortcut-name' + i).innerHTML;
     document.getElementById('edit-contact').classList.remove('d-none');
@@ -171,6 +234,11 @@ function editContact(i) {
 }
 
 
+/**
+ * Closes the input field and empties the input fields.
+ * 
+ * @param {string} i - Variable to pass the affiliation of the contact test.
+ */
 function closeEdit(i) {
     document.getElementById('edit-contact').innerHTML = ``;
     document.getElementById('edit-contact').classList.remove('edit-contact');
@@ -181,6 +249,11 @@ function closeEdit(i) {
 }
 
 
+/**
+ * Saves the changed data of the contact.
+ * 
+ * @param {string} i -Variable to pass the affiliation of the contact test. 
+ */
 function save(i) {
     let name = document.getElementById('name' + i);
     let email = document.getElementById('email' + i);
@@ -192,13 +265,17 @@ function save(i) {
         "phone": phone.value,
     };
 
-    //contact.push(contact[i]);
-    console.log(contact);
+    saveAndLoadContact(i)
+}
 
+
+function saveAndLoadContact(i){
     saveOnServer();
     clearContentLeft();
     pushFirstLetterJSON();
     loadABCContainer();
+    showMemberInfo(i);
+    closeEdit(i);
 }
 
 /////////////////////////////////////////// HTML /////////////////////////////////////////////////////////////
