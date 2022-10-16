@@ -4,7 +4,7 @@ let alphabet = [];
 let idNumberMemberBox = [];
 
 /**
- * Verbindet die App mit dem Server und startet das Programm
+ * Connects the app to the server and starts the program
  * 
  */
 async function initContacs() {
@@ -18,7 +18,7 @@ async function initContacs() {
 
 
 /**
- * Führ Funktionen aus um die Kontakte aufzulisten.
+ * Execute functions to list the contacts.
  * 
  */
 function loadContactside() {
@@ -29,7 +29,7 @@ function loadContactside() {
 
 
 /**
- * Speichert Daten auf dem Server.
+ * Stores data on the server.
  * 
  */
 async function saveOnServer() {
@@ -39,7 +39,7 @@ async function saveOnServer() {
 
 
 /**
- * Durch veränderung der css Klassen wird ein Eingabefeld für neue Kontakte geöffnet.
+ * By changing the css classes, an input field for new contacts is opened.
  * 
  */
 function newConatct() {
@@ -49,7 +49,7 @@ function newConatct() {
 
 
 /**
- * Eine Button Funktion um ein Eingabefeld zu schließen.
+ * A button function to close an input field.
  * 
  */
 function cancel() {
@@ -62,9 +62,9 @@ function cancel() {
 
 
 /**
- * Nimmt die inhalte der Eingabefelder und pusht sie als Array in das JSON contact.
- * Es werden Funktionen zur speicherung auf dem Server, leerung einiger inhalte 
- * und das Anzeigen der Kontakte ausgeführt.
+ * Takes the contents of the input fields and pushes them into the JSON contact as an array.
+ * There will be functions to save on the server, emptying some content
+ * and displaying the contacts is carried out.
  * 
  */
 function addContact() {
@@ -90,7 +90,7 @@ function addContact() {
 
 
 /**
- * Leert die Inputfelder mit der jeweigen ID.
+ * Empties the input fields with the respective ID.
  * 
  */
 function clearInput() {
@@ -101,8 +101,8 @@ function clearInput() {
 
 
 /**
- * Diese Funktion liest die ersten Buchstaben der Konrackte aus und pusht
- * sie in das Array alphabet, dabei werden die Buchstaben groß geschrieben.
+ * This function reads the first letters of the Konrackte and pushes
+ * into the array alphabet, with the letters capitalized.
  * 
  */
 function pushFirstLetterJSON() {
@@ -120,7 +120,7 @@ function pushFirstLetterJSON() {
 }
 
 /**
- * Leert den kompletten Container mit den aufgelisteten Kontakten.
+ * Empties the entire container with the listed contacts.
  * 
  */
 function clearContentLeft() {
@@ -129,9 +129,9 @@ function clearContentLeft() {
 
 
 /**
- * Iterriert durch das alphabet Array, wo die anfangsbuchstaben von den Kontakten 
- * enthalten sind. Anschließend wird ein Container in HTML geschrieben, dort
- * werden die Kontakte aufgelistet.
+ * Iterates through the alphabet array, where the first letters of the contacts
+ * are included. Then a container is written in HTML, there
+ * the contacts are listed.
  * 
  */
 function loadABCContainer() {
@@ -148,10 +148,10 @@ function loadABCContainer() {
 
 
 /**
- * Iterriert durch das Array contact und filtert die ersten Buchchstaben aus.
- * Anschließend wird HTML Text geschrieben mit Alphabetisch sortierten Kontakten.
+ * Iterates through the array contact and filters out the first few letters.
+ * Then HTML text is written with alphabetically sorted contacts.
  * 
- * @param {string} abc - Dies sind die Anfangsbuchstaben von den Konatkten.
+ * @param {string} abc - These are the first letters of the contacts.
  */
 function loadContacts(abc) {
 
@@ -170,10 +170,10 @@ function loadContacts(abc) {
 
 
 /**
- * Filtert die ersten Buchstaben aus allen eingegebenen Namen.
- * Die Buchstaben werden zu einem string zusammengeführt und als HTML Text geschrieben.
+ * Filters the first letters from all entered names.
+ * The letters are merged into a string and written as HTML text.
  * 
- * @param {string} j - Variable um die Zugehörigkeit des Kontaktest weiterzugeben.
+ * @param {string} j - Variable to pass the affiliation of the contact test.
  */
 function getFirstLetters(j) {
     document.getElementById('shortcut-name' + j).innerHTML = ``;
@@ -188,9 +188,9 @@ function getFirstLetters(j) {
 
 
 /**
- * Buttonfuktion um den Angeklickten Kontakt auf einem anderem Container anzuzeigen.
+ * Button function to display the clicked contact on another container.
  * 
- * @param {string} i - Variable um die Zugehörigkeit des Kontaktest weiterzugeben.
+ * @param {string} i - Variable to pass the affiliation of the contact test.
  */
 function showMemberInfo(i) {
     idNumberMemberBox.push(i);
@@ -204,9 +204,9 @@ function showMemberInfo(i) {
 
 
 /**
- * Verädert die Hintergrundfarbe des angeklickten Containers.
+ * Changes the background color of the clicked container.
  * 
- * @param {string} i - Variable um die Zugehörigkeit des Kontaktest weiterzugeben. 
+ * @param {string} i - Variable to pass the affiliation of the contact test.
  */
 function backgroundMemberBox(i) {
     for (let y = 0; y < idNumberMemberBox.length; y++) {
@@ -218,9 +218,9 @@ function backgroundMemberBox(i) {
 
 
 /**
- * Durch veränderung der css Klassen wird ein Eingabefeld geöffnet um den Kontakt zu Bearbeiten.
+ * By changing the css classes, an input field is opened to edit the contact.
  * 
- * @param {string} i - Variable um die Zugehörigkeit des Kontaktest weiterzugeben.
+ * @param {string} i - Variable to pass the affiliation of the contact test.
  */
 function editContact(i) {
     let letters = document.getElementById('shortcut-name' + i).innerHTML;
@@ -231,9 +231,9 @@ function editContact(i) {
 
 
 /**
- * Schließt das Eingabefeld und leert die Inputfelder.
+ * Closes the input field and empties the input fields.
  * 
- * @param {string} i - Variable um die Zugehörigkeit des Kontaktest weiterzugeben. 
+ * @param {string} i - Variable to pass the affiliation of the contact test.
  */
 function closeEdit(i) {
     document.getElementById('edit-contact').innerHTML = ``;
@@ -246,9 +246,9 @@ function closeEdit(i) {
 
 
 /**
- * Speichert die veränderten Daten des Kontaktes.
+ * Saves the changed data of the contact.
  * 
- * @param {string} i -Variable um die Zugehörigkeit des Kontaktest weiterzugeben. 
+ * @param {string} i -Variable to pass the affiliation of the contact test. 
  */
 function save(i) {
     let name = document.getElementById('name' + i);
