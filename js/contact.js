@@ -5,6 +5,7 @@ let contact = [{
 }];
 
 let alphabet = [];
+let idNumberMemberBox = [];
 
 async function initContacs() {
     await includeHTML();
@@ -12,6 +13,7 @@ async function initContacs() {
     await downloadFromServer();
     contact = JSON.parse(backend.getItem('contact')) || [];
     alphabet = JSON.parse(backend.getItem('alphabet')) || [];
+    loadABCContainer();
 }
 
 
@@ -133,10 +135,22 @@ function getFirstLetters(j) {
 
 
 function showMemberInfo(i) {
+    idNumberMemberBox.push(i);
+    backgroundMemberBox(i);
+
     let letters = document.getElementById('shortcut-name' + i).innerHTML;
     let infoBox = document.getElementById('member-info');
     infoBox.innerHTML = ``;
     infoBox.innerHTML = memberInfoHtml(i, letters);
+}
+
+
+function backgroundMemberBox(i) {
+    for (let y = 0; y < idNumberMemberBox.length; y++) {
+        document.getElementById('member-box' + idNumberMemberBox[y]).classList.remove('blue-background');
+    }
+    
+    document.getElementById('member-box' + i).classList.add('blue-background');
 }
 
 
@@ -183,7 +197,7 @@ function save(i) {
 
 function memberHTML(i) {
     return /*HTML*/` 
-    <button onclick="showMemberInfo(${i})" class="member-box">
+    <button id="member-box${i}" onclick="showMemberInfo(${i})" class="member-box">
     <div id="shortcut-name${i}" class="shortcut-name">AM</div>
                 <div>
                     <div class="fontsice-21">${contact[i]['name']}</div>

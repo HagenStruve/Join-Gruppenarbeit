@@ -223,6 +223,17 @@ body {
     cursor: pointer;
 }
 
+.new-contact img {
+    height: 29px;
+    width: 30px;
+}
+
+.new-contact:hover {
+    background-color: #29ABE2 !important;
+    border: none;
+    box-shadow: 2px 4px 4px 0px rgb(0 0 0 / 20%);
+}
+
 .edit-contact {
     display: flex;
     position: absolute;
@@ -357,6 +368,16 @@ body {
     border-radius: 10px;
 }
 
+.inputs-phone::-webkit-outer-spin-button,
+.inputs-phone::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.inputs-phone[type=number] {
+    -moz-appearance: textfield;
+}
+
 .button-box {
     display: flex;
     width: 422px;
@@ -414,4 +435,8 @@ body {
     align-items: center;
     font-size: 38px;
     color: white;
+}
+
+.blue-background {
+    background-color: #2A3647;
 }

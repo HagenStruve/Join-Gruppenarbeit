@@ -9,6 +9,8 @@ h1 {
 
     width: 315px;
     height: 73px;
+    margin-top: 83px;
+    margin-bottom: 87px;
 
     /* Version 2/t1 */
 
@@ -34,8 +36,6 @@ h1 {
     display: flex;
     align-items: center;
     margin-left: 123px;
-    margin-top: 83px;
-    margin-bottom: 87px;
 }
 
 .header-subtext {
@@ -49,26 +49,26 @@ h1 {
 
     /* Everything in a nutshell! */
 
-height: 59px;
+    height: 59px;
 
-/* Version 2/t5 */
+    /* Version 2/t5 */
 
-font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 27px;
-line-height: 120%;
-/* or 32px */
-
-
-color: #2A3647;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 27px;
+    line-height: 120%;
+    /* or 32px */
 
 
-/* Inside auto layout */
+    color: #2A3647;
 
-flex: none;
-order: 2;
-flex-grow: 0;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
 }
 
 .content-box {
@@ -96,6 +96,7 @@ flex-grow: 0;
 
     width: 170px;
     height: 170px;
+    margin-right: 35px;
 
     /* white */
 
@@ -110,6 +111,19 @@ flex-grow: 0;
     flex: none;
     order: 0;
     flex-grow: 0;
+    transition: all 200ms ease-in-out;
+}
+
+.task-card:hover {
+    background-color: #2A3647;
+    color: white;
+    cursor: pointer;
+    scale: 1.05;
+    box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.1);
+}
+
+.task-card:hover .numbers {
+    color: white;
 }
 
 .upcomming-card {
@@ -125,6 +139,7 @@ flex-grow: 0;
     gap: 61px;
 
     height: 150px;
+    margin-top: 35px;
 
     /* white */
 
@@ -140,6 +155,19 @@ flex-grow: 0;
     order: 1;
     flex-grow: 0;
     margin-bottom: 35px;
+    transition: all 200ms ease-in-out;
+}
+
+.upcomming-card:hover {
+    background-color: #2A3647;
+    color: white;
+    cursor: pointer;
+    scale: 1.05;
+    box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.1);
+}
+
+.upcomming-card:hover .numbers {
+    color: white;
 }
 
 .to-do-card {
@@ -170,6 +198,19 @@ flex-grow: 0;
     flex: none;
     order: 1;
     flex-grow: 0;
+    transition: all 200ms ease-in-out;
+}
+
+.to-do-card:hover {
+    background-color: #2A3647;
+    color: white;
+    cursor: pointer;
+    scale: 1.05;
+    box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.1);
+}
+
+.to-do-card:hover .numbers {
+    color: white;
 }
 
 .to-do-img-box {
@@ -187,26 +228,26 @@ flex-grow: 0;
     /* 6 */
 
 
-width: 41px;
-height: 77px;
+    width: 41px;
+    height: 77px;
 
-font-family: 'Inter';
-font-style: normal;
-font-weight: 600;
-font-size: 64px;
-line-height: 120%;
-/* identical to box height, or 77px */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 120%;
+    /* identical to box height, or 77px */
 
-text-align: center;
+    text-align: center;
 
-color: #000000;
+    color: #000000;
 
 
-/* Inside auto layout */
+    /* Inside auto layout */
 
-flex: none;
-order: 0;
-flex-grow: 0;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
 }
 
 .to-do-card-box {
@@ -226,7 +267,7 @@ flex-grow: 0;
     justify-content: center;
 }
 
-.fontsize-21{
+.fontsize-21 {
     font-size: 21px;
 }
 
@@ -241,52 +282,52 @@ flex-grow: 0;
     /* Good morning, */
 
 
-width: 338px;
-height: 56px;
+    width: 338px;
+    height: 56px;
 
-/* Version 2/t2 */
+    /* Version 2/t2 */
 
-font-family: 'Inter';
-font-style: normal;
-font-weight: 500;
-font-size: 47px;
-line-height: 120%;
-/* or 56px */
-
-
-color: #2A3647;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 47px;
+    line-height: 120%;
+    /* or 56px */
 
 
-/* Inside auto layout */
+    color: #2A3647;
 
-flex: none;
-order: 0;
-flex-grow: 0;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
 }
 
-.name{
+.name {
     /* Sofia Müller */
 
 
-width: 385px;
-height: 77px;
+    width: 385px;
+    height: 77px;
 
-font-family: 'Inter';
-font-style: normal;
-font-weight: 700;
-font-size: 64px;
-line-height: 120%;
-/* identical to box height, or 77px */
-
-
-/* Ligth blue */
-
-color: #29ABE2;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 120%;
+    /* identical to box height, or 77px */
 
 
-/* Inside auto layout */
+    /* Ligth blue */
 
-flex: none;
-order: 1;
-flex-grow: 0;
+    color: #29ABE2;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
 }
