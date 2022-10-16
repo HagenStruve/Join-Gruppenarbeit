@@ -69,14 +69,14 @@ function changeBgLow(urgent, medium, low) {
 async function addTask() {
     let title = document.getElementById('title');
     let descripton = document.getElementById('descripton');
-    let sector = liCategory;
+    let sector = liCategory; 
     let assingedTo = document.getElementById(liContact).innerHTML;
     let dueDate = document.getElementById('dueDate');
     let prioId = prio[0];
 
     let addTask = {
-        "category": 'to-do',
-        "id": createdTasks,
+        "category" : 'to-do',
+        "id": 0,
         "title": title.value,
         "description": descripton.value,
         "sector": sector,
@@ -151,12 +151,10 @@ function hideSelectionCategories(ulCategory) {
 function showContacts() {
     let ulContact = document.getElementById("ul-contact");
     if (ulContact.classList.contains('d-none')) {
-        document.getElementById('all-contacts-initials').classList.add('d-none');
         showSelectionContacts(ulContact);
     }
     else {
         hideSelectionContacts(ulContact);
-        document.getElementById('all-contacts-initials').classList.remove('d-none');
     }
 }
 
@@ -175,7 +173,7 @@ function hideSelectionContacts(ulContact) {
 
 function selectCategory(id) {
     liCategory = id.replace('div-', '');
-    liCategory = liCategory.charAt(0).toUpperCase() + liCategory.slice(1);
+    liCategory = liCategory.charAt(0).toUpperCase() + liCategory.slice(1);  
     let ulCategory = document.getElementById("ul-category");
     let category = document.getElementById(id).innerHTML;
     showSelectedCategory(category, liCategory);
@@ -187,17 +185,22 @@ function showSelectedCategory(category, liCategory) {
     document.getElementById('selected-category').style = 'display: flex; align-items: center; list-style-type: none;';
     document.getElementById("selected-category").innerHTML = category;
     document.getElementById("hidden-category-input").value = '.';
-    document.getElementById(liCategory.toLowerCase()).style = 'margin:0; margin-right: 20px';
+    document.getElementById(liCategory).style = 'margin:0; margin-right: 20px';
 }
 
 
-function proofCheck(id) {
-    let isChecked = document.getElementById(id);
-    let initial = id.replace('checkbox-contact', 'initials');
-    if (isChecked.checked == true) {
-        document.getElementById(initial).classList.remove('d-none');
-    }
-    else {
-        document.getElementById(initial).classList.add('d-none');
-    }
+function selectContact(id) {
+    liContact = id.replace('div-', '');
+    let ulContact = document.getElementById("ul-contact");
+    let contact = document.getElementById(id).innerHTML;
+    showSelectedContacts(contact, liContact);
+    showSelectionContacts(ulContact);
+}
+
+
+function showSelectedContacts(contact, liContact) {
+    document.getElementById('selected-contact').style = 'display: flex; align-items: center; list-style-type: none;';
+    document.getElementById("selected-contact").innerHTML = contact;
+    document.getElementById("hidden-contact-input").value = '.';
+    document.getElementById(liContact).style = 'margin:0; margin-right: 20px';
 }
