@@ -31,7 +31,8 @@
                 <span class="little-headlines">Title</span>
                 <input id="title" required class="enter-title" type="text" placeholder="Enter a title">
                 <span class="little-headlines">Description</span>
-                <textarea id="descripton" class="enter-description" placeholder="Enter a description"></textarea>
+                <textarea id="descripton" class="enter-description" placeholder="Enter a description"
+                    required></textarea>
 
                 <span class="little-headlines">Category</span>
                 <div onclick="showCategories()" id="select-div-category" class="select-div">
@@ -41,22 +42,22 @@
                 </div>
 
                 <ul id="ul-category" class="d-none">
-                    <div onclick="selectCategory(id)" id="div-media" class="div-li-style">
+                    <div onclick="selectCategory(id)" id="div-media" class="div-li-category">
                         <li id="media">Media</li>
                         <div class="li-point bg-yellow"> </div>
                     </div>
 
-                    <div onclick="selectCategory(id)" id="div-sales" class="div-li-style">
+                    <div onclick="selectCategory(id)" id="div-sales" class="div-li-category">
                         <li id="sales">Sales</li>
                         <div class="li-point bg-pink"> </div>
                     </div>
 
-                    <div onclick="selectCategory(id)" id="div-backoffice" class="div-li-style">
+                    <div onclick="selectCategory(id)" id="div-backoffice" class="div-li-category">
                         <li id="backoffice">Backoffice</li>
                         <div class="li-point bg-turquoise"> </div>
                     </div>
 
-                    <div onclick="selectCategory(id)" id="div-marketing" class="div-li-style">
+                    <div onclick="selectCategory(id)" id="div-marketing" class="div-li-category">
                         <li id="marketing">Marketing</li>
                         <div class="li-point bg-blue"> </div>
                     </div>
@@ -69,15 +70,15 @@
                     <img src="../img/dropdown_arrow.svg" alt="dropdown_arrow">
                 </div>
                 <ul id="ul-contact" class="d-none">
-                    <div id="div-contact-1" class="div-li-style">
+                    <div onclick="selectContact(id)" id="div-contact-1" class="div-li-contact">
                         <li id="contact-1">Hagen Struve</li>
                         <input onclick="proofCheck(id)" class="input-checkbox" type="checkbox" id="checkbox-contact-1">
                     </div>
-                    <div id="div-contact-2" class="div-li-style">
+                    <div onclick="selectContact(id)" id="div-contact-2" class="div-li-contact">
                         <li id="contact-2">Sinan Fischer</li>
                         <input onclick="proofCheck(id)" class="input-checkbox" type="checkbox" id="checkbox-contact-2">
                     </div>
-                    <div id="div-contact-3" class="div-li-style">
+                    <div onclick="selectContact(id)" id="div-contact-3" class="div-li-contact">
                         <li id="contact-3">Matthias Mulzet</li>
                         <input onclick="proofCheck(id)" class="input-checkbox" type="checkbox" id="checkbox-contact-3">
                     </div>
@@ -124,6 +125,9 @@
                     <div id="subtask-icons" onclick="showXandCheckmark()" class="subtask-img-container">
                         <img id="plus-icon" src="../img/plus-icon.png" alt="plus">
                     </div>
+                </div>
+                <div id="overview-subtasks" class="added-subtasks">
+
                 </div>
             </div>
 
