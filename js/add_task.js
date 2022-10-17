@@ -73,7 +73,7 @@ async function addTask() {
     let sector = liCategory; 
     let assingedTo = document.getElementById(liContact).innerHTML;
     let dueDate = document.getElementById('dueDate');
-    let prioId = prio[0];
+    let prioId = prio;
 
     let addTask = {
         "category" : 'to-do',
