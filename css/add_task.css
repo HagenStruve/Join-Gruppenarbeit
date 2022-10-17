@@ -37,7 +37,7 @@ h1 {
     display: flex;
 }
 
-.add-task-whole-page input {
+.left-side-without-h1 input {
     width: 422px;
     height: 51px;
     padding: 13px 21px;
@@ -183,6 +183,11 @@ li {
     font-size: 21px;
     outline: none;
     margin-bottom: 34px;
+    width: 422px;
+    height: 51px;
+    padding: 13px 21px;
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
 }
 
 input::-webkit-calendar-picker-indicator {
@@ -256,12 +261,23 @@ input::-webkit-calendar-picker-indicator {
     justify-content: space-between;
     align-items: center;
     position: relative;
+    width: 422px;
+    height: 51px;
+    padding: 13px 21px;
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
+    background-color: white;
+    margin-bottom: 8px;
 }
 
 .subtask-input-div input {
     font-size: 21px;
-    outline: none;
+    border: none;
     cursor: pointer;
+    padding: 0;
+    height: 100%;
+    width: 345px;
+    outline: none;
 }
 
 #plus-icon {
@@ -289,11 +305,27 @@ input::-webkit-calendar-picker-indicator {
     display: flex;
     align-items: center;
     justify-content: center;
-    right: 40px;
+    right: 24px;
     background-color: white;
-    height: 95%;
-    width: 50px;
     cursor: pointer;
+}
+
+.added-subtasks {
+    width: 420px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.added-subtasks div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.subtask {
+    margin-left: 20px;
+    font-size: 16px;
 }
 
 .clear-create-div {
