@@ -115,14 +115,20 @@ ul {
     padding-left: 0;
 }
 
-.div-li-style {
+.div-li-category {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.div-li-contact {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
 }
 
-.div-li-style:hover {
+.div-li-contact:hover, .div-li-category:hover {
     background-color: lightgray;
     cursor: pointer;
 }

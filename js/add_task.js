@@ -76,17 +76,6 @@ async function addTask() {
     let dueDate = document.getElementById('dueDate');
     let prioId = prio[0];
 
-    let initial1 = document.getElementById('initials-1');
-    let initial2 = document.getElementById('initials-2');
-    let initial3 = document.getElementById('initials-3');
-
-    document.getElementById('checkbox-contact-1').checked = false;
-    document.getElementById('checkbox-contact-2').checked = false;
-    document.getElementById('checkbox-contact-3').checked = false;
-
-    initial1.classList.add('d-none');
-    initial2.classList.add('d-none');
-    initial3.classList.add('d-none');
 
     let addTask = {
         "category": 'to-do',
@@ -102,8 +91,24 @@ async function addTask() {
     task.push(addTask);
 
     saveOnServer();
+    clearContacts();
     clearInput();
     createdTasks++;
+}
+
+
+function clearContacts() {
+    let initial1 = document.getElementById('initials-1');
+    let initial2 = document.getElementById('initials-2');
+    let initial3 = document.getElementById('initials-3');
+
+    document.getElementById('checkbox-contact-1').checked = false;
+    document.getElementById('checkbox-contact-2').checked = false;
+    document.getElementById('checkbox-contact-3').checked = false;
+
+    initial1.classList.add('d-none');
+    initial2.classList.add('d-none');
+    initial3.classList.add('d-none');
 }
 
 
@@ -187,7 +192,6 @@ function hideSelectionContacts(ulContact) {
 
 function selectCategory(id) {
     liCategory = id.replace('div-', '');
-    liCategory = liCategory.charAt(0).toUpperCase() + liCategory.slice(1);
     let ulCategory = document.getElementById("ul-category");
     let category = document.getElementById(id).innerHTML;
     showSelectedCategory(category, liCategory);
@@ -200,6 +204,7 @@ function showSelectedCategory(category, liCategory) {
     document.getElementById("selected-category").innerHTML = category;
     document.getElementById("hidden-category-input").value = '.';
     document.getElementById(liCategory).style = 'margin:0; margin-right: 20px';
+    liCategory = liCategory.charAt(0).toUpperCase() + liCategory.slice(1);
 }
 
 
@@ -219,19 +224,14 @@ function showContacts() {
 function selectContact(id) {
     liContact = id.replace('div-', '');
     let ulContact = document.getElementById("ul-contact");
-    showSelectedContacts();
     showSelectionContacts(ulContact);
-}
-
-
-function showSelectedContacts() {
-
 }
 
 
 function proofCheck(id) {
     let isChecked = document.getElementById(id);
     let initial = id.replace('checkbox-contact', 'initials');
+
     let initial1 = document.getElementById('initials-1');
     let initial2 = document.getElementById('initials-2');
     let initial3 = document.getElementById('initials-3');
@@ -273,19 +273,31 @@ function closeSubtask() {
 
 function addSubtask() {
     let newSubtask = document.getElementById('subtask-input');
-    subtasks.push(newSubtask.value);
+    if (newSubtask.value.length >= 1) {
+        subtasks.push(newSubtask.value);
+        showAllSubtasks();
+        closeSubtask();
+    }
+}
+
+
+function showAllSubtasks() {
     let allSubtasks = document.getElementById('overview-subtasks');
     allSubtasks.innerHTML = '';
     for (let i = 0; i < subtasks.length; i++) {
         const subtask = subtasks[i];
 
-        allSubtasks.innerHTML += /*html*/ `
-            <div class="subtask-div">
+        allSubtasks.innerHTML += newSubtaskTemplate(i, subtask);
+    }
+}
+
+
+function newSubtaskTemplate(i, subtask) {
+    return /*html*/ `
+        <div class="subtask-div">
                 <input type="checkbox" id="check-subtask-${i + 1}">
                 <span class="subtask" id="subtask-${i + 1}">${subtask}</span>
-            </div>`;
-    }
-    closeSubtask();
+        </div>`;
 }
 
 
