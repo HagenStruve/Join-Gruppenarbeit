@@ -1,6 +1,7 @@
 let task = [];
 let prio = [];
 let subtasks = [];
+let actualPrio;
 let createdTasks = 0;
 let liCategory;
 let liContact;
@@ -17,8 +18,6 @@ function markedPrio(id) {
     prio = [];
     changeBg(id);
     document.getElementById("hidden-prio-input").value = '.';
-    let prioId = document.getElementById(id);
-    prio.push(prioId)
 }
 
 
@@ -74,7 +73,23 @@ async function addTask() {
     let sector = liCategory;
     let assingedTo = document.getElementById(liContact).innerHTML;
     let dueDate = document.getElementById('dueDate');
-    let prioId = prio[0];
+
+    let urgent = document.getElementById('prio-urgent');
+    let medium = document.getElementById('prio-medium');
+    let low = document.getElementById('prio-low');
+
+    if (urgent.classList.contains('bg-orange')) {
+        actualPrio = 'Urgent';
+        prio.push(actualPrio);
+    }
+    if (medium.classList.contains('bg-yellow')) {
+        actualPrio = 'Medium';
+        prio.push(actualPrio);
+    }
+    if (low.classList.contains('bg-green')) {
+        actualPrio = 'Low';
+        prio.push(actualPrio);
+    }
 
 
     let addTask = {
@@ -85,31 +100,25 @@ async function addTask() {
         "sector": sector,
         "assingedTo": assingedTo,
         "dueDate": dueDate.value,
-        "prio": prioId,
+        "prio": actualPrio,
     };
 
     task.push(addTask);
 
     saveOnServer();
     clearContacts();
-    clearInput();
+    clearPage();
     createdTasks++;
 }
 
 
 function clearContacts() {
-    let initial1 = document.getElementById('initials-1');
-    let initial2 = document.getElementById('initials-2');
-    let initial3 = document.getElementById('initials-3');
-
-    document.getElementById('checkbox-contact-1').checked = false;
-    document.getElementById('checkbox-contact-2').checked = false;
-    document.getElementById('checkbox-contact-3').checked = false;
-
-    initial1.classList.add('d-none');
-    initial2.classList.add('d-none');
-    initial3.classList.add('d-none');
+    for (let i = 1; i < 4; i++) {
+        document.getElementById(`checkbox-contact-${i}`).checked = false;
+        document.getElementById(`initials-${i}`).classList.add('d-none');
+    }
 }
+
 
 
 async function saveOnServer() {
@@ -118,7 +127,7 @@ async function saveOnServer() {
 }
 
 
-function clearInput() {
+function clearPage() {
     document.getElementById('urgent-img').src = "../img/arrow_urgent.svg";
     document.getElementById('medium-img').src = "../img/medium.svg";
     document.getElementById('low-img').src = "../img/arrow_low.svg";
@@ -132,10 +141,11 @@ function clearInput() {
     document.getElementById("hidden-contact-input").value = '';
     document.getElementById("hidden-prio-input").value = '';
     document.getElementById('selected-category').innerHTML = 'Select task Category';
-    document.getElementById('selected-contact').innerHTML = 'Select contacts to assign';
+    document.getElementById('overview-subtasks').innerHTML = '';
+    clearContacts();
     generateDate();
-
     prio = [];
+    subtasks = [];
 }
 
 
@@ -204,7 +214,6 @@ function showSelectedCategory(category, liCategory) {
     document.getElementById("selected-category").innerHTML = category;
     document.getElementById("hidden-category-input").value = '.';
     document.getElementById(liCategory).style = 'margin:0; margin-right: 20px';
-    liCategory = liCategory.charAt(0).toUpperCase() + liCategory.slice(1);
 }
 
 
@@ -268,6 +277,7 @@ function closeSubtask() {
     document.getElementById('subtask-input').value = '';
     document.getElementById('subtask-icons').innerHTML = /*html*/ `
     <img id="plus-icon" src="../img/plus-icon.png" alt="plus">`;
+    twoSubtaskIcons = true;
 }
 
 

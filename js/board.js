@@ -39,7 +39,7 @@
     'importance': 'medium',
     'category': 'done'
 }];
-*/ 
+*/
 
 let downloadedTasks = [];
 
@@ -53,7 +53,7 @@ let tasksOnServer = {
     "dueDate": '',
     "importance": '',
 };
-*/ 
+*/
 
 let currentDraggedElement;
 let NumberOfCurrentTasks = 0; // is needed to differ between the tasks
@@ -100,8 +100,8 @@ function displayAllTasks(search) {
     displayAwaitingFeedbackTasks(search);
     displayDoneTasks(search);
 
-    let titleID = 'task-type'; 
-    let classID = 'task-type'; 
+    let titleID = 'task-type';
+    let classID = 'task-type';
     setColorTypeTasks(titleID, classID);
 }
 
@@ -188,7 +188,7 @@ function moveTo(category) {
     downloadedTasks[currentDraggedElement]['category'] = category;
     displayAllTasks();
     saveNewOnServer();
-    
+
 }
 
 
@@ -217,7 +217,7 @@ function startDragging(id) {
  */
 function setColorTypeTasks(categoryID, classID) {
     for (let c = 0; c < NumberOfCurrentTasks; c++) {
-        setColor(categoryID, classID, c); 
+        setColor(categoryID, classID, c);
     }
 }
 
@@ -233,21 +233,21 @@ function setColorTypeTasks(categoryID, classID) {
 function setColor(categoryID, classID, c) {
 
     let innerHTML = document.getElementById(`${categoryID}${c}`).innerHTML;
-    let getID = document.getElementById(`${classID}${c}`); 
+    let getID = document.getElementById(`${classID}${c}`);
 
-    if (innerHTML === 'Design') {
+    if (innerHTML === 'design') {
         getID.classList.add("orange");
     }
-    if (innerHTML === 'Sales') {
+    if (innerHTML === 'sales') {
         getID.classList.add("pink");
     }
-    if (innerHTML === 'Backoffice') {
+    if (innerHTML === 'backoffice') {
         getID.classList.add("cyan");
     }
-    if (innerHTML === 'Marketing') {
+    if (innerHTML === 'marketing') {
         getID.classList.add("blue");
     }
-    if (innerHTML === 'Media') {
+    if (innerHTML === 'media') {
         getID.classList.add("yellow");
     }
 }
@@ -274,9 +274,13 @@ function displayClickedTask(id) {
 
     document.getElementById('open-clicked-task').style.display = "flex";
 
+    let actualSector = downloadedTasks[id]['sector'];
+
+    actualSector = actualSector.charAt(0).toUpperCase() + actualSector.slice(1);
+
     document.getElementById('c-t-window').innerHTML = `
         <div class="c-t-category" id="c-t-category${id}"> 
-            <span id="c-t-category-html${id}">${downloadedTasks[id]['sector']}</span>
+            <span id="c-t-category-html${id}">${actualSector}</span>
         </div>
 
         <div class="c-t-title" >
@@ -307,7 +311,7 @@ function displayClickedTask(id) {
                 </b>
             </span>
             <span class="c-t-space priority-box"> 
-                ${downloadedTasks[id]['importance']} <img src="img/urgent-white.png" class="c-t-priority-icon"> 
+                ${downloadedTasks[id]['prio']} <img src="../img/arrow_urgent_white.svg" class="c-t-priority-icon"> 
             </span> 
         </div>
 
@@ -339,7 +343,7 @@ function displayClickedTask(id) {
 
     let classID = `c-t-category`
     let categoryID = `c-t-category-html`;
-    let c = id; 
+    let c = id;
     setColor(categoryID, classID, c);
 
 }
@@ -354,9 +358,9 @@ function hideClickedTask() {
 
 
 async function newTaskReload() {
-    await addTask(); 
-    renderBoardSite(); 
-} 
+    await addTask();
+    renderBoardSite();
+}
 
 
 /** to show the add task window on board site
