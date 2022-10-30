@@ -43,6 +43,7 @@
 
 let downloadedTasks = [];
 
+
 /* 
 let tasksOnServer = {
     "id" : 0,
@@ -54,6 +55,17 @@ let tasksOnServer = {
     "importance": '',
 };
 */
+percentageFinishedSubtasks = 0; // needed! Will be changed in every displayTask function
+let testsubtasks = [{
+    'subtasks': 2,
+    'descriptions': ['Essen kaufen', 'Essen zubereiten'],
+    'checked' : 1,
+}
+];
+
+
+
+
 
 let currentDraggedElement;
 let NumberOfCurrentTasks = 0; // is needed to differ between the tasks
@@ -110,6 +122,8 @@ function displayAllTasks(search) {
  * @param {string} todos - variable contains all arrays which have the category "to-do"
  * 
  * @param {Array} search - contains every letter that typed in input field "find task"
+ * 
+ * @param {number} percentageFinishedSubtasks - contains number of percentage of finished subtasks
 
  */
 function displayToDos(search) {
@@ -123,7 +137,7 @@ function displayToDos(search) {
             // wenn es search nicht gibt dann führe aus, und wenn title etwas von der suche beinhaltet dann führe ebenfalls aus, wenn nicht dann zeigt er auch nichts an 
 
             const element = todos[i];
-
+            calculateProgressBar(element); 
             document.getElementById('to-do').innerHTML += addTaskToKanbanHTML(element);
             NumberOfCurrentTasks++;
         }
@@ -140,6 +154,7 @@ function displayInProgressTasks(search) {
         if (!search || title.includes(search)) {
             const element = inProgress[p];
 
+            calculateProgressBar(element); 
             document.getElementById('in-progress').innerHTML += addTaskToKanbanHTML(element);
             NumberOfCurrentTasks++;
         }
@@ -156,6 +171,7 @@ function displayAwaitingFeedbackTasks(search) {
         if (!search || title.includes(search)) {
             const element = awaitingFeedback[a];
 
+            calculateProgressBar(element); 
             document.getElementById('awaiting-feedback').innerHTML += addTaskToKanbanHTML(element);
             NumberOfCurrentTasks++;
         }
@@ -171,6 +187,7 @@ function displayDoneTasks(search) {
         if (!search || title.includes(search)) {
             const element = done[d];
 
+            calculateProgressBar(element); 
             document.getElementById('done').innerHTML += addTaskToKanbanHTML(element);
             NumberOfCurrentTasks++;
         }
@@ -281,18 +298,24 @@ function displayClickedTask(id) {
 
     actualSector = actualSector.charAt(0).toUpperCase() + actualSector.slice(1);
 
-    displayClickedTaskHTML(id, actualSector); 
+    displayClickedTaskHTML(id, actualSector);
+    createSubtasks(); 
 
     let classID = `c-t-category`
     let categoryID = `c-t-category-html`;
     let c = id;
     setColor(categoryID, classID, c);
 
+
+
 }
 
-
+/** HTML Code for clicked Task
+ * 
+ *  all @param are explained in function "displayClickedTask()"
+ */
 function displayClickedTaskHTML(id, actualSector) {
-    return     document.getElementById('c-t-window').innerHTML = /*html*/`
+    return document.getElementById('c-t-window').innerHTML = /*html*/`
     <div class="c-t-category" id="c-t-category${id}"> 
         <span id="c-t-category-html${id}">${actualSector}</span>
     </div>
@@ -315,12 +338,11 @@ function displayClickedTaskHTML(id, actualSector) {
         </span>
     </div>
 
-    <div class="c-t-subtasks"> 
+    <div class="c-t-subtasks" id="subtasks"> 
 
         <label class="c-t-checkbox">
             <input type="checkbox"> 
             <span class="checkmark">Essen machen </span> 
-            
         </label>
 
         <label class="c-t-checkbox">
@@ -380,6 +402,44 @@ function displayClickedTaskHTML(id, actualSector) {
 }
 
 
+
+/** creates the Subtasks and adds them in clicked task view
+ * 
+ * @param {number}  numberOfSubtasks - gets the amount of subtasks as number
+ * 
+ */
+function createSubtasks() {
+
+    let numberOfSubtasks = testsubtasks[0]['subtasks'];
+
+    document.getElementById('subtasks').innerHTML = ''; 
+    for (let i = 0; i < numberOfSubtasks; i++) {
+
+        document.getElementById('subtasks').innerHTML += `
+            
+        <label class="c-t-checkbox">
+            <input type="checkbox"> 
+            <span class="checkmark">${testsubtasks[0]['descriptions'][i]} </span> 
+        </label>
+        `
+    }
+}
+
+
+/** calculates the percentage for progressbar in tasksfcvxk
+ * 
+ * 
+ */
+ function calculateProgressBar() {
+    let numberOfSubtasks = testsubtasks[0]['subtasks']; 
+    let finishedSubstasks = testsubtasks[0]['checked']; 
+
+    percentageFinishedSubtasks = finishedSubstasks / numberOfSubtasks * 100;
+
+    console.log('Die prozentanzahl ist ' , percentageFinishedSubtasks); 
+}
+
+
 /** to hide the clickedTask
  * 
  */
@@ -389,6 +449,9 @@ function hideClickedTask() {
 }
 
 
+/** function renders site, in order to display new added Tasks
+ * 
+ */
 async function newTaskReload() {
     await addTask();
     renderBoardSite();
@@ -414,10 +477,9 @@ function hideClickedAddTaskWindow() {
 }
 
 
-
 /** HTML to generate a task
  * 
- * @param {array} element - beinhaltet den gefilterten Array mit forschleifen Zahl der jeweiligen Kategorie
+ * @param {array} element - beinhaltet den gefilterten Array mit forschleifen Zahl der jeweiligen Kategorie.
  * 
  * @returns 
  */
@@ -439,7 +501,7 @@ function addTaskToKanbanHTML(element) {
     </p>
     <div class="progress-section">
         <div class="progress-border">
-            <div class="gray" style=" height: 6px; width:25%; border-radius:15px"> </div>
+            <div class="gray" style=" height: 6px; width:${percentageFinishedSubtasks}%; border-radius:15px"> </div>
         </div>
 
         <span style="font-size: 13px; font-weight: 500; text-align: center"> 1/2 Done </span>
