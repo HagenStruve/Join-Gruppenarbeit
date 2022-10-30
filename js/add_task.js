@@ -7,20 +7,32 @@ let liCategory;
 let liContact;
 let twoSubtaskIcons = false;
 
-
+/**
+ * 
+ * lädt die Seite mit dem aktuellem Datum
+ */
 async function initAddTask() {
     await includeHTML();
     generateDate();
 }
 
-
+/**
+ * leert das array prio und aktiviert eine funktion um die 
+ * dringlichkeit der task zu makieren
+ * 
+ * @param {string} id -Variable zu dem jeweiligen button
+ */
 function markedPrio(id) {
     prio = [];
     changeBg(id);
     document.getElementById("hidden-prio-input").value = '.';
 }
 
-
+/**
+ * aktiviert eine funktion mit der ausgewählten id
+ * 
+ * @param {string} id -Variable zu dem jeweiligen button
+ */
 function changeBg(id) {
     let urgent = document.getElementById('prio-urgent');
     let medium = document.getElementById('prio-medium');
@@ -36,7 +48,13 @@ function changeBg(id) {
     }
 }
 
-
+/**
+ * makiert die dirnglichkeit der task durch veränderung der klassen
+ * 
+ * @param {*} urgent -steht für sehr wichtig
+ * @param {*} medium -steht für wichtig
+ * @param {*} low -steht für nicht so wichtig
+ */
 function changeBgUrgent(urgent, medium, low) {
     document.getElementById('urgent-img').src = "../img/arrow_urgent_white.svg";
     document.getElementById('medium-img').src = "../img/medium.svg";
@@ -46,7 +64,13 @@ function changeBgUrgent(urgent, medium, low) {
     low.classList.remove('bg-green');
 }
 
-
+/**
+ * makiert die dirnglichkeit der task durch veränderung der klassen
+ * 
+ * @param {*} urgent -steht für sehr wichtig
+ * @param {*} medium -steht für wichtig
+ * @param {*} low -steht für nicht so wichtig
+ */
 function changeBgMedium(urgent, medium, low) {
     document.getElementById('urgent-img').src = "../img/arrow_urgent.svg";
     document.getElementById('medium-img').src = "../img/medium_white.svg";
@@ -56,7 +80,13 @@ function changeBgMedium(urgent, medium, low) {
     low.classList.remove('bg-green');
 }
 
-
+/**
+ * makiert die dirnglichkeit der task durch veränderung der klassen
+ * 
+ * @param {*} urgent -steht für sehr wichtig
+ * @param {*} medium -steht für wichtig
+ * @param {*} low -steht für nicht so wichtig
+ */
 function changeBgLow(urgent, medium, low) {
     document.getElementById('urgent-img').src = "../img/arrow_urgent.svg";
     document.getElementById('medium-img').src = "../img/medium.svg";
@@ -66,7 +96,11 @@ function changeBgLow(urgent, medium, low) {
     low.classList.add('bg-green');
 }
 
-
+/**
+ * ausgelöst durch einen Button werden die eingegebenen Informationen gebündelt in ein JSON 
+ * gepusht und es werden funktionen zur speicherung des JSON auf dem Server ausgelöst
+ * 
+ */
 async function addTask() {
     let title = document.getElementById('title');
     let descripton = document.getElementById('descripton');
@@ -111,7 +145,10 @@ async function addTask() {
     createdTasks++;
 }
 
-
+/**
+ * löscht die makierung des kontaktes
+ * 
+ */
 function clearContacts() {
     for (let i = 1; i < 4; i++) {
         document.getElementById(`checkbox-contact-${i}`).checked = false;
@@ -120,13 +157,20 @@ function clearContacts() {
 }
 
 
-
+/**
+ * speicherfunktion auf den Server
+ * 
+ */
 async function saveOnServer() {
     setURL("https://gruppe-313.developerakademie.net/Join-Gruppenarbeit/smallest_backend_ever-master");
     await backend.setItem('task', JSON.stringify(task));
 }
 
 
+/**
+ * leert die inputfelder und eingaben
+ * 
+ */
 function clearPage() {
     document.getElementById('urgent-img').src = "../img/arrow_urgent.svg";
     document.getElementById('medium-img').src = "../img/medium.svg";
@@ -149,11 +193,20 @@ function clearPage() {
 }
 
 
+/**
+ * lädt das aktuelle Datum in das inputfeldt
+ * 
+ */
 function generateDate() {
     document.getElementById("dueDate").valueAsDate = new Date();
 }
 
 
+/**
+ * durch klick auf einen button wird eine liste mit auswahl gezeigt
+ * oder versteckt
+ * 
+ */
 function showCategories() {
     let ulCategory = document.getElementById("ul-category");
     if (ulCategory.classList.contains('d-none')) {
@@ -165,18 +218,33 @@ function showCategories() {
 }
 
 
+/**
+ * eine auswahl von kategorien wird gezeitg
+ * 
+ * @param {string} ulCategory -id von der jeweiligen category
+ */
 function showSelectionCategories(ulCategory) {
     ulCategory.classList.remove('d-none');
     document.getElementById("select-div-category").classList.add('no-border-bottom');
 }
 
 
+/**
+ * eine auswahl von kategorien wird versteckt
+ * 
+ * @param {string} ulCategory -id von der jeweiligen category
+ */
 function hideSelectionCategories(ulCategory) {
     ulCategory.classList.add('d-none');
     document.getElementById("select-div-category").classList.remove('no-border-bottom');
 }
 
 
+/**
+ * durch klick auf einen button wird eine liste mit auswahl gezeigt
+ * oder versteckt
+ * 
+ */
 function showContacts() {
     let ulContact = document.getElementById("ul-contact");
     if (ulContact.classList.contains('d-none')) {
@@ -188,12 +256,22 @@ function showContacts() {
 }
 
 
+/**
+ * eine auswahl von kategorien wird gezeigt
+ * 
+ * @param {string} ulContact -id von dem jeweigen Kontakt
+ */
 function showSelectionContacts(ulContact) {
     ulContact.classList.remove('d-none');
     document.getElementById("select-div-contact").classList.add('no-border-bottom');
 }
 
 
+/**
+ * eine auswahl von kategorien wird gezeigt
+ * 
+ * @param {string} ulContact -id von dem jeweigen Kontakt
+ */
 function hideSelectionContacts(ulContact) {
     ulContact.classList.add('d-none');
     document.getElementById("select-div-contact").classList.remove('no-border-bottom');
