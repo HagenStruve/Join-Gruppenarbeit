@@ -269,100 +269,19 @@ function searchTask() {
 /** shows a bigger window of the Task, when it's clicked
  * 
  * @param {number} id - contains number id which task is clicked
+ * 
+ * @param {string} actualSector - contains category like "marketing" or "backend"l
  */
 function displayClickedTask(id) {
 
     document.getElementById('open-clicked-task').style.display = "flex";
+    document.getElementById('c-t-window').style.display = "flex";
 
     let actualSector = downloadedTasks[id]['sector'];
 
     actualSector = actualSector.charAt(0).toUpperCase() + actualSector.slice(1);
 
-    document.getElementById('c-t-window').innerHTML = /*html*/`
-        <div class="c-t-category" id="c-t-category${id}"> 
-            <span id="c-t-category-html${id}">${actualSector}</span>
-        </div>
-
-        <div class="c-t-title" >
-            <b>  ${downloadedTasks[id]['title']} </b>
-        </div>
-
-        <div class="c-t-description">
-            <p> 
-                ${downloadedTasks[id]['description']} 
-            </p>
-        </div>
-
-        <div class="c-t-infos"> 
-            <span>
-                <b> 
-                    Subtasks:
-                </b>
-            </span>
-        </div>
-
-        <div class="c-t-subtasks"> 
-
-            <label class="c-t-checkbox">
-                <input type="checkbox"> 
-                <span class="checkmark">Essen machen </span> 
-                
-            </label>
-
-            <label class="c-t-checkbox">
-                <input type="checkbox"> 
-                <span class="checkmark">Einkaufen gehen</span> 
-                
-            </label>
-</div> 
-
-        <div class="c-t-infos"> 
-            <span>
-                <b>
-                    Due date:
-                </b>
-            </span>
-            <span class="c-t-space"> 
-            ${downloadedTasks[id]['dueDate']}
-            </span> 
-        </div>
-
-        <div class="c-t-infos"> 
-            <span>
-                <b>
-                    Priority:
-                </b>
-            </span>
-            <span class="c-t-space priority-box"> 
-                ${downloadedTasks[id]['prio']} <img src="../img/arrow_urgent_white.svg" class="c-t-priority-icon"> 
-            </span> 
-        </div>
-
-        <div class="c-t-infos"> 
-            <span>
-                <b>
-                    Assigned to:
-                </b>
-            </span>
-        </div>
-
-        <div class="c-t-assignedTo">
-            <div class="c-t-contact"> 
-                <img src="../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png" class="c-t-profilimages"> 
-                <span>
-                    Sarah Eisenberg
-                </span> 
-            </div>
-
-            <div class="c-t-contact"> 
-                <img src="../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png" class="c-t-profilimages"> 
-                <span>
-                    Sarah Eisenberg
-                </span> 
-            </div>
-
-        </div> 
-    `;
+    displayClickedTaskHTML(id, actualSector); 
 
     let classID = `c-t-category`
     let categoryID = `c-t-category-html`;
@@ -372,11 +291,101 @@ function displayClickedTask(id) {
 }
 
 
+function displayClickedTaskHTML(id, actualSector) {
+    return     document.getElementById('c-t-window').innerHTML = /*html*/`
+    <div class="c-t-category" id="c-t-category${id}"> 
+        <span id="c-t-category-html${id}">${actualSector}</span>
+    </div>
+
+    <div class="c-t-title" >
+        <b>  ${downloadedTasks[id]['title']} </b>
+    </div>
+
+    <div class="c-t-description">
+        <p> 
+            ${downloadedTasks[id]['description']} 
+        </p>
+    </div>
+
+    <div class="c-t-infos"> 
+        <span>
+            <b> 
+                Subtasks:
+            </b>
+        </span>
+    </div>
+
+    <div class="c-t-subtasks"> 
+
+        <label class="c-t-checkbox">
+            <input type="checkbox"> 
+            <span class="checkmark">Essen machen </span> 
+            
+        </label>
+
+        <label class="c-t-checkbox">
+            <input type="checkbox"> 
+            <span class="checkmark">Einkaufen gehen</span> 
+            
+        </label>
+</div> 
+
+    <div class="c-t-infos"> 
+        <span>
+            <b>
+                Due date:
+            </b>
+        </span>
+        <span class="c-t-space"> 
+        ${downloadedTasks[id]['dueDate']}
+        </span> 
+    </div>
+
+    <div class="c-t-infos"> 
+        <span>
+            <b>
+                Priority:
+            </b>
+        </span>
+        <span class="c-t-space priority-box"> 
+            ${downloadedTasks[id]['prio']} <img src="../img/arrow_urgent_white.svg" class="c-t-priority-icon"> 
+        </span> 
+    </div>
+
+    <div class="c-t-infos"> 
+        <span>
+            <b>
+                Assigned to:
+            </b>
+        </span>
+    </div>
+
+    <div class="c-t-assignedTo">
+        <div class="c-t-contact"> 
+            <img src="../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png" class="c-t-profilimages"> 
+            <span>
+                Sarah Eisenberg
+            </span> 
+        </div>
+
+        <div class="c-t-contact"> 
+            <img src="../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png" class="c-t-profilimages"> 
+            <span>
+                Sarah Eisenberg
+            </span> 
+        </div>
+
+    </div> 
+`;
+}
+
+
 /** to hide the clickedTask
  * 
  */
 function hideClickedTask() {
     document.getElementById('open-clicked-task').style.display = "none";
+    document.getElementById('c-t-window').style.display = "none";
 }
 
 
