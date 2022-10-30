@@ -1,6 +1,7 @@
 let task = [];
 let prio = [];
 let subtasks = [];
+let contacts = [];
 let actualPrio;
 let createdTasks = 0;
 let liCategory;
@@ -105,7 +106,19 @@ async function addTask() {
     let title = document.getElementById('title');
     let descripton = document.getElementById('descripton');
     let sector = liCategory;
-    let assingedTo = document.getElementById(liContact).innerHTML;
+    if (document.getElementById('checkbox-contact-1').checked) {
+        contacts.push(document.getElementById('contact-1').innerHTML);
+    }
+
+    if (document.getElementById('checkbox-contact-2').checked) {
+        contacts.push(document.getElementById('contact-2').innerHTML);
+    }
+
+    if (document.getElementById('checkbox-contact-3').checked) {
+        contacts.push(document.getElementById('contact-3').innerHTML);
+    }
+
+
     let dueDate = document.getElementById('dueDate');
 
     let urgent = document.getElementById('prio-urgent');
@@ -126,15 +139,17 @@ async function addTask() {
     }
 
 
+
     let addTask = {
         "category": 'to-do',
         "id": 0,
         "title": title.value,
         "description": descripton.value,
         "sector": sector,
-        "assingedTo": assingedTo,
+        "assingedTo": contacts,
         "dueDate": dueDate.value,
         "prio": actualPrio,
+        "subtasks": subtasks
     };
 
     task.push(addTask);
