@@ -272,9 +272,9 @@ function showContacts() {
 
 
 /**
- * eine auswahl von kategorien wird gezeigt
+ * eine Auswahl von Kontakten wird gezeigt
  * 
- * @param {string} ulContact -id von dem jeweigen Kontakt
+ * @param {string} ulContact -id vom Contact Container
  */
 function showSelectionContacts(ulContact) {
     ulContact.classList.remove('d-none');
@@ -283,9 +283,9 @@ function showSelectionContacts(ulContact) {
 
 
 /**
- * eine auswahl von kategorien wird gezeigt
+ * die Auswahl der Kontakte verschwindet
  * 
- * @param {string} ulContact -id von dem jeweigen Kontakt
+ * @param {string} ulContact -id vom Contact Container
  */
 function hideSelectionContacts(ulContact) {
     ulContact.classList.add('d-none');
