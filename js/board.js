@@ -278,7 +278,7 @@ function displayClickedTask(id) {
 
     actualSector = actualSector.charAt(0).toUpperCase() + actualSector.slice(1);
 
-    document.getElementById('c-t-window').innerHTML = `
+    document.getElementById('c-t-window').innerHTML = /*html*/`
         <div class="c-t-category" id="c-t-category${id}"> 
             <span id="c-t-category-html${id}">${actualSector}</span>
         </div>
@@ -292,6 +292,29 @@ function displayClickedTask(id) {
                 ${downloadedTasks[id]['description']} 
             </p>
         </div>
+
+        <div class="c-t-infos"> 
+            <span>
+                <b> 
+                    Subtasks:
+                </b>
+            </span>
+        </div>
+
+        <div class="c-t-subtasks"> 
+
+            <label class="c-t-checkbox">
+                <input type="checkbox"> 
+                <span class="checkmark">Essen machen </span> 
+                
+            </label>
+
+            <label class="c-t-checkbox">
+                <input type="checkbox"> 
+                <span class="checkmark">Einkaufen gehen</span> 
+                
+            </label>
+</div> 
 
         <div class="c-t-infos"> 
             <span>
@@ -325,14 +348,14 @@ function displayClickedTask(id) {
 
         <div class="c-t-assignedTo">
             <div class="c-t-contact"> 
-                <img src="img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png" class="c-t-profilimages"> 
+                <img src="../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png" class="c-t-profilimages"> 
                 <span>
                     Sarah Eisenberg
                 </span> 
             </div>
 
             <div class="c-t-contact"> 
-                <img src="img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png" class="c-t-profilimages"> 
+                <img src="../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png" class="c-t-profilimages"> 
                 <span>
                     Sarah Eisenberg
                 </span> 
