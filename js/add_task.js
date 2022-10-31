@@ -10,7 +10,7 @@ let twoSubtaskIcons = false;
 
 /**
  * 
- * lädt die Seite mit dem aktuellem Datum
+ * loads the page with the current date
  */
 async function initAddTask() {
     await includeHTML();
@@ -18,10 +18,10 @@ async function initAddTask() {
 }
 
 /**
- * leert das array prio und aktiviert eine funktion um die 
- * dringlichkeit der task zu makieren
+ * empties the array prio and activates a function around the
+ * to mark the urgency of the task
  * 
- * @param {string} id -Variable zu dem jeweiligen button
+ * @param {string} id -Variable for the respective button
  */
 function markedPrio(id) {
     prio = [];
@@ -30,9 +30,9 @@ function markedPrio(id) {
 }
 
 /**
- * aktiviert eine funktion mit der ausgewählten id
+ * activates a function with the selected id
  * 
- * @param {string} id -Variable zu dem jeweiligen button
+ * @param {string} id -Variable for the respective button
  */
 function changeBg(id) {
     let urgent = document.getElementById('prio-urgent');
@@ -50,11 +50,11 @@ function changeBg(id) {
 }
 
 /**
- * makiert die dirnglichkeit der task durch veränderung der klassen
- * 
- * @param {*} urgent -steht für sehr wichtig
- * @param {*} medium -steht für wichtig
- * @param {*} low -steht für nicht so wichtig
+ * marks the priority of the task by changing the classes
+ *
+ * @param {*} urgent -stands for very important
+ * @param {*} medium -stands for important
+ * @param {*} low -stands for not so important
  */
 function changeBgUrgent(urgent, medium, low) {
     document.getElementById('urgent-img').src = "../img/arrow_urgent_white.svg";
@@ -66,11 +66,11 @@ function changeBgUrgent(urgent, medium, low) {
 }
 
 /**
- * makiert die dirnglichkeit der task durch veränderung der klassen
+ * marks the priority of the task by changing the classes
  * 
- * @param {*} urgent -steht für sehr wichtig
- * @param {*} medium -steht für wichtig
- * @param {*} low -steht für nicht so wichtig
+ * @param {*} urgent -stands for very important
+ * @param {*} medium -stands for important
+ * @param {*} low -stands for not so important
  */
 function changeBgMedium(urgent, medium, low) {
     document.getElementById('urgent-img').src = "../img/arrow_urgent.svg";
@@ -82,11 +82,11 @@ function changeBgMedium(urgent, medium, low) {
 }
 
 /**
- * makiert die dirnglichkeit der task durch veränderung der klassen
+ * marks the priority of the task by changing the classes
  * 
- * @param {*} urgent -steht für sehr wichtig
- * @param {*} medium -steht für wichtig
- * @param {*} low -steht für nicht so wichtig
+  * @param {*} urgent -stands for very important
+ * @param {*} medium -stands for important
+ * @param {*} low -stands for not so important
  */
 function changeBgLow(urgent, medium, low) {
     document.getElementById('urgent-img').src = "../img/arrow_urgent.svg";
@@ -98,8 +98,8 @@ function changeBgLow(urgent, medium, low) {
 }
 
 /**
- * ausgelöst durch einen Button werden die eingegebenen Informationen gebündelt in ein JSON 
- * gepusht und es werden funktionen zur speicherung des JSON auf dem Server ausgelöst
+ * triggered by a button, the information entered is bundled in a JSON
+ * pushed and functions for storing the JSON on the server are triggered
  * 
  */
 async function addTask() {
@@ -161,7 +161,7 @@ async function addTask() {
 }
 
 /**
- * löscht die makierung des kontaktes
+ * deletes the marking of the contact
  * 
  */
 function clearContacts() {
@@ -173,7 +173,7 @@ function clearContacts() {
 
 
 /**
- * speicherfunktion auf den Server
+ * save function on the server
  * 
  */
 async function saveOnServer() {
@@ -183,7 +183,7 @@ async function saveOnServer() {
 
 
 /**
- * leert die inputfelder und eingaben
+ * clears the input fields and entries
  * 
  */
 function clearPage() {
@@ -209,8 +209,8 @@ function clearPage() {
 
 
 /**
- * lädt das aktuelle Datum in das inputfeldt
- * 
+ * loads the current date into the input field
+ *
  */
 function generateDate() {
     document.getElementById("dueDate").valueAsDate = new Date();
@@ -218,8 +218,8 @@ function generateDate() {
 
 
 /**
- * durch klick auf einen button wird eine liste mit auswahl gezeigt
- * oder versteckt
+ * by clicking on a button, a list with selections is shown
+ * or hidden
  * 
  */
 function showCategories() {
@@ -234,9 +234,9 @@ function showCategories() {
 
 
 /**
- * eine auswahl von kategorien wird gezeitg
+ * a selection of categories is presented
  * 
- * @param {string} ulCategory -id von der jeweiligen category
+ * @param {string} ulCategory -id of the respective category
  */
 function showSelectionCategories(ulCategory) {
     ulCategory.classList.remove('d-none');
@@ -245,9 +245,9 @@ function showSelectionCategories(ulCategory) {
 
 
 /**
- * eine auswahl von kategorien wird versteckt
+ * a selection of categories is hidden
  * 
- * @param {string} ulCategory -id von der jeweiligen category
+ * @param {string} ulCategory -Choice of categories
  */
 function hideSelectionCategories(ulCategory) {
     ulCategory.classList.add('d-none');
@@ -256,8 +256,8 @@ function hideSelectionCategories(ulCategory) {
 
 
 /**
- * durch klick auf einen button wird eine liste mit auswahl gezeigt
- * oder versteckt
+ * by clicking on a button, a list with selections is shown
+ * or hidden
  * 
  */
 function showContacts() {
@@ -272,9 +272,9 @@ function showContacts() {
 
 
 /**
- * eine Auswahl von Kontakten wird gezeigt
+ * a selection of contacts is shown
  * 
- * @param {string} ulContact -id vom Contact Container
+ * @param {string} ulContact -id of the contact container
  */
 function showSelectionContacts(ulContact) {
     ulContact.classList.remove('d-none');
@@ -283,9 +283,9 @@ function showSelectionContacts(ulContact) {
 
 
 /**
- * die Auswahl der Kontakte verschwindet
+ * the selection of contacts disappears
  * 
- * @param {string} ulContact -id vom Contact Container
+ * @param {string} ulContact -id of the contact container
  */
 function hideSelectionContacts(ulContact) {
     ulContact.classList.add('d-none');
@@ -293,6 +293,11 @@ function hideSelectionContacts(ulContact) {
 }
 
 
+/**
+* Category selection function
+ *
+ * @param {string} id - selected category
+ */
 function selectCategory(id) {
     liCategory = id.replace('div-', '');
     let ulCategory = document.getElementById("ul-category");
@@ -302,6 +307,12 @@ function selectCategory(id) {
 }
 
 
+/**
+ * Function to make the selected category visible
+ *
+ * @param {string} category - selected category
+ * @param {string} liCategory -replaced content from the id of the selected category
+ */
 function showSelectedCategory(category, liCategory) {
     document.getElementById('selected-category').style = 'display: flex; align-items: center; list-style-type: none;';
     document.getElementById("selected-category").innerHTML = category;
@@ -310,6 +321,11 @@ function showSelectedCategory(category, liCategory) {
 }
 
 
+/**
+* by clicking on a button, a list with selections is shown
+ * or hidden
+ * 
+ */
 function showContacts() {
     let ulContact = document.getElementById("ul-contact");
     if (ulContact.classList.contains('d-none')) {
@@ -323,6 +339,11 @@ function showContacts() {
 }
 
 
+/**
+ * function for selecting the contact
+ * 
+ * @param {string} id - selected contact
+ */
 function selectContact(id) {
     liContact = id.replace('div-', '');
     let ulContact = document.getElementById("ul-contact");
@@ -330,6 +351,10 @@ function selectContact(id) {
 }
 
 
+/**
+ * verifies which contact has that box checked
+ * @param {string} id - selected contact
+ */
 function proofCheck(id) {
     let isChecked = document.getElementById(id);
     let initial = id.replace('checkbox-contact', 'initials');
@@ -352,6 +377,9 @@ function proofCheck(id) {
 }
 
 
+/**
+ * activates the option to add a subtask
+ */
 function showXandCheckmark() {
     if (twoSubtaskIcons == false) {
         document.getElementById('subtask-icons').innerHTML = /*html*/ `
@@ -366,6 +394,9 @@ function showXandCheckmark() {
 }
 
 
+/**
+ * includes the option to add a subtask
+ */
 function closeSubtask() {
     document.getElementById('subtask-input').value = '';
     document.getElementById('subtask-icons').innerHTML = /*html*/ `
@@ -374,6 +405,9 @@ function closeSubtask() {
 }
 
 
+/**
+ * adds a subtask to the subtasks array and runs a function to display it for selection
+ */
 function addSubtask() {
     let newSubtask = document.getElementById('subtask-input');
     if (newSubtask.value.length >= 1) {
@@ -384,6 +418,9 @@ function addSubtask() {
 }
 
 
+/**
+ * Displays all subtasks from the subtasks array
+ */
 function showAllSubtasks() {
     let allSubtasks = document.getElementById('overview-subtasks');
     allSubtasks.innerHTML = '';
@@ -395,6 +432,13 @@ function showAllSubtasks() {
 }
 
 
+/**
+ * HTML part of function showAllSubtasks()
+ * 
+ * @param {string} i - instead of i
+ * @param {string} subtask - subtask instead of i
+ * @returns 
+ */
 function newSubtaskTemplate(i, subtask) {
     return /*html*/ `
         <div class="subtask-div">
