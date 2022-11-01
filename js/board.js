@@ -347,7 +347,8 @@ function displayClickedTask(id) {
     actualSector = actualSector.charAt(0).toUpperCase() + actualSector.slice(1);
 
     displayClickedTaskHTML(id, actualSector);
-    createSubtasks(); 
+    createSubtasks(id); 
+    createAssignedContacs(id); 
 
     let classID = `c-t-category`
     let categoryID = `c-t-category-html`;
@@ -417,7 +418,7 @@ function displayClickedTaskHTML(id, actualSector) {
         </span>
     </div>
 
-    <div class="c-t-assignedTo">
+    <div class="c-t-assignedTo" id="c-t-assignedTo">
         <div class="c-t-contact"> 
             <img src="../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png" class="c-t-profilimages"> 
             <span>
@@ -437,15 +438,32 @@ function displayClickedTaskHTML(id, actualSector) {
 }
 
 
+function createAssignedContacs(id) {
+    document.getElementById('c-t-assignedTo').innerHTML = '' ;
+
+    let assignedContacts = downloadedTasks[0]['assingedTo']; 
+    for (let i = 0; i < assignedContacts.length; i++) {
+
+    document.getElementById('c-t-assignedTo').innerHTML += `
+        <div class="c-t-contact"> 
+            <img src="../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png" class="c-t-profilimages"> 
+            <span>
+                ${assignedContacts[i]}
+            </span> 
+        </div>
+    `; 
+    }
+}
+
 
 /** get the subtasks from downloaded serverarray and adds them in clicked task view (html code)
  * 
  * @param {number}  numberOfSubtasks - gets the amount of subtasks as number
  * 
  */
-function createSubtasks() {
+function createSubtasks(id) {
 
-    let arrayOfSubtasks = downloadedTasks[0]['subtasks'];
+    let arrayOfSubtasks = downloadedTasks[id]['subtasks'];
 
     document.getElementById('subtasks').innerHTML = ''; 
     for (let i = 0; i < arrayOfSubtasks.length; i++) {

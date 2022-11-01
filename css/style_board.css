@@ -226,7 +226,12 @@
     z-index: 300;
     display: none;
     flex-direction: column;
+    overflow: auto;
 }
+
+::-webkit-scrollbar {
+    border-radius: 20px;
+  }
 
 .c-t-category {
     font-size: 22px;
