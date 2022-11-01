@@ -56,13 +56,25 @@ let tasksOnServer = {
 };
 */
 percentageFinishedSubtasks = 0; // needed! Will be changed in every displayTask function
-let testsubtasks = [{
-    'subtasks': 2,
-    'descriptions': ['Essen kaufen', 'Essen zubereiten'],
-    'checked' : 1,
+
+
+
+let großerJSON = [{
+    'subtasks': [{
+        'subtask': '1.Versuch',
+        'checked': 'false',
+    },
+    {
+        'subtask': '2.Versuch',
+        'checked': 'false',
+    },
+    {
+        'subtask': '3.Versuch',
+        'checked': 'false',
+    }
+    ],
 }
 ];
-
 
 
 
@@ -230,11 +242,16 @@ function startDragging(id) {
  * @param {string} categoryID - hands over ID for HTHML inside Category Div  
  * 
 
- * 
+ *  setColorCT does the same, but changes Color on clicked Task view
  */
 function setColorTypeTasks(categoryID, classID) {
     for (let c = 0; c < NumberOfCurrentTasks; c++) {
-        setColor(categoryID, classID, c);
+        if (categoryID === classID) {
+            setColor(categoryID, classID, c);
+        }
+            else {
+                setColorCT(categoryID, classID, c);
+            }
     }
 }
 
@@ -266,6 +283,37 @@ function setColor(categoryID, classID, c) {
     }
     if (innerHTML === 'media') {
         getID.classList.add("yellow");
+    }
+}
+
+/** responsible to set the correct color for the specific Categor
+ * 
+ * ** setColor -CT - stands for "clicked task"
+ * 
+ * Why double? Try'd to do it in one function, because of some big differences in ID's it resolutioned
+ * only in Errors and took to many time. So decided to do it simple and take the time for more important
+ * work
+ */
+function setColorCT() {
+
+    let innerHTML = document.getElementById('c-t-category-html').innerHTML;
+    innerHTML = innerHTML.toLowerCase();
+    let getID = document.getElementById('c-t-category');
+
+    if (innerHTML === 'design') {
+        getID.style.color = "rgba(255, 122, 0, 1)";
+    }
+    if (innerHTML === 'sales') {
+        getID.style.background = " rgba(252, 113, 255, 1)";
+    }
+    if (innerHTML === 'backoffice') {
+        getID.style.background = "rgba(31, 215, 193, 1)";
+    }
+    if (innerHTML === 'marketing') {
+        getID.style.background = "rgba(0, 56, 255, 1)";
+    }
+    if (innerHTML === 'media') {
+        getID.style.background = "rgba(255, 199, 1, 1)";
     }
 }
 
@@ -304,11 +352,9 @@ function displayClickedTask(id) {
     let classID = `c-t-category`
     let categoryID = `c-t-category-html`;
     let c = id;
-    setColor(categoryID, classID, c);
-
-
-
+    setColorTypeTasks(categoryID);
 }
+
 
 /** HTML Code for clicked Task
  * 
@@ -316,8 +362,8 @@ function displayClickedTask(id) {
  */
 function displayClickedTaskHTML(id, actualSector) {
     return document.getElementById('c-t-window').innerHTML = /*html*/`
-    <div class="c-t-category" id="c-t-category${id}"> 
-        <span id="c-t-category-html${id}">${actualSector}</span>
+    <div class="c-t-category" id="c-t-category"> 
+        <span id="c-t-category-html">${actualSector}</span>
     </div>
 
     <div class="c-t-title" >
@@ -339,18 +385,7 @@ function displayClickedTaskHTML(id, actualSector) {
     </div>
 
     <div class="c-t-subtasks" id="subtasks"> 
-
-        <label class="c-t-checkbox">
-            <input type="checkbox"> 
-            <span class="checkmark">Essen machen </span> 
-        </label>
-
-        <label class="c-t-checkbox">
-            <input type="checkbox"> 
-            <span class="checkmark">Einkaufen gehen</span> 
-            
-        </label>
-</div> 
+    </div> 
 
     <div class="c-t-infos"> 
         <span>
@@ -403,41 +438,42 @@ function displayClickedTaskHTML(id, actualSector) {
 
 
 
-/** creates the Subtasks and adds them in clicked task view
+/** get the subtasks from downloaded serverarray and adds them in clicked task view (html code)
  * 
  * @param {number}  numberOfSubtasks - gets the amount of subtasks as number
  * 
  */
 function createSubtasks() {
 
-    let numberOfSubtasks = testsubtasks[0]['subtasks'];
+    let arrayOfSubtasks = downloadedTasks[0]['subtasks'];
 
     document.getElementById('subtasks').innerHTML = ''; 
-    for (let i = 0; i < numberOfSubtasks; i++) {
+    for (let i = 0; i < arrayOfSubtasks.length; i++) {
 
         document.getElementById('subtasks').innerHTML += `
             
         <label class="c-t-checkbox">
-            <input type="checkbox"> 
-            <span class="checkmark">${testsubtasks[0]['descriptions'][i]} </span> 
+            <input type="checkbox" checked > 
+            <span class="checkmark">${arrayOfSubtasks[i]} </span> 
         </label>
         `
     }
 }
 
 
-/** calculates the percentage for progressbar in tasksfcvxk
+/** calculates the percentage for progressbar in tasks on kanban
  * 
  * 
  */
  function calculateProgressBar() {
-    let numberOfSubtasks = testsubtasks[0]['subtasks']; 
-    let finishedSubstasks = testsubtasks[0]['checked']; 
+    let numberOfSubtasks = downloadedTasks[0]['subtasks']; 
+    let finishedSubstasks = downloadedTasks[0]['checked']; 
 
     percentageFinishedSubtasks = finishedSubstasks / numberOfSubtasks * 100;
 
     console.log('Die prozentanzahl ist ' , percentageFinishedSubtasks); 
 }
+
 
 
 /** to hide the clickedTask

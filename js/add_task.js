@@ -417,6 +417,23 @@ function addSubtask() {
     }
 }
 
+let substaskJSON = [{
+    'subtasks': [{
+        'subtask': '1.Versuch',
+        'checked': 'false',
+    },
+    {
+        'subtask': '2.Versuch',
+        'checked': 'false',
+    },
+    {
+        'subtask': '3.Versuch',
+        'checked': 'false',
+    }
+    ],
+}
+];
+
 
 /**
  * Displays all subtasks from the subtasks array
