@@ -256,22 +256,6 @@ function hideSelectionCategories(ulCategory) {
 
 
 /**
- * by clicking on a button, a list with selections is shown
- * or hidden
- * 
- */
-function showContacts() {
-    let ulContact = document.getElementById("ul-contact");
-    if (ulContact.classList.contains('d-none')) {
-        showSelectionContacts(ulContact);
-    }
-    else {
-        hideSelectionContacts(ulContact);
-    }
-}
-
-
-/**
  * a selection of contacts is shown
  * 
  * @param {string} ulContact -id of the contact container
@@ -337,6 +321,7 @@ function showContacts() {
         document.getElementById('all-contacts-initials').classList.remove('d-none');
     }
 }
+
 
 
 /**
