@@ -58,7 +58,7 @@ let tasksOnServer = {
 percentageFinishedSubtasks = 0; // needed! Will be changed in every displayTask function
 
 
-
+/*  nur test, lösche ich wieder raus sobald es diesen in task gibt
 let großerJSON = [{
     'subtasks': [{
         'subtask': '1.Versuch',
@@ -75,7 +75,7 @@ let großerJSON = [{
     ],
 }
 ];
-
+*/
 
 
 
@@ -149,7 +149,7 @@ function displayToDos(search) {
             // wenn es search nicht gibt dann führe aus, und wenn title etwas von der suche beinhaltet dann führe ebenfalls aus, wenn nicht dann zeigt er auch nichts an 
 
             const element = todos[i];
-            calculateProgressBar(element); 
+            calculateProgressBar(element);
             document.getElementById('to-do').innerHTML += addTaskToKanbanHTML(element);
             NumberOfCurrentTasks++;
         }
@@ -166,7 +166,7 @@ function displayInProgressTasks(search) {
         if (!search || title.includes(search)) {
             const element = inProgress[p];
 
-            calculateProgressBar(element); 
+            calculateProgressBar(element);
             document.getElementById('in-progress').innerHTML += addTaskToKanbanHTML(element);
             NumberOfCurrentTasks++;
         }
@@ -183,7 +183,7 @@ function displayAwaitingFeedbackTasks(search) {
         if (!search || title.includes(search)) {
             const element = awaitingFeedback[a];
 
-            calculateProgressBar(element); 
+            calculateProgressBar(element);
             document.getElementById('awaiting-feedback').innerHTML += addTaskToKanbanHTML(element);
             NumberOfCurrentTasks++;
         }
@@ -199,7 +199,7 @@ function displayDoneTasks(search) {
         if (!search || title.includes(search)) {
             const element = done[d];
 
-            calculateProgressBar(element); 
+            calculateProgressBar(element);
             document.getElementById('done').innerHTML += addTaskToKanbanHTML(element);
             NumberOfCurrentTasks++;
         }
@@ -249,9 +249,9 @@ function setColorTypeTasks(categoryID, classID) {
         if (categoryID === classID) {
             setColor(categoryID, classID, c);
         }
-            else {
-                setColorCT(categoryID, classID, c);
-            }
+        else {
+            setColorCT(categoryID, classID, c);
+        }
     }
 }
 
@@ -347,8 +347,8 @@ function displayClickedTask(id) {
     actualSector = actualSector.charAt(0).toUpperCase() + actualSector.slice(1);
 
     displayClickedTaskHTML(id, actualSector);
-    createSubtasks(id); 
-    createAssignedContacs(id); 
+    createSubtasks(id);
+    createAssignedContacs(id);
 
     let classID = `c-t-category`
     let categoryID = `c-t-category-html`;
@@ -419,40 +419,51 @@ function displayClickedTaskHTML(id, actualSector) {
     </div>
 
     <div class="c-t-assignedTo" id="c-t-assignedTo">
-        <div class="c-t-contact"> 
-            <img src="../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png" class="c-t-profilimages"> 
-            <span>
-                Sarah Eisenberg
-            </span> 
-        </div>
-
-        <div class="c-t-contact"> 
-            <img src="../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png" class="c-t-profilimages"> 
-            <span>
-                Sarah Eisenberg
-            </span> 
-        </div>
-
     </div> 
 `;
 }
 
 
 function createAssignedContacs(id) {
-    document.getElementById('c-t-assignedTo').innerHTML = '' ;
+    document.getElementById('c-t-assignedTo').innerHTML = '';
 
-    let assignedContacts = downloadedTasks[0]['assingedTo']; 
+    let assignedContacts = downloadedTasks[0]['assingedTo'];
     for (let i = 0; i < assignedContacts.length; i++) {
 
-    document.getElementById('c-t-assignedTo').innerHTML += `
+        document.getElementById('c-t-assignedTo').innerHTML += `
         <div class="c-t-contact"> 
-            <img src="../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png" class="c-t-profilimages"> 
+            <div class="c-t-profilimages"> 
+                <span id="c-t-initials${i}">  
+                </span> 
+            </div> 
             <span>
                 ${assignedContacts[i]}
             </span> 
         </div>
-    `; 
+    `;
+
+    getFirstLetter(i); 
     }
+}
+
+
+/** filters the first letter of first and last name to display it on profilpicture
+ * 
+ *  @param {string} assignedContact - path for all assigned contacts from specific task
+ * 
+ * @param {string} firstLetter - splits first and lastname in substrings and returns array,(split)
+ *                               creates new array with first letter of each word (map)  
+ *                               then use (join) to get back the array into a string.
+ */
+function getFirstLetter(i) {
+
+    let assignedContact = downloadedTasks[0]['assingedTo'];
+
+
+    let initials = assignedContact[i].split(' ').map(word => word.charAt(0)).join('');
+    document.getElementById(`c-t-initials${i}`).innerHTML = `${initials}`; 
+
+    console.log(initials);
 }
 
 
@@ -465,7 +476,7 @@ function createSubtasks(id) {
 
     let arrayOfSubtasks = downloadedTasks[id]['subtasks'];
 
-    document.getElementById('subtasks').innerHTML = ''; 
+    document.getElementById('subtasks').innerHTML = '';
     for (let i = 0; i < arrayOfSubtasks.length; i++) {
 
         document.getElementById('subtasks').innerHTML += `
@@ -483,13 +494,13 @@ function createSubtasks(id) {
  * 
  * 
  */
- function calculateProgressBar() {
-    let numberOfSubtasks = downloadedTasks[0]['subtasks']; 
-    let finishedSubstasks = downloadedTasks[0]['checked']; 
+function calculateProgressBar() {
+    let numberOfSubtasks = downloadedTasks[0]['subtasks'];
+    let finishedSubstasks = downloadedTasks[0]['checked'];
 
     percentageFinishedSubtasks = finishedSubstasks / numberOfSubtasks * 100;
 
-    console.log('Die prozentanzahl ist ' , percentageFinishedSubtasks); 
+    console.log('Die prozentanzahl ist ', percentageFinishedSubtasks);
 }
 
 

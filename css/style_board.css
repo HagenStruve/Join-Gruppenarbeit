@@ -311,7 +311,12 @@ width: 16px;
     width: 46px;
     height: 46px;
     border-radius: 559px;
-    object-fit: cover;
+    background: blueviolet;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: 400;
 }
 
 .c-t-contact {
