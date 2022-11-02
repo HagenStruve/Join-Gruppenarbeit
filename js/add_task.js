@@ -155,6 +155,7 @@ async function addTask() {
     task.push(addTask);
 
     saveOnServer();
+    forwardToBoard();
     clearContacts();
     clearPage();
     createdTasks++;
@@ -169,6 +170,17 @@ function clearContacts() {
         document.getElementById(`checkbox-contact-${i}`).checked = false;
         document.getElementById(`initials-${i}`).classList.add('d-none');
     }
+}
+
+/**
+ * after task was created, a information will be showed and then you will be forwarded to board.html
+ */
+function forwardToBoard() {
+    document.getElementById('task-added-board').classList.remove('d-none');
+    setTimeout(() => {
+        window.location.href = '../html/board.html';
+        document.getElementById('task-added-board').classList.add('d-none');
+    }, 2000);
 }
 
 

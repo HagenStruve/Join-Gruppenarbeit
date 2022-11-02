@@ -24,6 +24,10 @@
 
     }
 
+    .d-none {
+        display: none !important;
+    }
+
     header {
         position: absolute;
         top: 0;
@@ -71,6 +75,7 @@
         padding: 1px;
         border: 2px solid black;
         border-radius: 559px;
+        cursor: pointer;
     }
 
     .profil-picture {
@@ -78,6 +83,26 @@
         height: 46px;
         border-radius: 559px;
         object-fit: cover;
+    }
+
+
+    .log-out {
+        width: 130px;
+        height: 53px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        float: right;
+        margin-right: 56px;
+        background-color: #2A3647;
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 20px 0px 20px 20px;
+    }
+
+    .log-out span {
+        font-size: 16px;
+        color: #CDCDCD;
+        padding: 18px;
     }
 
 
@@ -188,11 +213,14 @@
         </span>
         <div class="header-right">
             <a href="help.html"><img src="../img/questions_mark.png" class="question-mark"></a>
-            <div class="pp-container">
+            <div class="pp-container" onclick="showLogOut()">
                 <img src="../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png" class="profil-picture">
             </div>
         </div>
     </header>
+    <div id="log-out" class="log-out d-none">
+        <span>Log out</span>
+    </div>
 
     <nav>
         <div class="nav-logo-container">

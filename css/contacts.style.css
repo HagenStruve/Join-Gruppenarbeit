@@ -228,7 +228,7 @@ body {
     width: 30px;
 }
 
-.new-contact:hover {
+.new-contact:hover, .creat-button:hover {
     background-color: #29ABE2 !important;
     border: none;
     box-shadow: 2px 4px 4px 0px rgb(0 0 0 / 20%);
@@ -381,6 +381,7 @@ body {
 .button-box {
     display: flex;
     width: 422px;
+    height: 68px;
 }
 
 .cancel-button {
@@ -402,6 +403,17 @@ body {
     background-color: white;
     margin-right: 40px;
     cursor: pointer;
+}
+
+.cancel-button:hover img {
+    filter: invert(74%) sepia(83%) saturate(3935%) hue-rotate(165deg) brightness(96%) contrast(84%);
+}
+
+.cancel-button:hover {
+    border: 2px solid #29ABE2 !important;
+    box-shadow: 2px 4px 4px 0px rgb(0 0 0 / 20%) !important;
+    background-color: white !important;
+    color: #29ABE2;
 }
 
 .creat-button {
