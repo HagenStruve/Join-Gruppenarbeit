@@ -151,6 +151,7 @@ function displayToDos(search) {
             const element = todos[i];
             calculateProgressBar(element);
             document.getElementById('to-do').innerHTML += addTaskToKanbanHTML(element);
+            getFirstLetterMain(element); 
             NumberOfCurrentTasks++;
         }
     }
@@ -424,10 +425,15 @@ function displayClickedTaskHTML(id, actualSector) {
 }
 
 
+/** creates html code to show the assigned contacts on clicked task
+ * 
+ * @param {number} id - contains id (number) of current selected task 
+ * 
+ */
 function createAssignedContacs(id) {
     document.getElementById('c-t-assignedTo').innerHTML = '';
 
-    let assignedContacts = downloadedTasks[0]['assingedTo'];
+    let assignedContacts = downloadedTasks[id]['assingedTo'];
     for (let i = 0; i < assignedContacts.length; i++) {
 
         document.getElementById('c-t-assignedTo').innerHTML += `
@@ -442,7 +448,7 @@ function createAssignedContacs(id) {
         </div>
     `;
 
-    getFirstLetter(i); 
+    getFirstLetter(id, i); 
     }
 }
 
@@ -455,14 +461,30 @@ function createAssignedContacs(id) {
  *                               creates new array with first letter of each word (map)  
  *                               then use (join) to get back the array into a string.
  */
-function getFirstLetter(i) {
+function getFirstLetter(id, i) {
 
-    let assignedContact = downloadedTasks[0]['assingedTo'];
+    let assignedContact = downloadedTasks[id]['assingedTo'];
 
 
     let initials = assignedContact[i].split(' ').map(word => word.charAt(0)).join('');
     document.getElementById(`c-t-initials${i}`).innerHTML = `${initials}`; 
 
+    console.log(initials);
+}
+
+
+function getFirstLetterMain(element) {
+
+    // element = task[0]; 
+    let assignedContacts = element['assingedTo'];
+
+    for (let w = 0; w <= 2; w++) {
+
+        let initials = assignedContacts[w].split(' ').map(word => word.charAt(0)).join('');
+
+        document.getElementById(`initials${w}`).innerHTML = `${initials}`; 
+
+    }
     console.log(initials);
 }
 
@@ -548,7 +570,7 @@ function hideClickedAddTaskWindow() {
  * 
  * @returns 
  */
-function addTaskToKanbanHTML(element) {
+function addTaskToKanbanHTML(element) { // element = task[0] or task[1] only filterd in category
     return `
     <div class="kanban-task-container" draggable="true" ondragstart="startDragging(${element['id']})" onclick="displayClickedTask(id)" id="${element['id']}">
     <div>
@@ -575,11 +597,25 @@ function addTaskToKanbanHTML(element) {
     <div
         style="display:flex; justify-content: space-between; align-items:center; margin-top: 10px;">
         <div class="assigned-employees">
-            <img src="../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png">
-            <img src="../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png"
-                class="second-picture">
-            <img src="../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png"
-                class="third-picture">
+
+                <div class="c-t-profilimages"> 
+                    <span id="initials0">  
+                        SF 
+                    </span> 
+                </div> 
+
+                <div class="c-t-profilimages second-picture >
+                    <span id="initials1">  
+                        MM 
+                    </span> 
+                </div> 
+                
+                <div class="c-t-profilimages third-picture">
+                    <span id="initials2">  
+                        HS 
+                    </span> 
+                </div> 
+
         </div>
 
         <img src="../img/arrow_low.svg">
