@@ -81,6 +81,7 @@ function addContact() {
     contact.push(addContact);
 
     addAndSaveContact();
+    cancel();
 }
 
 
@@ -113,8 +114,8 @@ function pushFirstLetterJSON() {
     alphabet = [];
     for (let i = 0; i < contact.length; i++) {
         const member = contact[i];
-        const memberFistLetter = member['name'].charAt(0);  
-        const firstLetter = memberFistLetter.toUpperCase(); 
+        const memberFistLetter = member['name'].charAt(0);
+        const firstLetter = memberFistLetter.toUpperCase();
 
         if (!alphabet.includes(firstLetter)) {   /*Wenn nicht vorhanden dann... */
             alphabet.push(firstLetter);
@@ -216,7 +217,7 @@ function backgroundMemberBox(i) {
     for (let y = 0; y < idNumberMemberBox.length; y++) {
         document.getElementById('member-box' + idNumberMemberBox[y]).classList.remove('blue-background');
     }
-    
+
     document.getElementById('member-box' + i).classList.add('blue-background');
 }
 
@@ -269,7 +270,7 @@ function save(i) {
 }
 
 
-function saveAndLoadContact(i){
+function saveAndLoadContact(i) {
     saveOnServer();
     clearContentLeft();
     pushFirstLetterJSON();

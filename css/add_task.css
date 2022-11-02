@@ -332,6 +332,8 @@ input::-webkit-calendar-picker-indicator {
 .subtask {
     margin-left: 20px;
     font-size: 16px;
+    max-width: 450px;
+    word-break: break-all;
 }
 
 .clear-create-div {
@@ -403,4 +405,44 @@ input::-webkit-calendar-picker-indicator {
     background-color: #29ABE2 !important;
     border: none;
     box-shadow: 2px 4px 4px 0px rgb(0 0 0 / 20%);
+}
+
+
+.task-added-to-board {
+    position: fixed;
+    bottom: 5%;
+    left: 50%;
+    transform: translate(-50%);
+    width: 326px;
+    height: 74px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    background-color: #2A3647;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.task-added-to-board span {
+    font-size: 21px;
+    color: white;
+}
+
+.task-added-to-board img {
+    width: 24px;
+    height: 26px;
+    margin-left: 20px;
+    filter: brightness(0) invert(1);
+}
+
+@keyframes fadeIn {
+    from {
+        bottom: -20%;
+    }
+
+    to {
+        bottom: 5%
+    }
 }

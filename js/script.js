@@ -24,5 +24,12 @@ async function includeHTML() {
     }
 }
 
-
+function showLogOut() {
+    let logOut = document.getElementById('log-out');
+    if (logOut.classList.contains('d-none')) {
+        logOut.classList.remove('d-none');
+    } else {
+        logOut.classList.add('d-none');
+    }
+}
 
