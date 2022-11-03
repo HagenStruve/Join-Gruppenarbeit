@@ -140,7 +140,7 @@ async function addTask() {
 
 
 
-    let addTask = {
+    downloadedTasks = [{
         "category": 'to-do',
         "id": 0,
         "title": title.value,
@@ -150,9 +150,9 @@ async function addTask() {
         "dueDate": dueDate.value,
         "prio": actualPrio,
         "subtasks": subtasks
-    };
+    }];
 
-    task.push(addTask);
+    //task.push(addTask);
 
     saveOnServer();
     forwardToBoard();
@@ -190,8 +190,9 @@ function forwardToBoard() {
  */
 async function saveOnServer() {
     setURL("https://gruppe-313.developerakademie.net/Join-Gruppenarbeit/smallest_backend_ever-master");
-    await backend.setItem('task', JSON.stringify(task));
+    await backend.setItem('downloadedTasks', JSON.stringify(downloadedTasks));
 }
+
 
 
 /**

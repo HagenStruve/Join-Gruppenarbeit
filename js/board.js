@@ -99,7 +99,7 @@ async function initBoard() {
 async function loadTasksFromServer() {
     setURL("https://gruppe-313.developerakademie.net/Join-Gruppenarbeit/smallest_backend_ever-master");
     await downloadFromServer();
-    downloadedTasks = JSON.parse(backend.getItem('task')) || [];
+    downloadedTasks = JSON.parse(backend.getItem('downloadedTasks')) || [];
 
     console.log('loaded 123 tasks');
     console.log(downloadedTasks);
@@ -169,6 +169,7 @@ function displayInProgressTasks(search) {
 
             calculateProgressBar(element);
             document.getElementById('in-progress').innerHTML += addTaskToKanbanHTML(element);
+            getFirstLetterMain(element); 
             NumberOfCurrentTasks++;
         }
     }
@@ -186,6 +187,7 @@ function displayAwaitingFeedbackTasks(search) {
 
             calculateProgressBar(element);
             document.getElementById('awaiting-feedback').innerHTML += addTaskToKanbanHTML(element);
+            getFirstLetterMain(element); 
             NumberOfCurrentTasks++;
         }
     }
@@ -202,6 +204,7 @@ function displayDoneTasks(search) {
 
             calculateProgressBar(element);
             document.getElementById('done').innerHTML += addTaskToKanbanHTML(element);
+            getFirstLetterMain(element); 
             NumberOfCurrentTasks++;
         }
     }
@@ -476,17 +479,16 @@ function getFirstLetter(id, i) {
 
 function getFirstLetterMain(element) {
 
-    // element = task[0]; 
+    
     let assignedContacts = element['assingedTo'];
 
-    for (let w = 0; w <= assignedContacts.length; w++) {
+    for (let w = 0; w <= assignedContacts.length - 1; w++) {
 
         let initials = assignedContacts[w].split(' ').map(word => word.charAt(0)).join('');
 
         document.getElementById(`initials${w}`).innerHTML = `${initials}`; 
 
     }
-    console.log(initials);
 }
 
 
