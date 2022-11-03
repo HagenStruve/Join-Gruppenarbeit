@@ -7,6 +7,23 @@ let createdTasks = 0;
 let liCategory;
 let liContact;
 let twoSubtaskIcons = false;
+let substasksJSON = [];
+
+
+function testAddSubtask() {
+    for (let i = 1; i < subtasks.length + 1; i++) {
+        if (document.getElementById(`check-subtask-${i}`).checked) {
+            let newTask = document.getElementById(`subtask-${i}`);
+            let newSubtask = { subtask: newTask.innerHTML, checked: 'true' }
+            substasksJSON.push(newSubtask);
+        } else {
+            let newTask = document.getElementById(`subtask-${i}`);
+            let newSubtask = { subtask: newTask.innerHTML, checked: 'false' }
+            substasksJSON.push(newSubtask);
+        }
+    }
+    console.log(substasksJSON);
+}
 
 /**
  * 
@@ -138,7 +155,7 @@ async function addTask() {
         prio.push(actualPrio);
     }
 
-
+    testAddSubtask();
 
     downloadedTasks = [{
         "category": 'to-do',
@@ -414,23 +431,6 @@ function addSubtask() {
         closeSubtask();
     }
 }
-
-let substaskJSON = [{
-    'subtasks': [{
-        'subtask': '1.Versuch',
-        'checked': 'false',
-    },
-    {
-        'subtask': '2.Versuch',
-        'checked': 'false',
-    },
-    {
-        'subtask': '3.Versuch',
-        'checked': 'false',
-    }
-    ],
-}
-];
 
 
 /**
