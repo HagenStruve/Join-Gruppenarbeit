@@ -473,12 +473,13 @@ function getFirstLetter(id, i) {
 }
 
 
+
 function getFirstLetterMain(element) {
 
     // element = task[0]; 
     let assignedContacts = element['assingedTo'];
 
-    for (let w = 0; w <= 2; w++) {
+    for (let w = 0; w <= assignedContacts.length; w++) {
 
         let initials = assignedContacts[w].split(' ').map(word => word.charAt(0)).join('');
 
@@ -600,19 +601,19 @@ function addTaskToKanbanHTML(element) { // element = task[0] or task[1] only fil
 
                 <div class="c-t-profilimages"> 
                     <span id="initials0">  
-                        SF 
+                        funkt
                     </span> 
                 </div> 
 
-                <div class="c-t-profilimages second-picture >
+                <div class="c-t-profilimages second-picture" >
                     <span id="initials1">  
-                        MM 
+                        
                     </span> 
                 </div> 
                 
                 <div class="c-t-profilimages third-picture">
                     <span id="initials2">  
-                        HS 
+                       
                     </span> 
                 </div> 
 
