@@ -16,6 +16,7 @@
     <script src="../js/contact.js"></script>
     <script src="../js/add_task.js"></script>
     <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/login_responsive.css">
     <link rel="stylesheet" href="../fonts/fonts.css">
 
     <title>Join</title>
@@ -28,7 +29,8 @@
             <img src="../img/join-logo.svg" alt="join-logo">
         </div>
 
-        <div id="sign-up-field" class="sign-up-container">
+        <!-- from a max-width: 770px this div gets display:none and will be shown under the login container -->
+        <div id="sign-up-field" class="sign-up-container responsive-d-none-sign-up">
             <span>Not a Join user?</span>
             <button onclick="showSignUp()">Sign up</button>
         </div>
@@ -57,6 +59,13 @@
                         in</button>
                 </div>
             </form>
+        </div>
+
+        <!-- this is the div which will from a max-width: 770px shown under the login container,
+             before it appears above the login container -->
+        <div id="sign-up-field" class="sign-up-container">
+            <span>Not a Join user?</span>
+            <button onclick="showSignUp()">Sign up</button>
         </div>
     </div>
 
