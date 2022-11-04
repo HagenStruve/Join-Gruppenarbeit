@@ -10,19 +10,23 @@ let twoSubtaskIcons = false;
 let substasksJSON = [];
 
 
-function testAddSubtask() {
+
+/**
+ * checks if the input field from the subtask is checked, push subtask and if checked or not
+ * in subtasksJSON
+ */
+function addSubtaskJSON() {
     for (let i = 1; i < subtasks.length + 1; i++) {
-        if (document.getElementById(`check-subtask-${i}`).checked) {
-            let newTask = document.getElementById(`subtask-${i}`);
+        let subtask = document.getElementById(`check-subtask-${i}`);
+        let newTask = document.getElementById(`subtask-${i}`);
+        if (subtask.checked) {
             let newSubtask = { subtask: newTask.innerHTML, checked: 'true' }
             substasksJSON.push(newSubtask);
         } else {
-            let newTask = document.getElementById(`subtask-${i}`);
             let newSubtask = { subtask: newTask.innerHTML, checked: 'false' }
             substasksJSON.push(newSubtask);
         }
     }
-    console.log(substasksJSON);
 }
 
 /**
@@ -155,7 +159,7 @@ async function addTask() {
         prio.push(actualPrio);
     }
 
-    testAddSubtask();
+    addSubtaskJSON();
 
     downloadedTasks = [{
         "category": 'to-do',
@@ -166,7 +170,7 @@ async function addTask() {
         "assingedTo": contacts,
         "dueDate": dueDate.value,
         "prio": actualPrio,
-        "subtasks": subtasks
+        "subtasks": substasksJSON
     }];
 
     //task.push(addTask);

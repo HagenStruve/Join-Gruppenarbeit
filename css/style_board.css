@@ -1,14 +1,14 @@
-
 :root {
-    --width-task-size: 250px; /* use for sizing tasks */ 
+    --width-task-size: 250px;
+    /* use for sizing tasks */
 }
 
 
 
-/* Headline-section */ 
+/* Headline-section */
 
 .headline-section {
-    width: 100%; 
+    width: 100%;
     height: 30%;
 }
 
@@ -45,7 +45,7 @@
     border-left: 1px solid white;
 }
 
-.find-task-input  {
+.find-task-input {
     height: 40px;
     border: none;
 
@@ -88,7 +88,7 @@
 }
 
 
-/* Kanban Overview Section */ 
+/* Kanban Overview Section */
 
 .kanban-overview {
     display: flex;
@@ -107,7 +107,7 @@
 
 .kanban-task-container {
     width: var(--width-task-size);
-    height: auto; 
+    height: auto;
     background-color: white;
     border-radius: 15px;
     padding: 15px;
@@ -130,7 +130,7 @@
 }
 
 .task-description {
-    color:gray; 
+    color: gray;
     font-size: 14px;
 }
 
@@ -179,15 +179,19 @@
 .orange {
     background-color: rgba(255, 122, 0, 1) !important;
 }
+
 .pink {
     background-color: rgba(252, 113, 255, 1) !important;
 }
+
 .cyan {
     background-color: rgba(31, 215, 193, 1) !important;
 }
+
 .blue {
     background-color: rgba(0, 56, 255, 1) !important;
 }
+
 .yellow {
     background-color: rgba(255, 199, 1, 1) !important;
 }
@@ -196,13 +200,13 @@
 **
 ** c-t === clicked-task-window
 **
-*/ 
+*/
 
 
 .clicked-task-bg {
     position: fixed;
     background-color: rgba(0, 0, 0, 0.3);
-    top: 0; 
+    top: 0;
     bottom: 0;
     right: 0;
     left: 0;
@@ -231,7 +235,7 @@
 
 ::-webkit-scrollbar {
     border-radius: 20px;
-  }
+}
 
 .c-t-category {
     font-size: 22px;
@@ -247,7 +251,7 @@
 .c-t-title {
     font-size: 50px;
     color: #253141;
-    margin-top:20px;
+    margin-top: 20px;
 }
 
 .c-t-description {
@@ -269,7 +273,7 @@
 
 .c-t-checkbox input {
     margin-left: 5px;
-  }
+}
 
 
 .c-t-subtasks {
@@ -284,7 +288,7 @@
 }
 
 
-.priority-box{
+.priority-box {
     padding: 4px 18px;
     margin-left: 18px;
     gap: 10px;
@@ -298,8 +302,8 @@
 }
 
 .c-t-priority-icon {
-object-fit: contain;
-width: 16px;
+    object-fit: contain;
+    width: 16px;
 }
 
 .c-t-assignedTo {
@@ -329,12 +333,21 @@ width: 16px;
 
 
 
-/* ADD TASK WINDOW */ 
+/* ADD TASK WINDOW */
+.close-add-task {
+    position: absolute;
+    top: 49px;
+    right: 37px;
+    height: 30px;
+    width: 28px;
+    cursor: pointer;
+}
+
 
 .clicked-addtask-bg {
     position: fixed;
     background-color: rgba(0, 0, 0, 0.3);
-    top: 0; 
+    top: 0;
     bottom: 0;
     right: 0;
     left: 0;
@@ -346,8 +359,10 @@ width: 16px;
 }
 
 .clicked-addtask-window {
-    position: fixed;
-    padding: 60px;
+    position: absolute;
+    display: flex;
+    padding-top: 63px;
+    padding-left: 74px;
     left: 10%;
     right: 10%;
     top: 4%;
@@ -355,10 +370,30 @@ width: 16px;
     border-radius: 20px;
     background-color: white;
     z-index: 1000;
+    min-height: max-content;
     display: none;
 }
 
 .add-task-whole-page {
     display: flex;
-    margin-top: -90px;
+}
+
+.overlay-add-task-left-side {
+    display: flex;
+    flex-direction: column;
+}
+
+.h1-add-task {
+    font-weight: 700;
+    font-size: 61px;
+    margin-top: 0px !important;
+    margin-bottom: 41px;
+}
+
+.margin-top-30 {
+    margin-top: 30px;
+}
+
+.margin-top-115 {
+    margin-top: 115px !important;
 }

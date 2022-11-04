@@ -96,9 +96,9 @@
 
         <!-- clicked Task Div -->
         <div class="clicked-task-bg" id="open-clicked-task" onclick="hideClickedTask()">
-            </div>
-            <div class="clicked-task-window" id="c-t-window">
-            </div>
+        </div>
+        <div class="clicked-task-window" id="c-t-window">
+        </div>
 
 
         <!-- add task window -->
@@ -107,14 +107,16 @@
         <div class="clicked-addtask-window" id="c-t-addtask-window">
 
             <form onsubmit="newTaskReload(); return false;" class="add-task-whole-page">
-                <div class="add-task-left-side">
-                    <h1>Add Task</h1>
+                <div class="overlay-add-task-left-side">
+                    <img onclick="hideClickedAddTaskWindow()" class="close-add-task" src="../img/close-icon.png"
+                        alt="close-icon">
+                    <h1 class="h1-add-task">Add Task</h1>
                     <div class="left-side-without-h1">
                         <span class="little-headlines">Title</span>
                         <input id="title" required class="enter-title" type="text" placeholder="Enter a title">
                         <span class="little-headlines">Description</span>
-                        <textarea id="descripton" class="enter-description"
-                            placeholder="Enter a description"></textarea>
+                        <textarea id="descripton" class="enter-description" placeholder="Enter a description"
+                            required></textarea>
 
                         <span class="little-headlines">Category</span>
                         <div onclick="showCategories()" id="select-div-category" class="select-div">
@@ -124,43 +126,67 @@
                         </div>
 
                         <ul id="ul-category" class="d-none">
-                            <div onclick="selectCategory(id)" id="div-media" class="div-li-style">
+                            <div onclick="selectCategory(id)" id="div-media" class="div-li-category">
                                 <li id="media">Media</li>
                                 <div class="li-point bg-yellow"> </div>
                             </div>
 
-                            <div onclick="selectCategory(id)" id="div-sales" class="div-li-style">
+                            <div onclick="selectCategory(id)" id="div-sales" class="div-li-category">
                                 <li id="sales">Sales</li>
                                 <div class="li-point bg-pink"> </div>
                             </div>
 
-                            <div onclick="selectCategory(id)" id="div-backoffice" class="div-li-style">
+                            <div onclick="selectCategory(id)" id="div-backoffice" class="div-li-category">
                                 <li id="backoffice">Backoffice</li>
                                 <div class="li-point bg-turquoise"> </div>
                             </div>
 
-                            <div onclick="selectCategory(id)" id="div-marketing" class="div-li-style">
+                            <div onclick="selectCategory(id)" id="div-marketing" class="div-li-category">
                                 <li id="marketing">Marketing</li>
                                 <div class="li-point bg-blue"> </div>
                             </div>
                         </ul>
 
                         <span class="little-headlines">Assigned to</span>
-                        <div onclick="showContacts()" id="select-div-contact" class="select-div">
+                        <div onclick="showContacts()" id="select-div-contact" class="select-div no-margin-bottom">
                             <span id="selected-contact">Select contacts to assign</span>
                             <input class="hidden-input" id="hidden-contact-input" type="text" required>
                             <img src="../img/dropdown_arrow.svg" alt="dropdown_arrow">
                         </div>
                         <ul id="ul-contact" class="d-none">
-                            <div onclick="selectContact(id)" id="div-contact-1" class="div-li-style">
-                                <li id="contact-1">Test Kontakt</li>
+                            <div onclick="selectContact(id)" id="div-contact-1" class="div-li-contact">
+                                <li id="contact-1">Hagen Struve</li>
+                                <input onclick="proofCheck(id)" class="input-checkbox" type="checkbox"
+                                    id="checkbox-contact-1">
+                            </div>
+                            <div onclick="selectContact(id)" id="div-contact-2" class="div-li-contact">
+                                <li id="contact-2">Sinan Fischer</li>
+                                <input onclick="proofCheck(id)" class="input-checkbox" type="checkbox"
+                                    id="checkbox-contact-2">
+                            </div>
+                            <div onclick="selectContact(id)" id="div-contact-3" class="div-li-contact">
+                                <li id="contact-3">Matthias Mulzet</li>
+                                <input onclick="proofCheck(id)" class="input-checkbox" type="checkbox"
+                                    id="checkbox-contact-3">
                             </div>
                         </ul>
+
+                        <div id="all-contacts-initials" class="contact-initials d-none">
+                            <div class="bg-violet d-none" id="initials-1">
+                                <span>HS</span>
+                            </div>
+                            <div class="bg-blue d-none" id="initials-2">
+                                <span>SF</span>
+                            </div>
+                            <div class="bg-green d-none" id="initials-3">
+                                <span>MM</span>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
 
-                <div class="add-task-right-side">
+                <div class="add-task-right-side margin-top-115">
                     <div class="right-side-first-half">
                         <span class="little-headlines">Due Date</span>
                         <input id="dueDate" required class="input-date" type="date">
@@ -180,17 +206,26 @@
                                 <img id="low-img" src="../img/arrow_low.svg" alt="arrow-down">
                             </div>
                         </div>
+                        <span class="little-headlines">Subtasks</span>
+                        <div class="subtask-input-div">
+                            <input id="subtask-input" onclick="showXandCheckmark()" type="text"
+                                placeholder="Add new subtask">
+                            <div id="subtask-icons" onclick="showXandCheckmark()" class="subtask-img-container">
+                                <img id="plus-icon" src="../img/plus-icon.png" alt="plus">
+                            </div>
+                        </div>
+                        <div id="overview-subtasks" class="added-subtasks">
+
+                        </div>
                     </div>
 
-                    <!-- To Do <span class="little-headlines">Subtasks</span>
-                             evenuell noch hinzufügen-->
 
-                    <div class="clear-create-div">
-                        <div onclick="clearInput()" class="clear-div">
+                    <div class="clear-create-div margin-top-30">
+                        <div onclick="clearPage()" class="clear-div">
                             <span>Clear</span>
                             <img src="../img/close-icon.png" alt="close-icon">
                         </div>
-                        <button class="create-div" onclick="initBoard()">
+                        <button class="create-div">
                             <div class="create-button">Create Task</div>
                             <img src="../img/checkmark.png" alt="checkmark-icon">
                         </button>
@@ -198,6 +233,10 @@
 
                 </div>
 
+                <div id="task-added-board" class="task-added-to-board d-none">
+                    <span>Task added to board</span>
+                    <img src="../img/board-icon.svg" alt="board-icon">
+                </div>
 
             </form>
 
