@@ -35,9 +35,18 @@ function guestLogin() {
  * a div have the id=succesful-registration, this div includes a button. When you click the button you will be forwarded to the login page
  */
 function successfulRegistration() {
-    addUser();
-    document.getElementById('overlay').classList.remove('d-none');
-    document.getElementById('successful-registration').classList.remove('d-none');
+    document.getElementById('email');
+    let user = users.find(u => u.email == email.value);
+    if (user) {
+        return false;
+    } else {
+        addUser();
+        document.getElementById('overlay').classList.remove('d-none');
+        document.getElementById('successful-registration').classList.remove('d-none');
+        // if (document.getElementById('successful-registration').classList.contains('d-none')) {
+        //     removeEmailInUseWarning();
+        // }
+    }
 }
 
 

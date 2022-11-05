@@ -11,6 +11,7 @@
 @media(max-width: 770px) {
     .whole-login-page {
         flex-direction: column;
+        height: 100%;
     }
 
     .sign-up-container {
@@ -19,6 +20,10 @@
         right: 0;
         margin-top: 49px;
         margin-bottom: 59px;
+    }
+
+    .not-responsive-height-520 {
+        height: 503px !important;
     }
 
     .responsive-d-none-sign-up {
@@ -44,6 +49,11 @@
         padding-bottom: 24px;
     }
 
+    .login-name-input-bg {
+        background: url(../img/name-icon.png) no-repeat 327px 17px;
+    }
+
+
     .login-email-input-bg {
         background: url(../img/email-icon.png) no-repeat 327px 17px;
     }
@@ -63,5 +73,76 @@
 
     .login-signup-buttons {
         font-size: 16px;
+    }
+
+    .fake-button-without-onclick {
+        font-size: 16px;
+    }
+
+    .back-arrow {
+        top: 38px;
+    }
+}
+
+
+@media(max-width: 570px) {
+    .not-responsive-height-520 {
+        height: 493px !important;
+    }
+
+    .login-container {
+        width: 270px;
+    }
+
+    .login-headline {
+        font-size: 40px;
+    }
+
+    .login-name-input-bg {
+        background: url(../img/name-icon.png) no-repeat 227px 17px;
+    }
+
+
+    .login-email-input-bg {
+        background: url(../img/email-icon.png) no-repeat 227px 17px;
+    }
+
+    .login-password-input-bg {
+        background: url(../img/password-icon.png) no-repeat 227px 17px;
+    }
+
+    .login-input {
+        font-size: 16px;
+        width: 227px;
+        padding: 8px 18px;
+    }
+
+    .wrong-login-or-register {
+        padding: 14px 5px;
+        font-size: 13px;
+        margin-top: 14px;
+        margin-bottom: 14px;
+    }
+
+    .sign-up-container {
+        width: 240px;
+    }
+
+    .sign-up-container span {
+        font-size: 16px;
+    }
+
+    .successful-registration {
+        width: 80%;
+    }
+
+    .successful-registration img {
+        width: 140px;
+        height: 140px;
+    }
+
+    .back-arrow {
+        width: 25px;
+        height: 25px;
     }
 }
