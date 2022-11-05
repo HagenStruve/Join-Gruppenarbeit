@@ -43,9 +43,6 @@ function successfulRegistration() {
         addUser();
         document.getElementById('overlay').classList.remove('d-none');
         document.getElementById('successful-registration').classList.remove('d-none');
-        // if (document.getElementById('successful-registration').classList.contains('d-none')) {
-        //     removeEmailInUseWarning();
-        // }
     }
 }
 
@@ -120,6 +117,9 @@ function proofInputSignUp() {
         showSubmitButton();
     }
     if (!user) {
+        removeEmailInUseWarning();
+    }
+    if (!document.getElementById('successful-registration').classList.contains('d-none')) {
         removeEmailInUseWarning();
     }
 }

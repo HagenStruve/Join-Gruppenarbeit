@@ -45,13 +45,13 @@
             <div class="login-headline-border"></div>
 
             <form onkeyup="proofInputSignUp()" onsubmit="successfulRegistration(); return false;">
-                <input id="name" class="login-input login-name-input-bg" type="text" placeholder="Name">
+                <input id="name" class="login-input login-name-input-bg" type="text" placeholder="Name" required>
                 <input id="email" class="login-input login-email-input-bg" type="email"
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Geben Sie eine gültige E-Mail Adresse ein"
-                    placeholder="Email">
+                    placeholder="Email" required>
 
                 <input id="password" class="login-input login-password-input-bg" type="password" pattern=".{8,}"
-                    title="Passwort ist zu kurz (mindestens 8 Zeichen)" placeholder="Password">
+                    title="Passwort ist zu kurz (mindestens 8 Zeichen)" placeholder="Password" required>
 
                 <!-- span appears when the email address already be used  -->
                 <span id="email-in-use" class="wrong-login-or-register d-none">E-mail address will already be
