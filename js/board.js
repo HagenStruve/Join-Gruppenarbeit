@@ -18,6 +18,13 @@ async function initBoard() {
     renderBoardSite();
 }
 
+
+async function renderBoardSite() {
+    await loadTasksFromServer();
+    displayAllTasks();
+}
+
+
 async function loadTasksFromServer() {
     setURL("https://gruppe-313.developerakademie.net/Join-Gruppenarbeit/smallest_backend_ever-master");
     await downloadFromServer();
@@ -28,34 +35,14 @@ async function loadTasksFromServer() {
 
 }
 
-/**
+/** updates the id from every task
  * 
  */
 function pushIDtoTasks() {
-    let idTask = downloadedTasks[existTasks]['id']; 
-    if (idTask === 0) {
         downloadedTasks[existTasks]['id'] = existTasks; 
         existTasks++; 
-    }
-        else {
-            console.log(`Task Nummer: ${existTasks} ist bereits eine ID zugewiesen`); 
-        }
 }
 
-
-/** generates and pushes ID to downloaded tasks, which is needed to drag
- * 
- * 
- */
-function createIdForTasks() {
-
-}
-
-
-async function renderBoardSite() {
-    await loadTasksFromServer();
-    displayAllTasks();
-}
 
 
 /** Shows all Tasks on Website 
@@ -142,6 +129,7 @@ function displayAwaitingFeedbackTasks(search) {
     }
 }
 
+
 function displayDoneTasks(search) {
     let done = downloadedTasks.filter(t => t['category'] == 'done');
     document.getElementById('done').innerHTML = '';
@@ -192,15 +180,16 @@ function removeHightlightDrag(id) {
 // change the category to dropped task
 function moveTo(category) {
     downloadedTasks[currentDraggedElement]['category'] = category;
-    displayAllTasks();
     saveNewOnServer();
+    displayAllTasks();
+
 
 }
 
 
 async function saveNewOnServer() {
     setURL("https://gruppe-313.developerakademie.net/Join-Gruppenarbeit/smallest_backend_ever-master");
-    await backend.setItem('task', JSON.stringify(downloadedTasks));
+    await backend.setItem('downloadedTasks', JSON.stringify(downloadedTasks));
 }
 
 
@@ -450,6 +439,36 @@ function getFirstLetter(id, i) {
 
 
 
+
+/** get the subtasks from downloaded serverarray and adds them in clicked task view (html code)
+ * 
+ * @param {number}  numberOfSubtasks - gets the amount of subtasks as number
+ * 
+ */
+ function createSubtasks(id) {
+
+    let arrayOfSubtasks = downloadedTasks[id]['subtasks'];
+
+   // arrayOfSubtasks[0]['checked']; 
+// zuerst speichern der verdraggend
+
+    //let checked = ''; 
+
+    document.getElementById('subtasks').innerHTML = '';
+    for (let i = 0; i < arrayOfSubtasks.length; i++) {
+
+        document.getElementById('subtasks').innerHTML += `
+            
+        <label class="c-t-checkbox">
+            <input type="checkbox" checked="false" > 
+            <span class="checkmark">${arrayOfSubtasks[i]['subtask']} </span> 
+        </label>
+        `
+    }
+}
+
+
+
 /** creates the divs for assignedContacts view on Boardsite
  * 
  * @param {string} element - hands over from display function - contains currently task like 
@@ -508,28 +527,6 @@ function createAssignedContacsOnBoard(element) {
 }
 
 
-
-/** get the subtasks from downloaded serverarray and adds them in clicked task view (html code)
- * 
- * @param {number}  numberOfSubtasks - gets the amount of subtasks as number
- * 
- */
-function createSubtasks(id) {
-
-    let arrayOfSubtasks = downloadedTasks[id]['subtasks'];
-
-    document.getElementById('subtasks').innerHTML = '';
-    for (let i = 0; i < arrayOfSubtasks.length; i++) {
-
-        document.getElementById('subtasks').innerHTML += `
-            
-        <label class="c-t-checkbox">
-            <input type="checkbox" checked > 
-            <span class="checkmark">${arrayOfSubtasks[i]} </span> 
-        </label>
-        `
-    }
-}
 
 
 /** calculates the percentage for progressbar in tasks on kanban
