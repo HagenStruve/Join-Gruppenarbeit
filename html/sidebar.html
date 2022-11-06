@@ -98,7 +98,7 @@
     .log-out {
         width: 130px;
         height: 53px;
-        position: absolute;
+        position: fixed;
         top: 90px;
         right: 0;
         display: flex;
@@ -283,6 +283,10 @@
 
 
     @media(max-width: 770px) {
+        body {
+            margin-left: 0px !important;
+        }
+
         .responsive-d-none-770px {
             display: none;
         }
@@ -354,6 +358,71 @@
         .privacy-log-out {
             display: flex;
         }
+
+        .log-out {
+            margin-right: 50px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                margin-right: 0px;
+            }
+
+            to {
+                opacity: 1;
+                margin-right: 50px;
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                margin-right: 50px;
+            }
+
+            to {
+                opacity: 0;
+                margin-right: 0px;
+            }
+        }
+    }
+
+
+    @media(max-width: 570px) {
+        header {
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+
+        .log-out {
+            margin-right: 25px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                margin-right: 0px;
+            }
+
+            to {
+                opacity: 1;
+                margin-right: 25px;
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                margin-right: 25px;
+            }
+
+            to {
+                opacity: 0;
+                margin-right: 0px;
+            }
+        }
+
     }
 
 
