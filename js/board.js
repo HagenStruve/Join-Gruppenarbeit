@@ -16,6 +16,7 @@ let NumberOfCurrentTasks = 0; // is needed to differ between the tasks
 async function initBoard() {
     await includeHTML();
     renderBoardSite();
+    sidebarBgPage();
 }
 
 
@@ -51,7 +52,7 @@ function pushIDtoTasks() {
  */
 function displayAllTasks(search) {
     NumberOfCurrentTasks = 0;
-    existTasks = 0; 
+    existTasks = 0;
     displayToDos(search);
     displayInProgressTasks(search);
     displayAwaitingFeedbackTasks(search);
@@ -82,10 +83,10 @@ function displayToDos(search) {
             // wenn es search nicht gibt dann führe aus, und wenn title etwas von der suche beinhaltet dann führe ebenfalls aus, wenn nicht dann zeigt er auch nichts an 
 
             const element = todos[i];
-            pushIDtoTasks(); 
+            pushIDtoTasks();
             calculateProgressBar(element);
             document.getElementById('to-do').innerHTML += addTaskToKanbanHTML(element);
-            createAssignedContacsOnBoard(element); 
+            createAssignedContacsOnBoard(element);
             NumberOfCurrentTasks++;
         }
     }
@@ -101,10 +102,10 @@ function displayInProgressTasks(search) {
         if (!search || title.includes(search)) {
             const element = inProgress[p];
 
-            pushIDtoTasks();             
+            pushIDtoTasks();
             calculateProgressBar(element);
             document.getElementById('in-progress').innerHTML += addTaskToKanbanHTML(element);
-            createAssignedContacsOnBoard(element); 
+            createAssignedContacsOnBoard(element);
             NumberOfCurrentTasks++;
         }
     }
@@ -120,10 +121,10 @@ function displayAwaitingFeedbackTasks(search) {
         if (!search || title.includes(search)) {
             const element = awaitingFeedback[a];
 
-            pushIDtoTasks(); 
+            pushIDtoTasks();
             calculateProgressBar(element);
             document.getElementById('awaiting-feedback').innerHTML += addTaskToKanbanHTML(element);
-            createAssignedContacsOnBoard(element); 
+            createAssignedContacsOnBoard(element);
             NumberOfCurrentTasks++;
         }
     }
@@ -139,10 +140,10 @@ function displayDoneTasks(search) {
         if (!search || title.includes(search)) {
             const element = done[d];
 
-            pushIDtoTasks(); 
+            pushIDtoTasks();
             calculateProgressBar(element);
             document.getElementById('done').innerHTML += addTaskToKanbanHTML(element);
-            createAssignedContacsOnBoard(element); 
+            createAssignedContacsOnBoard(element);
             NumberOfCurrentTasks++;
         }
     }
@@ -168,13 +169,13 @@ function highlightDrag(id) {
         </div> 
     `; 
 }
+*/
 
 
 function removeHightlightDrag(id) {
-    document.getElementById(id).classList.remove('drag-area-highlight'); 
+    document.getElementById(id).classList.remove('drag-area-highlight');
 }
 
-*/ 
 
 
 // change the category to dropped task
@@ -478,30 +479,30 @@ function getFirstLetter(id, i) {
  * 
  */
 function createAssignedContacsOnBoard(element) {
-    document.getElementById(`assigned-employees-board-${element['id']}`).innerHTML = ''; 
+    document.getElementById(`assigned-employees-board-${element['id']}`).innerHTML = '';
 
-    let x = element['assingedTo'].length; 
-    let pixels = 0; 
+    let x = element['assingedTo'].length;
+    let pixels = 0;
 
     if (x > 3) {
-        x = 2; 
-    } 
+        x = 2;
+    }
     else {
-        for (i = 0; i <= x -1 ; i++) {
-            
+        for (i = 0; i <= x - 1; i++) {
+
             document.getElementById(`assigned-employees-board-${element['id']}`).innerHTML += `
             <div class="c-t-profilimages" style="right:${pixels}px"> 
                 <span id="initials-${element['id']}-${i}">  
 
                 </span> 
             </div> 
-            `; 
+            `;
 
-            pixels += + 10; 
+            pixels += + 10;
             console.log(`Die pixel anzahl ist ${pixels}`)
         }
     }
-    getFirstLetterMain(element); 
+    getFirstLetterMain(element);
 }
 
 
@@ -513,7 +514,7 @@ function createAssignedContacsOnBoard(element) {
  *                               creates new array with first letter of each word (map)  
  *                               then use (join) to get back the array into a string.
  */
- function getFirstLetterMain(element) {
+function getFirstLetterMain(element) {
 
     let assignedContacts = element['assingedTo'];
 

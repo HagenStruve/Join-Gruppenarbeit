@@ -99,12 +99,12 @@
         width: 130px;
         height: 53px;
         position: absolute;
-        top: 90;
+        top: 90px;
         right: 0;
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-right: 70px;
+        margin-right: 65px;
         background-color: #2A3647;
         box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
         border-radius: 20px 0px 20px 20px;
@@ -118,14 +118,14 @@
 
         to {
             opacity: 1;
-            margin-right: 70px;
+            margin-right: 65px;
         }
     }
 
     @keyframes fadeOut {
         from {
             opacity: 1;
-            margin-right: 70px;
+            margin-right: 65px;
         }
 
         to {
@@ -134,14 +134,30 @@
         }
     }
 
-    .log-out:hover {
+    .log-out :hover {
+        width: 130px;
+        border-radius: 20px 0px 20px 20px;
+        text-align: center;
         background-color: #29ABE2 !important;
         border: none;
         box-shadow: 2px 4px 4px 0px rgb(0 0 0 / 20%);
         cursor: pointer;
     }
 
-    .log-out span {
+    .log-out a:hover {
+        background-color: #29ABE2 !important;
+        border: none;
+        box-shadow: 2px 4px 4px 0px rgb(0 0 0 / 20%);
+        cursor: pointer;
+    }
+
+    .help-log-out,
+    .legal-notice-log-out,
+    .privacy-log-out {
+        display: none;
+    }
+
+    .log-out a {
         font-size: 16px;
         color: white;
         padding: 18px;
@@ -259,6 +275,10 @@
         .join-logo {
             display: flex;
         }
+
+        .log-out {
+            top: 80px;
+        }
     }
 
 
@@ -300,6 +320,40 @@
             width: unset;
             margin-top: 10px;
         }
+
+        .log-out {
+            height: min-content;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .log-out a {
+            width: 114px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            padding-right: 0px;
+            padding-left: 16px;
+        }
+
+        .log-out :hover {
+            width: 114px;
+            border-radius: unset;
+            text-align: unset;
+        }
+
+        .login-log-out:hover {
+            border-radius: 0px 0px 20px 20px;
+        }
+
+        .help-log-out:hover {
+            border-radius: 20px 0px 0px 0px;
+        }
+
+        .help-log-out,
+        .legal-notice-log-out,
+        .privacy-log-out {
+            display: flex;
+        }
     }
 
 
@@ -340,16 +394,19 @@
         </div>
     </header>
 
-    <a href="login.html" id="log-out" class="log-out d-none">
-        <span>Log out</span>
-    </a>
+    <div id="log-out" class="log-out d-none">
+        <a class="help-log-out" href="help.html">Help</a>
+        <a class="legal-notice-log-out" href="legal_notice.html">Legal notice</a>
+        <a class="privacy-log-out" href="privacy.html">Privacy</a>
+        <a class="login-log-out" href="login.html">Log out</a>
+    </div>
 
     <nav>
         <div class="nav-logo-container">
             <img class="responsive-d-none-770px" src="../img/logo-white.png">
         </div>
 
-        <a href="summary.html" class="nav-properties">
+        <a id="summary" href="summary.html" class="nav-properties">
             <div class="nav-icons">
                 <img src="../img/summary-icon.svg">
             </div>
@@ -358,7 +415,7 @@
             </span>
         </a>
 
-        <a href="board.html" class="nav-properties">
+        <a id="sidebar-board" href="board.html" class="nav-properties">
             <div class="nav-icons">
                 <img src="../img/board-icon.svg">
             </div>
@@ -367,7 +424,7 @@
             </span>
         </a>
 
-        <a href="add_task.html" class="nav-properties">
+        <a id="add-task" href="add_task.html" class="nav-properties">
             <div class="nav-icons">
                 <img src="../img/add-task-icon.svg">
             </div>
@@ -376,7 +433,7 @@
             </span>
             <a>
 
-                <a href="contacts.html" class="nav-properties">
+                <a id="contacts" href="contacts.html" class="nav-properties">
                     <div class="nav-icons">
                         <img src="../img/contacts-icon.svg">
                     </div>
@@ -387,7 +444,7 @@
 
 
                 <div class="nav-notice responsive-d-none-770px">
-                    <a href="legal_notice.html" class="legal-notice">
+                    <a id="legal-notice" href="legal_notice.html" class="legal-notice">
                         <div class="nav-icons">
                             <img src="../img/legal-notice-icon.png">
                         </div>
@@ -396,7 +453,7 @@
                         </span>
                     </a>
 
-                    <a href="privacy.html" class="legal-notice">
+                    <a id="privacy" href="privacy.html" class="legal-notice">
                         <div class="nav-icons">
                             <img class="filter-invert" src="../img/privacy-icon.svg">
                         </div>

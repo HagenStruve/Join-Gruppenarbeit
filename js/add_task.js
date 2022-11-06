@@ -38,6 +38,7 @@ async function initAddTask() {
     await includeHTML();
     await loadTasksFromServer(); 
     generateDate();
+    sidebarBgPage();
 }
 
 /**
