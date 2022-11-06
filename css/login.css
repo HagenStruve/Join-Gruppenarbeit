@@ -51,7 +51,7 @@ h1 {
     transition: all 1s ease-in-out;
 }
 
-.height-520px {
+.not-responsive-height-520 {
     height: 520px !important;
 }
 

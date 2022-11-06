@@ -85,23 +85,55 @@
         object-fit: cover;
     }
 
-
     .log-out {
         width: 130px;
         height: 53px;
+        position: absolute;
+        top: 90;
+        right: 0;
         display: flex;
         justify-content: center;
         align-items: center;
-        float: right;
-        margin-right: 56px;
+        margin-right: 70px;
         background-color: #2A3647;
         box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
         border-radius: 20px 0px 20px 20px;
     }
 
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            margin-right: 0px;
+        }
+
+        to {
+            opacity: 1;
+            margin-right: 70px;
+        }
+    }
+
+    @keyframes fadeOut {
+        from {
+            opacity: 1;
+            margin-right: 70px;
+        }
+
+        to {
+            opacity: 0;
+            margin-right: 0px;
+        }
+    }
+
+    .log-out:hover {
+        background-color: #29ABE2 !important;
+        border: none;
+        box-shadow: 2px 4px 4px 0px rgb(0 0 0 / 20%);
+        cursor: pointer;
+    }
+
     .log-out span {
         font-size: 16px;
-        color: #CDCDCD;
+        color: white;
         padding: 18px;
     }
 
@@ -218,9 +250,10 @@
             </div>
         </div>
     </header>
-    <div id="log-out" class="log-out d-none">
+
+    <a href="login.html" id="log-out" class="log-out d-none">
         <span>Log out</span>
-    </div>
+    </a>
 
     <nav>
         <div class="nav-logo-container">

@@ -96,7 +96,7 @@ function displayToDos(search) {
             const element = todos[i];
             calculateProgressBar(element);
             document.getElementById('to-do').innerHTML += addTaskToKanbanHTML(element);
-            getFirstLetterMain(element); 
+            getFirstLetterMain(element);
             NumberOfCurrentTasks++;
         }
     }
@@ -114,7 +114,7 @@ function displayInProgressTasks(search) {
 
             calculateProgressBar(element);
             document.getElementById('in-progress').innerHTML += addTaskToKanbanHTML(element);
-            getFirstLetterMain(element); 
+            getFirstLetterMain(element);
             NumberOfCurrentTasks++;
         }
     }
@@ -132,7 +132,7 @@ function displayAwaitingFeedbackTasks(search) {
 
             calculateProgressBar(element);
             document.getElementById('awaiting-feedback').innerHTML += addTaskToKanbanHTML(element);
-            getFirstLetterMain(element); 
+            getFirstLetterMain(element);
             NumberOfCurrentTasks++;
         }
     }
@@ -149,7 +149,7 @@ function displayDoneTasks(search) {
 
             calculateProgressBar(element);
             document.getElementById('done').innerHTML += addTaskToKanbanHTML(element);
-            getFirstLetterMain(element); 
+            getFirstLetterMain(element);
             NumberOfCurrentTasks++;
         }
     }
@@ -417,7 +417,7 @@ function createAssignedContacs(id) {
         </div>
     `;
 
-    getFirstLetter(id, i); 
+        getFirstLetter(id, i);
     }
 }
 
@@ -436,7 +436,7 @@ function getFirstLetter(id, i) {
 
 
     let initials = assignedContact[i].split(' ').map(word => word.charAt(0)).join('');
-    document.getElementById(`c-t-initials${i}`).innerHTML = `${initials}`; 
+    document.getElementById(`c-t-initials${i}`).innerHTML = `${initials}`;
 
     console.log(initials);
 }
@@ -445,14 +445,14 @@ function getFirstLetter(id, i) {
 
 function getFirstLetterMain(element) {
 
-    
+
     let assignedContacts = element['assingedTo'];
 
     for (let w = 0; w <= assignedContacts.length - 1; w++) {
 
         let initials = assignedContacts[w].split(' ').map(word => word.charAt(0)).join('');
 
-        document.getElementById(`initials${w}`).innerHTML = `${initials}`; 
+        document.getElementById(`initials${w}`).innerHTML = `${initials}`;
 
     }
 }
@@ -514,13 +514,22 @@ async function newTaskReload() {
 }
 
 
+/**
+ * loads the current date into the input field
+ *
+ */
+function generateDate() {
+    document.getElementById("dueDate").valueAsDate = new Date();
+}
+
+
 /** to show the add task window on board site
  * 
  */
 function displayAddTaskWindow() {
-
     document.getElementById('open-clicked-addtask').style.display = "flex";
     document.getElementById('c-t-addtask-window').style.display = "flex"
+    generateDate();
 }
 
 /** to hide the add task window on board site
