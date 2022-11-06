@@ -177,6 +177,11 @@
     right: 20px;
 }
 
+.profile-picture-shifting {
+    position: relative;
+    right: 10px;
+}
+
 
 /* Colors */
 
