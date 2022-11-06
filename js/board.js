@@ -28,7 +28,9 @@ async function loadTasksFromServer() {
 
 }
 
-
+/**
+ * 
+ */
 function pushIDtoTasks() {
     let idTask = downloadedTasks[existTasks]['id']; 
     if (idTask === 0) {
@@ -96,7 +98,7 @@ function displayToDos(search) {
             pushIDtoTasks(); 
             calculateProgressBar(element);
             document.getElementById('to-do').innerHTML += addTaskToKanbanHTML(element);
-            getFirstLetterMain(element);
+            createAssignedContacsOnBoard(element); 
             NumberOfCurrentTasks++;
         }
     }
@@ -115,7 +117,7 @@ function displayInProgressTasks(search) {
             pushIDtoTasks();             
             calculateProgressBar(element);
             document.getElementById('in-progress').innerHTML += addTaskToKanbanHTML(element);
-            getFirstLetterMain(element);
+            createAssignedContacsOnBoard(element); 
             NumberOfCurrentTasks++;
         }
     }
@@ -134,7 +136,7 @@ function displayAwaitingFeedbackTasks(search) {
             pushIDtoTasks(); 
             calculateProgressBar(element);
             document.getElementById('awaiting-feedback').innerHTML += addTaskToKanbanHTML(element);
-            getFirstLetterMain(element);
+            createAssignedContacsOnBoard(element); 
             NumberOfCurrentTasks++;
         }
     }
@@ -152,7 +154,7 @@ function displayDoneTasks(search) {
             pushIDtoTasks(); 
             calculateProgressBar(element);
             document.getElementById('done').innerHTML += addTaskToKanbanHTML(element);
-            getFirstLetterMain(element);
+            createAssignedContacsOnBoard(element); 
             NumberOfCurrentTasks++;
         }
     }
@@ -447,6 +449,43 @@ function getFirstLetter(id, i) {
 }
 
 
+
+/** creates the divs for assignedContacts view on Boardsite
+ * 
+ * @param {string} element - hands over from display function - contains currently task like 
+ *                         - downloadedTask[0]  
+ *  
+ * @param {number} x  -created to prevent more than 3 assigned contacts being created on the board site
+ * 
+ */
+function createAssignedContacsOnBoard(element) {
+    document.getElementById(`assigned-employees-board-${element['id']}`).innerHTML = ''; 
+
+    let x = element['assingedTo'].length; 
+    let pixels = 0; 
+
+    if (x > 3) {
+        x = 2; 
+    } 
+    else {
+        for (i = 0; i <= x -1 ; i++) {
+            
+            document.getElementById(`assigned-employees-board-${element['id']}`).innerHTML += `
+            <div class="c-t-profilimages" style="right:${pixels}px"> 
+                <span id="initials-${element['id']}-${i}">  
+
+                </span> 
+            </div> 
+            `; 
+
+            pixels += + 10; 
+            console.log(`Die pixel anzahl ist ${pixels}`)
+        }
+    }
+    getFirstLetterMain(element); 
+}
+
+
 /** filters the first letter of first and last name to display it on profilpictures on board site 
  * 
  * @param {string} element 
@@ -455,8 +494,7 @@ function getFirstLetter(id, i) {
  *                               creates new array with first letter of each word (map)  
  *                               then use (join) to get back the array into a string.
  */
-function getFirstLetterMain(element) {
-
+ function getFirstLetterMain(element) {
 
     let assignedContacts = element['assingedTo'];
 
@@ -464,10 +502,11 @@ function getFirstLetterMain(element) {
 
         let initials = assignedContacts[w].split(' ').map(word => word.charAt(0)).join('');
 
-        document.getElementById(`initials${w}`).innerHTML = `${initials}`;
+        document.getElementById(`initials-${element['id']}-${w}`).innerHTML = `${initials}`;
 
     }
 }
+
 
 
 /** get the subtasks from downloaded serverarray and adds them in clicked task view (html code)
@@ -586,22 +625,22 @@ function addTaskToKanbanHTML(element) { // element = task[0] or task[1] only fil
 
     <div
         style="display:flex; justify-content: space-between; align-items:center; margin-top: 10px;">
-        <div class="assigned-employees">
+        <div class="assigned-employees" id="assigned-employees-board-${element['id']}">
 
                 <div class="c-t-profilimages"> 
-                    <span id="initials0">  
+                    <span id="initials-{existTasks}-0">  
                         funkt
                     </span> 
                 </div> 
 
                 <div class="c-t-profilimages second-picture" >
-                    <span id="initials1">  
+                    <span id="initials-{existTasks}-1">  
                         
                     </span> 
                 </div> 
                 
                 <div class="c-t-profilimages third-picture">
-                    <span id="initials2">  
+                    <span id="initials-{existTasks}-2">  
                        
                     </span> 
                 </div> 
@@ -613,5 +652,6 @@ function addTaskToKanbanHTML(element) { // element = task[0] or task[1] only fil
 </div>
     `;
 }
+
 
 

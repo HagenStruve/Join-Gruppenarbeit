@@ -321,6 +321,7 @@
 }
 
 .c-t-profilimages {
+    position: relative;
     width: 46px;
     height: 46px;
     border-radius: 559px;
