@@ -82,6 +82,10 @@
     .back-arrow {
         top: 38px;
     }
+
+    .successful-registration {
+        width: 80%;
+    }
 }
 
 
@@ -117,6 +121,10 @@
         padding: 8px 18px;
     }
 
+    .login-buttons {
+        width: 220px;
+    }
+
     .wrong-login-or-register {
         padding: 14px 5px;
         font-size: 13px;
@@ -132,10 +140,6 @@
         font-size: 16px;
     }
 
-    .successful-registration {
-        width: 80%;
-    }
-
     .successful-registration img {
         width: 140px;
         height: 140px;
@@ -144,5 +148,51 @@
     .back-arrow {
         width: 25px;
         height: 25px;
+    }
+}
+
+@media(max-width: 380px) {
+    .login-container {
+        width: 210px;
+    }
+
+    .login-name-input-bg {
+        background: url(../img/name-icon.png) no-repeat 190px 17px;
+    }
+
+
+    .login-email-input-bg {
+        background: url(../img/email-icon.png) no-repeat 190px 17px;
+    }
+
+    .login-password-input-bg {
+        background: url(../img/password-icon.png) no-repeat 190px 17px;
+    }
+
+    .login-input {
+        width: 190px;
+        padding: 8px 14px;
+    }
+
+    .wrong-login-or-register {
+        text-align: center;
+        padding: 8px 8px;
+        margin-top: 12px;
+        margin-bottom: 12px;
+    }
+
+    .back-arrow {
+        width: 20px;
+        height: 20px;
+        top: 17px;
+        left: 20px;
+    }
+
+    .successful-registration {
+        width: 90%;
+    }
+
+    .registered-successfully {
+        font-size: 18px;
     }
 }
