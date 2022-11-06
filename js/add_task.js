@@ -1,4 +1,5 @@
-let task = [];
+let downloadedTasks = []; // task will be filled with downloaded task and updated with new task, then upload again 
+let newTask = []; // array to put new created task in
 let prio = [];
 let subtasks = [];
 let contacts = [];
@@ -35,6 +36,7 @@ function addSubtaskJSON() {
  */
 async function initAddTask() {
     await includeHTML();
+    await loadTasksFromServer(); 
     generateDate();
     sidebarBgPage();
 }
@@ -162,7 +164,7 @@ async function addTask() {
 
     addSubtaskJSON();
 
-    downloadedTasks = [{
+    newTask = {
         "category": 'to-do',
         "id": 0,
         "title": title.value,
@@ -172,9 +174,9 @@ async function addTask() {
         "dueDate": dueDate.value,
         "prio": actualPrio,
         "subtasks": substasksJSON
-    }];
+    };
 
-    //task.push(addTask);
+    downloadedTasks.push(newTask);
 
     saveOnServer();
     forwardToBoard();
@@ -205,6 +207,12 @@ function forwardToBoard() {
     }, 2000);
 }
 
+
+async function loadTasksFromServer() {
+    setURL("https://gruppe-313.developerakademie.net/Join-Gruppenarbeit/smallest_backend_ever-master");
+    await downloadFromServer();
+    downloadedTasks = JSON.parse(backend.getItem('downloadedTasks')) || [];
+}
 
 /**
  * save function on the server

@@ -177,6 +177,11 @@
     right: 20px;
 }
 
+.profile-picture-shifting {
+    position: relative;
+    right: 10px;
+}
+
 
 /* Colors */
 
@@ -316,6 +321,7 @@
 }
 
 .c-t-profilimages {
+    position: relative;
     width: 46px;
     height: 46px;
     border-radius: 559px;

@@ -1,30 +1,7 @@
 let downloadedTasks = [];
-
+let existTasks = 0; // id assigner for downloaded Tasks. 
 percentageFinishedSubtasks = 0; // needed! Will be changed in every displayTask function
-
-
-/*  nur test, lösche ich wieder raus sobald es diesen in task gibt
-let großerJSON = [{
-    'subtasks': [{
-        'subtask': '1.Versuch',
-        'checked': 'false',
-    },
-    {
-        'subtask': '2.Versuch',
-        'checked': 'false',
-    },
-    {
-        'subtask': '3.Versuch',
-        'checked': 'false',
-    }
-    ],
-}
-];
-*/
-
-
-
-let currentDraggedElement;
+let currentDraggedElement;  // contains the ID of current dragged element
 let NumberOfCurrentTasks = 0; // is needed to differ between the tasks
 
 /** 
@@ -52,6 +29,29 @@ async function loadTasksFromServer() {
 
 }
 
+/**
+ * 
+ */
+function pushIDtoTasks() {
+    let idTask = downloadedTasks[existTasks]['id'];
+    if (idTask === 0) {
+        downloadedTasks[existTasks]['id'] = existTasks;
+        existTasks++;
+    }
+    else {
+        console.log(`Task Nummer: ${existTasks} ist bereits eine ID zugewiesen`);
+    }
+}
+
+
+/** generates and pushes ID to downloaded tasks, which is needed to drag
+ * 
+ * 
+ */
+function createIdForTasks() {
+
+}
+
 
 async function renderBoardSite() {
     await loadTasksFromServer();
@@ -65,6 +65,7 @@ async function renderBoardSite() {
  */
 function displayAllTasks(search) {
     NumberOfCurrentTasks = 0;
+    existTasks = 0;
     displayToDos(search);
     displayInProgressTasks(search);
     displayAwaitingFeedbackTasks(search);
@@ -95,9 +96,10 @@ function displayToDos(search) {
             // wenn es search nicht gibt dann führe aus, und wenn title etwas von der suche beinhaltet dann führe ebenfalls aus, wenn nicht dann zeigt er auch nichts an 
 
             const element = todos[i];
+            pushIDtoTasks();
             calculateProgressBar(element);
             document.getElementById('to-do').innerHTML += addTaskToKanbanHTML(element);
-            getFirstLetterMain(element);
+            createAssignedContacsOnBoard(element);
             NumberOfCurrentTasks++;
         }
     }
@@ -113,9 +115,10 @@ function displayInProgressTasks(search) {
         if (!search || title.includes(search)) {
             const element = inProgress[p];
 
+            pushIDtoTasks();
             calculateProgressBar(element);
             document.getElementById('in-progress').innerHTML += addTaskToKanbanHTML(element);
-            getFirstLetterMain(element);
+            createAssignedContacsOnBoard(element);
             NumberOfCurrentTasks++;
         }
     }
@@ -131,9 +134,10 @@ function displayAwaitingFeedbackTasks(search) {
         if (!search || title.includes(search)) {
             const element = awaitingFeedback[a];
 
+            pushIDtoTasks();
             calculateProgressBar(element);
             document.getElementById('awaiting-feedback').innerHTML += addTaskToKanbanHTML(element);
-            getFirstLetterMain(element);
+            createAssignedContacsOnBoard(element);
             NumberOfCurrentTasks++;
         }
     }
@@ -148,9 +152,10 @@ function displayDoneTasks(search) {
         if (!search || title.includes(search)) {
             const element = done[d];
 
+            pushIDtoTasks();
             calculateProgressBar(element);
             document.getElementById('done').innerHTML += addTaskToKanbanHTML(element);
-            getFirstLetterMain(element);
+            createAssignedContacsOnBoard(element);
             NumberOfCurrentTasks++;
         }
     }
@@ -182,6 +187,8 @@ function highlightDrag(id) {
 function removeHightlightDrag(id) {
     document.getElementById(id).classList.remove('drag-area-highlight');
 }
+
+
 
 // change the category to dropped task
 function moveTo(category) {
@@ -444,8 +451,51 @@ function getFirstLetter(id, i) {
 
 
 
-function getFirstLetterMain(element) {
+/** creates the divs for assignedContacts view on Boardsite
+ * 
+ * @param {string} element - hands over from display function - contains currently task like 
+ *                         - downloadedTask[0]  
+ *  
+ * @param {number} x  -created to prevent more than 3 assigned contacts being created on the board site
+ * 
+ */
+function createAssignedContacsOnBoard(element) {
+    document.getElementById(`assigned-employees-board-${element['id']}`).innerHTML = '';
 
+    let x = element['assingedTo'].length;
+    let pixels = 0;
+
+    if (x > 3) {
+        x = 2;
+    }
+    else {
+        for (i = 0; i <= x - 1; i++) {
+
+            document.getElementById(`assigned-employees-board-${element['id']}`).innerHTML += `
+            <div class="c-t-profilimages" style="right:${pixels}px"> 
+                <span id="initials-${element['id']}-${i}">  
+
+                </span> 
+            </div> 
+            `;
+
+            pixels += + 10;
+            console.log(`Die pixel anzahl ist ${pixels}`)
+        }
+    }
+    getFirstLetterMain(element);
+}
+
+
+/** filters the first letter of first and last name to display it on profilpictures on board site 
+ * 
+ * @param {string} element 
+ * 
+ * @param {string} firstLetter - splits first and lastname in substrings and returns array,(split)
+ *                               creates new array with first letter of each word (map)  
+ *                               then use (join) to get back the array into a string.
+ */
+function getFirstLetterMain(element) {
 
     let assignedContacts = element['assingedTo'];
 
@@ -453,10 +503,11 @@ function getFirstLetterMain(element) {
 
         let initials = assignedContacts[w].split(' ').map(word => word.charAt(0)).join('');
 
-        document.getElementById(`initials${w}`).innerHTML = `${initials}`;
+        document.getElementById(`initials-${element['id']}-${w}`).innerHTML = `${initials}`;
 
     }
 }
+
 
 
 /** get the subtasks from downloaded serverarray and adds them in clicked task view (html code)
@@ -575,22 +626,22 @@ function addTaskToKanbanHTML(element) { // element = task[0] or task[1] only fil
 
     <div
         style="display:flex; justify-content: space-between; align-items:center; margin-top: 10px;">
-        <div class="assigned-employees">
+        <div class="assigned-employees" id="assigned-employees-board-${element['id']}">
 
                 <div class="c-t-profilimages"> 
-                    <span id="initials0">  
+                    <span id="initials-{existTasks}-0">  
                         funkt
                     </span> 
                 </div> 
 
                 <div class="c-t-profilimages second-picture" >
-                    <span id="initials1">  
+                    <span id="initials-{existTasks}-1">  
                         
                     </span> 
                 </div> 
                 
                 <div class="c-t-profilimages third-picture">
-                    <span id="initials2">  
+                    <span id="initials-{existTasks}-2">  
                        
                     </span> 
                 </div> 
@@ -602,3 +653,6 @@ function addTaskToKanbanHTML(element) { // element = task[0] or task[1] only fil
 </div>
     `;
 }
+
+
+
