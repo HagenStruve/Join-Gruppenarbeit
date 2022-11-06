@@ -74,21 +74,22 @@
 
             <div class="kanban-overview">
 
-                <div class="current-status" id="to-do" ondrop="moveTo('to-do')" ondragover="allowDrop(event)">
+                <div class="current-status" id="to-do" ondrop="moveTo('to-do')" ondragenter="highlightDrag('to-do')" ondragleave="removeHightlightDrag('to-do')" ondragover="allowDrop(event)">
                 </div>
 
 
-                <div class="current-status" id="in-progress" ondrop="moveTo('in-progress')"
-                    ondragover="allowDrop(event)">
+                <div class="current-status" id="in-progress" ondrop="moveTo('in-progress')" ondragleave="removeHightlightDrag('in-progress')"
+                ondragover="allowDrop(event) " ondragenter="highlightDrag('in-progress')">
+                </div> 
+
+
+                <div class="current-status" id="awaiting-feedback" ondrop="moveTo('awaiting-feedback')" ondragleave="removeHightlightDrag('awaiting-feedback')"
+                ondragover="allowDrop(event)">
                 </div>
 
 
-                <div class="current-status" id="awaiting-feedback" ondrop="moveTo('awaiting-feedback')"
-                    ondragover="allowDrop(event)">
-                </div>
-
-
-                <div class="current-status" id="done" ondrop="moveTo('done')" ondragover="allowDrop(event)">
+                <div class="current-status" id="done" ondrop="moveTo('done')" ondragleave="removeHightlightDrag('done')"
+                 ondragover="allowDrop(event)">
                 </div>
 
             </div>

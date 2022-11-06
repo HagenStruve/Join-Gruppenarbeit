@@ -1,60 +1,5 @@
-
-/* let downloadedTasks = [{
-    'id': 0,
-    'sector': 'Media',
-    'title': 'Redesign Website',
-    'description': 'Modify contents of the website und und und nur ein Testtext',
-    'subtasks': 2,
-    'assignedTo': '../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png',
-    'importance': 'urgent',
-    'category': 'to-do'
-},
-{
-    'id': 1,
-    'sector': 'Sales',
-    'title': 'Call Clients',
-    'description': 'Sells so much that we drown in money',
-    'subtasks': 0,
-    'assignedTo': '../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png',
-    'importance': 'medium',
-    'category': 'in-progress'
-},
-{
-    'id': 2,
-    'sector': 'Backoffice',
-    'title': 'Do Something',
-    'description': 'and teaches them good things',
-    'subtasks': 0,
-    'assignedTo': '../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png',
-    'importance': 'medium',
-    'category': 'awaiting-feedback'
-},
-{
-    'id': 3,
-    'sector': 'Marketing',
-    'title': 'Sell Products',
-    'description': 'Market yourself so well that you dont need marketing anymore',
-    'subtasks': 0,
-    'assignedTo': '../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png',
-    'importance': 'medium',
-    'category': 'done'
-}];
-*/
-
 let downloadedTasks = [];
 
-
-/* 
-let tasksOnServer = {
-    "id" : 0,
-    "title": '',
-    "descripton": '',
-    "category": '',
-    "assingedTo": '',
-    "dueDate": '',
-    "importance": '',
-};
-*/
 percentageFinishedSubtasks = 0; // needed! Will be changed in every displayTask function
 
 
@@ -215,6 +160,27 @@ function allowDrop(ev) { // from W3School predefined //
     ev.preventDefault();
 }
 
+/* 
+function highlightDrag(id) {
+    //document.getElementById(id).classList.add('drag-area-highlight'); 
+    let div = document.getElementById(currentDraggedElement);
+    let width = div.offsetWidth; 
+    let height = div.offsetHeight; 
+
+    console.log(width);
+    console.log(height); 
+
+        document.getElementById(id).innerHTML += `
+        <div style="width:${width}px; height:${height}; background-color:blue"> 
+        </div> 
+    `; 
+}
+*/ 
+
+
+function removeHightlightDrag(id) {
+    document.getElementById(id).classList.remove('drag-area-highlight'); 
+}
 
 // change the category to dropped task
 function moveTo(category) {

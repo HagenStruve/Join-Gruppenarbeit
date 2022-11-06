@@ -105,6 +105,10 @@
     min-height: 100vh;
 }
 
+.drag-area-highlight {
+    background-color: #2a3a50;
+}
+
 .kanban-task-container {
     width: var(--width-task-size);
     height: auto; 
