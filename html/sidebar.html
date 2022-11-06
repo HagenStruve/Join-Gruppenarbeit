@@ -28,8 +28,12 @@
         display: none !important;
     }
 
+    .responsive-d-none-990px {}
+
+    .responsive-d-none-770px {}
+
     header {
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 232px;
         right: 0;
@@ -42,6 +46,12 @@
         padding-left: 10%;
         padding-right: 5%;
         box-shadow: 0px 4px 4px rgb(0 0 0 / 10%);
+    }
+
+    .join-logo {
+        display: none;
+        width: 32px;
+        height: 39px;
     }
 
     header span {
@@ -151,6 +161,7 @@
         align-items: center;
         color: white;
         z-index: 100;
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     }
 
     .nav-logo-container {
@@ -172,7 +183,6 @@
         width: 100%;
         padding-bottom: 10px;
         padding-top: 10px;
-        padding-bottom: 10px;
     }
 
     .nav-properties:hover {
@@ -233,6 +243,84 @@
         cursor: pointer;
         background: #091931;
     }
+
+
+    @media(max-width: 990px) {
+        .responsive-d-none-990px {
+            display: none;
+        }
+
+        header {
+            height: 80px;
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+
+        .join-logo {
+            display: flex;
+        }
+    }
+
+
+    @media(max-width: 770px) {
+        .responsive-d-none-770px {
+            display: none;
+        }
+
+        header {
+            box-sizing: border-box;
+            left: 0;
+            width: 100%;
+        }
+
+        nav {
+            top: unset;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 90px;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            z-index: 100;
+        }
+
+        .nav-logo-container {
+            width: unset;
+            margin: 0px 0px;
+        }
+
+        .nav-properties {
+            flex-direction: column;
+            padding: 15px 0px;
+        }
+
+        .nav-text {
+            width: unset;
+            margin-top: 10px;
+        }
+    }
+
+
+    @media(max-width: 360px) {
+        nav {
+            height: 80px;
+        }
+
+        .nav-properties {
+            padding: 14px 0px;
+        }
+
+        .nav-icons img {
+            width: 25px;
+            height: 25px;
+        }
+
+        .nav-text {
+            font-size: 14px;
+        }
+    }
 </style>
 
 
@@ -240,11 +328,12 @@
 <body>
 
     <header>
-        <span>
+        <img class="join-logo" src="../img/join-logo.svg" alt="join-logo">
+        <span class="responsive-d-none-990px">
             Kanban Project Management Tool
         </span>
         <div class="header-right">
-            <a href="help.html"><img src="../img/questions_mark.png" class="question-mark"></a>
+            <a href="help.html"><img src="../img/questions_mark.png" class="question-mark responsive-d-none-770px"></a>
             <div class="pp-container" onclick="showLogOut()">
                 <img src="../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png" class="profil-picture">
             </div>
@@ -257,7 +346,7 @@
 
     <nav>
         <div class="nav-logo-container">
-            <img src="../img/logo-white.png">
+            <img class="responsive-d-none-770px" src="../img/logo-white.png">
         </div>
 
         <a href="summary.html" class="nav-properties">
@@ -297,7 +386,7 @@
                 </a>
 
 
-                <div class="nav-notice">
+                <div class="nav-notice responsive-d-none-770px">
                     <a href="legal_notice.html" class="legal-notice">
                         <div class="nav-icons">
                             <img src="../img/legal-notice-icon.png">
