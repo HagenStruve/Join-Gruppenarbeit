@@ -1,8 +1,8 @@
 let downloadedTasks = [];
 let existTasks = 0; // id assigner for downloaded Tasks. 
-percentageFinishedSubtasks = 0; // needed! Will be changed in every displayTask function
 let currentDraggedElement;  // contains the ID of current dragged element
 let NumberOfCurrentTasks = 0; // is needed to differ between the tasks
+let currentClickedTask = 0;
 
 /** 
  * filters tasks-json and displays them assigned on board site
@@ -40,8 +40,8 @@ async function loadTasksFromServer() {
  * 
  */
 function pushIDtoTasks() {
-        downloadedTasks[existTasks]['id'] = existTasks; 
-        existTasks++; 
+    downloadedTasks[existTasks]['id'] = existTasks;
+    existTasks++;
 }
 
 
@@ -84,8 +84,8 @@ function displayToDos(search) {
 
             const element = todos[i];
             pushIDtoTasks();
-            calculateProgressBar(element);
             document.getElementById('to-do').innerHTML += addTaskToKanbanHTML(element);
+            createProgressbar(element); 
             createAssignedContacsOnBoard(element);
             NumberOfCurrentTasks++;
         }
@@ -103,8 +103,8 @@ function displayInProgressTasks(search) {
             const element = inProgress[p];
 
             pushIDtoTasks();
-            calculateProgressBar(element);
             document.getElementById('in-progress').innerHTML += addTaskToKanbanHTML(element);
+            createProgressbar(element); 
             createAssignedContacsOnBoard(element);
             NumberOfCurrentTasks++;
         }
@@ -122,8 +122,8 @@ function displayAwaitingFeedbackTasks(search) {
             const element = awaitingFeedback[a];
 
             pushIDtoTasks();
-            calculateProgressBar(element);
             document.getElementById('awaiting-feedback').innerHTML += addTaskToKanbanHTML(element);
+            createProgressbar(element); 
             createAssignedContacsOnBoard(element);
             NumberOfCurrentTasks++;
         }
@@ -141,8 +141,8 @@ function displayDoneTasks(search) {
             const element = done[d];
 
             pushIDtoTasks();
-            calculateProgressBar(element);
             document.getElementById('done').innerHTML += addTaskToKanbanHTML(element);
+            createProgressbar(element); 
             createAssignedContacsOnBoard(element);
             NumberOfCurrentTasks++;
         }
@@ -305,7 +305,7 @@ function searchTask() {
  * @param {string} actualSector - contains category like "marketing" or "backend"l
  */
 function displayClickedTask(id) {
-
+    currentClickedTask = id;
     document.getElementById('open-clicked-task').style.display = "flex";
     document.getElementById('c-t-window').style.display = "flex";
 
@@ -445,29 +445,52 @@ function getFirstLetter(id, i) {
  * 
  * @param {number}  numberOfSubtasks - gets the amount of subtasks as number
  * 
+ * @param {number} id - is the same like downloadedTasks[x]['id']
+ * 
  */
- function createSubtasks(id) {
+function createSubtasks(id) {
 
     let arrayOfSubtasks = downloadedTasks[id]['subtasks'];
-
-   // arrayOfSubtasks[0]['checked']; 
-// zuerst speichern der verdraggend
-
-    //let checked = ''; 
 
     document.getElementById('subtasks').innerHTML = '';
     for (let i = 0; i < arrayOfSubtasks.length; i++) {
 
+        let checked = '';
+
+        if (arrayOfSubtasks[i]['checked'] === 'true') {
+            checked = 'checked="true"'
+        }
+        else {
+            checked = '';
+        }
+
         document.getElementById('subtasks').innerHTML += `
             
         <label class="c-t-checkbox">
-            <input type="checkbox" checked="false" > 
+            <input type="checkbox" ${checked} id="subtask-id-${id}-${i}" onclick="updateCheckboxStatus(${i})"> 
             <span class="checkmark">${arrayOfSubtasks[i]['subtask']} </span> 
         </label>
         `
     }
 }
 
+/** saves the new status of subtask (checkbox) when clicked
+ * 
+ * @param {string} i - contains i-value from function createSubtasks to be able to access the under subtask
+ */
+function updateCheckboxStatus(i) {
+    let checkbox = document.getElementById(`subtask-id-${currentClickedTask}-${i}`);
+    let arrayOfSubtasks = downloadedTasks[currentClickedTask]['subtasks'];
+
+    if (checkbox.checked) {
+        arrayOfSubtasks[i]['checked'] = 'true';
+    }
+    else {
+        arrayOfSubtasks[i]['checked'] = 'false';
+    }
+
+    saveNewOnServer();
+}
 
 
 /** creates the divs for assignedContacts view on Boardsite
@@ -499,7 +522,6 @@ function createAssignedContacsOnBoard(element) {
             `;
 
             pixels += + 10;
-            console.log(`Die pixel anzahl ist ${pixels}`)
         }
     }
     getFirstLetterMain(element);
@@ -528,19 +550,43 @@ function getFirstLetterMain(element) {
 }
 
 
+function createProgressbar(element) {
+    if (element['subtasks'].length == 0) {
+        console.log('Es wurde nicht gefunden und deshlab passsiert auch nichts weiter');
+        document.getElementById(`progress-section-${element['id']}`).innerHTML = ''; 
+    }
+        else {
+            calculateProgressBar(element); 
+        }
+
+}
 
 
 /** calculates the percentage for progressbar in tasks on kanban
  * 
  * 
  */
-function calculateProgressBar() {
-    let numberOfSubtasks = downloadedTasks[0]['subtasks'];
-    let finishedSubstasks = downloadedTasks[0]['checked'];
+function calculateProgressBar(element) {
+    console.log(element['subtasks']); 
+    let numberOfSubtasks = element['subtasks'].length;
+    let finishedSubstasksArray = element['subtasks'].filter(t => t['checked'] == 'true');
+    let finishedSubstasks = finishedSubstasksArray.length;
+    let percentageFinishedSubtasks = finishedSubstasks / numberOfSubtasks * 100;
 
-    percentageFinishedSubtasks = finishedSubstasks / numberOfSubtasks * 100;
+    document.getElementById(`progressbar-${element['id']}`).innerHTML = `
+        <div class="gray" style=" height: 6px; width:${percentageFinishedSubtasks}%; border-radius:15px"> 
+        </div>
+    `;
+    numberProgressBar(element, numberOfSubtasks, finishedSubstasks);
+}
 
-    console.log('Die prozentanzahl ist ', percentageFinishedSubtasks);
+
+/** shows how many subtasks are completed and how many not
+ */
+function numberProgressBar(element, numberOfSubtasks, finishedSubstasks) {
+    document.getElementById(`progressbar-comparison-${element['id']}`).innerHTML = `
+             ${finishedSubstasks}/${numberOfSubtasks} Done 
+    `;
 }
 
 
@@ -595,7 +641,7 @@ function hideClickedAddTaskWindow() {
  * 
  * @param {array} element - beinhaltet den gefilterten Array mit forschleifen Zahl der jeweiligen Kategorie.
  * 
- * @returns 
+ * 
  */
 function addTaskToKanbanHTML(element) { // element = task[0] or task[1] only filterd in category
     return `
@@ -613,35 +659,18 @@ function addTaskToKanbanHTML(element) { // element = task[0] or task[1] only fil
     <p class="task-description"> 
         ${element['description']}...
     </p>
-    <div class="progress-section">
-        <div class="progress-border">
-            <div class="gray" style=" height: 6px; width:${percentageFinishedSubtasks}%; border-radius:15px"> </div>
+    <div class="progress-section" id="progress-section-${element['id']}">
+        <div class="progress-border" id="progressbar-${element['id']}">
+
         </div>
 
-        <span style="font-size: 13px; font-weight: 500; text-align: center"> 1/2 Done </span>
-    </div>
+        <span id="progressbar-comparison-${element['id']}" class="progressbar-comparison">
+        
+         </span>
+        </div>
 
-    <div
-        style="display:flex; justify-content: space-between; align-items:center; margin-top: 10px;">
+    <div style="display:flex; justify-content: space-between; align-items:center; margin-top: 10px;">
         <div class="assigned-employees" id="assigned-employees-board-${element['id']}">
-
-                <div class="c-t-profilimages"> 
-                    <span id="initials-{existTasks}-0">  
-                        funkt
-                    </span> 
-                </div> 
-
-                <div class="c-t-profilimages second-picture" >
-                    <span id="initials-{existTasks}-1">  
-                        
-                    </span> 
-                </div> 
-                
-                <div class="c-t-profilimages third-picture">
-                    <span id="initials-{existTasks}-2">  
-                       
-                    </span> 
-                </div> 
 
         </div>
 
