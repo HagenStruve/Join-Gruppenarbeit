@@ -14,6 +14,7 @@ async function initContacs() {
     contact = JSON.parse(backend.getItem('contact')) || [];
     alphabet = JSON.parse(backend.getItem('alphabet')) || [];
     loadABCContainer();
+    sidebarBgPage();
 }
 
 

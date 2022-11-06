@@ -39,6 +39,7 @@ let NumberOfCurrentTasks = 0; // is needed to differ between the tasks
 async function initBoard() {
     await includeHTML();
     renderBoardSite();
+    sidebarBgPage();
 }
 
 async function loadTasksFromServer() {
@@ -175,11 +176,11 @@ function highlightDrag(id) {
         </div> 
     `; 
 }
-*/ 
+*/
 
 
 function removeHightlightDrag(id) {
-    document.getElementById(id).classList.remove('drag-area-highlight'); 
+    document.getElementById(id).classList.remove('drag-area-highlight');
 }
 
 // change the category to dropped task

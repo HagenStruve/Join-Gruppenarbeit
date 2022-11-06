@@ -36,6 +36,7 @@ function addSubtaskJSON() {
 async function initAddTask() {
     await includeHTML();
     generateDate();
+    sidebarBgPage();
 }
 
 /**
