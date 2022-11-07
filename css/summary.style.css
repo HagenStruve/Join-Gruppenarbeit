@@ -276,7 +276,7 @@ a {
 }
 
 .content-right {
-    margin-left: 67px;
+    margin-left: 20%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -286,7 +286,7 @@ a {
     /* Good morning, */
 
 
-    width: 338px;
+    width: auto;
     height: 56px;
 
     /* Version 2/t2 */
