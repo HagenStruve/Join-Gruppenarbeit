@@ -335,3 +335,20 @@ a {
     order: 1;
     flex-grow: 0;
 }
+
+
+@media(max-width: 990px) {
+}
+
+@media(max-width: 770px) {
+
+}
+
+
+@media(max-width: 570px) {
+
+}
+
+@media(max-width: 380px) {
+
+}

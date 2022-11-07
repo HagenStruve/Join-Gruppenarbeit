@@ -46,6 +46,7 @@ async function saveOnServer() {
 function newConatct() {
     document.getElementById('add-contact').classList.remove('d-none');
     document.getElementById('add-contact').classList.add('edit-contact');
+    document.getElementById('add-contact').classList.add('edit-contact-smove-leftimage.png');
 }
 
 
@@ -81,6 +82,7 @@ function addContact() {
 
     contact.push(addContact);
 
+    contactCreatedSuccessfuly();
     addAndSaveContact();
     cancel();
 }
@@ -267,7 +269,8 @@ function save(i) {
         "phone": phone.value,
     };
 
-    saveAndLoadContact(i)
+    contactCreatedSuccessfuly();
+    saveAndLoadContact(i);
 }
 
 
@@ -278,6 +281,13 @@ function saveAndLoadContact(i) {
     loadABCContainer();
     showMemberInfo(i);
     closeEdit(i);
+}
+
+function contactCreatedSuccessfuly() {
+    document.getElementById('contact-created').classList.remove('d-none');
+    setTimeout(() => {
+        document.getElementById('contact-created').classList.add('d-none');
+    }, 2000);
 }
 
 /////////////////////////////////////////// HTML /////////////////////////////////////////////////////////////
