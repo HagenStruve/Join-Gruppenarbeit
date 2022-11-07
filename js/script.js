@@ -51,6 +51,7 @@ function sidebarBgPage() {
     }
 
     else if (location.pathname == "/html/add_task.html") {
+        showCreateTaskResponsive();
         document.getElementById('add-task').style = 'background: #091931; !important';
     }
 
@@ -64,5 +65,16 @@ function sidebarBgPage() {
 
     else if (location.pathname == "/html/privacy.html") {
         document.getElementById('privacy').style = 'background: #091931; !important';
+    }
+}
+
+
+
+function showCreateTaskResponsive() {
+    console.log(window.screen.width)
+    if (window.screen.width < 1200) {
+        document.getElementById('create-task-button').classList.remove('d-none')
+        document.getElementById('link-to-help').classList.add('d-none');
+        document.getElementById('profil-picture').classList.add('d-none');
     }
 }

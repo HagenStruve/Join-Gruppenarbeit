@@ -1,0 +1,83 @@
+@media (max-width: 1400px) {
+    .add-task-left-side {
+        margin-left: 40px;
+    }
+
+    .add-task-right-side {
+        width: 380px;
+    }
+
+    .left-side-without-h1 input {
+        width: 320px;
+    }
+
+    .enter-description {
+        width: 320px;
+    }
+
+    .select-div {
+        width: 320px;
+    }
+
+    ul {
+        width: 362px;
+    }
+
+    .input-date {
+        width: 320px;
+    }
+
+    .prio-div div {
+        width: 115px;
+        padding: 10px 0px;
+    }
+
+    .subtask-input-div {
+        width: 320px;
+    }
+
+    .subtask-input-div input {
+        width: 240px;
+    }
+
+    .subtask {
+        max-width: 320px;
+    }
+
+    .clear-create-div {
+        width: 350px;
+    }
+}
+
+
+@media (max-width: 1200px) {
+    .add-task-whole-page {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .add-task-left-side {
+        margin-left: 35px;
+        margin-right: 35px;
+        width: 380px;
+    }
+
+    .add-task-right-side {
+        margin-left: 35px;
+        margin-right: 35px;
+        margin-top: 34px;
+    }
+
+    .left-side-without-h1 {
+        border-right: none;
+        padding-right: 0px;
+    }
+
+    .clear-create-div {
+        display: none;
+    }
+
+    .added-subtasks:last-child {
+        margin-bottom: 30px;
+    }
+}

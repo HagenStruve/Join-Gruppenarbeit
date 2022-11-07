@@ -46,6 +46,7 @@
         padding-left: 10%;
         padding-right: 5%;
         box-shadow: 0px 4px 4px rgb(0 0 0 / 10%);
+        z-index: 1;
     }
 
     .join-logo {
@@ -93,6 +94,31 @@
         height: 46px;
         border-radius: 559px;
         object-fit: cover;
+    }
+
+    .create-task-button {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 124px;
+        height: 51px;
+        font-size: 21px;
+        font-weight: 400;
+        padding: 10px 13px;
+        background-color: #2A3647;
+        border-radius: 10px;
+        border: none;
+        color: white;
+        cursor: pointer;
+    }
+
+    .create-task-button:hover {
+        background-color: #29ABE2;
+    }
+
+    .create-task-button img {
+        height: 14px;
+        width: 18px;
     }
 
     .log-out {
@@ -456,10 +482,13 @@
             Kanban Project Management Tool
         </span>
         <div class="header-right">
-            <a href="help.html"><img src="../img/questions_mark.png" class="question-mark responsive-d-none-770px"></a>
-            <div class="pp-container" onclick="showLogOut()">
+            <a id="link-to-help" href="help.html"><img src="../img/questions_mark.png"
+                    class="question-mark responsive-d-none-770px"></a>
+            <div id="profil-picture" class="pp-container" onclick="showLogOut()">
                 <img src="../img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png" class="profil-picture">
             </div>
+            <button id="create-task-button" class="create-task-button d-none">Create <img
+                    src="../img/checkmark.png"></button>
         </div>
     </header>
 
