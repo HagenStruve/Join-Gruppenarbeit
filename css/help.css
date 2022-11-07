@@ -39,3 +39,36 @@ h3 {
     font-size: 20px;
     margin: 10px 0px;
 }
+
+@media (max-width: 990px) {
+    h1 {
+        font-size: 47px;
+        margin-top: 72px;
+        margin-bottom: 35px;
+        margin-left: 0px;
+    }
+
+    .help-whole-page {
+        margin-left: 33px;
+        margin-right: 33px;
+    }
+}
+
+
+@media (max-width: 770px) {
+    .help-whole-page {
+        margin-bottom: 90px;
+    }
+}
+
+
+@media(max-width: 380px) {
+    h1 {
+        font-size: 39px;
+    }
+
+
+    h3 {
+        font-size: 19px;
+    }
+}
