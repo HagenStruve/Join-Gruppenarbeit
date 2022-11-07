@@ -40,34 +40,34 @@
             </div>
         </div>
 
-        <div id="add-contact" class="d-none">
-            <div class="edit-contact-left">
-                <img class="join-logo" src="../img/logo.png">
-                <div class="header-edit-contact">Add contact</div>
-                <div class="text-edit-contact">Task are better with a team!</div>
-                <div class="blue-border"></div>
-            </div>
-            <div class="edit-contact-right">
-                <div>
-                    <div class="member-img-container">
-                        <img class="member-img" src="../img/member.png">
-                    </div>
+            <div id="add-contact" class="d-none">
+                <div class="edit-contact-left">
+                    <img class="join-logo" src="../img/logo.png">
+                    <div class="header-edit-contact">Add contact</div>
+                    <div class="text-edit-contact">Task are better with a team!</div>
+                    <div class="blue-border"></div>
                 </div>
-                <form onsubmit="addContact(); return false;" class="edit-contact-input">
-                    <input id="name" required class="inputs-name" placeholder="Name" type="text">
-                    <input id="email" required class="inputs-email" placeholder="Email" type="email">
-                    <input id="phone" required class="inputs-phone" placeholder="Phone" type="number">
-                    <div class="button-box">
-                        <div onclick="cancel()" class="cancel-button">Cancel<img src="../img/close-icon.png"></div>
-                        <button class="creat-button">Creat contact<img src="../img/checkmark.png"></button>
+                <div class="edit-contact-right">
+                    <div>
+                        <div class="member-img-container">
+                            <img class="member-img" src="../img/member.png">
+                        </div>
                     </div>
-                </form>
+                    <form onsubmit="addContact(); return false;" class="edit-contact-input">
+                        <input id="name" required class="inputs-name" placeholder="Name" type="text">
+                        <input id="email" required class="inputs-email" placeholder="Email" type="email">
+                        <input id="phone" required class="inputs-phone" placeholder="Phone" type="number">
+                        <div class="button-box">
+                            <div onclick="cancel()" class="cancel-button">Cancel<img src="../img/close-icon.png"></div>
+                            <button class="creat-button">Creat contact<img src="../img/checkmark.png"></button>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
 
         <div id="contact-created" class="contact-created d-none">
             <span>contact created successfuly</span>
-            <img src="../img/board-icon.svg" alt="board-icon">
+            <img src="../img/contacts-icon.svg" alt="board-icon">
         </div>
 
         <div id="edit-contact" class="d-none">

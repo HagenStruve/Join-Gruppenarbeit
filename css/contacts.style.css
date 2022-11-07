@@ -234,18 +234,28 @@ body {
     box-shadow: 2px 4px 4px 0px rgb(0 0 0 / 20%);
 }
 
+
+
 .edit-contact {
     display: flex;
     position: absolute;
     width: 1500px;
     height: 700px;
-    left: 100%;
-    transition: left 3s 3s ease;
     top: 20%;
+    left: 20%;
+    animation: edit-contact 3s ease;
 }
 
-.edit-contact-smove-left {
-    left: 20%;
+@keyframes edit-contact {
+    from {
+        left: 100%;
+        transform: left 3s ease;
+    }
+
+    to {
+        left: 20%;
+        transform: left 3s ease;
+    }
 }
 
 .edit-contact-left {
@@ -464,7 +474,7 @@ body {
     bottom: 5%;
     left: 50%;
     transform: translate(-50%);
-    width: 326px;
+    width: 360px;
     height: 74px;
     border-radius: 20px;
     display: flex;
@@ -489,18 +499,11 @@ body {
 }
 
 
-@media(max-width: 990px) {
-}
+@media(max-width: 990px) {}
 
-@media(max-width: 770px) {
-
-}
+@media(max-width: 770px) {}
 
 
-@media(max-width: 570px) {
+@media(max-width: 570px) {}
 
-}
-
-@media(max-width: 380px) {
-
-}
+@media(max-width: 380px) {}

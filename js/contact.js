@@ -46,7 +46,6 @@ async function saveOnServer() {
 function newConatct() {
     document.getElementById('add-contact').classList.remove('d-none');
     document.getElementById('add-contact').classList.add('edit-contact');
-    document.getElementById('add-contact').classList.add('edit-contact-smove-leftimage.png');
 }
 
 
