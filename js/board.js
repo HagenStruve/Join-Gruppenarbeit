@@ -3,6 +3,15 @@ let existTasks = 0; // id assigner for downloaded Tasks.
 let currentDraggedElement;  // contains the ID of current dragged element
 let NumberOfCurrentTasks = 0; // is needed to differ between the tasks
 let currentClickedTask = 0;
+let tasksOverview = [{
+    "tasksOnBoard" : '',
+    "tasksInTodo" : '',
+    "tasksInProgress" : '', 
+    'tasksInAwaitingFeedback' : '', 
+    'tasksInDone' : '', 
+    'urgentTasks' : '', 
+}]; 
+
 
 /** 
  * filters tasks-json and displays them assigned on board site
@@ -51,6 +60,7 @@ function pushIDtoTasks() {
  * @param NumberOfCurrentTasks -// is needed to differ between the tasks and to assign the colors to the tasks
  */
 function displayAllTasks(search) {
+    tasksOverview[0]['tasksOnBoard'] = downloadedTasks.length; 
     NumberOfCurrentTasks = 0;
     existTasks = 0;
     displayToDos(search);
@@ -61,6 +71,7 @@ function displayAllTasks(search) {
     let titleID = 'task-type';
     let classID = 'task-type';
     setColorTypeTasks(titleID, classID);
+    saveNewOnServer(); 
 }
 
 /** displays all todos in HTML 
@@ -74,6 +85,7 @@ function displayAllTasks(search) {
  */
 function displayToDos(search) {
     let todos = downloadedTasks.filter(t => t['category'] == 'to-do');
+    tasksOverview[0]['tasksInTodo'] = todos.length; 
     document.getElementById('to-do').innerHTML = '';
 
 
@@ -95,6 +107,7 @@ function displayToDos(search) {
 
 function displayInProgressTasks(search) {
     let inProgress = downloadedTasks.filter(t => t['category'] == 'in-progress');
+    tasksOverview[0]['tasksInProgress'] = inProgress.length; 
     document.getElementById('in-progress').innerHTML = '';
 
     for (let p = 0; p < inProgress.length; p++) {
@@ -114,6 +127,7 @@ function displayInProgressTasks(search) {
 
 function displayAwaitingFeedbackTasks(search) {
     let awaitingFeedback = downloadedTasks.filter(t => t['category'] == 'awaiting-feedback');
+    tasksOverview[0]['tasksInAwaitingFeedback'] = awaitingFeedback.length; 
     document.getElementById('awaiting-feedback').innerHTML = '';
 
     for (let a = 0; a < awaitingFeedback.length; a++) {
@@ -133,6 +147,7 @@ function displayAwaitingFeedbackTasks(search) {
 
 function displayDoneTasks(search) {
     let done = downloadedTasks.filter(t => t['category'] == 'done');
+    tasksOverview[0]['tasksInDone'] = done.length; 
     document.getElementById('done').innerHTML = '';
 
     for (let d = 0; d < done.length; d++) {
@@ -191,6 +206,7 @@ function moveTo(category) {
 async function saveNewOnServer() {
     setURL("https://gruppe-313.developerakademie.net/Join-Gruppenarbeit/smallest_backend_ever-master");
     await backend.setItem('downloadedTasks', JSON.stringify(downloadedTasks));
+    await backend.setItem('tasksOverview', JSON.stringify(tasksOverview));
 }
 
 
@@ -490,6 +506,7 @@ function updateCheckboxStatus(i) {
     }
 
     saveNewOnServer();
+    displayAllTasks(); 
 }
 
 
@@ -597,6 +614,7 @@ function numberProgressBar(element, numberOfSubtasks, finishedSubstasks) {
 function hideClickedTask() {
     document.getElementById('open-clicked-task').style.display = "none";
     document.getElementById('c-t-window').style.display = "none";
+
 }
 
 
