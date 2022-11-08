@@ -18,11 +18,10 @@
     <script src="../js/add_task.js"></script>
 
 
-
     <title>Join</title>
 </head>
 
-<body onload="initAddTask()">
+<body id="body" onload="initAddTask()">
     <div w3-include-html="sidebar.html"></div>
 
     <form onsubmit="addTask(); return false;" class="add-task-whole-page">
@@ -138,7 +137,7 @@
                     <span>Clear</span>
                     <img src="../img/close-icon.png" alt="close-icon">
                 </div>
-                <button class="create-div">
+                <button id="create-task" class="create-div">
                     <div class="create-button">Create Task</div>
                     <img src="../img/checkmark.png" alt="checkmark-icon">
                 </button>

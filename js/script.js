@@ -1,4 +1,5 @@
 
+
 async function init() {
     await includeHTML();
     sidebarBgPage();
@@ -68,13 +69,40 @@ function sidebarBgPage() {
     }
 }
 
+window.addEventListener('resize', setCreateButton);
 
 
 function showCreateTaskResponsive() {
-    console.log(window.screen.width)
     if (window.screen.width < 1200) {
-        document.getElementById('create-task-button').classList.remove('d-none')
-        document.getElementById('link-to-help').classList.add('d-none');
-        document.getElementById('profil-picture').classList.add('d-none');
+        showCreateTaskButton();
     }
+
+    else if (window.screen.width > 1200) {
+        hideCreateTaskButton();
+    }
+}
+
+
+function setCreateButton() {
+    if (location.pathname == "/html/add_task.html") {
+        let screenWidth = document.documentElement.clientWidth;
+        if (screenWidth + 16 < 1200) {
+            showCreateTaskButton();
+        } else {
+            hideCreateTaskButton();
+        }
+    }
+}
+
+
+
+function showCreateTaskButton() {
+    document.getElementById('link-to-help').classList.add('d-none');
+    document.getElementById('profil-picture').classList.add('d-none');
+}
+
+
+function hideCreateTaskButton() {
+    document.getElementById('link-to-help').classList.remove('d-none');
+    document.getElementById('profil-picture').classList.remove('d-none');
 }

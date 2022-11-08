@@ -36,7 +36,7 @@ function addSubtaskJSON() {
  */
 async function initAddTask() {
     await includeHTML();
-    await loadTasksFromServer(); 
+    await loadTasksFromServer();
     generateDate();
     sidebarBgPage();
 }
@@ -362,6 +362,9 @@ function showContacts() {
     else {
         hideSelectionContacts(ulContact);
         document.getElementById('all-contacts-initials').classList.remove('d-none');
+        if (document.getElementById("hidden-contact-input").value == '') {
+            document.getElementById('all-contacts-initials').classList.add('d-none');
+        }
     }
 }
 

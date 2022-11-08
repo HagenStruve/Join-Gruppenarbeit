@@ -73,11 +73,158 @@
         padding-right: 0px;
     }
 
-    .clear-create-div {
+    .clear-div {
         display: none;
+    }
+
+    .create-div {
+        position: fixed;
+        top: 15px;
+        right: 25px;
+        z-index: 2;
     }
 
     .added-subtasks:last-child {
         margin-bottom: 30px;
+    }
+}
+
+
+@media(max-width: 990px) {
+    .create-div {
+        top: 13px;
+        padding: 13px 10px;
+    }
+}
+
+
+@media(max-width: 770px) {
+    .right-side-first-half {
+        margin-bottom: 90px;
+    }
+}
+
+
+@media(max-width: 570px) {
+    h1 {
+        font-size: 47px;
+        margin-top: 72px;
+        margin-bottom: 35px;
+        margin-left: 16px;
+    }
+
+    .left-side-without-h1 {
+        margin-left: 16px;
+    }
+
+
+    .add-task-right-side {
+        margin-left: 35px;
+        margin-top: 34px;
+    }
+
+    .left-side-without-h1 input {
+        width: 280px;
+        padding: 10px 15px;
+        height: unset;
+    }
+
+    .add-task-left-side {
+        margin-left: 0px;
+        margin-right: 0px;
+        width: 335px;
+    }
+
+    .add-task-right-side {
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 34px;
+        width: 335px;
+    }
+
+    .enter-title {
+        font-size: 18px;
+    }
+
+    .enter-description {
+        width: 280px;
+        font-size: 18px;
+        padding: 10px 15px;
+    }
+
+    .select-div {
+        width: 280px;
+        padding: 10px 15px;
+    }
+
+    .select-div span {
+        font-size: 18px;
+    }
+
+    ul {
+        width: 310px;
+    }
+
+    li {
+        font-size: 18px;
+    }
+
+    .li-point {
+        width: 13px;
+        height: 13px;
+    }
+
+    .right-side-first-half {
+        margin-left: 16px;
+        width: 320px;
+    }
+
+    .input-date {
+        width: 280px;
+        height: unset;
+        font-size: 18px;
+        padding: 10px 15px;
+    }
+
+    .prio-div div {
+        padding: 10px 10px;
+    }
+
+    .prio-div span {
+        font-size: 18px;
+    }
+
+    .subtask-input-div {
+        width: 280px;
+        height: unset;
+        padding: 10px 15px;
+    }
+
+    .subtask-input-div input {
+        font-size: 18px;
+        width: 205px;
+    }
+
+    .subtask-img-container {
+        right: 16px;
+    }
+
+    #plus-icon {
+        width: 18px;
+        height: 18px;
+    }
+
+    #close-icon {
+        width: 26px;
+        height: 28px;
+    }
+
+    #checkmark-icon {
+        width: 18px;
+        height: 16px;
+    }
+
+    .subtask {
+        max-width: 280px;
     }
 }
