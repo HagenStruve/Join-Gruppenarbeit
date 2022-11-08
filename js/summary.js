@@ -41,10 +41,6 @@ async function loadTasksFromServerSummary() {
     setURL("https://gruppe-313.developerakademie.net/Join-Gruppenarbeit/smallest_backend_ever-master");
     await downloadFromServer();
     tasksOverview = JSON.parse(backend.getItem('tasksOverview')) || [];
-
-    console.log('loaded 123 tasks');
-    console.log(tasksOverview);
-
 }
 
 

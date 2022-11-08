@@ -569,7 +569,6 @@ function getFirstLetterMain(element) {
 
 function createProgressbar(element) {
     if (element['subtasks'].length == 0) {
-        console.log('Es wurde nicht gefunden und deshlab passsiert auch nichts weiter');
         document.getElementById(`progress-section-${element['id']}`).innerHTML = ''; 
     }
         else {
@@ -584,7 +583,6 @@ function createProgressbar(element) {
  * 
  */
 function calculateProgressBar(element) {
-    console.log(element['subtasks']); 
     let numberOfSubtasks = element['subtasks'].length;
     let finishedSubstasksArray = element['subtasks'].filter(t => t['checked'] == 'true');
     let finishedSubstasks = finishedSubstasksArray.length;
@@ -699,4 +697,66 @@ function addTaskToKanbanHTML(element) { // element = task[0] or task[1] only fil
 }
 
 
+let myMediaQuery = window.matchMedia('(min-width: 1400px)'); 
+myMediaQuery.addListener(checkResponsive); // addListener prüft bei änderung der Bildschirmgröße ob mediaQuerry noch zutrifft oder nicht
+
+/** starts the needed view related html code for responsive 
+ * 
+ *  @param {string} id - needed to difference between create responsive and delete
+ * 
+ *  @param {string} id2 - needed to difference between create responsive and delete ( needed reversed)
+ */
+function checkResponsive() {
+if (myMediaQuery.matches) { //if higher than 1400px
+    let id = ''; 
+    let id2 = '-responsive'; 
+    startResponsiveBoardView(id, id2); 
+}
+
+    else {  //if not
+        let id = '-responsive'; 
+        let id2 = ''; 
+        startResponsiveBoardView(id, id2); 
+    }
+
+}
+
+/** let all function start, that are needed for responsive view
+ * 
+ */
+function startResponsiveBoardView(id, id2) {
+    deleteDesktopBoardView(id2); 
+    generateResponsiveHTMLCode(id); 
+    displayAllTasks(); 
+}
+
+
+/** generates needed HTML Code on location.
+ * 
+ */
+function generateResponsiveHTMLCode(id) {
+    document.getElementById(`to-do${id}`).innerHTML = `
+        <div class="current-status" id="to-do" ondrop="moveTo('to-do')" ondragover="allowDrop(event)">
+        </div>`; 
+    document.getElementById(`in-progress${id}`).innerHTML = `
+        <div class="current-status" id="in-progress" ondrop="moveTo('in-progress')" ondragover="allowDrop(event) ">
+        </div> `; 
+    document.getElementById(`awaiting-feedback${id}`).innerHTML = `
+        <div class="current-status" id="awaiting-feedback" ondrop="moveTo('awaiting-feedback') "ondragover="allowDrop(event)">
+        </div> `; 
+    document.getElementById(`done${id}`).innerHTML = `
+        <div class="current-status" id="done" ondrop="moveTo('done')" ondragover="allowDrop(event)">
+        </div> `;
+}
+
+
+/** deletes content for responsive, so that only the desktop or mobile content is displayed
+ * 
+ */
+function deleteDesktopBoardView(id2) {
+    document.getElementById(`to-do${id2}`).innerHTML = ''; 
+    document.getElementById(`in-progress${id2}`).innerHTML = ''; 
+    document.getElementById(`awaiting-feedback${id2}`).innerHTML = ''; 
+    document.getElementById(`done${id2}`).innerHTML = ''; 
+}
 

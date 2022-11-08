@@ -142,7 +142,7 @@
 }
 
 .progress-border {
-    width: 69%;
+    width: 93%;
     height: 6px;
     background: lightgray;
     border-radius: 15px;
@@ -421,4 +421,19 @@
 
 .width-422 {
     width: 422px !important;
+}
+
+
+@media (max-width:1400px) {
+    .second-row {
+        flex-direction: column;
+    }
+
+    :root {
+        --width-task-size: 100%;
+    }
+
+    .current-status {
+        min-height: 0;
+    }
 }
