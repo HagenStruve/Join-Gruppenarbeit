@@ -25,6 +25,7 @@ let tasksOverview = [{
 async function initBoard() {
     await includeHTML();
     renderBoardSite();
+    checkResponsive();
     sidebarBgPage();
 }
 
@@ -747,6 +748,11 @@ function generateResponsiveHTMLCode(id) {
     document.getElementById(`done${id}`).innerHTML = `
         <div class="current-status" id="done" ondrop="moveTo('done')" ondragover="allowDrop(event)">
         </div> `;
+    document.getElementById(`find-task${id}`).innerHTML = `
+        <div class="find-task-div">
+            <input placeholder="Find Task" class="find-task-input" id="input-search" onkeyup="searchTask()">
+            <img src="../img/magnifying-glass.png">
+        </div> `;
 }
 
 
@@ -758,5 +764,6 @@ function deleteDesktopBoardView(id2) {
     document.getElementById(`in-progress${id2}`).innerHTML = ''; 
     document.getElementById(`awaiting-feedback${id2}`).innerHTML = ''; 
     document.getElementById(`done${id2}`).innerHTML = ''; 
+    document.getElementById(`find-task${id2}`).innerHTML = ''; 
 }
 
