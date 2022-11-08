@@ -307,7 +307,7 @@ function memberHTML(i) {
 
 function abcHTML(letter) {
     return /*HTML*/`
-    <div id="member-container${letter}">
+    <div class="member-container" id="member-container${letter}">
     <div id="abc${letter}" class="abc"><b>${letter}</b></div>
             </div>
             `;

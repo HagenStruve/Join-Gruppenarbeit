@@ -499,15 +499,14 @@ body {
     filter: brightness(0) invert(1);
 }
 
+.new-contact-responsiv {
+    display: none;
+}
+
 
 @media(max-width: 990px) {}
 
-@media(max-width: 770px) {}
-
-
-@media(max-width: 570px) {}
-
-@media(max-width: 380px) {
+@media(max-width: 770px) {
     .content-right {
         display: none;
     }
@@ -518,9 +517,42 @@ body {
         flex-direction: column;
     }
 
+    .cancel-button-responsiv {
+        display: flex;
+        width: 50px;
+        height: 50px;
+        position: fixed;
+        z-index: 102;
+        right: -14px;
+        top: 43px;
+    }
+
+    .close-withe {
+        transform: rotate(45deg);
+        object-fit: cover;
+        width: 25px;
+        height: 25px;
+    }
+
     .content-left {
-    height: 100%;
-    width: 100vw;
+        height: 100%;
+        width: 100vw;
+    }
+
+    .join-logo {
+        display: none !important;
+    }
+
+    .header-edit-contact {
+        font-size: 41px;
+    }
+
+    .text-edit-contact {
+        font-size: 17px;
+    }
+
+    .blue-border {
+        border: 1px solid #29ABE2;
     }
 
     .abc {
@@ -551,5 +583,479 @@ body {
     .shortcut-name {
         width: 35px;
         height: 35px;
+    }
+
+    .new-contact-responsiv {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 18px 10px;
+        gap: 10px;
+        position: fixed;
+        width: 162px;
+        height: 30px;
+        right: 15px;
+        top: 100px;
+        background: #2A3647;
+        border: 1px solid #2A3647;
+        border-radius: 10px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        color: #FFFFFF;
+        cursor: pointer;
+    }
+
+    .member-container {
+        margin-top: 55px;
+    }
+
+    .edit-contact {
+        top: 0%;
+        left: 0%;
+        flex-direction: column;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        z-index: 101;
+    }
+
+    .edit-contact-left {
+        width: 100vw;
+        height: 50%;
+        z-index: 101;
+        border-radius: 0px 0px 0px 0px;
+    }
+
+    .edit-contact-right {
+        width: 100vw;
+        height: 50%;
+        z-index: 101;
+        border-radius: 0px 0px 0px 0px;
+        justify-content: center;
+    }
+
+    .member-img-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 70px;
+        height: 70px;
+    }
+
+    .member-img {
+        height: 36px;
+    }
+
+    .inputs-name {
+        width: 100%;
+        height: 29px;
+        margin-bottom: 20px;
+        margin-top: 70px;
+    }
+
+    .inputs-email {
+        width: 100%;
+        height: 29px;
+        margin-bottom: 20px;
+    }
+
+    .inputs-phone {
+        width: 100%;
+        height: 29px;
+        margin-bottom: 20px;
+    }
+
+    .edit-contact-input {
+        align-items: center;
+        justify-content: space-between;
+        width: 75%;
+    }
+
+    .cancel-button {
+        display: none;
+    }
+
+    .button-box {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .creat-button {
+        width: 70%;
+        height: 40px;
+        font-size: 14px;
+    }
+}
+
+
+@media(max-width: 570px) {
+    .content-right {
+        display: none;
+    }
+
+    .render {
+        height: 120vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cancel-button-responsiv {
+        display: flex;
+        width: 50px;
+        height: 50px;
+        position: fixed;
+        z-index: 102;
+        right: -14px;
+        top: 43px;
+    }
+
+    .close-withe {
+        transform: rotate(45deg);
+        object-fit: cover;
+        width: 25px;
+        height: 25px;
+    }
+
+    .content-left {
+        height: 100%;
+        width: 100vw;
+    }
+
+    .join-logo {
+        display: none !important;
+    }
+
+    .header-edit-contact {
+        font-size: 41px;
+    }
+
+    .text-edit-contact {
+        font-size: 17px;
+    }
+
+    .blue-border {
+        border: 1px solid #29ABE2;
+    }
+
+    .abc {
+        width: 85%;
+        margin-left: 24px;
+    }
+
+    .member-box {
+        width: 85%;
+        margin-top: 25px;
+        padding-top: 0px;
+        margin-left: 24px;
+        margin-bottom: 0px;
+        align-items: center;
+    }
+
+    .fontsice-21 {
+        font-size: 18px;
+    }
+
+    .email {
+        width: 14px;
+        font-size: 16px;
+        margin-bottom: 8px;
+        margin-top: 5px;
+    }
+
+    .shortcut-name {
+        width: 35px;
+        height: 35px;
+    }
+
+    .new-contact-responsiv {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 18px 10px;
+        gap: 10px;
+        position: fixed;
+        width: 162px;
+        height: 30px;
+        right: 15px;
+        top: 100px;
+        background: #2A3647;
+        border: 1px solid #2A3647;
+        border-radius: 10px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        color: #FFFFFF;
+        cursor: pointer;
+    }
+
+    .member-container {
+        margin-top: 55px;
+    }
+
+    .edit-contact {
+        top: 0%;
+        left: 0%;
+        flex-direction: column;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        z-index: 101;
+    }
+
+    .edit-contact-left {
+        width: 100vw;
+        height: 50%;
+        z-index: 101;
+        border-radius: 0px 0px 0px 0px;
+    }
+
+    .edit-contact-right {
+        width: 100vw;
+        height: 50%;
+        z-index: 101;
+        border-radius: 0px 0px 0px 0px;
+        justify-content: center;
+    }
+
+    .member-img-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 70px;
+        height: 70px;
+    }
+
+    .member-img {
+        height: 36px;
+    }
+
+    .inputs-name {
+        width: 100%;
+        height: 29px;
+        margin-bottom: 20px;
+        margin-top: 70px;
+    }
+
+    .inputs-email {
+        width: 100%;
+        height: 29px;
+        margin-bottom: 20px;
+    }
+
+    .inputs-phone {
+        width: 100%;
+        height: 29px;
+        margin-bottom: 20px;
+    }
+
+    .edit-contact-input {
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .cancel-button {
+        display: none;
+    }
+
+    .button-box {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .creat-button {
+        width: 70%;
+        height: 40px;
+        font-size: 14px;
+    }
+}
+
+@media(max-width: 380px) {
+    .content-right {
+        display: none;
+    }
+
+    .render {
+        height: 120vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cancel-button-responsiv {
+        display: flex;
+        width: 50px;
+        height: 50px;
+        position: fixed;
+        z-index: 102;
+        right: -14px;
+        top: 43px;
+    }
+
+    .close-withe {
+        transform: rotate(45deg);
+        object-fit: cover;
+        width: 25px;
+        height: 25px;
+    }
+
+    .content-left {
+        height: 100%;
+        width: 100vw;
+    }
+
+    .join-logo {
+        display: none !important;
+    }
+
+    .header-edit-contact {
+        font-size: 41px;
+    }
+
+    .text-edit-contact {
+        font-size: 17px;
+    }
+
+    .blue-border {
+        border: 1px solid #29ABE2;
+    }
+
+    .abc {
+        width: 85%;
+        margin-left: 24px;
+    }
+
+    .member-box {
+        width: 85%;
+        margin-top: 25px;
+        padding-top: 0px;
+        margin-left: 24px;
+        margin-bottom: 0px;
+        align-items: center;
+    }
+
+    .fontsice-21 {
+        font-size: 18px;
+    }
+
+    .email {
+        width: 14px;
+        font-size: 16px;
+        margin-bottom: 8px;
+        margin-top: 5px;
+    }
+
+    .shortcut-name {
+        width: 35px;
+        height: 35px;
+    }
+
+    .new-contact-responsiv {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 18px 10px;
+        gap: 10px;
+        position: fixed;
+        width: 162px;
+        height: 30px;
+        right: 15px;
+        top: 100px;
+        background: #2A3647;
+        border: 1px solid #2A3647;
+        border-radius: 10px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        color: #FFFFFF;
+        cursor: pointer;
+    }
+
+    .member-container {
+        margin-top: 55px;
+    }
+
+    .edit-contact {
+        top: 0%;
+        left: 0%;
+        flex-direction: column;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        z-index: 101;
+    }
+
+    .edit-contact-left {
+        width: 100vw;
+        height: 50%;
+        z-index: 101;
+        border-radius: 0px 0px 0px 0px;
+    }
+
+    .edit-contact-right {
+        width: 100vw;
+        height: 50%;
+        z-index: 101;
+        border-radius: 0px 0px 0px 0px;
+        justify-content: center;
+    }
+
+    .member-img-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 70px;
+        height: 70px;
+    }
+
+    .member-img {
+        height: 36px;
+    }
+
+    .inputs-name {
+        width: 100%;
+        height: 29px;
+        margin-bottom: 20px;
+        margin-top: 70px;
+    }
+
+    .inputs-email {
+        width: 100%;
+        height: 29px;
+        margin-bottom: 20px;
+    }
+
+    .inputs-phone {
+        width: 100%;
+        height: 29px;
+        margin-bottom: 20px;
+    }
+
+    .edit-contact-input {
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .cancel-button {
+        display: none;
+    }
+
+    .button-box {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .creat-button {
+        width: 70%;
+        height: 40px;
+        font-size: 14px;
     }
 }
