@@ -309,6 +309,10 @@ function memberHTML(i) {
 
 function abcHTML(letter) {
     return /*HTML*/`
+    <button onclick="newConatct()" class="new-contact-responsiv">
+                <span>New contact</span>
+                <img src="../img/new-contact-icon.png">
+            </button>
     <div class="member-container" id="member-container${letter}">
     <div id="abc${letter}" class="abc"><b>${letter}</b></div>
             </div>
@@ -355,7 +359,7 @@ function memberInfoHtml(i, letters) {
 function editContactHTML(i, letters) {
     return /*HTML*/`
     <div class="edit-contact-left">
-    <img class="join-logo" src="../img/logo.png">
+    <img class="logo" src="../img/logo.png">
     <div class="header-edit-contact">Edit contact</div>
     <div class="blue-border"></div>
 </div>
