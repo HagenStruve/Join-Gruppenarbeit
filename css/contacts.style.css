@@ -31,7 +31,7 @@ body {
 
     padding-top: 12px;
     background-color: white;
-    height: 85vh;
+    height: 90vh;
     width: 30%;
     overflow: auto;
     position: fixed;
@@ -797,7 +797,7 @@ body {
     .member-img-container {
         position: absolute;
         top: 50%;
-        left: 50%;
+        left: 43%;
         transform: translate(-50%, -50%);
         width: 70px;
         height: 70px;
