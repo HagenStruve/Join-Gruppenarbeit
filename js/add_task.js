@@ -137,6 +137,9 @@ async function addTask() {
 }
 
 
+/**
+ * get all infos from input fields and things you choose when you created a task
+ */
 function getInfosTask() {
     let title = document.getElementById('title');
     let descripton = document.getElementById('descripton');
@@ -149,6 +152,10 @@ function getInfosTask() {
 }
 
 
+
+/**
+ * selected contacts will be pushed to contacts array
+ */
 function checkContact() {
     if (document.getElementById('checkbox-contact-1').checked) {
         contacts.push(document.getElementById('contact-1').innerHTML);
@@ -163,7 +170,9 @@ function checkContact() {
     }
 }
 
-
+/**
+ * checks which prio you selected
+ */
 function checkPrio() {
     pushPrioUrgent();
     pushPrioMedium();
@@ -173,7 +182,6 @@ function checkPrio() {
 
 function pushPrioUrgent() {
     let urgent = document.getElementById('prio-urgent');
-
     if (urgent.classList.contains('bg-orange')) {
         actualPrio = 'Urgent';
         prio.push(actualPrio);
@@ -183,7 +191,6 @@ function pushPrioUrgent() {
 
 function pushPrioMedium() {
     let medium = document.getElementById('prio-medium');
-
     if (medium.classList.contains('bg-yellow')) {
         actualPrio = 'Medium';
         prio.push(actualPrio);
@@ -193,7 +200,6 @@ function pushPrioMedium() {
 
 function pushPrioLow() {
     let low = document.getElementById('prio-low');
-
     if (low.classList.contains('bg-green')) {
         actualPrio = 'Low';
         prio.push(actualPrio);
@@ -201,6 +207,9 @@ function pushPrioLow() {
 }
 
 
+/**
+ * new task will be created and pushed to downloadedTasks array
+ */
 function createNewTask(title, descripton, sector, dueDate) {
     newTask = {
         "category": 'to-do',
@@ -215,6 +224,7 @@ function createNewTask(title, descripton, sector, dueDate) {
     };
     downloadedTasks.push(newTask);
 }
+
 
 
 /**
@@ -410,7 +420,6 @@ function noSelectedContacts() {
 }
 
 
-
 /**
  * function for selecting the contact
  * 
@@ -435,17 +444,32 @@ function proofCheck(id) {
     let initial2 = document.getElementById('initials-2');
     let initial3 = document.getElementById('initials-3');
 
+    showOrHideInitials(isChecked, initial, initial1, initial2, initial3);
+}
+
+
+function showOrHideInitials(isChecked, initial, initial1, initial2, initial3) {
     if (isChecked.checked == true) {
-        document.getElementById(initial).classList.remove('d-none');
-        document.getElementById("hidden-contact-input").value = '.';
+        showInitials(initial);
     }
     else {
-        document.getElementById(initial).classList.add('d-none');
+        hideInitials(initial);
     }
 
     if (initial1.classList.contains('d-none') && initial2.classList.contains('d-none') && initial3.classList.contains('d-none')) {
         document.getElementById("hidden-contact-input").value = '';
     }
+}
+
+
+function showInitials(initial) {
+    document.getElementById(initial).classList.remove('d-none');
+    document.getElementById("hidden-contact-input").value = '.';
+}
+
+
+function hideInitials(initial) {
+    document.getElementById(initial).classList.add('d-none');
 }
 
 
