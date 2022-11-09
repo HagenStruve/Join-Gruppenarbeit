@@ -23,6 +23,10 @@
         width: 362px;
     }
 
+    .contact-initials {
+        width: 360px;
+    }
+
     .input-date {
         width: 320px;
     }
@@ -95,12 +99,32 @@
         top: 13px;
         padding: 13px 10px;
     }
+
+    .task-added-to-board {
+        transform: translate(-20%);
+    }
 }
 
 
 @media(max-width: 770px) {
     .right-side-first-half {
         margin-bottom: 90px;
+    }
+
+    .task-added-to-board {
+        bottom: 15%;
+        transform: translate(-50%);
+        animation: fadeIn 0.8s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            bottom: -20%;
+        }
+
+        to {
+            bottom: 15%;
+        }
     }
 }
 
@@ -174,6 +198,10 @@
         height: 13px;
     }
 
+    .contact-initials {
+        width: 230px;
+    }
+
     .right-side-first-half {
         margin-left: 16px;
         width: 320px;
@@ -227,4 +255,114 @@
     .subtask {
         max-width: 280px;
     }
+}
+
+
+@media (max-width: 380px) {
+    .create-button {
+        font-size: 16px;
+    }
+
+    .create-div {
+        padding: 10px 8px;
+        top: 19px;
+    }
+
+    h1 {
+        font-size: 39px;
+        margin-left: 0px;
+    }
+
+    .add-task-left-side {
+        width: 260px;
+    }
+
+    .left-side-without-h1 {
+        margin-left: 0px;
+    }
+
+    .left-side-without-h1 input {
+        width: 230px;
+    }
+
+    .little-headlines {
+        font-size: 18px;
+    }
+
+    .enter-title {
+        font-size: 16px;
+    }
+
+    .enter-description {
+        font-size: 16px;
+        width: 230px;
+    }
+
+    .select-div {
+        width: 230px;
+    }
+
+    .select-div span {
+        font-size: 16px;
+    }
+
+    ul {
+        width: 260px;
+    }
+
+    li {
+        font-size: 16px;
+    }
+
+    .add-task-right-side {
+        width: 260px;
+    }
+
+    .right-side-first-half {
+        margin-left: 0px;
+        width: 270px;
+    }
+
+    .input-date {
+        width: 230px;
+        font-size: 16px;
+    }
+
+    .prio-div div {
+        width: 80px;
+        padding: 10px 0px;
+    }
+
+    .prio-div span {
+        font-size: 14px;
+    }
+
+    #urgent-img, #medium-img, #low-img {
+        width: 15px;
+    }
+
+    .subtask-input-div {
+        width: 230px;
+    }
+
+    .subtask-input-div input {
+        font-size: 16px;
+        width: 160px;
+    }
+
+    .subtask {
+        max-width: 220px;
+        margin-left: 15px;
+    }
+
+    .task-added-to-board {
+        width: 250px;
+        height: 50px;
+    }
+
+    .task-added-to-board span {
+        font-size: 18px;
+    }
+
+
 }

@@ -121,15 +121,35 @@ function changeBgLow(urgent, medium, low) {
     low.classList.add('bg-green');
 }
 
+
 /**
  * triggered by a button, the information entered is bundled in a JSON
  * pushed and functions for storing the JSON on the server are triggered
  * 
  */
 async function addTask() {
+    getInfosTask();
+    saveOnServer();
+    forwardToBoard();
+    clearContacts();
+    clearPage();
+    createdTasks++;
+}
+
+
+function getInfosTask() {
     let title = document.getElementById('title');
     let descripton = document.getElementById('descripton');
     let sector = liCategory;
+    checkContact();
+    let dueDate = document.getElementById('dueDate');
+    checkPrio();
+    addSubtaskJSON();
+    createNewTask(title, descripton, sector, dueDate);
+}
+
+
+function checkContact() {
     if (document.getElementById('checkbox-contact-1').checked) {
         contacts.push(document.getElementById('contact-1').innerHTML);
     }
@@ -141,29 +161,47 @@ async function addTask() {
     if (document.getElementById('checkbox-contact-3').checked) {
         contacts.push(document.getElementById('contact-3').innerHTML);
     }
+}
 
 
-    let dueDate = document.getElementById('dueDate');
+function checkPrio() {
+    pushPrioUrgent();
+    pushPrioMedium();
+    pushPrioLow();
+}
 
+
+function pushPrioUrgent() {
     let urgent = document.getElementById('prio-urgent');
-    let medium = document.getElementById('prio-medium');
-    let low = document.getElementById('prio-low');
 
     if (urgent.classList.contains('bg-orange')) {
         actualPrio = 'Urgent';
         prio.push(actualPrio);
     }
+}
+
+
+function pushPrioMedium() {
+    let medium = document.getElementById('prio-medium');
+
     if (medium.classList.contains('bg-yellow')) {
         actualPrio = 'Medium';
         prio.push(actualPrio);
     }
+}
+
+
+function pushPrioLow() {
+    let low = document.getElementById('prio-low');
+
     if (low.classList.contains('bg-green')) {
         actualPrio = 'Low';
         prio.push(actualPrio);
     }
+}
 
-    addSubtaskJSON();
 
+function createNewTask(title, descripton, sector, dueDate) {
     newTask = {
         "category": 'to-do',
         "id": 0,
@@ -175,15 +213,9 @@ async function addTask() {
         "prio": actualPrio,
         "subtasks": substasksJSON
     };
-
     downloadedTasks.push(newTask);
-
-    saveOnServer();
-    forwardToBoard();
-    clearContacts();
-    clearPage();
-    createdTasks++;
 }
+
 
 /**
  * deletes the marking of the contact
@@ -194,6 +226,7 @@ function clearContacts() {
         document.getElementById(`checkbox-contact-${i}`).checked = false;
         document.getElementById(`initials-${i}`).classList.add('d-none');
     }
+    document.getElementById("hidden-contact-input").value = '';
 }
 
 /**
@@ -230,24 +263,27 @@ async function saveOnServer() {
  * 
  */
 function clearPage() {
+    setPrioDefault();
+    title.value = '';
+    descripton.value = '';
+    document.getElementById("hidden-category-input").value = '';
+    document.getElementById("hidden-prio-input").value = '';
+    document.getElementById('selected-category').innerHTML = 'Select task Category';
+    document.getElementById('overview-subtasks').innerHTML = '';
+    clearContacts();
+    generateDate();
+    subtasks = [];
+}
+
+
+function setPrioDefault() {
     document.getElementById('urgent-img').src = "../img/arrow_urgent.svg";
     document.getElementById('medium-img').src = "../img/medium.svg";
     document.getElementById('low-img').src = "../img/arrow_low.svg";
     document.getElementById('prio-urgent').classList.remove('bg-orange');
     document.getElementById('prio-medium').classList.remove('bg-yellow');
     document.getElementById('prio-low').classList.remove('bg-green');
-
-    title.value = '';
-    descripton.value = '';
-    document.getElementById("hidden-category-input").value = '';
-    document.getElementById("hidden-contact-input").value = '';
-    document.getElementById("hidden-prio-input").value = '';
-    document.getElementById('selected-category').innerHTML = 'Select task Category';
-    document.getElementById('overview-subtasks').innerHTML = '';
-    clearContacts();
-    generateDate();
     prio = [];
-    subtasks = [];
 }
 
 
@@ -362,10 +398,15 @@ function showContacts() {
     else {
         hideSelectionContacts(ulContact);
         document.getElementById('all-contacts-initials').classList.remove('d-none');
-        if (document.getElementById("hidden-contact-input").value == '') {
+        if (noSelectedContacts()) {
             document.getElementById('all-contacts-initials').classList.add('d-none');
         }
     }
+}
+
+
+function noSelectedContacts() {
+    return document.getElementById("hidden-contact-input").value == ''
 }
 
 
