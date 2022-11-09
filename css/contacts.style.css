@@ -244,12 +244,25 @@ body {
 
 .edit-contact {
     display: flex;
-    position: absolute;
-    width: 1500px;
-    height: 700px;
-    top: 20%;
-    left: 20%;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     animation: edit-contact 3s ease;
+    z-index: 103;
+    background-color: rgb(190, 190, 190, 0.5);
+}
+
+.background-grey {
+    background-size: 100%;
+    background-color: rgb(139, 139, 139, 0.4);
+    z-index: 103;
+}
+
+.cancel-button-responsiv {
+    display: none;
 }
 
 @keyframes edit-contact {
@@ -269,11 +282,14 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    width: 500px;
-    height: 100%;
+    width: 24%;
+    height: 80%;
+    margin-top: 5%;
+    margin-left: 10%;
     background: #2A3647;
     border-radius: 10px 0px 0px 10px;
     padding-left: 40px;
+    padding-right: 10px;
 }
 
 .edit-contact-right {
@@ -281,8 +297,9 @@ body {
     justify-content: space-around;
     align-items: center;
     background-color: #FFFFFF;
-    width: 900px;
-    height: 100%;
+    width: 56%;
+    height: 80%;
+    margin-top: 5%;
     border-radius: 0px 10px 10px 0px;
 }
 
@@ -305,7 +322,7 @@ body {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 27px;
+    font-size: 22px;
     color: white;
     margin-top: 20px;
 }
@@ -321,6 +338,7 @@ body {
 .edit-contact-input {
     display: flex;
     flex-direction: column;
+    width: 80%;
 }
 
 .member-img-container {
@@ -333,6 +351,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 40px;
+    margin-right: 40px;
 }
 
 .member-img {
@@ -351,7 +371,7 @@ body {
     align-items: center;
     padding: 13px 21px;
     gap: 10px;
-    width: 422px;
+    width: 80%;
     height: 51px;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
@@ -367,7 +387,7 @@ body {
     align-items: center;
     padding: 13px 21px;
     gap: 10px;
-    width: 422px;
+    width: 80%;
     height: 51px;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
@@ -383,7 +403,7 @@ body {
     align-items: center;
     padding: 13px 21px;
     gap: 10px;
-    width: 422px;
+    width: 80%;
     height: 51px;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
@@ -401,7 +421,7 @@ body {
 
 .button-box {
     display: flex;
-    width: 422px;
+    width: 80%;
     height: 68px;
 }
 
@@ -410,7 +430,7 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 150px;
+    width: 36%;
     height: 61px;
     font-family: 'Inter';
     font-style: normal;
@@ -444,7 +464,7 @@ body {
     align-items: center;
     padding: 18px 10px;
     gap: 10px;
-    width: 208px;
+    width: 50%;
     height: 61px;
     background: #2A3647;
     border-radius: 10px;
@@ -550,7 +570,7 @@ body {
         height: 34px;
         margin-right: 10px;
     }
-    
+
     .border-container {
         width: 2px;
     }
@@ -565,6 +585,38 @@ body {
         height: 20px;
         width: 20px;
     }
+
+    .header-edit-contact {
+        font-size: 30px;
+    }
+
+    .text-edit-contact {
+        font-size: 16px;
+    }
+
+    .member-img-container {
+        width: 90px;
+        height: 90px;
+    }
+
+    .member-img {
+        width: auto;
+        height: 50px;
+    }
+
+    .cancel-button {
+        font-size: 12px;
+    }
+
+    .cancel-button-img {
+        height: 20px;
+        width: 20px;
+    }
+
+    .creat-button {
+        font-size: 12px;
+    }
+
 }
 
 @media(max-width: 770px) {
@@ -674,26 +726,24 @@ body {
     }
 
     .edit-contact {
-        top: 0%;
-        left: 0%;
         flex-direction: column;
         position: fixed;
         width: 100vw;
         height: 100vh;
-        z-index: 101;
     }
 
     .edit-contact-left {
         width: 100vw;
         height: 50%;
-        z-index: 101;
+        margin-top: 0;
+        margin-left: 0;
         border-radius: 0px 0px 0px 0px;
     }
 
     .edit-contact-right {
         width: 100vw;
         height: 50%;
-        z-index: 101;
+        margin-top: 0;
         border-radius: 0px 0px 0px 0px;
         justify-content: center;
     }
@@ -734,375 +784,6 @@ body {
         align-items: center;
         justify-content: space-between;
         width: 75%;
-    }
-
-    .cancel-button {
-        display: none;
-    }
-
-    .button-box {
-        justify-content: center;
-        width: 100%;
-    }
-
-    .creat-button {
-        width: 70%;
-        height: 40px;
-        font-size: 14px;
-    }
-}
-
-
-@media(max-width: 570px) {
-    .content-right {
-        display: none;
-    }
-
-    .render {
-        height: 120vh;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .cancel-button-responsiv {
-        display: flex;
-        width: 50px;
-        height: 50px;
-        position: fixed;
-        z-index: 102;
-        right: -14px;
-        top: 43px;
-    }
-
-    .close-withe {
-        transform: rotate(45deg);
-        object-fit: cover;
-        width: 25px;
-        height: 25px;
-    }
-
-    .content-left {
-        height: 100%;
-        width: 100vw;
-    }
-
-    .join-logo {
-        display: none !important;
-    }
-
-    .header-edit-contact {
-        font-size: 41px;
-    }
-
-    .text-edit-contact {
-        font-size: 17px;
-    }
-
-    .blue-border {
-        border: 1px solid #29ABE2;
-    }
-
-    .abc {
-        width: 85%;
-        margin-left: 24px;
-    }
-
-    .member-box {
-        width: 85%;
-        margin-top: 25px;
-        padding-top: 0px;
-        margin-left: 24px;
-        margin-bottom: 0px;
-        align-items: center;
-    }
-
-    .fontsice-21 {
-        font-size: 18px;
-    }
-
-    .email {
-        width: 14px;
-        font-size: 16px;
-        margin-bottom: 8px;
-        margin-top: 5px;
-    }
-
-    .shortcut-name {
-        width: 35px;
-        height: 35px;
-    }
-
-    .new-contact-responsiv {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        padding: 18px 10px;
-        gap: 10px;
-        position: fixed;
-        width: 162px;
-        height: 30px;
-        right: 15px;
-        top: 100px;
-        background: #2A3647;
-        border: 1px solid #2A3647;
-        border-radius: 10px;
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 14px;
-        color: #FFFFFF;
-        cursor: pointer;
-    }
-
-    .member-container {
-        margin-top: 55px;
-    }
-
-    .edit-contact {
-        top: 0%;
-        left: 0%;
-        flex-direction: column;
-        position: fixed;
-        width: 100vw;
-        height: 100vh;
-        z-index: 101;
-    }
-
-    .edit-contact-left {
-        width: 100vw;
-        height: 50%;
-        z-index: 101;
-        border-radius: 0px 0px 0px 0px;
-    }
-
-    .edit-contact-right {
-        width: 100vw;
-        height: 50%;
-        z-index: 101;
-        border-radius: 0px 0px 0px 0px;
-        justify-content: center;
-    }
-
-    .member-img-container {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 70px;
-        height: 70px;
-    }
-
-    .member-img {
-        height: 36px;
-    }
-
-    .inputs-name {
-        width: 100%;
-        height: 29px;
-        margin-bottom: 20px;
-        margin-top: 70px;
-    }
-
-    .inputs-email {
-        width: 100%;
-        height: 29px;
-        margin-bottom: 20px;
-    }
-
-    .inputs-phone {
-        width: 100%;
-        height: 29px;
-        margin-bottom: 20px;
-    }
-
-    .edit-contact-input {
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .cancel-button {
-        display: none;
-    }
-
-    .button-box {
-        justify-content: center;
-        width: 100%;
-    }
-
-    .creat-button {
-        width: 70%;
-        height: 40px;
-        font-size: 14px;
-    }
-}
-
-@media(max-width: 380px) {
-    .content-right {
-        display: none;
-    }
-
-    .render {
-        height: 120vh;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .cancel-button-responsiv {
-        display: flex;
-        width: 50px;
-        height: 50px;
-        position: fixed;
-        z-index: 102;
-        right: -14px;
-        top: 43px;
-    }
-
-    .close-withe {
-        transform: rotate(45deg);
-        object-fit: cover;
-        width: 25px;
-        height: 25px;
-    }
-
-    .content-left {
-        height: 100%;
-        width: 100vw;
-    }
-
-    .join-logo {
-        display: none !important;
-    }
-
-    .header-edit-contact {
-        font-size: 41px;
-    }
-
-    .text-edit-contact {
-        font-size: 17px;
-    }
-
-    .blue-border {
-        border: 1px solid #29ABE2;
-    }
-
-    .abc {
-        width: 85%;
-        margin-left: 24px;
-    }
-
-    .member-box {
-        width: 85%;
-        margin-top: 25px;
-        padding-top: 0px;
-        margin-left: 24px;
-        margin-bottom: 0px;
-        align-items: center;
-    }
-
-    .fontsice-21 {
-        font-size: 18px;
-    }
-
-    .email {
-        width: 14px;
-        font-size: 16px;
-        margin-bottom: 8px;
-        margin-top: 5px;
-    }
-
-    .shortcut-name {
-        width: 35px;
-        height: 35px;
-    }
-
-    .new-contact-responsiv {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        padding: 18px 10px;
-        gap: 10px;
-        position: fixed;
-        width: 162px;
-        height: 30px;
-        right: 15px;
-        top: 100px;
-        background: #2A3647;
-        border: 1px solid #2A3647;
-        border-radius: 10px;
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 14px;
-        color: #FFFFFF;
-        cursor: pointer;
-    }
-
-    .member-container {
-        margin-top: 55px;
-    }
-
-    .edit-contact {
-        top: 0%;
-        left: 0%;
-        flex-direction: column;
-        position: fixed;
-        width: 100vw;
-        height: 100vh;
-        z-index: 101;
-    }
-
-    .edit-contact-left {
-        width: 100vw;
-        height: 50%;
-        z-index: 101;
-        border-radius: 0px 0px 0px 0px;
-    }
-
-    .edit-contact-right {
-        width: 100vw;
-        height: 50%;
-        z-index: 101;
-        border-radius: 0px 0px 0px 0px;
-        justify-content: center;
-    }
-
-    .member-img-container {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 70px;
-        height: 70px;
-    }
-
-    .member-img {
-        height: 36px;
-    }
-
-    .inputs-name {
-        width: 100%;
-        height: 29px;
-        margin-bottom: 20px;
-        margin-top: 70px;
-    }
-
-    .inputs-email {
-        width: 100%;
-        height: 29px;
-        margin-bottom: 20px;
-    }
-
-    .inputs-phone {
-        width: 100%;
-        height: 29px;
-        margin-bottom: 20px;
-    }
-
-    .edit-contact-input {
-        align-items: center;
-        justify-content: space-between;
     }
 
     .cancel-button {
