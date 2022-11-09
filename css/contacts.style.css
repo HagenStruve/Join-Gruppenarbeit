@@ -12,6 +12,7 @@ body {
 
 .render {
     display: flex;
+    width: 100vh;
 }
 
 .fontsice-21 {
@@ -23,7 +24,7 @@ body {
     margin-left: 48px;
     border-bottom: 1px solid #D1D1D1;
     padding-bottom: 30px;
-    width: 380px;
+    width: 80%;
 }
 
 .content-left {
@@ -31,7 +32,7 @@ body {
     padding-top: 12px;
     background-color: white;
     height: 100vh;
-    width: 500px;
+    width: 50%;
     overflow: auto;
 }
 
@@ -56,7 +57,7 @@ body {
 .content-right {
     display: flex;
     flex-direction: column;
-    width: 1206px;
+    width: 40%;
 }
 
 .member-box {
@@ -69,7 +70,7 @@ body {
     border-radius: 10px;
     background-color: white;
     border: none;
-    width: 405px;
+    width: 80%;
 }
 
 .member-box:hover {
@@ -94,7 +95,7 @@ body {
 }
 
 .email {
-    width: 140px;
+    width: 80%;
     height: 19px;
 
     font-family: 'Inter';
@@ -115,7 +116,7 @@ body {
 
 .border-container {
     background-color: white;
-    width: 50px;
+    width: 20px;
 }
 
 .contacts {
@@ -208,11 +209,11 @@ body {
     align-items: center;
     padding: 18px 10px;
     gap: 10px;
-    position: absolute;
+    position: fixed;
     width: 193px;
     height: 53px;
-    right: 100px;
-    top: 904px;
+    right: 25%;
+    bottom: 25%;
     background: #2A3647;
     border: 1px solid #2A3647;
     border-radius: 10px;
@@ -504,7 +505,77 @@ body {
 }
 
 
-@media(max-width: 990px) {}
+@media(max-width: 990px) {
+    .abc {
+        font-size: 16px;
+        margin-left: 18px;
+        padding-bottom: 12px;
+        width: 80%;
+    }
+
+    .member-box {
+        margin-top: 22px;
+        padding-top: 10px;
+        margin-left: 18px;
+        margin-bottom: 40px;
+        width: 80%;
+    }
+
+    .fontsice-21 {
+        font-size: 14px;
+    }
+
+    .email {
+        width: 80%;
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+    
+
+    .contacts {
+        width: 50%;
+        height: 61px;
+        margin-left: 32px;
+        font-size: 25px;
+        margin-right: 15px;
+        padding-right: 15px;
+    }
+
+    .team-text {
+        width: 77%;
+        margin-top: 87.5px;
+        font-size: 16px;
+    }
+
+    .content-right-header {
+        align-items: center;
+    }
+
+    .shortcut-name {
+        width: 34px;
+        height: 34px;
+        margin-right: 10px;
+    }
+    
+    .border-container {
+        width: 2px;
+    }
+
+    .content-left {
+        width: 40%;
+    }
+
+    .new-contact {
+        width: 110px;
+        height: 15px;
+        font-size: 9px;
+    }
+
+    .new-contact img {
+        height: 20px;
+        width: 20px;
+    }
+}
 
 @media(max-width: 770px) {
     .content-right {

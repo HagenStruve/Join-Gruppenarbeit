@@ -246,9 +246,9 @@ function closeEdit(i) {
     document.getElementById('edit-contact').innerHTML = ``;
     document.getElementById('edit-contact').classList.remove('edit-contact');
     document.getElementById('edit-contact').classList.add('d-none');
-    document.getElementById('name' + i).value = "";
-    document.getElementById('email' + i).value = "";
-    document.getElementById('phone' + i).value = "";
+    // document.getElementById('name' + i).value = "";
+    // document.getElementById('email' + i).value = "";
+    // document.getElementById('phone' + i).value = "";
 }
 
 
@@ -284,7 +284,9 @@ function saveAndLoadContact(i) {
 
 function contactCreatedSuccessfuly() {
     document.getElementById('contact-created').classList.remove('d-none');
+    document.getElementById('contact-created').classList.add('contact-created')
     setTimeout(() => {
+        document.getElementById('contact-created').classList.remove('contact-created');
         document.getElementById('contact-created').classList.add('d-none');
     }, 2000);
 }
