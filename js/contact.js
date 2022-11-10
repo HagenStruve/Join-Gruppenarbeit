@@ -242,6 +242,7 @@ function editContact(i) {
     document.getElementById('edit-contact').classList.remove('d-none');
     document.getElementById('edit-contact').classList.add('edit-contact');
     document.getElementById('edit-contact').innerHTML += editContactHTML(i, letters);
+    $("#member-firstLetter-container" + i).css("background-color", backgroundColor[i]);
 }
 
 
@@ -316,17 +317,13 @@ function getRandomColor() {
         backgroundColorAlpha = [];
         saveOnServer();
     }  
-    // setRandomColor();
   }
 
-//   function setRandomColor() {
-//     for (let x = 0; x < contact.length; x++) {
-//         let i = x;
-//         $("#shortcut-name" + i).css("background-color", backgroundColor[i]);
-//         $("#shortcut-name-info" + i).css("background-color", backgroundColor[i]);
-//     }
-   
-//   }
+
+  function closeContactInfo() {
+    document.getElementById('content-right').classList.remove('z-index-99');
+  }
+
 
 /////////////////////////////////////////// HTML /////////////////////////////////////////////////////////////
 
@@ -367,7 +364,7 @@ function memberInfoHtml(i, letters) {
     <div class="member">
                     <div id="shortcut-name-info${i}" class="shortcut-name-info">${letters}</div>
                     <div>
-                        <div class="fontsice-21">${contact[i]['name']}</div>
+                        <div class="name-info">${contact[i]['name']}</div>
                         <a href="add_task.html" class="email"><img class="plus" src="../img/blue-plus.png">Add Task</a>
                     </div>
                 </div>
@@ -376,6 +373,7 @@ function memberInfoHtml(i, letters) {
                     <div class="fontsice-21">Contact Information</div>
                     <div onclick="editContact(${i})" class="edit-contact-pencil"><img src="../img/pencil.png"> Contact</div>
                 </div>
+                <div onclick="editContact(${i})" class="edit-contact-icon"><img class="edit-contact-icon-img" src="../img/edit-icon.png"></div>
                 <div>
                     <b>Email</b>
                     <div class="email">${contact[i]['email']}</div>
@@ -395,6 +393,8 @@ function memberInfoHtml(i, letters) {
 
 function editContactHTML(i, letters) {
     return /*HTML*/`
+    <div class="cancel-button-responsiv"><img onclick="closeEdit(${i})" class="close-withe"
+                    src="../img/plus-icon.png  "></div>
     <div class="edit-contact-left">
     <img class="logo" src="../img/logo.png">
     <div class="header-edit-contact">Edit contact</div>
@@ -402,7 +402,7 @@ function editContactHTML(i, letters) {
 </div>
 <div class="edit-contact-right">
     <div>
-        <div class="member-firstLetter-container">
+        <div id="member-firstLetter-container${i}" class="member-firstLetter-container">
         ${letters}
         </div>
     </div>
