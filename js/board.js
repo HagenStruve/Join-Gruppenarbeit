@@ -351,6 +351,8 @@ function displayClickedTask(id) {
 function displayClickedTaskHTML(id, actualSector) {
     return document.getElementById('c-t-window').innerHTML = /*html*/`
 
+    <img src="../img/edit-icon.png" class="c-t-edit-button" onclick="editClickedTask()">
+
     <div class="c-t-first-row"> 
         <div class="c-t-category" id="c-t-category"> 
             <span id="c-t-category-html">${actualSector}</span>
@@ -416,6 +418,8 @@ function displayClickedTaskHTML(id, actualSector) {
 
     <div class="c-t-assignedTo" id="c-t-assignedTo">
     </div> 
+
+   
 `;
 }
 
@@ -509,6 +513,80 @@ function createSubtasks(id) {
         }
     }
 }
+
+
+function editClickedTask() {
+
+    document.getElementById('c-t-window').innerHTML = /*html*/`
+
+        <h4> Title </h4> 
+        <input placeholder="Enter a title" id="c-t-title-edit"> 
+        <h4> Description</h4> 
+        <textarea type="text" placeholder="Enter a Description" id="c-t-description-edit"> 
+        </textarea> 
+        <h4> Due date </h4> 
+        <input type="date"> 
+        <h4> Prio </h4> 
+        <div class="c-t-prio-divs-head"> 
+            <div class="c-t-prio-divs">Urgent <img src="../img/arrow_urgent.svg"> </div>  
+            <div class="c-t-prio-divs">Medium <img src="../img/medium.svg"> </div>  
+            <div class="c-t-prio-divs">Low    <img src="../img/arrow_low.svg"> </div>  
+        </div>
+        <h4> Assigned to </h4> 
+
+        <div onclick="showContacts()" id="select-div-contact" class="select-div no-margin-bottom">
+                    <span id="selected-contact">Select contacts to assign</span>
+                    <input class="hidden-input" id="hidden-contact-input" type="text" required>
+                    <img src="../img/dropdown_arrow.svg" alt="dropdown_arrow">
+                </div>
+                <ul id="ul-contact" class="d-none">
+                    <div onclick="selectContact(id)" id="div-contact-1" class="div-li-contact">
+                        <li id="contact-1">Hagen Struve</li>
+                        <input onclick="proofCheck(id)" class="input-checkbox" type="checkbox" id="checkbox-contact-1">
+                    </div>
+                    <div onclick="selectContact(id)" id="div-contact-2" class="div-li-contact">
+                        <li id="contact-2">Sinan Fischer</li>
+                        <input onclick="proofCheck(id)" class="input-checkbox" type="checkbox" id="checkbox-contact-2">
+                    </div>
+                    <div onclick="selectContact(id)" id="div-contact-3" class="div-li-contact">
+                        <li id="contact-3">Matthias Mulzet</li>
+                        <input onclick="proofCheck(id)" class="input-checkbox" type="checkbox" id="checkbox-contact-3">
+                    </div>
+                </ul>
+
+                
+                <div id="all-contacts-initials" class="contact-initials d-none">
+                    <div class="bg-violet d-none" id="initials-1">
+                        <span>HS</span>
+                    </div>
+                    <div class="bg-blue d-none" id="initials-2">
+                        <span>SF</span>
+                    </div>
+                    <div class="bg-green d-none" id="initials-3">
+                        <span>MM</span>
+                    </div>
+                </div>
+
+        <button class="c-t-ok-edit-button">
+            <span> OK </span>
+            <img src="../img/done-icon.png">
+        </button>
+
+
+
+
+    `; 
+}
+
+
+
+
+
+
+
+
+
+
 
 
 /** saves the new status of subtask (checkbox) when clicked
@@ -795,4 +873,130 @@ function deleteDesktopBoardView(id2) {
     </div>
 </div>
     `;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+* by clicking on a button, a list with selections is shown
+ * or hidden
+ * 
+ */
+function showContacts() {
+    let ulContact = document.getElementById("ul-contact");
+    if (ulContact.classList.contains('d-none')) {
+        document.getElementById('all-contacts-initials').classList.add('d-none');
+        showSelectionContacts(ulContact);
+    }
+    else {
+        hideSelectionContacts(ulContact);
+        document.getElementById('all-contacts-initials').classList.remove('d-none');
+        if (noSelectedContacts()) {
+            document.getElementById('all-contacts-initials').classList.add('d-none');
+        }
+    }
+}
+
+function noSelectedContacts() {
+    return document.getElementById("hidden-contact-input").value == ''
+}
+
+
+/**
+ * a selection of contacts is shown
+ * 
+ * @param {string} ulContact -id of the contact container
+ */
+ function showSelectionContacts(ulContact) {
+    ulContact.classList.remove('d-none');
+    document.getElementById("select-div-contact").classList.add('no-border-bottom');
+}
+
+
+/**
+ * the selection of contacts disappears
+ * 
+ * @param {string} ulContact -id of the contact container
+ */
+ function hideSelectionContacts(ulContact) {
+    ulContact.classList.add('d-none');
+    document.getElementById("select-div-contact").classList.remove('no-border-bottom');
+}
+
+
+/**
+ * verifies which contact has that box checked
+ * @param {string} id - selected contact
+ */
+ function proofCheck(id) {
+    let isChecked = document.getElementById(id);
+    let initial = id.replace('checkbox-contact', 'initials');
+
+    let initial1 = document.getElementById('initials-1');
+    let initial2 = document.getElementById('initials-2');
+    let initial3 = document.getElementById('initials-3');
+
+    showOrHideInitials(isChecked, initial, initial1, initial2, initial3);
+}
+
+
+function showOrHideInitials(isChecked, initial, initial1, initial2, initial3) {
+    if (isChecked.checked == true) {
+        showInitials(initial);
+    }
+    else {
+        hideInitials(initial);
+    }
+
+    if (initial1.classList.contains('d-none') && initial2.classList.contains('d-none') && initial3.classList.contains('d-none')) {
+        document.getElementById("hidden-contact-input").value = '';
+    }
+}
+
+
+function showInitials(initial) {
+    document.getElementById(initial).classList.remove('d-none');
+    document.getElementById("hidden-contact-input").value = '.';
+}
+
+
+function hideInitials(initial) {
+    document.getElementById(initial).classList.add('d-none');
+}
+
+
+/**
+ * function for selecting the contact
+ * 
+ * @param {string} id - selected contact
+ */
+ function selectContact(id) {
+    liContact = id.replace('div-', '');
+    let ulContact = document.getElementById("ul-contact");
+    showSelectionContacts(ulContact);
 }

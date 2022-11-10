@@ -1,4 +1,4 @@
-let tasksOverview = []; 
+
 async function initSummary() {
     await includeHTML();
     updateStatus();
