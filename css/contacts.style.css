@@ -70,6 +70,7 @@ body {
     display: flex;
     flex-direction: column;
     width: 70%;
+    height: 100vh;
 }
 
 .member-box {
@@ -134,20 +135,15 @@ body {
 } */
 
 .contacts {
-    width: 33%;
-    height: 72px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
     font-size: 50px;
     line-height: 120%;
     color: #000000;
-    margin-top: 82px;
-    margin-left: 71px;
     flex: none;
     order: 0;
     flex-grow: 0;
-    border-right: 3px solid #29ABE2;
 }
 
 .team-text {
@@ -488,7 +484,6 @@ body {
 .member-firstLetter-container {
     width: 120px;
     height: 120px;
-    /* background: orange; */
     border: 3px white solid;
     box-shadow: 0px 0px 4px rgb(0 0 0 / 10%);
     border-radius: 70px;
@@ -541,6 +536,34 @@ body {
     display: none;
 }
 
+.back-arrow {
+    display: none;
+}
+
+.edit-contact-icon {
+    display: none;
+}
+
+.content-back-arrow {
+    width: 33%;
+    border-right: 3px solid #29ABE2;
+    height: 72px;
+    margin-top: 82px;
+    margin-left: 71px;
+}
+
+.name-info {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.white-background {
+    height: 100vh;
+    background-color: white;
+    position: fixed;
+    z-index: -1;
+}
+
 
 @media(max-width: 990px) {
     .content-right {
@@ -548,6 +571,23 @@ body {
         width: 100vw;
         height: 100vh;
         background-color: #F5F5F5;
+    }
+
+    .content-back-arrow {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 70%;
+        border: none;
+        margin-top: 0px;
+        margin-left: 0px;
+    }
+
+    .back-arrow {
+        display: flex;
+        height: 30px;
+        width: 30px;
+        cursor: pointer;
     }
 
     .text {
@@ -561,7 +601,6 @@ body {
 
     .content-left {
         width: 80%;
-        display: flex;
         justify-content: center;
         z-index: 2;
     }
@@ -608,7 +647,7 @@ body {
         margin-bottom: 40px;
         width: 80%;
     }
-    
+
     .email {
         width: 80%;
         font-size: 12px;
@@ -648,7 +687,7 @@ body {
     }
 
     .new-contact {
-    display: none;
+        display: none;
     }
 
     .header-edit-contact {
@@ -660,6 +699,11 @@ body {
     }
 
     .member-img-container {
+        width: 90px;
+        height: 90px;
+    }
+
+    .member-firstLetter-container {
         width: 90px;
         height: 90px;
     }
@@ -698,7 +742,7 @@ body {
         width: 75px;
         height: 75px;
         font-size: 32px;
-}
+    }
 }
 
 @media(max-width: 770px) {
@@ -706,11 +750,27 @@ body {
         left: 0;
     }
 
+    .name-info {
+        margin-bottom: 5px;
+        font-size: 25px;
+    }
+
+    .content-back-arrow {
+        width: 85%;
+        height: 50px;
+    }
+
+    .text {
+        font-size: 16px;
+    }
+
     .contacts {
         height: 51px;
         font-size: 31px;
-        margin-top: 0px;
+        margin-top: 10px;
         width: 35%;
+        display: flex;
+        align-items: center;
     }
 
     .contact-created {
@@ -741,7 +801,7 @@ body {
     }
 
     .content-left {
-        height: 75vh;
+        height: 70vh;
         width: 100vw;
     }
 
@@ -815,7 +875,7 @@ body {
     }
 
     .member-container {
-        margin-top: 55px;
+        margin-top: 15px;
     }
 
     .edit-contact {
@@ -845,6 +905,15 @@ body {
         position: absolute;
         top: 50%;
         left: 43%;
+        transform: translate(-50%, -50%);
+        width: 70px;
+        height: 70px;
+    }
+
+    .member-firstLetter-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
         transform: translate(-50%, -50%);
         width: 70px;
         height: 70px;
@@ -895,7 +964,7 @@ body {
     }
 
     .fontsice-21 {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .email {
@@ -904,7 +973,7 @@ body {
 
     .team-text {
         font-size: 16px;
-        margin-top: 30.5px;
+        margin-top: 0px;
         width: 45%;
     }
 
@@ -914,11 +983,30 @@ body {
     }
 
     .shortcut-name-info {
-        width: 70px;
-        height: 70px;
+        width: 50px;
+        height: 50px;
         font-size: 29px;
-        margin-right: 121px;
+        margin-right: 47px;
         margin-bottom: 1px;
+    }
+
+    .member {
+        margin-top: 10px;
+    }
+
+    .edit-contact-pencil {
+        display: none;
+    }
+
+    .edit-contact-icon {
+        display: flex;
+        position: fixed;
+        right: 10%;
+        bottom: 20%;
+    }
+
+    b {
+        font-size: 16;
     }
 }
 
@@ -926,5 +1014,50 @@ body {
     .content-left {
         height: 70vh;
         width: 100vw;
+    }
+
+    .name-info {
+        margin-bottom: 0px;
+        font-size: 16px;
+    }
+
+    .edit-contact-icon-img {
+        height: 50px;
+        width: 50px;
+    }
+}
+
+@media (max-width: 380px) {
+    .contacts {
+        font-size: 25px;
+        margin-top: 10px;
+    }
+
+    .back-arrow {
+        height: 15px;
+        width: 15px;
+    }
+
+    .text {
+        font-size: 12px;
+    }
+
+    .team-text {
+        font-size: 12px;
+    }
+
+    b {
+        font-size: 12px;
+    }
+
+    .shortcut-name-info {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .edit-contact-icon-img {
+        height: 35px;
+        width: 35px;
     }
 }
