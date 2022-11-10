@@ -10,6 +10,10 @@ body {
     display: none;
 }
 
+.z-index-99 {
+    z-index: 99;
+}
+
 .render {
     display: flex;
     width: 100vw;
@@ -183,6 +187,7 @@ body {
     font-size: 47px;
     margin-right: 54px;
     margin-bottom: 21px;
+    border: 3px white solid;
 }
 
 .member {
@@ -530,6 +535,14 @@ body {
 
 
 @media(max-width: 990px) {
+    .content-right {
+        left: 23%;
+        width: 100vw;
+        height: 100vh;
+        background-color: #F5F5F5;
+        
+    }
+
     .render {
         flex-direction: column;
     }
@@ -538,10 +551,7 @@ body {
         width: 80%;
         display: flex;
         justify-content: center;
-    }
-
-    .content-right {
-       display: none;
+        z-index: 2;
     }
 
     .member-container {
@@ -598,7 +608,7 @@ body {
     }
 
     .team-text {
-        width: 77%;
+        width: 52%;
         margin-top: 87.5px;
         font-size: 16px;
     }
@@ -618,14 +628,7 @@ body {
     }
 
     .new-contact {
-        width: 110px;
-        height: 15px;
-        font-size: 9px;
-    }
-
-    .new-contact img {
-        height: 20px;
-        width: 20px;
+    display: none;
     }
 
     .header-edit-contact {
@@ -663,7 +666,14 @@ body {
 
 @media(max-width: 770px) {
     .content-right {
-        display: none;
+        left: 0;
+    }
+
+    .contacts {
+        height: 51px;
+        font-size: 31px;
+        margin-top: 0px;
+        width: 35%;
     }
 
     .contact-created {
@@ -857,6 +867,9 @@ body {
 
     .team-text {
         font-size: 16px;
+        margin-top: 30.5px;
+        width: 45%;
+
     }
 }
 

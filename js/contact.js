@@ -2,6 +2,8 @@ let contact = [];
 
 let alphabet = [];
 let idNumberMemberBox = [];
+let backgroundColorAlpha = [];
+let backgroundColor = [];
 
 /**
  * Connects the app to the server and starts the program
@@ -81,6 +83,7 @@ function addContact() {
 
     contact.push(addContact);
 
+    getRandomColor();
     contactCreatedSuccessfuly();
     addAndSaveContact();
     cancel();
@@ -171,6 +174,7 @@ function loadContacts(abc) {
         if (!abc || abc == bigFirstLetter) {
             contactContainer.innerHTML += memberHTML(i);
             getFirstLetters(i);
+            $("#shortcut-name" + i).css("background-color", backgroundColor);
         }
     }
 }
@@ -207,6 +211,7 @@ function showMemberInfo(i) {
     let infoBox = document.getElementById('member-info');
     infoBox.innerHTML = ``;
     infoBox.innerHTML = memberInfoHtml(i, letters);
+    document.getElementById('content-right').classList.add('z-index-99');
 }
 
 
@@ -291,6 +296,34 @@ function contactCreatedSuccessfuly() {
     }, 2000);
 }
 
+
+/**
+ * Creates a random color and pushes it into the backgroundColor array
+ */
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        background = color += letters[Math.floor(Math.random() * 16)];
+        backgroundColorAlpha.push(background);
+    }
+    for (let y = 5; y < backgroundColorAlpha.length; y++) {
+        const colorBackground = backgroundColorAlpha[y];
+        backgroundColor.push(colorBackground);
+        backgroundColorAlpha = [];
+    }  
+    setRandomColor();
+  }
+
+  function setRandomColor() {
+    for (let x = 0; x < contact.length; x++) {
+        let i = x;
+        $("#shortcut-name" + i).css("background-color", backgroundColor[i]);
+        $("#shortcut-name-info" + i).css("background-color", backgroundColor[i]);
+    }
+   
+  }
+
 /////////////////////////////////////////// HTML /////////////////////////////////////////////////////////////
 
 
@@ -328,7 +361,7 @@ function addFirstLetters(letters) {
 function memberInfoHtml(i, letters) {
     return /*HTML*/`
     <div class="member">
-                    <div class="shortcut-name-info">${letters}</div>
+                    <div id="shortcut-name-info${i}" class="shortcut-name-info">${letters}</div>
                     <div>
                         <div class="fontsice-21">${contact[i]['name']}</div>
                         <a href="add_task.html" class="email"><img class="plus" src="../img/blue-plus.png">Add Task</a>
