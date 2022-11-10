@@ -15,6 +15,7 @@ async function initContacs() {
     await downloadFromServer();
     contact = JSON.parse(backend.getItem('contact')) || [];
     alphabet = JSON.parse(backend.getItem('alphabet')) || [];
+    backgroundColor = JSON.parse(backend.getItem('backgroundColor')) || [];
     loadABCContainer();
     sidebarBgPage();
 }
@@ -38,6 +39,7 @@ function loadContactside() {
 async function saveOnServer() {
     await backend.setItem('contact', JSON.stringify(contact));
     await backend.setItem('alphabet', JSON.stringify(alphabet));
+    await backend.setItem('backgroundColor', JSON.stringify(backgroundColor));
 }
 
 
@@ -174,7 +176,7 @@ function loadContacts(abc) {
         if (!abc || abc == bigFirstLetter) {
             contactContainer.innerHTML += memberHTML(i);
             getFirstLetters(i);
-            $("#shortcut-name" + i).css("background-color", backgroundColor);
+            $("#shortcut-name" + i).css("background-color", backgroundColor[i]);
         }
     }
 }
@@ -212,6 +214,7 @@ function showMemberInfo(i) {
     infoBox.innerHTML = ``;
     infoBox.innerHTML = memberInfoHtml(i, letters);
     document.getElementById('content-right').classList.add('z-index-99');
+    $("#shortcut-name-info" + i).css("background-color", backgroundColor[i]);
 }
 
 
@@ -311,18 +314,19 @@ function getRandomColor() {
         const colorBackground = backgroundColorAlpha[y];
         backgroundColor.push(colorBackground);
         backgroundColorAlpha = [];
+        saveOnServer();
     }  
-    setRandomColor();
+    // setRandomColor();
   }
 
-  function setRandomColor() {
-    for (let x = 0; x < contact.length; x++) {
-        let i = x;
-        $("#shortcut-name" + i).css("background-color", backgroundColor[i]);
-        $("#shortcut-name-info" + i).css("background-color", backgroundColor[i]);
-    }
+//   function setRandomColor() {
+//     for (let x = 0; x < contact.length; x++) {
+//         let i = x;
+//         $("#shortcut-name" + i).css("background-color", backgroundColor[i]);
+//         $("#shortcut-name-info" + i).css("background-color", backgroundColor[i]);
+//     }
    
-  }
+//   }
 
 /////////////////////////////////////////// HTML /////////////////////////////////////////////////////////////
 

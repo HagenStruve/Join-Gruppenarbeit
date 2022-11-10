@@ -14,6 +14,10 @@ body {
     z-index: 99;
 }
 
+.text {
+    display: none;
+}
+
 .render {
     display: flex;
     width: 100vw;
@@ -178,7 +182,7 @@ body {
     height: 120px;
     left: 0px;
     top: 0px;
-    background: #FF7A00;
+    /* background: #FF7A00; */
     border-radius: 100px;
     display: flex;
     justify-content: center;
@@ -484,7 +488,7 @@ body {
 .member-firstLetter-container {
     width: 120px;
     height: 120px;
-    background: orange;
+    /* background: orange; */
     border: 3px white solid;
     box-shadow: 0px 0px 4px rgb(0 0 0 / 10%);
     border-radius: 70px;
@@ -533,6 +537,10 @@ body {
     display: none;
 }
 
+.border {
+    display: none;
+}
+
 
 @media(max-width: 990px) {
     .content-right {
@@ -540,7 +548,11 @@ body {
         width: 100vw;
         height: 100vh;
         background-color: #F5F5F5;
-        
+    }
+
+    .text {
+        display: flex;
+        margin-top: 10px;
     }
 
     .render {
@@ -596,11 +608,7 @@ body {
         margin-bottom: 40px;
         width: 80%;
     }
-
-    .fontsice-21 {
-        font-size: 18px;
-    }
-
+    
     .email {
         width: 80%;
         font-size: 12px;
@@ -609,12 +617,24 @@ body {
 
     .team-text {
         width: 52%;
-        margin-top: 87.5px;
+        margin-top: 0px;
+        margin-bottom: 10px;
         font-size: 16px;
+        height: auto;
+    }
+
+    .border {
+        display: flex;
+        margin-top: 10px;
+        border-bottom: 3px solid #29ABE2;
+        width: 10%;
+        margin-left: 71px;
     }
 
     .content-right-header {
-        align-items: center;
+        align-items: flex-start;
+        flex-direction: column;
+        margin-left: 71px;
     }
 
     .shortcut-name {
@@ -662,6 +682,23 @@ body {
         font-size: 12px;
     }
 
+    .contacts {
+        border-right: none;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 0;
+        height: auto;
+    }
+
+    .member-info {
+        margin-top: 35px;
+    }
+
+    .shortcut-name-info {
+        width: 75px;
+        height: 75px;
+        font-size: 32px;
+}
 }
 
 @media(max-width: 770px) {
@@ -869,7 +906,19 @@ body {
         font-size: 16px;
         margin-top: 30.5px;
         width: 45%;
+    }
 
+    .member-info {
+        display: flex;
+        margin-top: 5px;
+    }
+
+    .shortcut-name-info {
+        width: 70px;
+        height: 70px;
+        font-size: 29px;
+        margin-right: 121px;
+        margin-bottom: 1px;
     }
 }
 
