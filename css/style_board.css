@@ -259,7 +259,7 @@
 }
 
 .c-t-first-row {
-    display: flex; 
+    display: flex;
     justify-content: space-between;
     align-items: center;
 }
@@ -397,14 +397,15 @@
 }
 
 .clicked-addtask-window {
-    position: absolute;
+    position: fixed;
     display: flex;
-    padding-top: 63px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     padding-left: 74px;
     left: 10%;
     right: 10%;
-    top: 4%;
-    bottom: 4%;
+    top: 2%;
+    bottom: 2%;
     border-radius: 20px;
     background-color: white;
     z-index: 1000;
@@ -470,9 +471,9 @@
 
 @media (max-width:770px) {
 
-.clicked-task-window {
-    transform: translate(-50%, -50%);
-}
+    .clicked-task-window {
+        transform: translate(-50%, -50%);
+    }
 }
 
 @media (max-width:570px) {
@@ -492,7 +493,7 @@
         top: 59%;
         background-color: #F6F7F8;
         gap: 10px;
-        
+
     }
 
     .clicked-task-bg {
@@ -503,6 +504,6 @@
     .c-t-first-row {
         width: 80%;
     }
-    
-    
+
+
 }
