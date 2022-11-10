@@ -22,6 +22,7 @@
     <div id="render" class="render">
 
         <div id="content-left" class="content-left">
+            <div class="white-background"></div>
             <button onclick="newConatct()" class="new-contact-responsiv">
                 <span>New contact</span>
                 <img src="../img/new-contact-icon.png">
@@ -33,12 +34,15 @@
         <div id="content-right" class="content-right">
             <div class="content-right-header">
                 <div class="text">Kanban Project Management Tool</div>
-                <div class="contacts">Contacts</div>
+                <div class="content-back-arrow">
+                    <div class="contacts">Contacts</div>
+                    <img onclick="closeContactInfo()" class="back-arrow" src="../img/black-back-arrow.png">
+                </div>
                 <div class="team-text">Better with a team</div>
             </div>
 
             <div class="border"></div>
-            
+
             <div id="member-info" class="member-info">
 
                 <button onclick="newConatct()" class="new-contact">
