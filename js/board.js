@@ -371,15 +371,17 @@ function displayClickedTaskHTML(id, actualSector) {
         </p>
     </div>
 
-    <div class="c-t-infos"> 
-        <span>
-            <b> 
-                Subtasks:
-            </b>
-        </span>
-    </div>
+    <div id="subtask-section" class="c-t-subtask-section"> 
+        <div class="c-t-infos"> 
+            <span>
+                <b> 
+                    Subtasks:
+                </b>
+            </span>
+        </div>
 
-    <div class="c-t-subtasks" id="subtasks"> 
+        <div class="c-t-subtasks" id="subtasks"> 
+        </div> 
     </div> 
 
     <div class="c-t-infos"> 
@@ -477,29 +479,37 @@ function getFirstLetter(id, i) {
  */
 function createSubtasks(id) {
 
+
     let arrayOfSubtasks = downloadedTasks[id]['subtasks'];
 
-    document.getElementById('subtasks').innerHTML = '';
-    for (let i = 0; i < arrayOfSubtasks.length; i++) {
+    if (arrayOfSubtasks.length === 0) {
+        document.getElementById('subtask-section').style.display = "none"; 
+        console.log('es wurde der subtasks section gelöscht'); 
+    }
+    else {
+        document.getElementById('subtask-section').style.display = "block"; 
+        document.getElementById('subtasks').innerHTML = '';
+        for (let i = 0; i < arrayOfSubtasks.length; i++) {
 
-        let checked = '';
+            let checked = '';
 
-        if (arrayOfSubtasks[i]['checked'] === 'true') {
-            checked = 'checked="true"'
+            if (arrayOfSubtasks[i]['checked'] === 'true') {
+                checked = 'checked="true"'
+            }
+            else {
+                checked = '';
+            }
+
+            document.getElementById('subtasks').innerHTML += `
+            <label class="c-t-checkbox">
+                <input type="checkbox" ${checked} id="subtask-id-${id}-${i}" onclick="updateCheckboxStatus(${i})"> 
+                <span class="checkmark">${arrayOfSubtasks[i]['subtask']} </span> 
+            </label>
+            `
         }
-        else {
-            checked = '';
-        }
-
-        document.getElementById('subtasks').innerHTML += `
-            
-        <label class="c-t-checkbox">
-            <input type="checkbox" ${checked} id="subtask-id-${id}-${i}" onclick="updateCheckboxStatus(${i})"> 
-            <span class="checkmark">${arrayOfSubtasks[i]['subtask']} </span> 
-        </label>
-        `
     }
 }
+
 
 /** saves the new status of subtask (checkbox) when clicked
  * 

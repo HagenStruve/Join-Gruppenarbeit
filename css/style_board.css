@@ -295,6 +295,11 @@
     line-height: 150%;
 }
 
+
+.c-t-subtask-section {
+    display: flex;
+}
+
 .c-t-infos {
     display: flex;
     justify-content: space-between;
