@@ -6,12 +6,14 @@
 
     <link rel="icon" type="image/x-icon" href="../img/join-logo.svg">
 
+    <script src="../mini_backend.js"></script>
+
     <link rel="stylesheet" href="../css/style_board.css">
     <link rel="stylesheet" href="../fonts/fonts.css">
     <link rel="stylesheet" href="../css/add_task.css">
+    <link rel="stylesheet" href="../css/add_task_responsive.css">
     <script src="../js/script.js"></script>
     <script src="../js/board.js"></script>
-    <script src="../mini_backend.js"></script>
     <script src="../js/add_task.js"></script>
     <script src="../js/summary.js"></script>
 
@@ -28,9 +30,10 @@
 
                 <div class="form-fields">
                     <!-- find task id need to for responsive-->
-                    <div id="find-task"> 
+                    <div id="find-task">
                         <div class="find-task-div">
-                            <input placeholder="Find Task" class="find-task-input" id="input-search" onkeyup="searchTask()">
+                            <input placeholder="Find Task" class="find-task-input" id="input-search"
+                                onkeyup="searchTask()">
                             <img src="../img/magnifying-glass.png">
                         </div>
                     </div>
@@ -39,7 +42,7 @@
             </div>
 
             <div id="find-task-responsive">
-            </div> 
+            </div>
 
 
             <div class="second-row">
@@ -51,7 +54,7 @@
                     <img src="../img/plus-icon-with-border.png">
                 </div>
 
-                <div id="to-do-responsive"> 
+                <div id="to-do-responsive">
                 </div>
 
                 <div class="kanban-management-headlines">
@@ -62,7 +65,7 @@
                     <img src="../img/plus-icon-with-border.png">
                 </div>
 
-                <div id="in-progress-responsive"> 
+                <div id="in-progress-responsive">
                 </div>
 
                 <div class="kanban-management-headlines">
@@ -73,7 +76,7 @@
                     <img src="../img/plus-icon-with-border.png">
                 </div>
 
-                <div id="awaiting-feedback-responsive"> 
+                <div id="awaiting-feedback-responsive">
                 </div>
 
                 <div class="kanban-management-headlines">
@@ -84,7 +87,7 @@
                     <img src="../img/plus-icon-with-border.png">
                 </div>
 
-                <div id="done-responsive"> 
+                <div id="done-responsive">
                 </div>
 
             </div>
@@ -96,17 +99,16 @@
 
 
                 <div class="current-status" id="in-progress" ondrop="moveTo('in-progress')"
-                ondragover="allowDrop(event) ">
-                </div> 
-
-
-                <div class="current-status" id="awaiting-feedback" ondrop="moveTo('awaiting-feedback')"
-                ondragover="allowDrop(event)">
+                    ondragover="allowDrop(event) ">
                 </div>
 
 
-                <div class="current-status" id="done" ondrop="moveTo('done')"
-                 ondragover="allowDrop(event)">
+                <div class="current-status" id="awaiting-feedback" ondrop="moveTo('awaiting-feedback')"
+                    ondragover="allowDrop(event)">
+                </div>
+
+
+                <div class="current-status" id="done" ondrop="moveTo('done')" ondragover="allowDrop(event)">
                 </div>
 
             </div>
