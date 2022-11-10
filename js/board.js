@@ -51,7 +51,7 @@ async function loadTasksFromServer() {
  */
 function pushIDtoTasks() {
     downloadedTasks[existTasks]['id'] = existTasks;
-    existTasks++;
+    existTasks++; 
 }
 
 
@@ -93,9 +93,9 @@ function displayToDos(search) {
         let title = todos[i]['title'].toLowerCase();
         if (!search || title.includes(search)) {
             // wenn es search nicht gibt dann führe aus, und wenn title etwas von der suche beinhaltet dann führe ebenfalls aus, wenn nicht dann zeigt er auch nichts an 
-
-            const element = todos[i];
             pushIDtoTasks();
+            const element = todos[i];
+
             document.getElementById('to-do').innerHTML += addTaskToKanbanHTML(element);
             createProgressbar(element); 
             createAssignedContacsOnBoard(element);
@@ -567,19 +567,23 @@ function editClickedTask() {
                     </div>
                 </div>
 
-        <button class="c-t-ok-edit-button">
-            <span> OK </span>
+        <button class="c-t-ok-edit-button" onclick="getNewValueFromEditedTask()">
+            <span> Ok </span> 
             <img src="../img/done-icon.png">
         </button>
-
-
-
-
     `; 
 }
 
 
+function getNewValueFromEditedTask() {
+    let newTitle = document.getElementById('c-t-title-edit').value; 
+    let newDescription = document.getElementById('c-t-description-edit').value; 
+ //   let newDate = document.getElementById('c-t-date-edit').value; 
 
+    console.log(newTitle); 
+    console.log(newDescription); 
+    //console.log(newDate); 
+}
 
 
 

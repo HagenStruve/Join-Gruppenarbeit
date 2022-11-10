@@ -287,6 +287,7 @@
     display: flex;
     justify-content: center;
     gap: 10px;
+    width: 100%;
 }
 
 .c-t-prio-divs {
@@ -302,15 +303,28 @@
 }
 
 .c-t-ok-edit-button {
+    width: 95px;
+    height: 51px;
     display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #2A3647;
     border-radius: 10px;
     padding: 18px 10px;
-    gap: 10px;
     color: white;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
 }
 
-/* Edit window end */
+.c-t-ok-edit-button img {
+    width: 40px;
+}
+
+/* Edit window end */a
 
 ::-webkit-scrollbar {
     border-radius: 20px;
