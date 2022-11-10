@@ -72,7 +72,6 @@ function displayAllTasks(search) {
     let titleID = 'task-type';
     let classID = 'task-type';
     setColorTypeTasks(titleID, classID);
-    saveNewOnServer(); 
 }
 
 /** displays all todos in HTML 
@@ -324,6 +323,10 @@ function searchTask() {
 function displayClickedTask(id) {
     currentClickedTask = id;
     document.getElementById('open-clicked-task').style.display = "flex";
+    if (!myMediaQuery570.matches) {
+        document.getElementById('open-clicked-task').style.display = "none";
+        console.log('openclickedtask wird nicht angezeigt'); 
+    }
     document.getElementById('c-t-window').style.display = "flex";
 
     let actualSector = downloadedTasks[id]['sector'];
@@ -347,9 +350,16 @@ function displayClickedTask(id) {
  */
 function displayClickedTaskHTML(id, actualSector) {
     return document.getElementById('c-t-window').innerHTML = /*html*/`
-    <div class="c-t-category" id="c-t-category"> 
-        <span id="c-t-category-html">${actualSector}</span>
-    </div>
+
+    <div class="c-t-first-row"> 
+        <div class="c-t-category" id="c-t-category"> 
+            <span id="c-t-category-html">${actualSector}</span>
+        </div>
+
+        <div class="c-t-exit-arrow" onclick="hideClickedTask()"> 
+            <img src="/Join-Gruppenarbeit/img/black-back-arrow.png"> 
+        </div> 
+    </div> 
 
     <div class="c-t-title" >
         <b>  ${downloadedTasks[id]['title']} </b>
@@ -654,52 +664,11 @@ function hideClickedAddTaskWindow() {
 }
 
 
-/** HTML to generate a task
- * 
- * @param {array} element - beinhaltet den gefilterten Array mit forschleifen Zahl der jeweiligen Kategorie.
- * 
- * 
- */
-function addTaskToKanbanHTML(element) { // element = task[0] or task[1] only filterd in category
-    return `
-    <div class="kanban-task-container" draggable="true" ondragstart="startDragging(${element['id']})" onclick="displayClickedTask(id)" id="${element['id']}">
-    <div>
-        <span class="task-type" id="task-type${NumberOfCurrentTasks}">${element['sector']}</span>
-    </div>
-
-    <div>
-        <h3 class="kanban-task-title" ">
-            ${element['title']}
-        </h3>
-    </div>
-
-    <p class="task-description"> 
-        ${element['description']}...
-    </p>
-    <div class="progress-section" id="progress-section-${element['id']}">
-        <div class="progress-border" id="progressbar-${element['id']}">
-
-        </div>
-
-        <span id="progressbar-comparison-${element['id']}" class="progressbar-comparison">
-        
-         </span>
-        </div>
-
-    <div style="display:flex; justify-content: space-between; align-items:center; margin-top: 10px;">
-        <div class="assigned-employees" id="assigned-employees-board-${element['id']}">
-
-        </div>
-
-        <img src="../img/arrow_low.svg">
-    </div>
-</div>
-    `;
-}
 
 
-let myMediaQuery = window.matchMedia('(min-width: 1400px)'); 
-myMediaQuery.addListener(checkResponsive); // addListener prüft bei änderung der Bildschirmgröße ob mediaQuerry noch zutrifft oder nicht
+let myMediaQuery1400 = window.matchMedia('(min-width: 1400px)'); 
+let myMediaQuery570 = window.matchMedia('(min-width:570px)'); 
+myMediaQuery1400.addListener(checkResponsive); // addListener prüft bei änderung der Bildschirmgröße ob mediaQuerry noch zutrifft oder nicht
 
 /** starts the needed view related html code for responsive 
  * 
@@ -708,7 +677,7 @@ myMediaQuery.addListener(checkResponsive); // addListener prüft bei änderung d
  *  @param {string} id2 - needed to difference between create responsive and delete ( needed reversed)
  */
 function checkResponsive() {
-if (myMediaQuery.matches) { //if higher than 1400px
+if (myMediaQuery1400.matches) { //if higher than 1400px
     let id = ''; 
     let id2 = '-responsive'; 
     startResponsiveBoardView(id, id2); 
@@ -748,12 +717,18 @@ function generateResponsiveHTMLCode(id) {
     document.getElementById(`done${id}`).innerHTML = `
         <div class="current-status" id="done" ondrop="moveTo('done')" ondragover="allowDrop(event)">
         </div> `;
-    document.getElementById(`find-task${id}`).innerHTML = `
+    searchFieldHTML(id); 
+}
+
+
+function searchFieldHTML(id) {
+    return document.getElementById(`find-task${id}`).innerHTML = `
         <div class="find-task-div">
             <input placeholder="Find Task" class="find-task-input" id="input-search" onkeyup="searchTask()">
             <img src="../img/magnifying-glass.png">
         </div> `;
 }
+
 
 
 /** deletes content for responsive, so that only the desktop or mobile content is displayed
@@ -767,3 +742,47 @@ function deleteDesktopBoardView(id2) {
     document.getElementById(`find-task${id2}`).innerHTML = ''; 
 }
 
+
+
+/** HTML to generate a task
+ * 
+ * @param {array} element - beinhaltet den gefilterten Array mit forschleifen Zahl der jeweiligen Kategorie.
+ * 
+ * 
+ */
+ function addTaskToKanbanHTML(element) { // element = task[0] or task[1] only filterd in category
+    return `
+    <div class="kanban-task-container" draggable="true" ondragstart="startDragging(${element['id']})" onclick="displayClickedTask(id)" id="${element['id']}">
+    <div>
+        <span class="task-type" id="task-type${NumberOfCurrentTasks}">${element['sector']}</span>
+    </div>
+
+    <div>
+        <h3 class="kanban-task-title" ">
+            ${element['title']}
+        </h3>
+    </div>
+
+    <p class="task-description"> 
+        ${element['description']}...
+    </p>
+    <div class="progress-section" id="progress-section-${element['id']}">
+        <div class="progress-border" id="progressbar-${element['id']}">
+
+        </div>
+
+        <span id="progressbar-comparison-${element['id']}" class="progressbar-comparison">
+        
+         </span>
+        </div>
+
+    <div style="display:flex; justify-content: space-between; align-items:center; margin-top: 10px;">
+        <div class="assigned-employees" id="assigned-employees-board-${element['id']}">
+
+        </div>
+
+        <img src="../img/arrow_low.svg">
+    </div>
+</div>
+    `;
+}

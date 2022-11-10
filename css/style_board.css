@@ -258,6 +258,17 @@
     border-radius: 20px;
 }
 
+.c-t-first-row {
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+}
+
+.c-t-exit-arrow:hover {
+    cursor: pointer;
+}
+
+
 .c-t-category {
     font-size: 22px;
     width: max-content;
@@ -444,4 +455,49 @@
         height: 34px;
         width: 300px;
     }
+
+    .clicked-task-window {
+        transform: translate(-28%, -50%);
+    }
+}
+
+
+
+@media (max-width:770px) {
+
+.clicked-task-window {
+    transform: translate(-50%, -50%);
+}
+}
+
+@media (max-width:570px) {
+
+    header {
+        z-index: 500 !important;
+    }
+
+
+    .clicked-task-window {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0px;
+        margin: 30px;
+        padding: 30px;
+        padding-top: 90px;
+        top: 59%;
+        background-color: #F6F7F8;
+        gap: 10px;
+        
+    }
+
+    .clicked-task-bg {
+        position: fixed;
+        display: none;
+    }
+
+    .c-t-first-row {
+        width: 80%;
+    }
+    
+    
 }
