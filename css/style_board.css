@@ -464,6 +464,7 @@
 }
 
 .clicked-addtask-window {
+    overflow: scroll;
     position: fixed;
     display: flex;
     padding-top: 15px;
@@ -476,7 +477,7 @@
     border-radius: 20px;
     background-color: white;
     z-index: 1000;
-    min-height: max-content;
+
     display: none;
 }
 

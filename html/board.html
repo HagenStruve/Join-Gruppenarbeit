@@ -9,6 +9,7 @@
     <script src="../mini_backend.js"></script>
 
     <link rel="stylesheet" href="../css/style_board.css">
+    <link rel="stylesheet" href="../css/board_responsive.css">
     <link rel="stylesheet" href="../fonts/fonts.css">
     <link rel="stylesheet" href="../css/add_task.css">
     <link rel="stylesheet" href="../css/add_task_responsive.css">
@@ -126,11 +127,9 @@
         </div>
         <div class="clicked-addtask-window" id="c-t-addtask-window">
 
-            <form onsubmit="newTaskReload(); return false;" class="add-task-whole-page">
-                <div class="overlay-add-task-left-side">
-                    <img onclick="hideClickedAddTaskWindow()" class="close-add-task" src="../img/close-icon.png"
-                        alt="close-icon">
-                    <h1 class="h1-add-task">Add Task</h1>
+            <form onsubmit="addTask(); return false;" class="add-task-whole-page">
+                <div class="add-task-left-side">
+                    <h1>Add Task</h1>
                     <div class="left-side-without-h1">
                         <span class="little-headlines">Title</span>
                         <input id="title" required class="enter-title" type="text" placeholder="Enter a title">
@@ -206,8 +205,8 @@
                     </div>
                 </div>
 
-                <div class="add-task-right-side margin-top-115">
-                    <div class="right-side-first-half">
+                <div class="add-task-right-side">
+                    <div class=" right-side-first-half">
                         <span class="little-headlines">Due Date</span>
                         <input id="dueDate" required class="input-date" type="date">
                         <span class="little-headlines">Prio</span>
@@ -240,12 +239,12 @@
                     </div>
 
 
-                    <div class="clear-create-div margin-top-30">
+                    <div class="clear-create-div">
                         <div onclick="clearPage()" class="clear-div">
                             <span>Clear</span>
                             <img src="../img/close-icon.png" alt="close-icon">
                         </div>
-                        <button class="create-div">
+                        <button id="create-task" class="create-div">
                             <div class="create-button">Create Task</div>
                             <img src="../img/checkmark.png" alt="checkmark-icon">
                         </button>
