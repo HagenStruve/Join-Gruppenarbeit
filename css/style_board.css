@@ -485,6 +485,7 @@ a::-webkit-scrollbar {
     overflow-y: scroll;
     position: fixed;
     display: flex;
+    transform: translateX(0px);
     padding-top: 15px;
     padding-bottom: 15px;
     left: 10%;
@@ -495,16 +496,19 @@ a::-webkit-scrollbar {
     background-color: white;
     z-index: 1000;
     display: none;
-    transition: 1s fadeInAddTask ease-in-out;
+}
+
+.d-none {
+    display: none !important;
 }
 
 @keyframes fadeInAddTask {
     from {
-        transform: translate(-1000px, 0, 0);
+        transform: translateX(940px);
     }
 
     to {
-        transform: translate(0px, 0, 0);
+        transform: translateX(0px);
     }
 }
 

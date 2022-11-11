@@ -123,12 +123,11 @@
 
 
         <!-- add task window -->
-        <div class="clicked-addtask-bg" id="open-clicked-addtask" onclick="hideClickedAddTaskWindow()">
+        <div class="clicked-addtask-bg" id="open-clicked-addtask" onclick="hideClickedTask()">
         </div>
         <div class="clicked-addtask-window" id="c-t-addtask-window">
 
-            <img onclick="hideClickedAddTaskWindow()" class="close-add-task" src="../img/close-icon.png"
-                alt="close-icon">
+            <img onclick="hideClickedTask()" class="close-add-task" src="../img/close-icon.png" alt="close-icon">
 
             <form onsubmit="addTask(); return false;" class="add-task-whole-page">
                 <div class="add-task-left-side">

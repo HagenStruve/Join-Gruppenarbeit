@@ -4,13 +4,13 @@ let currentDraggedElement;  // contains the ID of current dragged element
 let NumberOfCurrentTasks = 0; // is needed to differ between the tasks
 let currentClickedTask = 0;
 let tasksOverview = [{
-    "tasksOnBoard" : '',
-    "tasksInTodo" : '',
-    "tasksInProgress" : '', 
-    'tasksInAwaitingFeedback' : '', 
-    'tasksInDone' : '', 
-    'urgentTasks' : '', 
-}]; 
+    "tasksOnBoard": '',
+    "tasksInTodo": '',
+    "tasksInProgress": '',
+    'tasksInAwaitingFeedback': '',
+    'tasksInDone': '',
+    'urgentTasks': '',
+}];
 
 
 /** 
@@ -51,7 +51,7 @@ async function loadTasksFromServer() {
  */
 function pushIDtoTasks() {
     downloadedTasks[existTasks]['id'] = existTasks;
-    existTasks++; 
+    existTasks++;
 }
 
 
@@ -61,7 +61,7 @@ function pushIDtoTasks() {
  * @param NumberOfCurrentTasks -// is needed to differ between the tasks and to assign the colors to the tasks
  */
 function displayAllTasks(search) {
-    tasksOverview[0]['tasksOnBoard'] = downloadedTasks.length; 
+    tasksOverview[0]['tasksOnBoard'] = downloadedTasks.length;
     NumberOfCurrentTasks = 0;
     existTasks = 0;
     displayToDos(search);
@@ -85,7 +85,7 @@ function displayAllTasks(search) {
  */
 function displayToDos(search) {
     let todos = downloadedTasks.filter(t => t['category'] == 'to-do');
-    tasksOverview[0]['tasksInTodo'] = todos.length; 
+    tasksOverview[0]['tasksInTodo'] = todos.length;
     document.getElementById('to-do').innerHTML = '';
 
 
@@ -97,7 +97,7 @@ function displayToDos(search) {
             const element = todos[i];
 
             document.getElementById('to-do').innerHTML += addTaskToKanbanHTML(element);
-            createProgressbar(element); 
+            createProgressbar(element);
             createAssignedContacsOnBoard(element);
             NumberOfCurrentTasks++;
         }
@@ -107,7 +107,7 @@ function displayToDos(search) {
 
 function displayInProgressTasks(search) {
     let inProgress = downloadedTasks.filter(t => t['category'] == 'in-progress');
-    tasksOverview[0]['tasksInProgress'] = inProgress.length; 
+    tasksOverview[0]['tasksInProgress'] = inProgress.length;
     document.getElementById('in-progress').innerHTML = '';
 
     for (let p = 0; p < inProgress.length; p++) {
@@ -117,7 +117,7 @@ function displayInProgressTasks(search) {
 
             pushIDtoTasks();
             document.getElementById('in-progress').innerHTML += addTaskToKanbanHTML(element);
-            createProgressbar(element); 
+            createProgressbar(element);
             createAssignedContacsOnBoard(element);
             NumberOfCurrentTasks++;
         }
@@ -127,7 +127,7 @@ function displayInProgressTasks(search) {
 
 function displayAwaitingFeedbackTasks(search) {
     let awaitingFeedback = downloadedTasks.filter(t => t['category'] == 'awaiting-feedback');
-    tasksOverview[0]['tasksInAwaitingFeedback'] = awaitingFeedback.length; 
+    tasksOverview[0]['tasksInAwaitingFeedback'] = awaitingFeedback.length;
     document.getElementById('awaiting-feedback').innerHTML = '';
 
     for (let a = 0; a < awaitingFeedback.length; a++) {
@@ -137,7 +137,7 @@ function displayAwaitingFeedbackTasks(search) {
 
             pushIDtoTasks();
             document.getElementById('awaiting-feedback').innerHTML += addTaskToKanbanHTML(element);
-            createProgressbar(element); 
+            createProgressbar(element);
             createAssignedContacsOnBoard(element);
             NumberOfCurrentTasks++;
         }
@@ -147,7 +147,7 @@ function displayAwaitingFeedbackTasks(search) {
 
 function displayDoneTasks(search) {
     let done = downloadedTasks.filter(t => t['category'] == 'done');
-    tasksOverview[0]['tasksInDone'] = done.length; 
+    tasksOverview[0]['tasksInDone'] = done.length;
     document.getElementById('done').innerHTML = '';
 
     for (let d = 0; d < done.length; d++) {
@@ -157,7 +157,7 @@ function displayDoneTasks(search) {
 
             pushIDtoTasks();
             document.getElementById('done').innerHTML += addTaskToKanbanHTML(element);
-            createProgressbar(element); 
+            createProgressbar(element);
             createAssignedContacsOnBoard(element);
             NumberOfCurrentTasks++;
         }
@@ -325,7 +325,7 @@ function displayClickedTask(id) {
     document.getElementById('open-clicked-task').style.display = "flex";
     if (!myMediaQuery570.matches) {
         document.getElementById('open-clicked-task').style.display = "none";
-        console.log('openclickedtask wird nicht angezeigt'); 
+        console.log('openclickedtask wird nicht angezeigt');
     }
     document.getElementById('c-t-window').style.display = "flex";
 
@@ -487,11 +487,11 @@ function createSubtasks(id) {
     let arrayOfSubtasks = downloadedTasks[id]['subtasks'];
 
     if (arrayOfSubtasks.length === 0) {
-        document.getElementById('subtask-section').style.display = "none"; 
-        console.log('es wurde der subtasks section gelöscht'); 
+        document.getElementById('subtask-section').style.display = "none";
+        console.log('es wurde der subtasks section gelöscht');
     }
     else {
-        document.getElementById('subtask-section').style.display = "block"; 
+        document.getElementById('subtask-section').style.display = "block";
         document.getElementById('subtasks').innerHTML = '';
         for (let i = 0; i < arrayOfSubtasks.length; i++) {
 
@@ -571,17 +571,17 @@ function editClickedTask() {
             <span> Ok </span> 
             <img src="../img/done-icon.png">
         </button>
-    `; 
+    `;
 }
 
 
 function getNewValueFromEditedTask() {
-    let newTitle = document.getElementById('c-t-title-edit').value; 
-    let newDescription = document.getElementById('c-t-description-edit').value; 
- //   let newDate = document.getElementById('c-t-date-edit').value; 
+    let newTitle = document.getElementById('c-t-title-edit').value;
+    let newDescription = document.getElementById('c-t-description-edit').value;
+    //   let newDate = document.getElementById('c-t-date-edit').value; 
 
-    console.log(newTitle); 
-    console.log(newDescription); 
+    console.log(newTitle);
+    console.log(newDescription);
     //console.log(newDate); 
 }
 
@@ -609,7 +609,7 @@ function updateCheckboxStatus(i) {
     }
 
     saveNewOnServer();
-    displayAllTasks(); 
+    displayAllTasks();
 }
 
 
@@ -672,11 +672,11 @@ function getFirstLetterMain(element) {
 
 function createProgressbar(element) {
     if (element['subtasks'].length == 0) {
-        document.getElementById(`progress-section-${element['id']}`).innerHTML = ''; 
+        document.getElementById(`progress-section-${element['id']}`).innerHTML = '';
     }
-        else {
-            calculateProgressBar(element); 
-        }
+    else {
+        calculateProgressBar(element);
+    }
 
 }
 
@@ -713,9 +713,8 @@ function numberProgressBar(element, numberOfSubtasks, finishedSubstasks) {
  * 
  */
 function hideClickedTask() {
-    document.getElementById('open-clicked-task').style.display = "none";
-    document.getElementById('c-t-window').style.display = "none";
-
+    document.getElementById('open-clicked-task').style = 'display: none;';
+    document.getElementById('c-t-addtask-window').style = 'display: none;';
 }
 
 
@@ -737,29 +736,25 @@ function generateDate() {
 }
 
 
+
 /** to show the add task window on board site
  * 
  */
 function displayAddTaskWindow() {
-    document.getElementById('open-clicked-addtask').style.display = "flex";
-    document.getElementById('c-t-addtask-window').style.display = "flex"
+    let addTaskWindow = document.getElementById('c-t-addtask-window');
+    addTaskWindow.style.animation = 'fadeInAddTask 1s ease-in-out';
+    addTaskWindow.style = 'display: flex;';
+    document.getElementById('open-clicked-task').style = 'display: flex';
     generateDate();
 }
 
-/** to hide the add task window on board site
- * 
- */
-function hideClickedAddTaskWindow() {
-
-    document.getElementById('open-clicked-addtask').style.display = "none";
-    document.getElementById('c-t-addtask-window').style.display = "none"
-}
 
 
 
 
-let myMediaQuery1400 = window.matchMedia('(min-width: 1400px)'); 
-let myMediaQuery570 = window.matchMedia('(min-width:570px)'); 
+
+let myMediaQuery1400 = window.matchMedia('(min-width: 1400px)');
+let myMediaQuery570 = window.matchMedia('(min-width:570px)');
 myMediaQuery1400.addListener(checkResponsive); // addListener prüft bei änderung der Bildschirmgröße ob mediaQuerry noch zutrifft oder nicht
 
 /** starts the needed view related html code for responsive 
@@ -769,16 +764,16 @@ myMediaQuery1400.addListener(checkResponsive); // addListener prüft bei änderu
  *  @param {string} id2 - needed to difference between create responsive and delete ( needed reversed)
  */
 function checkResponsive() {
-if (myMediaQuery1400.matches) { //if higher than 1400px
-    let id = ''; 
-    let id2 = '-responsive'; 
-    startResponsiveBoardView(id, id2); 
-}
+    if (myMediaQuery1400.matches) { //if higher than 1400px
+        let id = '';
+        let id2 = '-responsive';
+        startResponsiveBoardView(id, id2);
+    }
 
     else {  //if not
-        let id = '-responsive'; 
-        let id2 = ''; 
-        startResponsiveBoardView(id, id2); 
+        let id = '-responsive';
+        let id2 = '';
+        startResponsiveBoardView(id, id2);
     }
 
 }
@@ -787,9 +782,9 @@ if (myMediaQuery1400.matches) { //if higher than 1400px
  * 
  */
 function startResponsiveBoardView(id, id2) {
-    deleteDesktopBoardView(id2); 
-    generateResponsiveHTMLCode(id); 
-    displayAllTasks(); 
+    deleteDesktopBoardView(id2);
+    generateResponsiveHTMLCode(id);
+    displayAllTasks();
 }
 
 
@@ -799,17 +794,17 @@ function startResponsiveBoardView(id, id2) {
 function generateResponsiveHTMLCode(id) {
     document.getElementById(`to-do${id}`).innerHTML = `
         <div class="current-status" id="to-do" ondrop="moveTo('to-do')" ondragover="allowDrop(event)">
-        </div>`; 
+        </div>`;
     document.getElementById(`in-progress${id}`).innerHTML = `
         <div class="current-status" id="in-progress" ondrop="moveTo('in-progress')" ondragover="allowDrop(event) ">
-        </div> `; 
+        </div> `;
     document.getElementById(`awaiting-feedback${id}`).innerHTML = `
         <div class="current-status" id="awaiting-feedback" ondrop="moveTo('awaiting-feedback') "ondragover="allowDrop(event)">
-        </div> `; 
+        </div> `;
     document.getElementById(`done${id}`).innerHTML = `
         <div class="current-status" id="done" ondrop="moveTo('done')" ondragover="allowDrop(event)">
         </div> `;
-    searchFieldHTML(id); 
+    searchFieldHTML(id);
 }
 
 
@@ -827,11 +822,11 @@ function searchFieldHTML(id) {
  * 
  */
 function deleteDesktopBoardView(id2) {
-    document.getElementById(`to-do${id2}`).innerHTML = ''; 
-    document.getElementById(`in-progress${id2}`).innerHTML = ''; 
-    document.getElementById(`awaiting-feedback${id2}`).innerHTML = ''; 
-    document.getElementById(`done${id2}`).innerHTML = ''; 
-    document.getElementById(`find-task${id2}`).innerHTML = ''; 
+    document.getElementById(`to-do${id2}`).innerHTML = '';
+    document.getElementById(`in-progress${id2}`).innerHTML = '';
+    document.getElementById(`awaiting-feedback${id2}`).innerHTML = '';
+    document.getElementById(`done${id2}`).innerHTML = '';
+    document.getElementById(`find-task${id2}`).innerHTML = '';
 }
 
 
@@ -842,7 +837,7 @@ function deleteDesktopBoardView(id2) {
  * 
  * 
  */
- function addTaskToKanbanHTML(element) { // element = task[0] or task[1] only filterd in category
+function addTaskToKanbanHTML(element) { // element = task[0] or task[1] only filterd in category
     return `
     <div class="kanban-task-container" draggable="true" ondragstart="startDragging(${element['id']})" onclick="displayClickedTask(id)" id="${element['id']}">
     <div>
@@ -905,7 +900,6 @@ function deleteDesktopBoardView(id2) {
 
 
 
-
 /**
 * by clicking on a button, a list with selections is shown
  * or hidden
@@ -936,7 +930,7 @@ function noSelectedContacts() {
  * 
  * @param {string} ulContact -id of the contact container
  */
- function showSelectionContacts(ulContact) {
+function showSelectionContacts(ulContact) {
     ulContact.classList.remove('d-none');
     document.getElementById("select-div-contact").classList.add('no-border-bottom');
 }
@@ -947,7 +941,7 @@ function noSelectedContacts() {
  * 
  * @param {string} ulContact -id of the contact container
  */
- function hideSelectionContacts(ulContact) {
+function hideSelectionContacts(ulContact) {
     ulContact.classList.add('d-none');
     document.getElementById("select-div-contact").classList.remove('no-border-bottom');
 }
@@ -957,7 +951,7 @@ function noSelectedContacts() {
  * verifies which contact has that box checked
  * @param {string} id - selected contact
  */
- function proofCheck(id) {
+function proofCheck(id) {
     let isChecked = document.getElementById(id);
     let initial = id.replace('checkbox-contact', 'initials');
 
@@ -999,7 +993,7 @@ function hideInitials(initial) {
  * 
  * @param {string} id - selected contact
  */
- function selectContact(id) {
+function selectContact(id) {
     liContact = id.replace('div-', '');
     let ulContact = document.getElementById("ul-contact");
     showSelectionContacts(ulContact);

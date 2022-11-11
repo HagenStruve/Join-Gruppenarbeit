@@ -1,4 +1,4 @@
- // task will be filled with downloaded task and updated with new task, then upload again 
+// task will be filled with downloaded task and updated with new task, then upload again 
 let newTask = []; // array to put new created task in
 let prio = [];
 let subtasks = [];
@@ -196,14 +196,19 @@ function clearContacts() {
     }
 }
 
+
 /**
  * after task was created, a information will be showed and then you will be forwarded to board.html
  */
 function forwardToBoard() {
-    document.getElementById('task-added-board').classList.remove('d-none');
+    let addedTask = document.getElementById('task-added-board');
+    if (addedTask.classList.contains('d-none')) {
+        addedTask.style.animation = 'fadeInAddedTask 0.8s ease-in-out';
+        addedTask.classList.remove('d-none');
+    }
     setTimeout(() => {
         window.location.href = '../html/board.html';
-        document.getElementById('task-added-board').classList.add('d-none');
+        addedTask.classList.add('d-none');
     }, 2000);
 }
 
