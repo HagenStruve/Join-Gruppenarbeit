@@ -1,32 +1,15 @@
 body {
     font-family: 'Inter';
-    font-size: 16px;
+    font-size: calc(10px + (16 - 10) * ((100vw - 320px) / (1600 - 320)));
 }
 
 h1 {
-    /* Summary */
-
-
-    width: 315px;
-    height: 73px;
-    margin-top: 83px;
-    margin-bottom: 87px;
-
-    /* Version 2/t1 */
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
-    font-size: 61px;
+    font-size: calc(20px + (60 - 20) * ((100vw - 320px) / (1600 - 320)));
     line-height: 120%;
-    /* or 73px */
-
-
     color: #000000;
-
-
-    /* Inside auto layout */
-
     flex: none;
     order: 0;
     flex-grow: 0;
@@ -39,7 +22,7 @@ a {
 .header {
     display: flex;
     align-items: center;
-    margin-left: 123px;
+    margin-left: 5%;
 }
 
 .header-subtext {
@@ -50,26 +33,13 @@ a {
     margin-left: 30px;
     display: flex;
     align-items: center;
-
-    /* Everything in a nutshell! */
-
     height: 59px;
-
-    /* Version 2/t5 */
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 27px;
+    font-size: calc(12px + (26 - 12) * ((100vw - 320px) / (1600 - 320)));
     line-height: 120%;
-    /* or 32px */
-
-
     color: #2A3647;
-
-
-    /* Inside auto layout */
-
     flex: none;
     order: 2;
     flex-grow: 0;
@@ -77,17 +47,16 @@ a {
 
 .content-box {
     display: flex;
-    margin-left: 123px;
+    margin-left: 5%;
 }
 
 .content-left {
-    width: 580px;
+    width: 50%;
 }
 
 .task-card-box {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 32px;
     text-align: center;
 }
 
@@ -97,21 +66,11 @@ a {
     justify-content: center;
     align-items: center;
     gap: 13px;
-
-    width: 170px;
-    height: 170px;
-    margin-right: 35px;
-
-    /* white */
-
+    width: 30%;
+    height: 20vh;
     background: #FFFFFF;
-    /* nuevo */
-
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
-
-    /* Inside auto layout */
-
     flex: none;
     order: 0;
     flex-grow: 0;
@@ -131,34 +90,20 @@ a {
 }
 
 .upcomming-card {
-    /* Urgency summary v1 */
-
-
-    /* Auto layout */
-
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 61px;
-
-    height: 150px;
-    margin-top: 35px;
-
-    /* white */
-
+    gap: 5%;
+    height: 20vh;
+    margin-top: 5%;
     background: #FFFFFF;
-    /* nuevo */
-
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
-
-    /* Inside auto layout */
-
     flex: none;
     order: 1;
     flex-grow: 0;
-    margin-bottom: 35px;
+    margin-bottom: 5%;
     transition: all 200ms ease-in-out;
 }
 
@@ -175,30 +120,15 @@ a {
 }
 
 .to-do-card {
-    /* check rectangle button v1 */
-
-
-    /* Auto layout */
-
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 18px;
-
-    width: 272.5px;
-    height: 150px;
-
-    /* white */
-
+    width: 45%;
+    height: 20vh;
     background: #FFFFFF;
-    /* nuevo */
-
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
-
-    /* Inside auto layout */
-
     flex: none;
     order: 1;
     flex-grow: 0;
@@ -218,37 +148,19 @@ a {
 }
 
 .to-do-img-box {
-    /* Ellipse 4 */
-    width: 69px;
-    height: 69px;
     left: 0px;
     top: 0px;
     border-radius: 100px;
-
-    background: #2A3647;
 }
 
 .numbers {
-    /* 6 */
-
-
-    width: 41px;
-    height: 77px;
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
-    font-size: 64px;
+    font-size: calc(16px + (60 - 16) * ((100vw - 320px) / (1600 - 320)));
     line-height: 120%;
-    /* identical to box height, or 77px */
-
     text-align: center;
-
     color: #000000;
-
-
-    /* Inside auto layout */
-
     flex: none;
     order: 0;
     flex-grow: 0;
@@ -263,8 +175,8 @@ a {
     border-left-color: #D1D1D1;
     border-left-style: solid;
     border-left-width: 2px;
-    padding-left: 61px;
-    height: 102.02px;
+    padding-left: 5%;
+    height: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -272,83 +184,144 @@ a {
 }
 
 .fontsize-21 {
-    font-size: 21px;
+    font-size: calc(10px + (21 - 10) * ((100vw - 320px) / (1600 - 320)));
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .content-right {
-    margin-left: 20%;
+    margin-left: 10%;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 .good-morning {
-    /* Good morning, */
-
-
     width: auto;
     height: 56px;
-
-    /* Version 2/t2 */
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
-    font-size: 47px;
+    font-size: calc(16px + (47 - 16) * ((100vw - 320px) / (1600 - 320)));
     line-height: 120%;
-    /* or 56px */
-
-
     color: #2A3647;
-
-
-    /* Inside auto layout */
-
     flex: none;
     order: 0;
     flex-grow: 0;
 }
 
 .name {
-    /* Sofia Müller */
-
-
-    width: 385px;
     height: 77px;
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
-    font-size: 64px;
+    font-size: calc(16px + (64 - 16) * ((100vw - 320px) / (1600 - 320)));
     line-height: 120%;
-    /* identical to box height, or 77px */
-
-
-    /* Ligth blue */
-
     color: #29ABE2;
-
-
-    /* Inside auto layout */
-
     flex: none;
     order: 1;
     flex-grow: 0;
 }
 
-
-@media(max-width: 990px) {
+.urgent-arrow-img {
+    height: 100%;
+    width: 5vw;
 }
+
+.kanban-text {
+    display: none;
+}
+
+.border-blue {
+    display: none;
+}
+
+
+@media(max-width: 990px) {}
 
 @media(max-width: 770px) {
 
+    .task-card {
+        height: 14vh;
+    }
+
+    .kanban-text {
+        display: flex;
+        font-size: calc(10px + (21 - 10) * ((100vw - 320px) / (1600 - 320)));
+    }
+
+    .border-blue {
+        display: flex;
+        border-bottom: #29ABE2 3px solid;
+        width: 10%;
+        margin-top: 4%;
+        margin-left: 5%;
+    }
+
+    .header {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        margin-left: 5%;
+    }
+
+    .header-subtext {
+        border-left: none;
+        padding-left: 0;
+        margin-left: 0;
+        height: 0;
+    }
+
+    .upcomming-card {
+        height: 14vh;
+        margin-top: 3%;
+        margin-bottom: 3%;
+    }
+
+    .to-do-card {
+        height: 14vh;
+    }
+
+    .content-box {
+        margin-top: 5%;
+        margin-right: 5%;
+        justify-content: center;
+    }
+
+    .content-left {
+        width: 100%;
+    }
+
+    .content-right {
+        margin-left: 0;
+        left: 0;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
+        background-color: #F5F5F5;
+
+        animation: seconds 1.0s forwards;
+        animation-iteration-count: 1;
+        animation-delay: 3s;
+    }
+
+    @keyframes seconds {
+        0% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+          left: -9999px; 
+        }
+      }
 }
 
 
-@media(max-width: 570px) {
+@media(max-width: 570px) {}
 
-}
-
-@media(max-width: 380px) {
-
-}
+@media(max-width: 380px) {}
