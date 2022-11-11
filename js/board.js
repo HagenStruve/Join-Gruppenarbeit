@@ -714,7 +714,10 @@ function numberProgressBar(element, numberOfSubtasks, finishedSubstasks) {
  */
 function hideClickedTask() {
     document.getElementById('open-clicked-task').style = 'display: none;';
-    document.getElementById('c-t-addtask-window').style = 'display: none;';
+    document.getElementById('c-t-addtask-window').style.animation = 'fadeOutTask 1s ease-in-out';
+    setTimeout(() => {
+        document.getElementById('c-t-addtask-window').style = 'display: none;';
+    }, 800);
 }
 
 
@@ -741,10 +744,8 @@ function generateDate() {
  * 
  */
 function displayAddTaskWindow() {
-    let addTaskWindow = document.getElementById('c-t-addtask-window');
-    addTaskWindow.style.animation = 'fadeInAddTask 1s ease-in-out';
-    addTaskWindow.style = 'display: flex;';
-    document.getElementById('open-clicked-task').style = 'display: flex';
+    document.getElementById('c-t-addtask-window').style.display = "flex";
+    document.getElementById('open-clicked-task').style.display = "flex";
     generateDate();
 }
 

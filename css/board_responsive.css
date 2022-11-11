@@ -52,6 +52,10 @@
         top: 75px;
     }
 
+    .clicked-task-bg {
+        display: none !important;
+    }
+
     .clicked-addtask-bg {
         display: none;
         position: unset;

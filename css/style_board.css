@@ -496,19 +496,36 @@ a::-webkit-scrollbar {
     background-color: white;
     z-index: 1000;
     display: none;
+    animation: fadeInAddTask 1s ease-in-out;
 }
 
 .d-none {
     display: none !important;
 }
 
+
 @keyframes fadeInAddTask {
     from {
         transform: translateX(940px);
+        opacity: 0;
     }
 
     to {
         transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+
+@keyframes fadeOutTask {
+    from {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(940px);
+        opacity: 0;
     }
 }
 
