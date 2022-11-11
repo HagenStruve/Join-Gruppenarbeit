@@ -494,9 +494,20 @@ a::-webkit-scrollbar {
     border-radius: 20px;
     background-color: white;
     z-index: 1000;
-
     display: none;
+    transition: 1s fadeInAddTask ease-in-out;
 }
+
+@keyframes fadeInAddTask {
+    from {
+        transform: translate(-1000px, 0, 0);
+    }
+
+    to {
+        transform: translate(0px, 0, 0);
+    }
+}
+
 
 .add-task-whole-page {
     display: flex;

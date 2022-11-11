@@ -440,7 +440,7 @@ input::-webkit-calendar-picker-indicator {
 
 @keyframes fadeIn {
     from {
-        bottom: -20%;
+        bottom: -10%;
     }
 
     to {
