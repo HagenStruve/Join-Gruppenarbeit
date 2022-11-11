@@ -36,6 +36,14 @@
         padding: 10px 0px;
     }
 
+    .subtask-div {
+        max-width: 360px;
+    }
+
+    .added-subtasks {
+        max-width: 360px;
+    }
+
     .subtask-input-div {
         width: 320px;
     }

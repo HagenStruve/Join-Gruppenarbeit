@@ -2,4 +2,38 @@
     .clicked-addtask-window {
         justify-content: center;
     }
+
+    .margin-top-115-responsive-34 {
+        margin-top: 34px !important;
+    }
+
+    .clear-div {
+        display: flex !important;
+    }
+
+    .create-div {
+        position: relative !important;
+        top: unset !important;
+        right: unset !important;
+        z-index: 0 !important;
+        display: flex !important;
+        justify-content: flex-end !important;
+    }
+}
+
+
+@media(max-width: 990px) {
+    .clicked-addtask-window {
+        height: 100%;
+        width: 100%;
+        top: 0%;
+        bottom: 0%;
+        left: unset;
+        right: unset;
+    }
+
+
+    .create-button {
+        height: unset !important;
+    }
 }
