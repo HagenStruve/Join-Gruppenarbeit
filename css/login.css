@@ -249,7 +249,7 @@ form {
     margin-top: 6px;
 }
 
-.login-signup-buttons:hover {
+.login-signup-buttons:hover, .send-mail-btn:hover {
     background-color: #29ABE2;
     border: none;
     box-shadow: 2px 4px 4px 0px rgb(0 0 0 / 20%);
@@ -350,4 +350,5 @@ form {
 .remember-forgot-password-container a {
     color: #29ABE2;
     cursor: pointer;
+    text-decoration: none;
 }
