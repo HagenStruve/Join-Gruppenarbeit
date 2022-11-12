@@ -79,7 +79,6 @@ function proofLogin() {
 
     else {
         document.getElementById('login-password').classList.add('no-margin-bottom');
-        document.getElementById('login-buttons').classList.add('no-margin-top');
         document.getElementById('wrong-login-dates').classList.remove('d-none');
     }
 }
@@ -96,7 +95,6 @@ function proofInputLogin() {
 
     if (loginEmail.value.length < 1 || loginPassword.value.length < 1) {
         document.getElementById('login-password').classList.remove('no-margin-bottom');
-        document.getElementById('login-buttons').classList.remove('no-margin-top');
         document.getElementById('wrong-login-dates').classList.add('d-none');
     }
 }
@@ -131,7 +129,7 @@ function proofInputSignUp() {
  */
 function showEmailInUseWarning() {
     document.getElementById('password').classList.add('no-margin-bottom');
-    document.getElementById('no-submit-button').classList.add('no-margin-top');
+    // document.getElementById('no-submit-button').classList.add('no-margin-top');
     document.getElementById('email-in-use').classList.remove('d-none');
     document.getElementById('submit-button').classList.add('d-none');
     document.getElementById('no-submit-button').classList.remove('d-none');
@@ -144,7 +142,7 @@ function showEmailInUseWarning() {
  */
 function removeEmailInUseWarning() {
     document.getElementById('password').classList.remove('no-margin-bottom');
-    document.getElementById('no-submit-button').classList.remove('no-margin-top');
+    // document.getElementById('no-submit-button').classList.remove('no-margin-top');
     document.getElementById('email-in-use').classList.add('d-none');
 }
 
