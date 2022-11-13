@@ -3,6 +3,7 @@ let existTasks = 0; // id assigner for downloaded Tasks.
 let currentDraggedElement;  // contains the ID of current dragged element
 let NumberOfCurrentTasks = 0; // is needed to differ between the tasks
 let currentClickedTask = 0;
+let editedNames = []; // needed for editing the contacts in clickedTask view  
 let tasksOverview = [{
     "tasksOnBoard": '',
     "tasksInTodo": '',
@@ -220,6 +221,7 @@ function displayImportanceStatusCT() {
     let importanceId = document.getElementById(`importance-id-c-t-${currentClickedTask}`); 
     let white = "_white"; 
     displayImportanceStatus(element, importanceId,white); 
+    SetimportanceColorCT(element); 
 }
 
 
@@ -245,16 +247,34 @@ function displayImportanceStatus(element, importanceId,white) {
     
     if (element['prio'] == 'Urgent') {
         importanceId.src = `../img/arrow_urgent${white}.svg`;
-        console.log('wurde auf Urgent gesetzt'); 
     }
     if (element['prio'] == 'Medium') {
         importanceId.src = `../img/medium${white}.svg`;      
-        console.log('wurde auf medium gesetzt');   
     }
     if (element['prio'] == 'Low') {
         importanceId.src = `../img/arrow_low${white}.svg`;
-        console.log('wurde auf low gesetzt'); 
     }
+}
+
+
+/** changes the color to specific importance on clickedTask view
+ * 
+ * @param {array} element -  contains id from currently clicked task
+ */
+function SetimportanceColorCT(element) {
+    let priorityBox = document.getElementById('priority-box-c-t'); 
+        if (element['prio'] == 'Urgent') {
+            priorityBox.style.background = "#FF3D00";
+            console.log('wurde auf rot gesetzt'); 
+        }
+        if (element['prio'] == 'Medium') {
+            priorityBox.style.background = "#FFA800";
+            console.log('wurde auf mittel gesetzt');   
+        }
+        if (element['prio'] == 'Low') {
+            priorityBox.style.background = "#7AE229";
+            console.log('wurde auf grün gesetzt'); 
+        }
 }
 
 
@@ -447,7 +467,7 @@ function displayClickedTaskHTML(id, actualSector) {
                 Priority:
             </b>
         </span>
-        <span class="c-t-space priority-box"> 
+        <span class="c-t-space priority-box" id="priority-box-c-t"> 
             ${downloadedTasks[id]['prio']}
             <img src="../img/arrow_urgent_white.svg" class="c-t-priority-icon" id="importance-id-c-t-${currentClickedTask}"> 
         </span> 
@@ -563,19 +583,19 @@ function createSubtasks(id) {
 function editClickedTask() {
 
     document.getElementById('c-t-window').innerHTML = /*html*/`
-
+    <form onsubmit="getNewValueFromEditedTask(); return false;">
         <h4> Title </h4> 
-        <input placeholder="Enter a title" id="c-t-title-edit"> 
+        <input placeholder="Enter a title" required id="c-t-title-edit"> 
         <h4> Description</h4> 
-        <textarea type="text" placeholder="Enter a Description" id="c-t-description-edit"> 
+        <textarea type="text" required placeholder="Enter a Description" id="c-t-description-edit"> 
         </textarea> 
         <h4> Due date </h4> 
-        <input type="date"> 
+        <input type="date" id="c-t-date-edit" > 
         <h4> Prio </h4> 
         <div class="c-t-prio-divs-head"> 
-            <div class="c-t-prio-divs">Urgent <img src="../img/arrow_urgent.svg"> </div>  
-            <div class="c-t-prio-divs">Medium <img src="../img/medium.svg"> </div>  
-            <div class="c-t-prio-divs">Low    <img src="../img/arrow_low.svg"> </div>  
+            <div class="c-t-prio-divs" onclick="markedPrioCT('Urgent')" id="prio-urgent-c-t-edit">Urgent <img src="../img/arrow_urgent.svg"> </div>  
+            <div class="c-t-prio-divs" onclick="markedPrioCT('Medium')" id="prio-medium-c-t-edit">Medium <img src="../img/medium.svg" > </div>  
+            <div class="c-t-prio-divs" onclick="markedPrioCT('Low')" id="prio-low-c-t-edit">Low    <img src="../img/arrow_low.svg" > </div>  
         </div>
         <h4> Assigned to </h4> 
 
@@ -587,15 +607,15 @@ function editClickedTask() {
                 <ul id="ul-contact" class="d-none">
                     <div onclick="selectContact(id)" id="div-contact-1" class="div-li-contact">
                         <li id="contact-1">Hagen Struve</li>
-                        <input onclick="proofCheck(id)" class="input-checkbox" type="checkbox" id="checkbox-contact-1">
+                        <input onclick="proofCheck(id), editContacts('Hagen Struve')" class="input-checkbox" type="checkbox" id="checkbox-contact-1">
                     </div>
                     <div onclick="selectContact(id)" id="div-contact-2" class="div-li-contact">
                         <li id="contact-2">Sinan Fischer</li>
-                        <input onclick="proofCheck(id)" class="input-checkbox" type="checkbox" id="checkbox-contact-2">
+                        <input onclick="proofCheck(id), editContacts('Sinan Fischer')" class="input-checkbox" type="checkbox" id="checkbox-contact-2">
                     </div>
                     <div onclick="selectContact(id)" id="div-contact-3" class="div-li-contact">
                         <li id="contact-3">Matthias Mulzet</li>
-                        <input onclick="proofCheck(id)" class="input-checkbox" type="checkbox" id="checkbox-contact-3">
+                        <input onclick="proofCheck(id), editContacts('Matthias Mulzet')" class="input-checkbox" type="checkbox" id="checkbox-contact-3">
                     </div>
                 </ul>
 
@@ -612,23 +632,92 @@ function editClickedTask() {
                     </div>
                 </div>
 
-        <button class="c-t-ok-edit-button" onclick="getNewValueFromEditedTask()">
+        <button class="c-t-ok-edit-button" >
             <span> Ok </span> 
             <img src="../img/done-icon.png">
         </button>
+
+    <form> 
     `;
 }
 
 
 function getNewValueFromEditedTask() {
+
     let newTitle = document.getElementById('c-t-title-edit').value;
     let newDescription = document.getElementById('c-t-description-edit').value;
+    let newDate = document.getElementById('c-t-date-edit').value;
     //   let newDate = document.getElementById('c-t-date-edit').value; 
 
     console.log(newTitle);
     console.log(newDescription);
+    console.log(newDate); 
+
+    downloadedTasks[currentClickedTask]['title'] = newTitle; 
+    downloadedTasks[currentClickedTask]['description'] = newDescription; 
+    downloadedTasks[currentClickedTask]['dueDate'] = newDate; 
+    downloadedTasks[currentClickedTask]['assingedTo'] = editedNames; 
+    console.log('bearbeitete namen sind: werden neu hinzugefügt als array: ', editedNames); 
+    editedNames = []; // clears array for new edit 
+    let id = currentClickedTask; 
+    displayClickedTask(id); 
+    displayAllTasks(); 
     //console.log(newDate); 
 }
+
+
+/** function changes the prio in edit view from clicked task
+ * 
+ * @param {string} prio - contains urgent/medium or low, selected from edit menu clicked task
+ */
+ function markedPrioCT(prio) {
+    let urgentID = document.getElementById('prio-urgent-c-t-edit'); 
+    let mediumID = document.getElementById('prio-medium-c-t-edit')
+    let lowID = document.getElementById('prio-low-c-t-edit'); 
+    if (prio == 'Urgent') {
+        urgentID.style.background = "red"; 
+        mediumID.style.background = "white"; 
+        lowID.style.background = "white"; 
+        downloadedTasks[currentClickedTask]['prio'] = prio; 
+    }
+    if (prio == 'Medium') {
+        mediumID.style.background = "yellow"; 
+        urgentID.style.background = "white"; 
+        lowID.style.background = "white"; 
+        downloadedTasks[currentClickedTask]['prio'] = prio; 
+    }
+    if (prio == 'Low') {
+        lowID.style.background = "green"; 
+        urgentID.style.background = "white"; 
+        mediumID.style.background = "white"; 
+        downloadedTasks[currentClickedTask]['prio'] = prio; 
+    }
+        else {
+            console.log('esel');
+        }
+}
+
+
+/**
+ * activates a function with the selected id
+ * 
+ * @param {string} id -Variable for the respective button
+ */
+function changeBg(id) {
+    let urgent = document.getElementById('prio-urgent');
+    let medium = document.getElementById('prio-medium');
+    let low = document.getElementById('prio-low');
+    if (id == 'prio-urgent') {
+        changeBgUrgent(urgent, medium, low);
+    }
+    if (id == 'prio-medium') {
+        changeBgMedium(urgent, medium, low);
+    }
+    if (id == 'prio-low') {
+        changeBgLow(urgent, medium, low);
+    }
+}
+
 
 
 /** saves the new status of subtask (checkbox) when clicked
@@ -923,8 +1012,9 @@ function addTaskToKanbanHTML(element) { // element = task[0] or task[1] only fil
 
 
 
-
-
+function editContacts(name) {
+    editedNames.push(name); 
+}
 
 
 

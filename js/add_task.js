@@ -1,4 +1,5 @@
 // task will be filled with downloaded task and updated with new task, then upload again 
+let downloadedTasks = [];  
 let newTask = []; // array to put new created task in
 let prio = [];
 let subtasks = [];
@@ -166,7 +167,7 @@ async function addTask() {
 
     newTask = {
         "category": 'to-do',
-        "id": 0,
+        "id": '',
         "title": title.value,
         "description": descripton.value,
         "sector": sector,

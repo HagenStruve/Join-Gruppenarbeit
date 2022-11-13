@@ -269,6 +269,7 @@
     padding: 11px 21px;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
+    width: 100%;
 }
 
 
@@ -322,6 +323,11 @@
 
 .c-t-ok-edit-button img {
     width: 40px;
+}
+
+
+.c-t-ok-edit-button:hover {
+    cursor: pointer;
 }
 
 /* Edit window end */
@@ -448,6 +454,10 @@ a::-webkit-scrollbar {
     position: fixed;
     bottom: 5%;
     right: 5%;
+}
+
+.c-t-edit-button:hover {
+    cursor: pointer;
 }
 
 
@@ -619,8 +629,20 @@ a::-webkit-scrollbar {
         top: 59%;
         background-color: #F6F7F8;
         gap: 10px;
-
     }
+
+    .clicked-task-window input {
+        width:90%;
+    }
+
+    .clicked-task-window textarea {
+        width:90%;
+    }
+
+    .c-t-prio-divs-head {
+        width: 90%;
+    }
+
 
     .clicked-task-bg {
         position: fixed;
