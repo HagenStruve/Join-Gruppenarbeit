@@ -43,8 +43,15 @@ async function loadTasksFromServer() {
 
     console.log('loaded 123 tasks');
     console.log(downloadedTasks);
-
 }
+
+
+async function saveNewOnServer() {
+    setURL("https://gruppe-313.developerakademie.net/Join-Gruppenarbeit/smallest_backend_ever-master");
+    await backend.setItem('downloadedTasks', JSON.stringify(downloadedTasks));
+    await backend.setItem('tasksOverview', JSON.stringify(tasksOverview));
+}
+
 
 /** updates the id from every task
  * 
@@ -88,18 +95,14 @@ function displayToDos(search) {
     tasksOverview[0]['tasksInTodo'] = todos.length;
     document.getElementById('to-do').innerHTML = '';
 
-
     for (let i = 0; i < todos.length; i++) {
         let title = todos[i]['title'].toLowerCase();
         if (!search || title.includes(search)) {
             // wenn es search nicht gibt dann führe aus, und wenn title etwas von der suche beinhaltet dann führe ebenfalls aus, wenn nicht dann zeigt er auch nichts an 
-            pushIDtoTasks();
             const element = todos[i];
 
-            document.getElementById('to-do').innerHTML += addTaskToKanbanHTML(element);
-            createProgressbar(element);
-            createAssignedContacsOnBoard(element);
-            NumberOfCurrentTasks++;
+            let category = 'to-do'; 
+            createTask(element, category); 
         }
     }
 }
@@ -115,11 +118,8 @@ function displayInProgressTasks(search) {
         if (!search || title.includes(search)) {
             const element = inProgress[p];
 
-            pushIDtoTasks();
-            document.getElementById('in-progress').innerHTML += addTaskToKanbanHTML(element);
-            createProgressbar(element);
-            createAssignedContacsOnBoard(element);
-            NumberOfCurrentTasks++;
+            let category = 'in-progress'; 
+            createTask(element, category); 
         }
     }
 }
@@ -135,11 +135,8 @@ function displayAwaitingFeedbackTasks(search) {
         if (!search || title.includes(search)) {
             const element = awaitingFeedback[a];
 
-            pushIDtoTasks();
-            document.getElementById('awaiting-feedback').innerHTML += addTaskToKanbanHTML(element);
-            createProgressbar(element);
-            createAssignedContacsOnBoard(element);
-            NumberOfCurrentTasks++;
+            let category = 'awaiting-feedback'; 
+            createTask(element, category); 
         }
     }
 }
@@ -154,15 +151,22 @@ function displayDoneTasks(search) {
         let title = done[d]['title'].toLowerCase();
         if (!search || title.includes(search)) {
             const element = done[d];
-
-            pushIDtoTasks();
-            document.getElementById('done').innerHTML += addTaskToKanbanHTML(element);
-            createProgressbar(element);
-            createAssignedContacsOnBoard(element);
-            NumberOfCurrentTasks++;
+            let category = 'done'; 
+            createTask(element, category); 
         }
     }
 }
+
+
+function createTask(element, category) {
+    pushIDtoTasks();
+    document.getElementById(category).innerHTML += addTaskToKanbanHTML(element);
+    createProgressbar(element);
+    createAssignedContacsOnBoard(element);
+    displayImportanceStatusBoard(element); 
+    NumberOfCurrentTasks++;
+}
+
 
 // function to allow dragging 
 function allowDrop(ev) { // from W3School predefined // 
@@ -203,17 +207,56 @@ function moveTo(category) {
 }
 
 
-async function saveNewOnServer() {
-    setURL("https://gruppe-313.developerakademie.net/Join-Gruppenarbeit/smallest_backend_ever-master");
-    await backend.setItem('downloadedTasks', JSON.stringify(downloadedTasks));
-    await backend.setItem('tasksOverview', JSON.stringify(tasksOverview));
-}
-
-
 // specify current dragged element
 function startDragging(id) {
     currentDraggedElement = id;
 }
+
+
+/** displays the associated importance on Clicked Task view
+ */
+function displayImportanceStatusCT() {
+    element = downloadedTasks[currentClickedTask]; 
+    let importanceId = document.getElementById(`importance-id-c-t-${currentClickedTask}`); 
+    let white = "_white"; 
+    displayImportanceStatus(element, importanceId,white); 
+}
+
+
+/** displays the associated importance on board view
+ * 
+ * @param {array} element -  contains id from currently processed task
+ */
+function displayImportanceStatusBoard(element) {
+    let importanceId = document.getElementById(`importance-id-${element['id']}`);
+    let white = ''; 
+    displayImportanceStatus(element, importanceId,white); 
+}
+
+
+/**  Displays the importance status from task on board 
+ * 
+ * @param {array} element - contains id from currently processed task
+ * @param {string} importanceId - contains id to get to wished idElement
+ * @param {string} white - on board view symbols are not white, on clickedTask view they are 
+ */
+function displayImportanceStatus(element, importanceId,white) {
+
+    
+    if (element['prio'] == 'Urgent') {
+        importanceId.src = `../img/arrow_urgent${white}.svg`;
+        console.log('wurde auf Urgent gesetzt'); 
+    }
+    if (element['prio'] == 'Medium') {
+        importanceId.src = `../img/medium${white}.svg`;      
+        console.log('wurde auf medium gesetzt');   
+    }
+    if (element['prio'] == 'Low') {
+        importanceId.src = `../img/arrow_low${white}.svg`;
+        console.log('wurde auf low gesetzt'); 
+    }
+}
+
 
 
 /** Function assigns the corresponding colors to the appropriate categories
@@ -336,6 +379,7 @@ function displayClickedTask(id) {
     displayClickedTaskHTML(id, actualSector);
     createSubtasks(id);
     createAssignedContacs(id);
+    displayImportanceStatusCT(); 
 
     let classID = `c-t-category`
     let categoryID = `c-t-category-html`;
@@ -404,7 +448,8 @@ function displayClickedTaskHTML(id, actualSector) {
             </b>
         </span>
         <span class="c-t-space priority-box"> 
-            ${downloadedTasks[id]['prio']} <img src="../img/arrow_urgent_white.svg" class="c-t-priority-icon"> 
+            ${downloadedTasks[id]['prio']}
+            <img src="../img/arrow_urgent_white.svg" class="c-t-priority-icon" id="importance-id-c-t-${currentClickedTask}"> 
         </span> 
     </div>
 
@@ -584,13 +629,6 @@ function getNewValueFromEditedTask() {
     console.log(newDescription);
     //console.log(newDate); 
 }
-
-
-
-
-
-
-
 
 
 /** saves the new status of subtask (checkbox) when clicked
@@ -876,7 +914,7 @@ function addTaskToKanbanHTML(element) { // element = task[0] or task[1] only fil
 
         </div>
 
-        <img src="../img/arrow_low.svg">
+        <img src="" id="importance-id-${element['id']}">
     </div>
 </div>
     `;
