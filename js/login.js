@@ -129,7 +129,6 @@ function proofInputSignUp() {
  */
 function showEmailInUseWarning() {
     document.getElementById('password').classList.add('no-margin-bottom');
-    // document.getElementById('no-submit-button').classList.add('no-margin-top');
     document.getElementById('email-in-use').classList.remove('d-none');
     document.getElementById('submit-button').classList.add('d-none');
     document.getElementById('no-submit-button').classList.remove('d-none');
@@ -137,12 +136,11 @@ function showEmailInUseWarning() {
 
 
 /**
- * if the warning div, that the mail in the registration email input field is already in use, will be showed
+ * if the warning div, that the mail in the registration email input field is already in use, will be showed,
  * this array removes the warning div if the user change the email in the input field
  */
 function removeEmailInUseWarning() {
     document.getElementById('password').classList.remove('no-margin-bottom');
-    // document.getElementById('no-submit-button').classList.remove('no-margin-top');
     document.getElementById('email-in-use').classList.add('d-none');
 }
 
@@ -154,5 +152,61 @@ function removeEmailInUseWarning() {
 function showSubmitButton() {
     document.getElementById('submit-button').classList.remove('d-none');
     document.getElementById('no-submit-button').classList.add('d-none');
+}
+
+
+function showPasswordNotEqualWarning() {
+    document.getElementById('reset-password-confirm').classList.add('no-margin-bottom');
+    document.getElementById('pw-not-equal-text').classList.remove('d-none');
+}
+
+
+function resetPassword() {
+    let resetPassword = document.getElementById('reset-password');
+    let confirmResetPassword = document.getElementById('reset-password-confirm');
+
+    if (resetPassword.value === confirmResetPassword.value) {
+        console.log('Passwort zurückgesetzt')
+    }
+
+    else {
+        showPasswordNotEqualWarning();
+    }
+}
+
+
+function removePasswordsNotEqualWarning() {
+    let resetPassword = document.getElementById('reset-password');
+    let confirmResetPassword = document.getElementById('reset-password-confirm');
+
+    if (resetPassword.value.length < 1 || confirmResetPassword.value.length < 1) {
+        document.getElementById('reset-password-confirm').classList.remove('no-margin-bottom');
+        document.getElementById('pw-not-equal-text').classList.add('d-none');
+    }
+}
+
+
+function removeEmailNotRegisteredWarning() {
+    let resetPasswordEmail = document.getElementById('email-to-reset-password');
+
+    if (resetPasswordEmail.value.length < 1) {
+        document.getElementById('email-to-reset-password').classList.remove('no-margin-bottom');
+        document.getElementById('email-not-registered-warning').classList.add('d-none');
+    }
+}
+
+
+function sendMailForgotPassword() {
+    let resetPasswordEmail = document.getElementById('email-to-reset-password');
+    let user = users.find(u => u.email == resetPasswordEmail.value);
+
+    if (!user) {
+        document.getElementById('email-to-reset-password').classList.add('no-margin-bottom');
+        document.getElementById('email-not-registered-warning').classList.remove('d-none');
+    }
+
+    else {
+        console.log('E-Mail wurde versendet')
+    }
 }
 
