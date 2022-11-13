@@ -707,7 +707,7 @@ function numberProgressBar(element, numberOfSubtasks, finishedSubstasks) {
     `;
 }
 
-/** function need to get back from clicked Task
+/** function needed to get back from clicked Task
  * 
  */
 function hideClickedTask() {
@@ -903,9 +903,10 @@ function addTaskToKanbanHTML(element) { // element = task[0] or task[1] only fil
 
 
 
-
-
-
+/* ||| Functions below are copied from addTask.js // JS wollte sich nicht mit der anderen Datei verbinden
+    \/
+    ||
+    \/
 
 
 /**
