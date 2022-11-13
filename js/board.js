@@ -707,12 +707,19 @@ function numberProgressBar(element, numberOfSubtasks, finishedSubstasks) {
     `;
 }
 
-
-
-/** to hide the clickedTask
+/** function need to get back from clicked Task
  * 
  */
 function hideClickedTask() {
+    document.getElementById('open-clicked-task').style.display = "none";
+    document.getElementById('c-t-window').style.display = "none";
+}
+
+
+/** to hide the ADDTask board menu!
+ * 
+ */
+function hideClickedAddTask() {
     document.getElementById('open-clicked-task').style = 'display: none;';
     document.getElementById('c-t-addtask-window').style.animation = 'fadeOutTask 1s ease-in-out';
     setTimeout(() => {

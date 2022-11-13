@@ -497,6 +497,7 @@ a::-webkit-scrollbar {
     z-index: 1000;
     display: none;
     animation: fadeInAddTask 1s ease-in-out;
+    
 }
 
 .d-none {

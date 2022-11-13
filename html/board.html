@@ -116,18 +116,18 @@
         </div>
 
         <!-- clicked Task Div -->
-        <div class="clicked-task-bg" id="open-clicked-task" onclick="hideClickedTask()">
+        <div class="clicked-task-bg" id="open-clicked-task" onclick="hideClickedTask(), hideClickedAddTask()">
         </div>
         <div class="clicked-task-window" id="c-t-window">
         </div>
 
 
         <!-- add task window -->
-        <div class="clicked-addtask-bg" id="open-clicked-addtask" onclick="hideClickedTask()">
+        <div class="clicked-addtask-bg" id="open-clicked-addtask" onclick="hideClickedAddTask()">
         </div>
         <div class="clicked-addtask-window" id="c-t-addtask-window">
 
-            <img onclick="hideClickedTask()" class="close-add-task" src="../img/close-icon.png" alt="close-icon">
+            <img onclick="hideClickedAddTask()" class="close-add-task" src="../img/close-icon.png" alt="close-icon">
 
             <form onsubmit="addTask(); return false;" class="add-task-whole-page">
                 <div class="add-task-left-side">
