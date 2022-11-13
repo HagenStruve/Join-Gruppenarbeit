@@ -33,6 +33,7 @@ async function initBoard() {
 
 async function renderBoardSite() {
     await loadTasksFromServer();
+    displayAllTasks(); 
     displayAllTasks();
 }
 
