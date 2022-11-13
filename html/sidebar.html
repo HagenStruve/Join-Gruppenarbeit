@@ -102,11 +102,11 @@
         height: 53px;
         position: fixed;
         top: 90px;
-        right: 0;
+        right: 0px;
+        transform: translateX(-70px);
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-right: 65px;
         background-color: #2A3647;
         box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
         border-radius: 20px 0px 20px 20px;
@@ -116,24 +116,24 @@
     @keyframes fadeIn {
         from {
             opacity: 0;
-            margin-right: 0px;
+            transform: translateX(200px);
         }
 
         to {
             opacity: 1;
-            margin-right: 65px;
+            transform: translateX(-70px);
         }
     }
 
     @keyframes fadeOut {
         from {
             opacity: 1;
-            margin-right: 65px;
+            transform: translateX(-70px);
         }
 
         to {
             opacity: 0;
-            margin-right: 0px;
+            transform: translateX(200px);
         }
     }
 
@@ -281,9 +281,34 @@
 
         .log-out {
             top: 80px;
+            transform: translate(-50px);
+        }
+
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(200px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(-50px);
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 0;
+                transform: translateX(200px);
+            }
         }
     }
-
 
     @media(max-width: 770px) {
         body {
@@ -361,34 +386,6 @@
         .privacy-log-out {
             display: flex;
         }
-
-        .log-out {
-            margin-right: 50px;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                margin-right: 0px;
-            }
-
-            to {
-                opacity: 1;
-                margin-right: 50px;
-            }
-        }
-
-        @keyframes fadeOut {
-            from {
-                opacity: 1;
-                margin-right: 50px;
-            }
-
-            to {
-                opacity: 0;
-                margin-right: 0px;
-            }
-        }
     }
 
 
@@ -399,33 +396,32 @@
         }
 
         .log-out {
-            margin-right: 25px;
+            transform: translateX(-25px);
         }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                margin-right: 0px;
+                transform: translateX(200px);
             }
 
             to {
                 opacity: 1;
-                margin-right: 25px;
+                transform: translateX(-25px);
             }
         }
 
         @keyframes fadeOut {
             from {
                 opacity: 1;
-                margin-right: 25px;
+                transform: translateX(-25px);
             }
 
             to {
                 opacity: 0;
-                margin-right: 0px;
+                transform: translateX(200px);
             }
         }
-
     }
 
 
