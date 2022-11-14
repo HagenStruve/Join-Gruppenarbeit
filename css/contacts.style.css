@@ -255,15 +255,19 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    animation: edit-contact 3s ease;
+    animation: edit-contact 1s ease;
     z-index: 103;
-    background-color: rgb(190, 190, 190, 0.5);
 }
 
 .background-grey {
-    background-size: 100%;
+    width: 100%;
+    height: 100%;
     background-color: rgb(139, 139, 139, 0.4);
-    z-index: 103;
+    z-index: 102;
+    position: fixed;
+    left: 0;
+    top: 0;
+    animation: background-grey 1s ease;
 }
 
 .cancel-button-responsiv {
@@ -273,12 +277,24 @@ body {
 @keyframes edit-contact {
     from {
         left: 100%;
-        transform: left 3s ease;
+        transform: left 1s ease;
     }
 
     to {
         left: 50%;
-        transform: left 3s ease;
+        transform: left 1s ease;
+    }
+}
+
+@keyframes background-grey {
+    from {
+        opacity: 0;
+        transform: background-color 1s ease;
+    }
+
+    to {
+        opacity: 1;
+        transform: background-color 1s ease;
     }
 }
 
@@ -445,7 +461,7 @@ body {
     color: #2A3647;
     border-radius: 10px;
     border-color: #2A3647;
-    border: 1px solid;
+    border: 2px solid;
     background-color: white;
     margin-right: 40px;
     cursor: pointer;

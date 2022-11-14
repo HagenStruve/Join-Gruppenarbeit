@@ -50,6 +50,8 @@ async function saveOnServer() {
 function newConatct() {
     document.getElementById('add-contact').classList.remove('d-none');
     document.getElementById('add-contact').classList.add('edit-contact');
+    document.getElementById('background-grey').classList.remove('d-none');
+    document.getElementById('background-grey').classList.add('background-grey');
 }
 
 
@@ -60,6 +62,8 @@ function newConatct() {
 function cancel() {
     document.getElementById('add-contact').classList.remove('edit-contact');
     document.getElementById('add-contact').classList.add('d-none');
+    document.getElementById('background-grey').classList.remove('background-grey');
+    document.getElementById('background-grey').classList.add('d-none');
     document.getElementById('name').value = "";
     document.getElementById('email').value = "";
     document.getElementById('phone').value = "";
@@ -241,6 +245,8 @@ function editContact(i) {
     let letters = document.getElementById('shortcut-name' + i).innerHTML;
     document.getElementById('edit-contact').classList.remove('d-none');
     document.getElementById('edit-contact').classList.add('edit-contact');
+    document.getElementById('background-grey').classList.remove('d-none');
+    document.getElementById('background-grey').classList.add('background-grey');
     document.getElementById('edit-contact').innerHTML += editContactHTML(i, letters);
     $("#member-firstLetter-container" + i).css("background-color", backgroundColor[i]);
 }
@@ -255,9 +261,8 @@ function closeEdit(i) {
     document.getElementById('edit-contact').innerHTML = ``;
     document.getElementById('edit-contact').classList.remove('edit-contact');
     document.getElementById('edit-contact').classList.add('d-none');
-    // document.getElementById('name' + i).value = "";
-    // document.getElementById('email' + i).value = "";
-    // document.getElementById('phone' + i).value = "";
+    document.getElementById('background-grey').classList.remove('background-grey');
+    document.getElementById('background-grey').classList.add('d-none');
 }
 
 
