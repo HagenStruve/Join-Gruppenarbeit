@@ -167,6 +167,11 @@ function resetPassword() {
 
     if (resetPassword.value === confirmResetPassword.value) {
         console.log('Passwort zurückgesetzt')
+        document.getElementById('overlay-reset-password').classList.remove('d-none');
+        document.getElementById('overlay-btn-reset-password').classList.remove('d-none');
+        setTimeout(() => {
+            window.location.href = "../html/login.html"
+        }, 1500);
     }
 
     else {
@@ -207,6 +212,11 @@ function sendMailForgotPassword() {
 
     else {
         console.log('E-Mail wurde versendet')
+        document.getElementById('overlay-forgot-password').classList.remove('d-none');
+        document.getElementById('overlay-btn-forgot-password').classList.remove('d-none');
+        setTimeout(() => {
+            window.location.href = "../html/login.html"
+        }, 1500);
     }
 }
 
