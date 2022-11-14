@@ -308,7 +308,7 @@ a {
         width: 100vw;
         background-color: #F5F5F5;
 
-        animation: seconds 1.0s forwards;
+        animation: seconds 3.0s forwards;
         animation-iteration-count: 1;
         animation-delay: 3s;
     }
@@ -319,7 +319,7 @@ a {
         }
         100% {
           opacity: 0;
-          left: -9999px; 
+          z-index: 0;
         }
       }
 }
