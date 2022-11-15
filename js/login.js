@@ -193,30 +193,46 @@ function removePasswordsNotEqualWarning() {
 
 function removeEmailNotRegisteredWarning() {
     let resetPasswordEmail = document.getElementById('email-to-reset-password');
-
-    if (resetPasswordEmail.value.length < 1) {
-        document.getElementById('email-to-reset-password').classList.remove('no-margin-bottom');
-        document.getElementById('email-not-registered-warning').classList.add('d-none');
-    }
-}
-
-
-function sendMailForgotPassword() {
-    let resetPasswordEmail = document.getElementById('email-to-reset-password');
     let user = users.find(u => u.email == resetPasswordEmail.value);
+    let submitButton = document.getElementById('submit-btn');
 
     if (!user) {
         document.getElementById('email-to-reset-password').classList.add('no-margin-bottom');
         document.getElementById('email-not-registered-warning').classList.remove('d-none');
+        submitButton.disabled = true;
+    }
+
+    else if (resetPasswordEmail.value.length < 1) {
+        document.getElementById('email-to-reset-password').classList.remove('no-margin-bottom');
+        document.getElementById('email-not-registered-warning').classList.add('d-none');
+        submitButton.disabled = true;
     }
 
     else {
-        console.log('E-Mail wurde versendet')
-        document.getElementById('overlay-forgot-password').classList.remove('d-none');
-        document.getElementById('overlay-btn-forgot-password').classList.remove('d-none');
-        setTimeout(() => {
-            window.location.href = "../html/login.html"
-        }, 1500);
+        let js_email = document.getElementById('email-to-reset-password').value;
+        window.location.href = "../send_mail.php?js_email=" + js_email;
+        submitButton.disabled = false;
     }
+
+}
+
+
+function sendMailForgotPassword() {
+    console.log('durchgeführt');
+    // let resetPasswordEmail = document.getElementById('email-to-reset-password');
+    // let user = users.find(u => u.email == resetPasswordEmail.value);
+    // let submitButton = document.getElementById('submit-btn');
+
+    // if (!user) {
+    //     document.getElementById('email-to-reset-password').classList.add('no-margin-bottom');
+    //     document.getElementById('email-not-registered-warning').classList.remove('d-none');
+    //     submitButton.disabled = true;
+    // }
+
+    // else {
+    document.getElementById('overlay-forgot-password').classList.remove('d-none');
+    document.getElementById('overlay-btn-forgot-password').classList.remove('d-none');
+    // submitButton.disabled = false;
+    // }
 }
 
