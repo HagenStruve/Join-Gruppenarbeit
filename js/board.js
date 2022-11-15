@@ -33,7 +33,7 @@ async function initBoard() {
 
 async function renderBoardSite() {
     await loadTasksFromServer();
-    displayAllTasks(); 
+    displayAllTasks();
     displayAllTasks();
 }
 
@@ -103,8 +103,8 @@ function displayToDos(search) {
             // wenn es search nicht gibt dann führe aus, und wenn title etwas von der suche beinhaltet dann führe ebenfalls aus, wenn nicht dann zeigt er auch nichts an 
             const element = todos[i];
 
-            let category = 'to-do'; 
-            createTask(element, category); 
+            let category = 'to-do';
+            createTask(element, category);
         }
     }
 }
@@ -120,8 +120,8 @@ function displayInProgressTasks(search) {
         if (!search || title.includes(search)) {
             const element = inProgress[p];
 
-            let category = 'in-progress'; 
-            createTask(element, category); 
+            let category = 'in-progress';
+            createTask(element, category);
         }
     }
 }
@@ -137,8 +137,8 @@ function displayAwaitingFeedbackTasks(search) {
         if (!search || title.includes(search)) {
             const element = awaitingFeedback[a];
 
-            let category = 'awaiting-feedback'; 
-            createTask(element, category); 
+            let category = 'awaiting-feedback';
+            createTask(element, category);
         }
     }
 }
@@ -153,8 +153,8 @@ function displayDoneTasks(search) {
         let title = done[d]['title'].toLowerCase();
         if (!search || title.includes(search)) {
             const element = done[d];
-            let category = 'done'; 
-            createTask(element, category); 
+            let category = 'done';
+            createTask(element, category);
         }
     }
 }
@@ -165,7 +165,7 @@ function createTask(element, category) {
     document.getElementById(category).innerHTML += addTaskToKanbanHTML(element);
     createProgressbar(element);
     createAssignedContacsOnBoard(element);
-    displayImportanceStatusBoard(element); 
+    displayImportanceStatusBoard(element);
     NumberOfCurrentTasks++;
 }
 
@@ -175,28 +175,10 @@ function allowDrop(ev) { // from W3School predefined //
     ev.preventDefault();
 }
 
-/* 
-function highlightDrag(id) {
-    //document.getElementById(id).classList.add('drag-area-highlight'); 
-    let div = document.getElementById(currentDraggedElement);
-    let width = div.offsetWidth; 
-    let height = div.offsetHeight; 
-
-    console.log(width);
-    console.log(height); 
-
-        document.getElementById(id).innerHTML += `
-        <div style="width:${width}px; height:${height}; background-color:blue"> 
-        </div> 
-    `; 
-}
-*/
-
 
 function removeHightlightDrag(id) {
     document.getElementById(id).classList.remove('drag-area-highlight');
 }
-
 
 
 // change the category to dropped task
@@ -204,8 +186,6 @@ function moveTo(category) {
     downloadedTasks[currentDraggedElement]['category'] = category;
     saveNewOnServer();
     displayAllTasks();
-
-
 }
 
 
@@ -218,11 +198,11 @@ function startDragging(id) {
 /** displays the associated importance on Clicked Task view
  */
 function displayImportanceStatusCT() {
-    element = downloadedTasks[currentClickedTask]; 
-    let importanceId = document.getElementById(`importance-id-c-t-${currentClickedTask}`); 
-    let white = "_white"; 
-    displayImportanceStatus(element, importanceId,white); 
-    SetimportanceColorCT(element); 
+    element = downloadedTasks[currentClickedTask];
+    let importanceId = document.getElementById(`importance-id-c-t-${currentClickedTask}`);
+    let white = "_white";
+    displayImportanceStatus(element, importanceId, white);
+    SetimportanceColorCT(element);
 }
 
 
@@ -232,8 +212,8 @@ function displayImportanceStatusCT() {
  */
 function displayImportanceStatusBoard(element) {
     let importanceId = document.getElementById(`importance-id-${element['id']}`);
-    let white = ''; 
-    displayImportanceStatus(element, importanceId,white); 
+    let white = '';
+    displayImportanceStatus(element, importanceId, white);
 }
 
 
@@ -243,14 +223,13 @@ function displayImportanceStatusBoard(element) {
  * @param {string} importanceId - contains id to get to wished idElement
  * @param {string} white - on board view symbols are not white, on clickedTask view they are 
  */
-function displayImportanceStatus(element, importanceId,white) {
+function displayImportanceStatus(element, importanceId, white) {
 
-    
     if (element['prio'] == 'Urgent') {
         importanceId.src = `../img/arrow_urgent${white}.svg`;
     }
     if (element['prio'] == 'Medium') {
-        importanceId.src = `../img/medium${white}.svg`;      
+        importanceId.src = `../img/medium${white}.svg`;
     }
     if (element['prio'] == 'Low') {
         importanceId.src = `../img/arrow_low${white}.svg`;
@@ -263,19 +242,16 @@ function displayImportanceStatus(element, importanceId,white) {
  * @param {array} element -  contains id from currently clicked task
  */
 function SetimportanceColorCT(element) {
-    let priorityBox = document.getElementById('priority-box-c-t'); 
-        if (element['prio'] == 'Urgent') {
-            priorityBox.style.background = "#FF3D00";
-            console.log('wurde auf rot gesetzt'); 
-        }
-        if (element['prio'] == 'Medium') {
-            priorityBox.style.background = "#FFA800";
-            console.log('wurde auf mittel gesetzt');   
-        }
-        if (element['prio'] == 'Low') {
-            priorityBox.style.background = "#7AE229";
-            console.log('wurde auf grün gesetzt'); 
-        }
+    let priorityBox = document.getElementById('priority-box-c-t');
+    if (element['prio'] == 'Urgent') {
+        priorityBox.style.background = "#FF3D00";
+    }
+    if (element['prio'] == 'Medium') {
+        priorityBox.style.background = "#FFA800";
+    }
+    if (element['prio'] == 'Low') {
+        priorityBox.style.background = "#7AE229";
+    }
 }
 
 
@@ -372,7 +348,6 @@ function setColorCT() {
 function searchTask() {
     let search = document.getElementById('input-search').value;
     search = search.toLowerCase();
-    console.log(search);
 
     displayAllTasks(search)
 }
@@ -389,104 +364,23 @@ function displayClickedTask(id) {
     document.getElementById('open-clicked-task').style.display = "flex";
     if (!myMediaQuery570.matches) {
         document.getElementById('open-clicked-task').style.display = "none";
-        console.log('openclickedtask wird nicht angezeigt');
     }
     document.getElementById('c-t-window').style.display = "flex";
+    createClickedTaskView(id);
+}
 
+
+function createClickedTaskView(id) {
     let actualSector = downloadedTasks[id]['sector'];
-
     actualSector = actualSector.charAt(0).toUpperCase() + actualSector.slice(1);
 
     displayClickedTaskHTML(id, actualSector);
     createSubtasks(id);
     createAssignedContacs(id);
-    displayImportanceStatusCT(); 
+    displayImportanceStatusCT();
 
-    let classID = `c-t-category`
     let categoryID = `c-t-category-html`;
-    let c = id;
     setColorTypeTasks(categoryID);
-}
-
-
-/** HTML Code for clicked Task
- * 
- *  all @param are explained in function "displayClickedTask()"
- */
-function displayClickedTaskHTML(id, actualSector) {
-    return document.getElementById('c-t-window').innerHTML = /*html*/`
-
-    <img src="../img/edit-icon.png" class="c-t-edit-button" onclick="editClickedTask()">
-
-    <div class="c-t-first-row"> 
-        <div class="c-t-category" id="c-t-category"> 
-            <span id="c-t-category-html">${actualSector}</span>
-        </div>
-
-        <div class="c-t-exit-arrow" onclick="hideClickedTask()"> 
-            <img src="/Join-Gruppenarbeit/img/black-back-arrow.png"> 
-        </div> 
-    </div> 
-
-    <div class="c-t-title" >
-        <b>  ${downloadedTasks[id]['title']} </b>
-    </div>
-
-    <div class="c-t-description">
-        <p> 
-            ${downloadedTasks[id]['description']} 
-        </p>
-    </div>
-
-    <div id="subtask-section" class="c-t-subtask-section"> 
-        <div class="c-t-infos"> 
-            <span>
-                <b> 
-                    Subtasks:
-                </b>
-            </span>
-        </div>
-
-        <div class="c-t-subtasks" id="subtasks"> 
-        </div> 
-    </div> 
-
-    <div class="c-t-infos"> 
-        <span>
-            <b>
-                Due date:
-            </b>
-        </span>
-        <span class="c-t-space"> 
-        ${downloadedTasks[id]['dueDate']}
-        </span> 
-    </div>
-
-    <div class="c-t-infos"> 
-        <span>
-            <b>
-                Priority:
-            </b>
-        </span>
-        <span class="c-t-space priority-box" id="priority-box-c-t"> 
-            ${downloadedTasks[id]['prio']}
-            <img src="../img/arrow_urgent_white.svg" class="c-t-priority-icon" id="importance-id-c-t-${currentClickedTask}"> 
-        </span> 
-    </div>
-
-    <div class="c-t-infos"> 
-        <span>
-            <b>
-                Assigned to:
-            </b>
-        </span>
-    </div>
-
-    <div class="c-t-assignedTo" id="c-t-assignedTo">
-    </div> 
-
-   
-`;
 }
 
 
@@ -501,18 +395,7 @@ function createAssignedContacs(id) {
     let assignedContacts = downloadedTasks[id]['assingedTo'];
     for (let i = 0; i < assignedContacts.length; i++) {
 
-        document.getElementById('c-t-assignedTo').innerHTML += `
-        <div class="c-t-contact"> 
-            <div class="c-t-profilimages"> 
-                <span id="c-t-initials${i}">  
-                </span> 
-            </div> 
-            <span>
-                ${assignedContacts[i]}
-            </span> 
-        </div>
-    `;
-
+        createAssignedContacsHTML(i, assignedContacts);
         getFirstLetter(id, i);
     }
 }
@@ -530,11 +413,8 @@ function getFirstLetter(id, i) {
 
     let assignedContact = downloadedTasks[id]['assingedTo'];
 
-
     let initials = assignedContact[i].split(' ').map(word => word.charAt(0)).join('');
     document.getElementById(`c-t-initials${i}`).innerHTML = `${initials}`;
-
-    console.log(initials);
 }
 
 
@@ -549,119 +429,56 @@ function getFirstLetter(id, i) {
  */
 function createSubtasks(id) {
 
-
     let arrayOfSubtasks = downloadedTasks[id]['subtasks'];
 
     if (arrayOfSubtasks.length === 0) {
         document.getElementById('subtask-section').style.display = "none";
-        console.log('es wurde der subtasks section gelöscht');
     }
     else {
         document.getElementById('subtask-section').style.display = "block";
         document.getElementById('subtasks').innerHTML = '';
-        for (let i = 0; i < arrayOfSubtasks.length; i++) {
-
-            let checked = '';
-
-            if (arrayOfSubtasks[i]['checked'] === 'true') {
-                checked = 'checked="true"'
-            }
-            else {
-                checked = '';
-            }
-
-            document.getElementById('subtasks').innerHTML += `
-            <label class="c-t-checkbox">
-                <input type="checkbox" ${checked} id="subtask-id-${id}-${i}" onclick="updateCheckboxStatus(${i})"> 
-                <span class="checkmark">${arrayOfSubtasks[i]['subtask']} </span> 
-            </label>
-            `
-        }
+        CheckCheckboxandCreateSubtasks(id, arrayOfSubtasks);
     }
 }
 
 
-function editClickedTask() {
+/** function checks if checkbox needs to display checked or not and calls function to create subtasks html
+ * 
+ * @param {number} id - contains id of current clicked task 
+ * @param {*} arrayOfSubtasks - contains "downloadedTasks[id]['subtasks']"
+ */
+function CheckCheckboxandCreateSubtasks(id, arrayOfSubtasks) {
+    for (let i = 0; i < arrayOfSubtasks.length; i++) {
 
-    document.getElementById('c-t-window').innerHTML = /*html*/`
-    <form onsubmit="getNewValueFromEditedTask(); return false;">
-        <h4> Title </h4> 
-        <input placeholder="Enter a title" required id="c-t-title-edit"> 
-        <h4> Description</h4> 
-        <textarea type="text" required placeholder="Enter a Description" id="c-t-description-edit"> 
-        </textarea> 
-        <h4> Due date </h4> 
-        <input type="date" id="c-t-date-edit" > 
-        <h4> Prio </h4> 
-        <div class="c-t-prio-divs-head"> 
-            <div class="c-t-prio-divs" onclick="markedPrioCT('Urgent')" id="prio-urgent-c-t-edit">Urgent <img src="../img/arrow_urgent.svg" id="prio-urgent-c-t-edit-img"> </div>  
-            <div class="c-t-prio-divs" onclick="markedPrioCT('Medium')" id="prio-medium-c-t-edit">Medium <img src="../img/medium.svg" id="prio-medium-c-t-edit-img" > </div>  
-            <div class="c-t-prio-divs" onclick="markedPrioCT('Low')" id="prio-low-c-t-edit">Low    <img src="../img/arrow_low.svg" id="prio-low-c-t-edit-img" > </div>  
-        </div>
-        <h4> Assigned to </h4> 
+        let checked = '';
 
-        <div onclick="showContacts()" id="select-div-contact" class="select-div no-margin-bottom">
-                    <span id="selected-contact">Select contacts to assign</span>
-                    <input class="hidden-input" id="hidden-contact-input" type="text" required>
-                    <img src="../img/dropdown_arrow.svg" alt="dropdown_arrow">
-                </div>
-                <ul id="ul-contact" class="d-none">
-                    <div onclick="selectContact(id)" id="div-contact-1" class="div-li-contact">
-                        <li id="contact-1">Hagen Struve</li>
-                        <input onclick="proofCheck(id), editContacts('Hagen Struve')" class="input-checkbox" type="checkbox" id="checkbox-contact-1">
-                    </div>
-                    <div onclick="selectContact(id)" id="div-contact-2" class="div-li-contact">
-                        <li id="contact-2">Sinan Fischer</li>
-                        <input onclick="proofCheck(id), editContacts('Sinan Fischer')" class="input-checkbox" type="checkbox" id="checkbox-contact-2">
-                    </div>
-                    <div onclick="selectContact(id)" id="div-contact-3" class="div-li-contact">
-                        <li id="contact-3">Matthias Mulzet</li>
-                        <input onclick="proofCheck(id), editContacts('Matthias Mulzet')" class="input-checkbox" type="checkbox" id="checkbox-contact-3">
-                    </div>
-                </ul>
-
-                
-                <div id="all-contacts-initials" class="contact-initials d-none">
-                    <div class="bg-violet d-none" id="initials-1">
-                        <span>HS</span>
-                    </div>
-                    <div class="bg-blue d-none" id="initials-2">
-                        <span>SF</span>
-                    </div>
-                    <div class="bg-green d-none" id="initials-3">
-                        <span>MM</span>
-                    </div>
-                </div>
-    <div class="c-t-ok-edit-button-div"> 
-        <button class="c-t-ok-edit-button" >
-            <span> Ok </span> 
-            <img src="../img/done-icon.png">
-        </button>
-    </div> 
-    <form> 
-    `;
+        if (arrayOfSubtasks[i]['checked'] === 'true') {
+            checked = 'checked="true"'
+        }
+        else {
+            checked = '';
+        }
+        createSubtasksHTML(id, i, checked, arrayOfSubtasks);
+    }
 }
 
 
+/** function gets the new value typed in the editMenu from clicked task  
+ * 
+ */
 function getNewValueFromEditedTask() {
-
     let newTitle = document.getElementById('c-t-title-edit').value;
     let newDescription = document.getElementById('c-t-description-edit').value;
     let newDate = document.getElementById('c-t-date-edit').value;
 
-    console.log(newTitle);
-    console.log(newDescription);
-    console.log(newDate); 
-
-    downloadedTasks[currentClickedTask]['title'] = newTitle; 
-    downloadedTasks[currentClickedTask]['description'] = newDescription; 
-    downloadedTasks[currentClickedTask]['dueDate'] = newDate; 
-    downloadedTasks[currentClickedTask]['assingedTo'] = editedNames; 
-    console.log('bearbeitete namen sind: werden neu hinzugefügt als array: ', editedNames); 
+    downloadedTasks[currentClickedTask]['title'] = newTitle;
+    downloadedTasks[currentClickedTask]['description'] = newDescription;
+    downloadedTasks[currentClickedTask]['dueDate'] = newDate;
+    downloadedTasks[currentClickedTask]['assingedTo'] = editedNames;
     editedNames = []; // clears array for new edit 
-    let id = currentClickedTask; 
-    displayClickedTask(id); 
-    displayAllTasks(); 
+    let id = currentClickedTask;
+    displayClickedTask(id);
+    displayAllTasks();
 }
 
 
@@ -669,63 +486,61 @@ function getNewValueFromEditedTask() {
  * 
  * @param {string} prio - contains urgent/medium or low, selected from edit menu clicked task
  */
- function markedPrioCT(prio) {
-    let urgentID = document.getElementById('prio-urgent-c-t-edit'); 
+function markedPrioCT(prio) {
+    let urgentID = document.getElementById('prio-urgent-c-t-edit');
     let mediumID = document.getElementById('prio-medium-c-t-edit')
-    let lowID = document.getElementById('prio-low-c-t-edit'); 
+    let lowID = document.getElementById('prio-low-c-t-edit');
     if (prio == 'Urgent') {
-        downloadedTasks[currentClickedTask]['prio'] = prio; 
-        selectUrgentEdit(urgentID, mediumID, lowID); 
+        downloadedTasks[currentClickedTask]['prio'] = prio;
+        selectUrgentEdit(urgentID, mediumID, lowID);
     }
     if (prio == 'Medium') {
-        downloadedTasks[currentClickedTask]['prio'] = prio; 
-        selectMediumEdit(urgentID, mediumID, lowID); 
+        downloadedTasks[currentClickedTask]['prio'] = prio;
+        selectMediumEdit(urgentID, mediumID, lowID);
     }
     if (prio == 'Low') {
-        downloadedTasks[currentClickedTask]['prio'] = prio; 
-        selectLowEdit(urgentID, mediumID, lowID); 
-    } 
-    else {
-        console.log('keine entsprechende prio gefunden'); 
+        downloadedTasks[currentClickedTask]['prio'] = prio;
+        selectLowEdit(urgentID, mediumID, lowID);
     }
 }
+
 
 /** function highlighting prio in edit task view
  * 
  * @param {string} urgentID - this and the other id variabels contains getElementID from specific prio
  */
 function selectUrgentEdit(urgentID, mediumID, lowID) {
-    urgentID.style.background = "#FF3D00"; 
+    urgentID.style.background = "#FF3D00";
     document.getElementById('prio-urgent-c-t-edit-img').src = "../img/arrow_urgent_white.svg";
     document.getElementById('prio-medium-c-t-edit-img').src = "../img/medium.svg";
     document.getElementById('prio-low-c-t-edit-img').src = "../img/arrow_low.svg";
-    setClickedStats(urgentID); 
-    setStatsBack(lowID); 
-    setStatsBack(mediumID); 
+    setClickedStats(urgentID);
+    setStatsBack(lowID);
+    setStatsBack(mediumID);
 }
 
 /** function highlighting prio in edit task view
  */
 function selectMediumEdit(urgentID, mediumID, lowID) {
-    mediumID.style.background = "#FFA800"; 
+    mediumID.style.background = "#FFA800";
     document.getElementById('prio-medium-c-t-edit-img').src = "../img/medium_white.svg";
     document.getElementById('prio-urgent-c-t-edit-img').src = "../img/arrow_urgent.svg"; // urgent setzt zurück
     document.getElementById('prio-low-c-t-edit-img').src = "../img/arrow_low.svg"; // low setzt zurück
-    setClickedStats(mediumID); 
-    setStatsBack(urgentID); 
-    setStatsBack(lowID); 
+    setClickedStats(mediumID);
+    setStatsBack(urgentID);
+    setStatsBack(lowID);
 }
 
 /** function highlighting prio in edit task view
  */
 function selectLowEdit(urgentID, mediumID, lowID) {
-    lowID.style.background = "#7AE229"; 
+    lowID.style.background = "#7AE229";
     document.getElementById('prio-low-c-t-edit-img').src = "../img/arrow_low_white.svg";
     document.getElementById('prio-urgent-c-t-edit-img').src = "../img/arrow_urgent.svg"; // urgent setzt zurück
-    document.getElementById('prio-medium-c-t-edit-img').src = "../img/medium.svg"; 
-    setClickedStats(lowID); 
-    setStatsBack(urgentID); 
-    setStatsBack(mediumID); 
+    document.getElementById('prio-medium-c-t-edit-img').src = "../img/medium.svg";
+    setClickedStats(lowID);
+    setStatsBack(urgentID);
+    setStatsBack(mediumID);
 }
 
 
@@ -736,8 +551,8 @@ function selectLowEdit(urgentID, mediumID, lowID) {
  * @param {string} prioID - contains getElementID from specific prio
  */
 function setClickedStats(prioID) {
-    prioID.style.fontWeight = "bold"; 
-    prioID.style.color = "white"; 
+    prioID.style.fontWeight = "bold";
+    prioID.style.color = "white";
 }
 
 /** sets clicked prios back in edited task view
@@ -745,9 +560,9 @@ function setClickedStats(prioID) {
  * @param {string} prioID - contains getElementID from specific prio
  */
 function setStatsBack(prioID) {
-    prioID.style.background = "white"; 
-    prioID.style.fontWeight = "400"; 
-    prioID.style.color = "black"; 
+    prioID.style.background = "white";
+    prioID.style.fontWeight = "400";
+    prioID.style.color = "black";
 }
 
 
@@ -813,15 +628,7 @@ function createAssignedContacsOnBoard(element) {
     }
     else {
         for (i = 0; i <= x - 1; i++) {
-
-            document.getElementById(`assigned-employees-board-${element['id']}`).innerHTML += `
-            <div class="c-t-profilimages" style="right:${pixels}px"> 
-                <span id="initials-${element['id']}-${i}">  
-
-                </span> 
-            </div> 
-            `;
-
+            createAssignedContacsOnBoardHTML(element, pixels); 
             pixels += + 10;
         }
     }
@@ -831,7 +638,7 @@ function createAssignedContacsOnBoard(element) {
 
 /** filters the first letter of first and last name to display it on profilpictures on board site 
  * 
- * @param {string} element 
+ * @param {array} element -  contains array path to current processing task 
  * 
  * @param {string} firstLetter - splits first and lastname in substrings and returns array,(split)
  *                               creates new array with first letter of each word (map)  
@@ -844,13 +651,16 @@ function getFirstLetterMain(element) {
     for (let w = 0; w <= assignedContacts.length - 1; w++) {
 
         let initials = assignedContacts[w].split(' ').map(word => word.charAt(0)).join('');
-
         document.getElementById(`initials-${element['id']}-${w}`).innerHTML = `${initials}`;
 
     }
 }
 
 
+/** creates progressbar
+ * 
+ * @param {array} element  - contains array path to current processing task 
+ */
 function createProgressbar(element) {
     if (element['subtasks'].length == 0) {
         document.getElementById(`progress-section-${element['id']}`).innerHTML = '';
@@ -1019,66 +829,9 @@ function deleteDesktopBoardView(id2) {
 }
 
 
-
-/** HTML to generate a task
- * 
- * @param {array} element - beinhaltet den gefilterten Array mit forschleifen Zahl der jeweiligen Kategorie.
- * 
- * 
- */
-function addTaskToKanbanHTML(element) { // element = task[0] or task[1] only filterd in category
-    return `
-    <div class="kanban-task-container" draggable="true" ondragstart="startDragging(${element['id']})" onclick="displayClickedTask(id)" id="${element['id']}">
-    <div>
-        <span class="task-type" id="task-type${NumberOfCurrentTasks}">${element['sector']}</span>
-    </div>
-
-    <div>
-        <h3 class="kanban-task-title" ">
-            ${element['title']}
-        </h3>
-    </div>
-
-    <p class="task-description"> 
-        ${element['description']}...
-    </p>
-    <div class="progress-section" id="progress-section-${element['id']}">
-        <div class="progress-border" id="progressbar-${element['id']}">
-
-        </div>
-
-        <span id="progressbar-comparison-${element['id']}" class="progressbar-comparison">
-        
-         </span>
-        </div>
-
-    <div style="display:flex; justify-content: space-between; align-items:center; margin-top: 10px;">
-        <div class="assigned-employees" id="assigned-employees-board-${element['id']}">
-
-        </div>
-
-        <img src="" id="importance-id-${element['id']}">
-    </div>
-</div>
-    `;
-}
-
-
-
-
 function editContacts(name) {
-    editedNames.push(name); 
+    editedNames.push(name);
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
