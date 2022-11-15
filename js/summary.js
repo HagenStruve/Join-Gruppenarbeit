@@ -5,6 +5,7 @@ async function initSummary() {
     await loadTasksFromServerSummary(); 
     updateSummary(); 
     sidebarBgPage();
+    helloUser();
 }
 
 
@@ -41,6 +42,7 @@ async function loadTasksFromServerSummary() {
     setURL("https://gruppe-313.developerakademie.net/Join-Gruppenarbeit/smallest_backend_ever-master");
     await downloadFromServer();
     tasksOverview = JSON.parse(backend.getItem('tasksOverview')) || [];
+    users = JSON.parse(backend.getItem('users')) || [];
 }
 
 
@@ -55,4 +57,15 @@ function updateSummary() {
     document.getElementById('urgent-tasks').innerHTML = overview['urgentTasks']; 
     document.getElementById('tasks-in-todo').innerHTML = overview['tasksInTodo']; 
     document.getElementById('tasks-in-done').innerHTML = overview['tasksInDone']; 
+}
+
+
+function helloUser() {
+let user = users.find(u => u.email);
+    if (user) {
+       document.getElementById('name').innerHTML = user['name'];
+    }
+    else {
+        document.getElementById('name').innerHTML = ``;
+    }
 }
