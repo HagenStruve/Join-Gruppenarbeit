@@ -255,7 +255,6 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    animation: edit-contact 1s ease;
     z-index: 103;
 }
 
@@ -267,7 +266,6 @@ body {
     position: fixed;
     left: 0;
     top: 0;
-    animation: background-grey 1s ease;
 }
 
 .cancel-button-responsiv {
@@ -276,7 +274,7 @@ body {
 
 @keyframes edit-contact {
     from {
-        left: 100%;
+        left: 150%;
         transform: left 1s ease;
     }
 
@@ -296,6 +294,37 @@ body {
         opacity: 1;
         transform: background-color 1s ease;
     }
+}
+
+.add-animation-edit-contact {
+    animation: edit-contact 1s ease;
+}
+
+.add-animation-background-grey {
+    animation: background-grey 1s ease;
+}
+
+.animate-reverse-edit-contact {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 103;
+    animation: edit-contact 1s reverse;
+}
+
+.animate-reverse-background-grey {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(139, 139, 139, 0.4);
+    z-index: 102;
+    position: fixed;
+    left: 0;
+    top: 0;
+    animation: background-grey 1s reverse;
 }
 
 .edit-contact-left {

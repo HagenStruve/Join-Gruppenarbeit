@@ -49,9 +49,13 @@ async function saveOnServer() {
  */
 function newConatct() {
     document.getElementById('add-contact').classList.remove('d-none');
-    document.getElementById('add-contact').classList.add('edit-contact');
+    document.getElementById('add-contact').classList.add('edit-contact', 'add-animation-edit-contact');
     document.getElementById('background-grey').classList.remove('d-none');
-    document.getElementById('background-grey').classList.add('background-grey');
+    document.getElementById('background-grey').classList.add('background-grey', 'add-animation-background-grey');
+    setTimeout(() => {
+        document.getElementById('add-contact').classList.remove('add-animation-edit-contact');
+        document.getElementById('background-grey').classList.remove('add-animation-background-grey');
+    }, 1000);
 }
 
 
@@ -60,13 +64,20 @@ function newConatct() {
  * 
  */
 function cancel() {
+    // document.getElementById('add-contact').classList.remove('edit-contact');
     document.getElementById('add-contact').classList.remove('edit-contact');
-    document.getElementById('add-contact').classList.add('d-none');
+    document.getElementById('add-contact').classList.add('animate-reverse-edit-contact');
     document.getElementById('background-grey').classList.remove('background-grey');
-    document.getElementById('background-grey').classList.add('d-none');
+    document.getElementById('background-grey').classList.add('animate-reverse-background-grey');
     document.getElementById('name').value = "";
     document.getElementById('email').value = "";
     document.getElementById('phone').value = "";
+    setTimeout(() => {
+        document.getElementById('add-contact').classList.add('d-none');
+        document.getElementById('add-contact').classList.remove('animate-reverse-edit-contact');
+        document.getElementById('background-grey').classList.remove('animate-reverse-background-grey');
+        document.getElementById('background-grey').classList.add('d-none');
+    }, 900);
 }
 
 
@@ -321,13 +332,13 @@ function getRandomColor() {
         backgroundColor.push(colorBackground);
         backgroundColorAlpha = [];
         saveOnServer();
-    }  
-  }
+    }
+}
 
 
-  function closeContactInfo() {
+function closeContactInfo() {
     document.getElementById('content-right').classList.remove('z-index-99');
-  }
+}
 
 
 /////////////////////////////////////////// HTML /////////////////////////////////////////////////////////////
