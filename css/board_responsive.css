@@ -52,10 +52,6 @@
         top: 75px;
     }
 
-    .clicked-task-bg {
-        display: none !important;
-    }
-
     .clicked-addtask-bg {
         display: none;
         position: unset;
@@ -72,6 +68,12 @@
 
 
 @media(max-width: 570px) {
+
+    
+    .clicked-task-bg {
+        display: none !important;
+    }
+    
     .add-task-left-side {
         margin-left: 0px !important;
     }
@@ -89,6 +91,17 @@
     .create-button {
         font-size: 18px !important;
     }
+
+    .c-t-edit-button {
+        bottom: 20%;
+        right: 16%;
+    }
+
+    .c-t-ok-edit-button {
+        bottom: 20%;
+        right: 16%;
+    }
+
 }
 
 

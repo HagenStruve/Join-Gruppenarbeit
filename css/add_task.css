@@ -101,6 +101,8 @@ h1 {
 }
 
 ul {
+    position: relative; 
+    z-index: 200;
     list-style-type: none;
     width: 464px;
     background-color: white;

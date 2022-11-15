@@ -453,6 +453,11 @@ a::-webkit-scrollbar {
     font-weight: 500;
 }
 
+.c-t-ok-edit-button-div {
+    display: flex;
+    justify-content: flex-end;
+}
+
 
 .c-t-edit-button {
     display: flex;

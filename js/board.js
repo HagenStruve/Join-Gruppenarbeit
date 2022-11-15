@@ -632,12 +632,12 @@ function editClickedTask() {
                         <span>MM</span>
                     </div>
                 </div>
-
+    <div class="c-t-ok-edit-button-div"> 
         <button class="c-t-ok-edit-button" >
             <span> Ok </span> 
             <img src="../img/done-icon.png">
         </button>
-
+    </div> 
     <form> 
     `;
 }
@@ -727,6 +727,8 @@ function selectLowEdit(urgentID, mediumID, lowID) {
     setStatsBack(urgentID); 
     setStatsBack(mediumID); 
 }
+
+
 
 
 /** sets clicked prios css classes in edited task view
