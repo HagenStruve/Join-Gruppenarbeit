@@ -358,7 +358,7 @@ a::-webkit-scrollbar {
 }
 
 .c-t-title {
-    font-size: 45px;
+    font-size: 41px;
     color: #253141;
     margin-top: 20px;
 }
@@ -385,14 +385,21 @@ a::-webkit-scrollbar {
     margin-bottom: 20px;
 }
 
-.c-t-checkbox input {
+.c-t-checkbox {
+    display: flex;
     margin-left: 5px;
+    gap: 10px;
 }
 
 
+.c-t-checkbox input {
+    display: flex;
+    margin-left: 5px;
+    gap: 10px;
+}
+
 .c-t-subtasks {
     display: flex;
-    flex-direction: column;
     gap: 10px;
     margin-bottom: 20px;
 }

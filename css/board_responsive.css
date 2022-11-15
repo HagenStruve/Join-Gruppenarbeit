@@ -128,4 +128,8 @@
     .create-button {
         font-size: 16px !important;
     }
+
+    .c-t-title {
+        font-size: 35px;
+    }
 }

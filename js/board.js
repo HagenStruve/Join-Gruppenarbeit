@@ -594,9 +594,9 @@ function editClickedTask() {
         <input type="date" id="c-t-date-edit" > 
         <h4> Prio </h4> 
         <div class="c-t-prio-divs-head"> 
-            <div class="c-t-prio-divs" onclick="markedPrioCT('Urgent')" id="prio-urgent-c-t-edit">Urgent <img src="../img/arrow_urgent.svg"> </div>  
-            <div class="c-t-prio-divs" onclick="markedPrioCT('Medium')" id="prio-medium-c-t-edit">Medium <img src="../img/medium.svg" > </div>  
-            <div class="c-t-prio-divs" onclick="markedPrioCT('Low')" id="prio-low-c-t-edit">Low    <img src="../img/arrow_low.svg" > </div>  
+            <div class="c-t-prio-divs" onclick="markedPrioCT('Urgent')" id="prio-urgent-c-t-edit">Urgent <img src="../img/arrow_urgent.svg" id="prio-urgent-c-t-edit-img"> </div>  
+            <div class="c-t-prio-divs" onclick="markedPrioCT('Medium')" id="prio-medium-c-t-edit">Medium <img src="../img/medium.svg" id="prio-medium-c-t-edit-img" > </div>  
+            <div class="c-t-prio-divs" onclick="markedPrioCT('Low')" id="prio-low-c-t-edit">Low    <img src="../img/arrow_low.svg" id="prio-low-c-t-edit-img" > </div>  
         </div>
         <h4> Assigned to </h4> 
 
@@ -648,7 +648,6 @@ function getNewValueFromEditedTask() {
     let newTitle = document.getElementById('c-t-title-edit').value;
     let newDescription = document.getElementById('c-t-description-edit').value;
     let newDate = document.getElementById('c-t-date-edit').value;
-    //   let newDate = document.getElementById('c-t-date-edit').value; 
 
     console.log(newTitle);
     console.log(newDescription);
@@ -663,11 +662,10 @@ function getNewValueFromEditedTask() {
     let id = currentClickedTask; 
     displayClickedTask(id); 
     displayAllTasks(); 
-    //console.log(newDate); 
 }
 
 
-/** function changes the prio in edit view from clicked task
+/** function highlights and delights the prios in editmenu from clicked task
  * 
  * @param {string} prio - contains urgent/medium or low, selected from edit menu clicked task
  */
@@ -676,27 +674,80 @@ function getNewValueFromEditedTask() {
     let mediumID = document.getElementById('prio-medium-c-t-edit')
     let lowID = document.getElementById('prio-low-c-t-edit'); 
     if (prio == 'Urgent') {
-        urgentID.style.background = "red"; 
-        mediumID.style.background = "white"; 
-        lowID.style.background = "white"; 
         downloadedTasks[currentClickedTask]['prio'] = prio; 
+        selectUrgentEdit(urgentID, mediumID, lowID); 
     }
     if (prio == 'Medium') {
-        mediumID.style.background = "yellow"; 
-        urgentID.style.background = "white"; 
-        lowID.style.background = "white"; 
         downloadedTasks[currentClickedTask]['prio'] = prio; 
+        selectMediumEdit(urgentID, mediumID, lowID); 
     }
     if (prio == 'Low') {
-        lowID.style.background = "green"; 
-        urgentID.style.background = "white"; 
-        mediumID.style.background = "white"; 
         downloadedTasks[currentClickedTask]['prio'] = prio; 
+        selectLowEdit(urgentID, mediumID, lowID); 
+    } 
+    else {
+        console.log('keine entsprechende prio gefunden'); 
     }
-        else {
-            console.log('esel');
-        }
 }
+
+/** function highlighting prio in edit task view
+ * 
+ * @param {string} urgentID - this and the other id variabels contains getElementID from specific prio
+ */
+function selectUrgentEdit(urgentID, mediumID, lowID) {
+    urgentID.style.background = "#FF3D00"; 
+    document.getElementById('prio-urgent-c-t-edit-img').src = "../img/arrow_urgent_white.svg";
+    document.getElementById('prio-medium-c-t-edit-img').src = "../img/medium.svg";
+    document.getElementById('prio-low-c-t-edit-img').src = "../img/arrow_low.svg";
+    setClickedStats(urgentID); 
+    setStatsBack(lowID); 
+    setStatsBack(mediumID); 
+}
+
+/** function highlighting prio in edit task view
+ */
+function selectMediumEdit(urgentID, mediumID, lowID) {
+    mediumID.style.background = "#FFA800"; 
+    document.getElementById('prio-medium-c-t-edit-img').src = "../img/medium_white.svg";
+    document.getElementById('prio-urgent-c-t-edit-img').src = "../img/arrow_urgent.svg"; // urgent setzt zurück
+    document.getElementById('prio-low-c-t-edit-img').src = "../img/arrow_low.svg"; // low setzt zurück
+    setClickedStats(mediumID); 
+    setStatsBack(urgentID); 
+    setStatsBack(lowID); 
+}
+
+/** function highlighting prio in edit task view
+ */
+function selectLowEdit(urgentID, mediumID, lowID) {
+    lowID.style.background = "#7AE229"; 
+    document.getElementById('prio-low-c-t-edit-img').src = "../img/arrow_low_white.svg";
+    document.getElementById('prio-urgent-c-t-edit-img').src = "../img/arrow_urgent.svg"; // urgent setzt zurück
+    document.getElementById('prio-medium-c-t-edit-img').src = "../img/medium.svg"; 
+    setClickedStats(lowID); 
+    setStatsBack(urgentID); 
+    setStatsBack(mediumID); 
+}
+
+
+/** sets clicked prios css classes in edited task view
+ * 
+ * @param {string} prioID - contains getElementID from specific prio
+ */
+function setClickedStats(prioID) {
+    prioID.style.fontWeight = "bold"; 
+    prioID.style.color = "white"; 
+}
+
+/** sets clicked prios back in edited task view
+ * 
+ * @param {string} prioID - contains getElementID from specific prio
+ */
+function setStatsBack(prioID) {
+    prioID.style.background = "white"; 
+    prioID.style.fontWeight = "400"; 
+    prioID.style.color = "black"; 
+}
+
 
 
 /**
