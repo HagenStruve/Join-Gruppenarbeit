@@ -1,13 +1,11 @@
 <?php
 
- $js_email = $_GET["js_email"];
 
 
 ########### CONFIG ###############
-
-$recipient = $js_email;
+$name = $_GET['name'];
+$recipient = $name;
 $redirect = 'html/login.html';
-echo $recipient;
 
 ########### CONFIG END ###########
 

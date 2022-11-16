@@ -209,12 +209,16 @@ function removeEmailNotRegisteredWarning() {
     }
 
     else {
-        let js_email = document.getElementById('email-to-reset-password').value;
-        window.location.href = "../send_mail.php?js_email=" + js_email;
+        let name = document.getElementById('email-to-reset-password').value;
+        window.location.href = "../send_mail.php?name=" + name;
         submitButton.disabled = false;
     }
-
 }
+
+// function sendPHP() {
+//     let name = document.getElementById('email-to-reset-password').value;
+//     window.location.href = "../send_mail.php?name=" + name;
+// }
 
 
 function sendMailForgotPassword() {
