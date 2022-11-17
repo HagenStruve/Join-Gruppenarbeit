@@ -74,6 +74,7 @@ function proofLogin() {
 
     let user = users.find(u => u.email == loginEmail.value && u.password == loginPassword.value);
     if (user) {
+        localStorage.setItem("userEmail", user.email);
         window.location.href = "../html/summary.html";
     }
 
