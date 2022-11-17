@@ -2,8 +2,8 @@
 async function initSummary() {
     await includeHTML();
     updateStatus();
-    await loadTasksFromServerSummary(); 
-    updateSummary(); 
+    await loadTasksFromServerSummary();
+    updateSummary();
     sidebarBgPage();
     helloUser();
 }
@@ -21,11 +21,11 @@ function updateStatus() {
 
 
     if (currentTime < 12) {
-        status = "Good morning,";
+        status = "Good morning";
     } else if (currentTime < 18) {
-        status = "Good afternoon,";
+        status = "Good afternoon";
     } else {
-        status = "Good evening,";
+        status = "Good evening";
     }
 
     currentStatus = status;
@@ -50,20 +50,22 @@ async function loadTasksFromServerSummary() {
  * 
  */
 function updateSummary() {
-    let overview = tasksOverview[0]; 
-    document.getElementById('tasks-in-board').innerHTML = overview['tasksOnBoard']; 
-    document.getElementById('tasks-in-progress').innerHTML = overview['tasksInProgress']; 
-    document.getElementById('tasks-awaiting-feedback').innerHTML = overview['tasksInAwaitingFeedback']; 
-    document.getElementById('urgent-tasks').innerHTML = overview['urgentTasks']; 
-    document.getElementById('tasks-in-todo').innerHTML = overview['tasksInTodo']; 
-    document.getElementById('tasks-in-done').innerHTML = overview['tasksInDone']; 
+    let overview = tasksOverview[0];
+    document.getElementById('tasks-in-board').innerHTML = overview['tasksOnBoard'];
+    document.getElementById('tasks-in-progress').innerHTML = overview['tasksInProgress'];
+    document.getElementById('tasks-awaiting-feedback').innerHTML = overview['tasksInAwaitingFeedback'];
+    document.getElementById('urgent-tasks').innerHTML = overview['urgentTasks'];
+    document.getElementById('tasks-in-todo').innerHTML = overview['tasksInTodo'];
+    document.getElementById('tasks-in-done').innerHTML = overview['tasksInDone'];
 }
 
 
 function helloUser() {
-let user = users.find(u => u.email);
-    if (user) {
-       document.getElementById('name').innerHTML = user['name'];
+    localStorage.getItem('userEmail');
+    let user = users.find(u => u.email);
+    let userEmail = users.indexOf(u => u.email);
+    if (user == userEmail) {
+        document.getElementById('name').innerHTML = user['name'];
     }
     else {
         document.getElementById('name').innerHTML = ``;
