@@ -196,47 +196,26 @@ function removeEmailNotRegisteredWarning() {
     let user = users.find(u => u.email == resetPasswordEmail.value);
     let submitButton = document.getElementById('submit-btn');
 
-    if (!user) {
+    if (!user && resetPasswordEmail.value.length > 6) {
         document.getElementById('email-to-reset-password').classList.add('no-margin-bottom');
         document.getElementById('email-not-registered-warning').classList.remove('d-none');
         submitButton.disabled = true;
     }
 
-    else if (resetPasswordEmail.value.length < 1) {
+    if (resetPasswordEmail.value.length < 1) {
         document.getElementById('email-to-reset-password').classList.remove('no-margin-bottom');
         document.getElementById('email-not-registered-warning').classList.add('d-none');
         submitButton.disabled = true;
     }
 
-    else {
-        let name = document.getElementById('email-to-reset-password').value;
-        window.location.href = "../send_mail.php?name=" + name;
+    if (user) {
         submitButton.disabled = false;
     }
 }
 
-// function sendPHP() {
-//     let name = document.getElementById('email-to-reset-password').value;
-//     window.location.href = "../send_mail.php?name=" + name;
-// }
-
 
 function sendMailForgotPassword() {
-    console.log('durchgeführt');
-    // let resetPasswordEmail = document.getElementById('email-to-reset-password');
-    // let user = users.find(u => u.email == resetPasswordEmail.value);
-    // let submitButton = document.getElementById('submit-btn');
-
-    // if (!user) {
-    //     document.getElementById('email-to-reset-password').classList.add('no-margin-bottom');
-    //     document.getElementById('email-not-registered-warning').classList.remove('d-none');
-    //     submitButton.disabled = true;
-    // }
-
-    // else {
     document.getElementById('overlay-forgot-password').classList.remove('d-none');
     document.getElementById('overlay-btn-forgot-password').classList.remove('d-none');
-    // submitButton.disabled = false;
-    // }
 }
 
