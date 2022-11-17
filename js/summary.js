@@ -61,11 +61,10 @@ function updateSummary() {
 
 
 function helloUser() {
-    localStorage.getItem('userEmail');
-    let user = users.find(u => u.email);
-    let userEmail = users.indexOf(u => u.email);
-    if (user == userEmail) {
-        document.getElementById('name').innerHTML = user['name'];
+    let user = localStorage.getItem('userEmail');
+    // let userEmail = users.indexOf(u => u.email);
+    if (user == users.email) {
+        document.getElementById('name').innerHTML = users['name'];
     }
     else {
         document.getElementById('name').innerHTML = ``;
