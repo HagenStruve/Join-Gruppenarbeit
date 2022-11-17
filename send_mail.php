@@ -1,11 +1,9 @@
 <?php
 
 
-
 ########### CONFIG ###############
-// $name = $_GET['name'];
-// $recipient = $name;
-$link = 'https://gruppe-313.developerakademie.net/Join-Gruppenarbeit/html/reset_password.html';
+$email = $_POST['email'];
+$link = 'https://gruppe-313.developerakademie.net/Join-Gruppenarbeit/html/reset_password.html?'.$email;
 $redirect = 'html/login.html';
 
 ########### CONFIG END ###########
