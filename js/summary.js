@@ -21,11 +21,11 @@ function updateStatus() {
 
 
     if (currentTime < 12) {
-        status = "Good morning";
+        status = "Good morning,";
     } else if (currentTime < 18) {
-        status = "Good afternoon";
+        status = "Good afternoon,";
     } else {
-        status = "Good evening";
+        status = "Good evening,";
     }
 
     currentStatus = status;
@@ -61,12 +61,13 @@ function updateSummary() {
 
 
 function helloUser() {
-    let user = localStorage.getItem('userEmail');
-    // let userEmail = users.indexOf(u => u.email);
-    if (user == users.email) {
-        document.getElementById('name').innerHTML = users['name'];
+    let userEmail = localStorage.getItem('userEmail');  
+    // let user = users.find(u => u.email); 
+    let emailIndex = users.filter(u => u.email == userEmail);
+    if (emailIndex.email == userEmail) {
+        document.getElementById('name').innerHTML = emailIndex['name'];
     }
     else {
-        document.getElementById('name').innerHTML = ``;
+        document.getElementById('name').innerHTML = `Guest`;
     }
 }
