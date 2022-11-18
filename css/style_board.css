@@ -74,18 +74,27 @@
     gap: 17px;
 }
 
+.unterordner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
 .kanban-management-headlines {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: var(--width-task-size);
+    flex-direction: column;
 }
 
-.kanban-management-headlines img {
+.unterordner img {
     height: 27px;
     width: auto;
     object-fit: contain;
 }
+
 
 
 .switch-add-icon {
@@ -113,6 +122,7 @@
     padding-left: 5%;
     padding-right: 5%;
     gap: 17px;
+    flex-direction: row;
 }
 
 .current-status {
@@ -617,7 +627,7 @@ a::-webkit-scrollbar {
     }
 
     .current-status {
-        min-height: 0;
+        min-height: 10;
     }
 
     .find-task-div {

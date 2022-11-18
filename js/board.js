@@ -771,13 +771,15 @@ function checkResponsive() {
     if (myMediaQuery1400.matches) { //if higher than 1400px
         let id = '';
         let id2 = '-responsive';
-        startResponsiveBoardView(id, id2);
+       // startResponsiveBoardView(id, id2);
+       document.getElementById("kanban-overview").style.flexDirection = "row";
     }
 
     else {  //if not
         let id = '-responsive';
         let id2 = '';
-        startResponsiveBoardView(id, id2);
+        //startResponsiveBoardView(id, id2);
+        document.getElementById("kanban-overview").style.flexDirection = "column";
     }
 
 }

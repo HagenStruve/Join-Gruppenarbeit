@@ -47,71 +47,76 @@
             </div>
 
 
-            <div class="second-row">
-                <div class="kanban-management-headlines">
-                    <h2>
-                        <b> To do </b>
-                    </h2>
 
-                    <img src="../img/plus-icon-with-border.png" onmouseover="switchAddIcon(id)" onmouseleave="switchAddIconBack(id)" onclick="displayAddTaskWindow()"  id="addIconCategorys1" class="switch-add-icon">
-                </div>
-
-                <div id="to-do-responsive">
-                </div>
+            <div class="kanban-overview" id="kanban-overview">
 
                 <div class="kanban-management-headlines">
-                    <h2>
-                        <b> In progress </b>
-                    </h2>
+                    <div class="unterordner">
+                        <h2>
+                            <b> To do </b>
+                        </h2>
 
-                    <img src="../img/plus-icon-with-border.png" onmouseover="switchAddIcon(id)" onmouseleave="switchAddIconBack(id)" onclick="displayAddTaskWindow()" id="addIconCategorys2" class="switch-add-icon">
+                        <img src="../img/plus-icon-with-border.png" onmouseover="switchAddIcon(id)"
+                            onmouseleave="switchAddIconBack(id)" onclick="displayAddTaskWindow()" id="addIconCategorys1"
+                            class="switch-add-icon">
+                    </div>
+
+                    <div class="current-status" id="to-do" ondrop="moveTo('to-do')" ondragover="allowDrop(event)">
+                    </div>
                 </div>
 
-                <div id="in-progress-responsive">
-                </div>
 
-                <div class="kanban-management-headlines" >
-                    <h2>
-                        <b> Awaiting Feedback</b>
-                    </h2>
-
-                    <img src="../img/plus-icon-with-border.png" onmouseover="switchAddIcon(id)" onmouseleave="switchAddIconBack(id)" onclick="displayAddTaskWindow()"  id="addIconCategorys3" class="switch-add-icon">
-                </div>
-
-                <div id="awaiting-feedback-responsive">
-                </div>
 
                 <div class="kanban-management-headlines">
-                    <h2>
-                        <b> Done</b>
-                    </h2>
+                    <div class="unterordner">
+                        <h2>
+                            <b> In progress </b>
+                        </h2>
 
-                    <img src="../img/plus-icon-with-border.png" onmouseover="switchAddIcon(id)" onmouseleave="switchAddIconBack(id)" onclick="displayAddTaskWindow()"  id="addIconCategorys4" class="switch-add-icon">
-                </div>
+                        <img src="../img/plus-icon-with-border.png" onmouseover="switchAddIcon(id)"
+                            onmouseleave="switchAddIconBack(id)" onclick="displayAddTaskWindow()" id="addIconCategorys2"
+                            class="switch-add-icon">
+                    </div>
 
-                <div id="done-responsive">
-                </div>
+                    <div class="current-status" id="in-progress" ondrop="moveTo('in-progress')"
+                        ondragover="allowDrop(event) ">
+                    </div>
 
-            </div>
-
-            <div class="kanban-overview">
-
-                <div class="current-status" id="to-do" ondrop="moveTo('to-do')" ondragover="allowDrop(event)">
-                </div>
-
-
-                <div class="current-status" id="in-progress" ondrop="moveTo('in-progress')"
-                    ondragover="allowDrop(event) ">
                 </div>
 
 
-                <div class="current-status" id="awaiting-feedback" ondrop="moveTo('awaiting-feedback')"
-                    ondragover="allowDrop(event)">
+                <div class="kanban-management-headlines">
+                    <div class="unterordner"> 
+                        <h2>
+                            <b> Awaiting Feedback</b>
+                        </h2>
+
+                        <img src="../img/plus-icon-with-border.png" onmouseover="switchAddIcon(id)"
+                            onmouseleave="switchAddIconBack(id)" onclick="displayAddTaskWindow()" id="addIconCategorys3"
+                            class="switch-add-icon">
+                    </div>
+
+                    <div class="current-status" id="awaiting-feedback" ondrop="moveTo('awaiting-feedback')" ondragover="allowDrop(event)">
+                    </div>
+
                 </div>
 
 
-                <div class="current-status" id="done" ondrop="moveTo('done')" ondragover="allowDrop(event)">
+
+                <div class="kanban-management-headlines">
+                    <div class="unterordner"> 
+                        <h2>
+                            <b> Done</b>
+                        </h2>
+
+                        <img src="../img/plus-icon-with-border.png" onmouseover="switchAddIcon(id)" onmouseleave="switchAddIconBack(id)" onclick="displayAddTaskWindow()" id="addIconCategorys4" class="switch-add-icon">
+
+                    </div>
+
+                    <div class="current-status" id="done" ondrop="moveTo('done')" ondragover="allowDrop(event)">
+                    </div>
                 </div>
+
 
             </div>
         </div>
