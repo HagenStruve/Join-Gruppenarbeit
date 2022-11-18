@@ -614,6 +614,17 @@ body {
 }
 
 
+@media(max-width: 1200px) {
+    .fontsice-21 {
+        font-size: calc(10px + (21 - 10) * ((100vw - 320px) / (1600 - 320)));
+    }
+
+    .email {
+        font-size: calc(10px + (16 - 14) * ((100vw - 320px) / (1600 - 320)));
+    }
+}
+
+
 @media(max-width: 990px) {
     .content-right {
         left: 23%;
