@@ -2,9 +2,10 @@
 async function initSummary() {
     await includeHTML();
     updateStatus();
-    await loadTasksFromServerSummary(); 
-    updateSummary(); 
+    await loadTasksFromServerSummary();
+    updateSummary();
     sidebarBgPage();
+    helloUser();
 }
 
 
@@ -20,11 +21,11 @@ function updateStatus() {
 
 
     if (currentTime < 12) {
-        status = "Good morning,";
+        status = "Good morning";
     } else if (currentTime < 18) {
-        status = "Good afternoon,";
+        status = "Good afternoon";
     } else {
-        status = "Good evening,";
+        status = "Good evening";
     }
 
     currentStatus = status;
@@ -41,6 +42,7 @@ async function loadTasksFromServerSummary() {
     setURL("https://gruppe-313.developerakademie.net/Join-Gruppenarbeit/smallest_backend_ever-master");
     await downloadFromServer();
     tasksOverview = JSON.parse(backend.getItem('tasksOverview')) || [];
+    users = JSON.parse(backend.getItem('users')) || [];
 }
 
 
@@ -48,11 +50,23 @@ async function loadTasksFromServerSummary() {
  * 
  */
 function updateSummary() {
-    let overview = tasksOverview[0]; 
-    document.getElementById('tasks-in-board').innerHTML = overview['tasksOnBoard']; 
-    document.getElementById('tasks-in-progress').innerHTML = overview['tasksInProgress']; 
-    document.getElementById('tasks-awaiting-feedback').innerHTML = overview['tasksInAwaitingFeedback']; 
-    document.getElementById('urgent-tasks').innerHTML = overview['urgentTasks']; 
-    document.getElementById('tasks-in-todo').innerHTML = overview['tasksInTodo']; 
-    document.getElementById('tasks-in-done').innerHTML = overview['tasksInDone']; 
+    let overview = tasksOverview[0];
+    document.getElementById('tasks-in-board').innerHTML = overview['tasksOnBoard'];
+    document.getElementById('tasks-in-progress').innerHTML = overview['tasksInProgress'];
+    document.getElementById('tasks-awaiting-feedback').innerHTML = overview['tasksInAwaitingFeedback'];
+    document.getElementById('urgent-tasks').innerHTML = overview['urgentTasks'];
+    document.getElementById('tasks-in-todo').innerHTML = overview['tasksInTodo'];
+    document.getElementById('tasks-in-done').innerHTML = overview['tasksInDone'];
+}
+
+
+function helloUser() {
+    let user = localStorage.getItem('userEmail');
+    // let userEmail = users.indexOf(u => u.email);
+    if (user == users.email) {
+        document.getElementById('name').innerHTML = users['name'];
+    }
+    else {
+        document.getElementById('name').innerHTML = ``;
+    }
 }

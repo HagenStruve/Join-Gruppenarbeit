@@ -1,7 +1,7 @@
 
 // after the successful registration, name, e-mail and password will be saved in this array
 let users = [];
-let currentUser = []; 
+let resetPasswordEmail;
 
 
 /**
@@ -11,6 +11,18 @@ async function initLogin() {
     setURL("https://gruppe-313.developerakademie.net/Join-Gruppenarbeit/smallest_backend_ever-master");
     await downloadFromServer();
     users = await JSON.parse(backend.getItem('users')) || [];
+    pageOpenerAnimation();
+}
+
+
+async function initResetPassword() {
+    initLogin();
+    resetPasswordEmail = window.location.search;
+    resetPasswordEmail = resetPasswordEmail.replace("?", "");
+}
+
+
+function pageOpenerAnimation() {
     document.body.style.opacity = '1';
     document.getElementById('logo').style = 'transform: translateX(-100%) translateY(-100%); left: 120px; top: 130px; scale: 1.0;';
 }
@@ -74,7 +86,8 @@ function proofLogin() {
     let loginPassword = document.getElementById('login-password');
 
     let user = users.find(u => u.email == loginEmail.value && u.password == loginPassword.value);
-    if (user) { 
+    if (user) {
+        localStorage.setItem("userEmail", user.email);
         window.location.href = "../html/summary.html";
 
     }
@@ -168,9 +181,7 @@ function resetPassword() {
     let confirmResetPassword = document.getElementById('reset-password-confirm');
 
     if (resetPassword.value === confirmResetPassword.value) {
-        console.log('Passwort zurückgesetzt')
-        document.getElementById('overlay-reset-password').classList.remove('d-none');
-        document.getElementById('overlay-btn-reset-password').classList.remove('d-none');
+        saveNewPassword(confirmResetPassword);
         setTimeout(() => {
             window.location.href = "../html/login.html"
         }, 1500);
@@ -179,6 +190,20 @@ function resetPassword() {
     else {
         showPasswordNotEqualWarning();
     }
+}
+
+
+function saveNewPassword(confirmResetPassword) {
+    let indexEmail = users.findIndex(arr => arr.email == resetPasswordEmail);
+    users[indexEmail].password = confirmResetPassword.value;
+    backend.setItem('users', JSON.stringify(users));
+    showResetPasswordAnimation();
+}
+
+
+function showResetPasswordAnimation() {
+    document.getElementById('overlay-reset-password').classList.remove('d-none');
+    document.getElementById('overlay-btn-reset-password').classList.remove('d-none');
 }
 
 
@@ -195,30 +220,32 @@ function removePasswordsNotEqualWarning() {
 
 function removeEmailNotRegisteredWarning() {
     let resetPasswordEmail = document.getElementById('email-to-reset-password');
+    let user = users.find(u => u.email == resetPasswordEmail.value);
+    let submitButton = document.getElementById('submit-btn');
+
+    if (!user) {
+        submitButton.disabled = true;
+    }
 
     if (resetPasswordEmail.value.length < 1) {
         document.getElementById('email-to-reset-password').classList.remove('no-margin-bottom');
         document.getElementById('email-not-registered-warning').classList.add('d-none');
+        submitButton.disabled = true;
+    }
+
+    if (user) {
+        document.getElementById('email-to-reset-password').classList.remove('no-margin-bottom');
+        document.getElementById('email-not-registered-warning').classList.add('d-none');
+        submitButton.disabled = false;
     }
 }
 
 
 function sendMailForgotPassword() {
-    let resetPasswordEmail = document.getElementById('email-to-reset-password');
-    let user = users.find(u => u.email == resetPasswordEmail.value);
-
-    if (!user) {
-        document.getElementById('email-to-reset-password').classList.add('no-margin-bottom');
-        document.getElementById('email-not-registered-warning').classList.remove('d-none');
-    }
-
-    else {
-        console.log('E-Mail wurde versendet')
-        document.getElementById('overlay-forgot-password').classList.remove('d-none');
-        document.getElementById('overlay-btn-forgot-password').classList.remove('d-none');
-        setTimeout(() => {
-            window.location.href = "../html/login.html"
-        }, 1500);
-    }
+    document.getElementById('overlay-forgot-password').classList.remove('d-none');
+    document.getElementById('overlay-btn-forgot-password').classList.remove('d-none');
 }
+
+
+
 
