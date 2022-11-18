@@ -85,7 +85,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: var(--width-task-size);
+    width: 20%;
     flex-direction: column;
 }
 
@@ -126,7 +126,7 @@
 }
 
 .current-status {
-    width: var(--width-task-size);
+    width: 100%;
     min-height: 100vh;
 }
 
@@ -139,7 +139,7 @@
 }
 
 .kanban-task-container {
-    width: var(--width-task-size);
+    width: 100%;
     height: auto;
     background-color: white;
     border-radius: 15px;
@@ -618,6 +618,11 @@ a::-webkit-scrollbar {
 
 
 @media (max-width:1400px) {
+
+    .kanban-management-headlines {
+        width: 100%;
+    }
+    
     .second-row {
         flex-direction: column;
     }
@@ -627,6 +632,7 @@ a::-webkit-scrollbar {
     }
 
     .current-status {
+        width: 100%;
         min-height: 10;
     }
 

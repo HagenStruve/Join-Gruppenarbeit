@@ -772,6 +772,8 @@ function checkResponsive() {
         let id = '';
         let id2 = '-responsive';
        // startResponsiveBoardView(id, id2);
+       generateSearchFieldHTML(id);
+       deleteSearchFíeldHTML(id2); 
        document.getElementById("kanban-overview").style.flexDirection = "row";
     }
 
@@ -779,10 +781,30 @@ function checkResponsive() {
         let id = '-responsive';
         let id2 = '';
         //startResponsiveBoardView(id, id2);
+        generateSearchFieldHTML(id);
+        deleteSearchFíeldHTML(id2); 
         document.getElementById("kanban-overview").style.flexDirection = "column";
     }
 
 }
+
+
+function generateSearchFieldHTML(id) {
+    return document.getElementById(`find-task${id}`).innerHTML = `
+        <div class="find-task-div">
+            <input placeholder="Find Task" class="find-task-input" id="input-search" onkeyup="searchTask()">
+            <img src="../img/magnifying-glass.png">
+        </div> `;
+}
+
+
+/** deletes content for responsive, so that only the desktop or mobile content is displayed
+ * 
+ */
+ function deleteSearchFíeldHTML(id2) {
+    document.getElementById(`find-task${id2}`).innerHTML = '';
+}
+
 
 
 function editContacts(name) {
