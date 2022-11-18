@@ -55,6 +55,16 @@ async function saveNewOnServer() {
 }
 
 
+function switchAddIcon(id) {
+    document.getElementById(id).src = "../img/blue-plus.png"; 
+}
+
+
+function switchAddIconBack(id) {
+    document.getElementById(id).src = "../img/plus-icon-with-border.png"; 
+}
+
+
 /** updates the id from every task
  * 
  */
@@ -936,3 +946,5 @@ function selectContact(id) {
     let ulContact = document.getElementById("ul-contact");
     showSelectionContacts(ulContact);
 }
+
+

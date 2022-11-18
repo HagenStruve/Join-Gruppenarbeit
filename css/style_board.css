@@ -82,11 +82,26 @@
 }
 
 .kanban-management-headlines img {
-    height: 22px;
-    width: 25px;
+    height: 27px;
+    width: auto;
     object-fit: contain;
 }
 
+
+.switch-add-icon {
+    object-fit: cover;
+}
+
+
+.switch-add-icon:hover {
+    object-fit: cover;
+    height: 17px;
+    width: auto;
+    border: solid 2px #29ABE2;
+    border-radius: 8px;
+    padding: 3px;
+    cursor: pointer;
+}
 
 /* Kanban Overview Section */
 
