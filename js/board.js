@@ -28,6 +28,7 @@ async function initBoard() {
     renderBoardSite();
     checkResponsive();
     sidebarBgPage();
+
 }
 
 
@@ -42,6 +43,7 @@ async function loadTasksFromServer() {
     setURL("https://gruppe-313.developerakademie.net/Join-Gruppenarbeit/smallest_backend_ever-master");
     await downloadFromServer();
     downloadedTasks = JSON.parse(backend.getItem('downloadedTasks')) || [];
+    users = JSON.parse(backend.getItem('users')) || [];
 
     console.log('loaded 123 tasks');
     console.log(downloadedTasks);
@@ -54,12 +56,19 @@ async function saveNewOnServer() {
     await backend.setItem('tasksOverview', JSON.stringify(tasksOverview));
 }
 
-
+/** function switches add icon aside categorys to blue 
+ * 
+ * @param {string} id - contains id for add icon on boardview aside categorys (to-do / inProgres...) 
+ */
 function switchAddIcon(id) {
     document.getElementById(id).src = "../img/blue-plus.png"; 
 }
 
 
+/** function switches add icon aside categorys to black again 
+ * 
+ * @param {string} id - contains id for add icon on boardview aside categorys (to-do / inProgres...) 
+ */
 function switchAddIconBack(id) {
     document.getElementById(id).src = "../img/plus-icon-with-border.png"; 
 }
