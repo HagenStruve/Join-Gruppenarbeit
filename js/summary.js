@@ -62,10 +62,9 @@ function updateSummary() {
 
 function helloUser() {
     let userEmail = localStorage.getItem('userEmail');  
-    // let user = users.find(u => u.email); 
     let emailIndex = users.filter(u => u.email == userEmail);
-    if (emailIndex.email == userEmail) {
-        document.getElementById('name').innerHTML = emailIndex['name'];
+    if (emailIndex) {
+        document.getElementById('name').innerHTML = emailIndex[0].name;
     }
     else {
         document.getElementById('name').innerHTML = `Guest`;
