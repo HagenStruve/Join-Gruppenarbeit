@@ -400,8 +400,10 @@ a::-webkit-scrollbar {
 
 .c-t-subtasks {
     display: flex;
+    align-items: baseline;
     gap: 10px;
     margin-bottom: 20px;
+    flex-direction: column;
 }
 
 .c-t-space {
