@@ -544,6 +544,10 @@ body {
     color: white;
 }
 
+.blue-background:hover {
+    color: black;
+}
+
 .contact-created {
     position: fixed;
     bottom: 5%;
