@@ -1,4 +1,4 @@
-let downloadedTasks = [];
+
 let existTasks = 0; // id assigner for downloaded Tasks. 
 let currentDraggedElement;  // contains the ID of current dragged element
 let NumberOfCurrentTasks = 0; // is needed to differ between the tasks
@@ -782,56 +782,6 @@ function checkResponsive() {
         document.getElementById("kanban-overview").style.flexDirection = "column";
     }
 
-}
-
-/** let all function start, that are needed for responsive view
- * 
- */
-function startResponsiveBoardView(id, id2) {
-    deleteDesktopBoardView(id2);
-    generateResponsiveHTMLCode(id);
-    displayAllTasks();
-}
-
-
-/** generates needed HTML Code on location.
- * 
- */
-function generateResponsiveHTMLCode(id) {
-    document.getElementById(`to-do${id}`).innerHTML = `
-        <div class="current-status" id="to-do" ondrop="moveTo('to-do')" ondragover="allowDrop(event)">
-        </div>`;
-    document.getElementById(`in-progress${id}`).innerHTML = `
-        <div class="current-status" id="in-progress" ondrop="moveTo('in-progress')" ondragover="allowDrop(event) ">
-        </div> `;
-    document.getElementById(`awaiting-feedback${id}`).innerHTML = `
-        <div class="current-status" id="awaiting-feedback" ondrop="moveTo('awaiting-feedback') "ondragover="allowDrop(event)">
-        </div> `;
-    document.getElementById(`done${id}`).innerHTML = `
-        <div class="current-status" id="done" ondrop="moveTo('done')" ondragover="allowDrop(event)">
-        </div> `;
-    searchFieldHTML(id);
-}
-
-
-function searchFieldHTML(id) {
-    return document.getElementById(`find-task${id}`).innerHTML = `
-        <div class="find-task-div">
-            <input placeholder="Find Task" class="find-task-input" id="input-search" onkeyup="searchTask()">
-            <img src="../img/magnifying-glass.png">
-        </div> `;
-}
-
-
-/** deletes content for responsive, so that only the desktop or mobile content is displayed
- * 
- */
-function deleteDesktopBoardView(id2) {
-    document.getElementById(`to-do${id2}`).innerHTML = '';
-    document.getElementById(`in-progress${id2}`).innerHTML = '';
-    document.getElementById(`awaiting-feedback${id2}`).innerHTML = '';
-    document.getElementById(`done${id2}`).innerHTML = '';
-    document.getElementById(`find-task${id2}`).innerHTML = '';
 }
 
 
