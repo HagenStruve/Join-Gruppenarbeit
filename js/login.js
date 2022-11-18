@@ -84,15 +84,13 @@ function addUser() {
 function proofLogin() {
     let loginEmail = document.getElementById('login-email');
     let loginPassword = document.getElementById('login-password');
-
     let user = users.find(u => u.email == loginEmail.value && u.password == loginPassword.value);
     if (user) {
         localStorage.setItem("userEmail", user.email);
         window.location.href = "../html/summary.html";
-
     }
 
-    else {
+    else { //warning appears
         document.getElementById('login-password').classList.add('no-margin-bottom');
         document.getElementById('wrong-login-dates').classList.remove('d-none');
     }
@@ -108,7 +106,7 @@ function proofInputLogin() {
     let loginEmail = document.getElementById('login-email');
     let loginPassword = document.getElementById('login-password');
 
-    if (loginEmail.value.length < 1 || loginPassword.value.length < 1) {
+    if (loginEmail.value.length < 1 || loginPassword.value.length < 1) { //warning will be removed
         document.getElementById('login-password').classList.remove('no-margin-bottom');
         document.getElementById('wrong-login-dates').classList.add('d-none');
     }
@@ -123,16 +121,22 @@ function proofInputSignUp() {
     let email = document.getElementById('email');
     let password = document.getElementById('password');
     let user = users.find(u => u.email == email.value);
+    setOrRemoveWarningAndSetButton(name, email, password, user)
+}
+
+
+/**
+ * 
+ * proof different cases in the sign up process and shows the Warning or removes it
+ */
+function setOrRemoveWarningAndSetButton(name, email, password, user) {
     if (user) {
         showEmailInUseWarning();
     }
     else if (name.value.length >= 1 && email.value.length >= 1 && password.value.length >= 1) {
         showSubmitButton();
     }
-    if (!user) {
-        removeEmailInUseWarning();
-    }
-    if (!document.getElementById('successful-registration').classList.contains('d-none')) {
+    if (!user || !document.getElementById('successful-registration').classList.contains('d-none')) {
         removeEmailInUseWarning();
     }
 }
@@ -170,16 +174,22 @@ function showSubmitButton() {
 }
 
 
+/**
+ * warning apperas when you reset the password and both reset passwords are not equal
+ */
 function showPasswordNotEqualWarning() {
     document.getElementById('reset-password-confirm').classList.add('no-margin-bottom');
     document.getElementById('pw-not-equal-text').classList.remove('d-none');
 }
 
 
+/**
+ * when reset passwords are equal and meet the standard the new password will be saved and you
+ * will forwarded to the login page, else the warning appears
+ */
 function resetPassword() {
     let resetPassword = document.getElementById('reset-password');
     let confirmResetPassword = document.getElementById('reset-password-confirm');
-
     if (resetPassword.value === confirmResetPassword.value) {
         saveNewPassword(confirmResetPassword);
         setTimeout(() => {
@@ -193,6 +203,10 @@ function resetPassword() {
 }
 
 
+/**
+ * @param {is the new password} confirmResetPassword 
+ * new password will be saved in the backend
+ */
 function saveNewPassword(confirmResetPassword) {
     let indexEmail = users.findIndex(arr => arr.email == resetPasswordEmail);
     users[indexEmail].password = confirmResetPassword.value;
@@ -201,16 +215,19 @@ function saveNewPassword(confirmResetPassword) {
 }
 
 
+/**
+ * after successful reset password, animation appears
+ */
 function showResetPasswordAnimation() {
     document.getElementById('overlay-reset-password').classList.remove('d-none');
     document.getElementById('overlay-btn-reset-password').classList.remove('d-none');
 }
 
 
+
 function removePasswordsNotEqualWarning() {
     let resetPassword = document.getElementById('reset-password');
     let confirmResetPassword = document.getElementById('reset-password-confirm');
-
     if (resetPassword.value.length < 1 || confirmResetPassword.value.length < 1) {
         document.getElementById('reset-password-confirm').classList.remove('no-margin-bottom');
         document.getElementById('pw-not-equal-text').classList.add('d-none');
@@ -221,23 +238,15 @@ function removePasswordsNotEqualWarning() {
 function removeEmailNotRegisteredWarning() {
     let resetPasswordEmail = document.getElementById('email-to-reset-password');
     let user = users.find(u => u.email == resetPasswordEmail.value);
-    let submitButton = document.getElementById('submit-btn');
-
-    if (!user) {
-        submitButton.disabled = true;
+    if (resetPasswordEmail.value.length < 1 || user) {
+        removeWarningEmail();
     }
+}
 
-    if (resetPasswordEmail.value.length < 1) {
-        document.getElementById('email-to-reset-password').classList.remove('no-margin-bottom');
-        document.getElementById('email-not-registered-warning').classList.add('d-none');
-        submitButton.disabled = true;
-    }
 
-    if (user) {
-        document.getElementById('email-to-reset-password').classList.remove('no-margin-bottom');
-        document.getElementById('email-not-registered-warning').classList.add('d-none');
-        submitButton.disabled = false;
-    }
+function removeWarningEmail() {
+    document.getElementById('email-to-reset-password').classList.remove('no-margin-bottom');
+    document.getElementById('email-not-registered-warning').classList.add('d-none');
 }
 
 
@@ -247,5 +256,17 @@ function sendMailForgotPassword() {
 }
 
 
+function setAction(form) {
+    let emailResetPassword = document.getElementById('email-to-reset-password').value;
+    let registeredEmail = users.find(u => u.email == emailResetPassword);
+    if (!registeredEmail) { //show warning
+        document.getElementById('email-to-reset-password').classList.add('no-margin-bottom');
+        document.getElementById('email-not-registered-warning').classList.remove('d-none');
+        return false;
+    }
 
+    sendMailForgotPassword();
+    form.action = "https://gruppe-313.developerakademie.net/Join-Gruppenarbeit/send_mail.php";
+    form.method = "post";
+}
 
