@@ -172,9 +172,7 @@
         <h4> Title </h4> 
         <input placeholder="Enter a title" required id="c-t-title-edit"> 
         <h4> Description</h4> 
-        <textarea type="text" required placeholder="Enter a Description" id="c-t-description-edit">
-            
-        </textarea> 
+        <textarea type="text" required placeholder="Enter a Description" id="c-t-description-edit"></textarea> 
         <h4> Due date </h4> 
         <input type="date" id="c-t-date-edit" > 
         <h4> Prio </h4> 

@@ -628,7 +628,7 @@ function createAssignedContacsOnBoard(element) {
     }
     else {
         for (i = 0; i <= x - 1; i++) {
-            createAssignedContacsOnBoardHTML(element, pixels); 
+            createAssignedContacsOnBoardHTML(element, pixels);
             pixels += + 10;
         }
     }
@@ -737,7 +737,6 @@ function generateDate() {
 }
 
 
-
 /** to show the add task window on board site
  * 
  */
@@ -746,10 +745,6 @@ function displayAddTaskWindow() {
     document.getElementById('open-clicked-task').style.display = "flex";
     generateDate();
 }
-
-
-
-
 
 
 let myMediaQuery1400 = window.matchMedia('(min-width: 1400px)');
@@ -814,7 +809,6 @@ function searchFieldHTML(id) {
             <img src="../img/magnifying-glass.png">
         </div> `;
 }
-
 
 
 /** deletes content for responsive, so that only the desktop or mobile content is displayed

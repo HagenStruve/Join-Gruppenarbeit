@@ -1,6 +1,7 @@
 
 // after the successful registration, name, e-mail and password will be saved in this array
 let users = [];
+let currentUser = []; 
 
 
 /**
@@ -73,8 +74,9 @@ function proofLogin() {
     let loginPassword = document.getElementById('login-password');
 
     let user = users.find(u => u.email == loginEmail.value && u.password == loginPassword.value);
-    if (user) {
+    if (user) { 
         window.location.href = "../html/summary.html";
+
     }
 
     else {
