@@ -221,15 +221,23 @@ function getFirstLetters(j) {
  * @param {string} i - Variable to pass the affiliation of the contact test.
  */
 function showMemberInfo(i) {
-    idNumberMemberBox.push(i);
-    backgroundMemberBox(i);
+    if (idNumberMemberBox.includes(i, 0)) {
+        for (let y = 0; y < idNumberMemberBox.length; y++) {
+        document.getElementById('member-box' + idNumberMemberBox[y]).classList.remove('blue-background');
+    }
+        idNumberMemberBox = [];
+        document.getElementById('member-info').innerHTML = ``;
+    } else {
+        idNumberMemberBox.push(i);
+        backgroundMemberBox(i);
 
-    let letters = document.getElementById('shortcut-name' + i).innerHTML;
-    let infoBox = document.getElementById('member-info');
-    infoBox.innerHTML = ``;
-    infoBox.innerHTML = memberInfoHtml(i, letters);
-    document.getElementById('content-right').classList.add('z-index-99');
-    $("#shortcut-name-info" + i).css("background-color", backgroundColor[i]);
+        let letters = document.getElementById('shortcut-name' + i).innerHTML;
+        let infoBox = document.getElementById('member-info');
+        infoBox.innerHTML = ``;
+        infoBox.innerHTML = memberInfoHtml(i, letters);
+        document.getElementById('content-right').classList.add('z-index-99');
+        $("#shortcut-name-info" + i).css("background-color", backgroundColor[i]);
+}
 }
 
 
