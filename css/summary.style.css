@@ -293,6 +293,7 @@ a {
 
     .content-left {
         width: 100%;
+        z-index: 1;
     }
 
     .content-right {
@@ -307,10 +308,11 @@ a {
         height: 100vh;
         width: 100vw;
         background-color: #F5F5F5;
+        z-index: 2;
 
         animation: seconds 3.0s forwards;
         animation-iteration-count: 1;
-        animation-delay: 3s;
+        animation-delay: 2s;
     }
 
     @keyframes seconds {
@@ -320,6 +322,7 @@ a {
         100% {
           opacity: 0;
           z-index: 0;
+          display: none;
         }
       }
 }

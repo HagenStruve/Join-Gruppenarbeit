@@ -856,6 +856,7 @@ body {
     .close-withe {
         transform: rotate(45deg);
         object-fit: cover;
+        cursor: pointer;
         width: 25px;
         height: 25px;
     }

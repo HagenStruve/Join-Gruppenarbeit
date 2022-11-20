@@ -227,6 +227,11 @@ function showMemberInfo(i) {
     }
         idNumberMemberBox = [];
         document.getElementById('member-info').innerHTML = ``;
+        document.getElementById('member-info').innerHTML = /*HTML*/`
+        <button onclick="newConatct()" class="new-contact">
+        <span>New contact</span>
+        <img src="../img/new-contact-icon.png">
+    </button>`;
     } else {
         idNumberMemberBox.push(i);
         backgroundMemberBox(i);
