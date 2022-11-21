@@ -12,6 +12,7 @@ async function initLogin() {
     await downloadFromServer();
     users = await JSON.parse(backend.getItem('users')) || [];
     pageOpenerAnimation();
+    checkRememberMe();
 }
 
 
@@ -86,13 +87,43 @@ function proofLogin() {
     let loginPassword = document.getElementById('login-password');
     let user = users.find(u => u.email == loginEmail.value && u.password == loginPassword.value);
     if (user) {
+        if (document.getElementById('checkbox-remember-me').checked) {
+            let checkboxRememberMe = document.getElementById('checkbox-remember-me');
+            localStorage.setItem("checkboxRememberMe", checkboxRememberMe.checked);
+        }
         localStorage.setItem("userEmail", user.email);
+        localStorage.setItem("userPassword", user.password);
         window.location.href = "../html/summary.html";
+    }
+
+    if (!document.getElementById('checkbox-remember-me').checked) {
+        localStorage.removeItem('userEmail');
+        localStorage.removeItem('userPassword');
+        localStorage.removeItem('checkboxRememberMe');
     }
 
     else { //warning appears
         document.getElementById('login-password').classList.add('no-margin-bottom');
         document.getElementById('wrong-login-dates').classList.remove('d-none');
+    }
+}
+
+
+
+function checkRememberMe() {
+    if (localStorage.getItem("checkboxRememberMe")) {
+        let loginEmail = document.getElementById('login-email');
+        let loginPassword = document.getElementById('login-password');
+        let checkBox = document.getElementById('checkbox-remember-me');
+        loginEmail.value = localStorage.getItem('userEmail');
+        loginPassword.value = localStorage.getItem('userPassword');
+        checkBox.checked = localStorage.getItem('checkboxRememberMe');
+    }
+
+    if (!document.getElementById('checkbox-remember-me').checked) {
+        localStorage.removeItem('userEmail');
+        localStorage.removeItem('userPassword');
+        localStorage.removeItem('checkboxRememberMe');
     }
 }
 
@@ -123,6 +154,9 @@ function proofInputSignUp() {
     let user = users.find(u => u.email == email.value);
     setOrRemoveWarningAndSetButton(name, email, password, user)
 }
+
+
+
 
 
 /**
@@ -264,6 +298,7 @@ function setAction(form) {
         document.getElementById('email-not-registered-warning').classList.remove('d-none');
         return false;
     }
+
 
     sendMailForgotPassword();
     form.action = "https://gruppe-313.developerakademie.net/Join-Gruppenarbeit/send_mail.php";
