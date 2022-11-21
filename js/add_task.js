@@ -1,5 +1,5 @@
 // task will be filled with downloaded task and updated with new task, then upload again 
-let downloadedTasks = [];  
+let downloadedTasks = [];
 let newTask = []; // array to put new created task in
 let prio = [];
 let subtasks = [];
@@ -31,6 +31,7 @@ function addSubtaskJSON() {
     }
 }
 
+
 /**
  * 
  * loads the page with the current date
@@ -41,6 +42,7 @@ async function initAddTask() {
     generateDate();
     sidebarBgPage();
 }
+
 
 /**
  * empties the array prio and activates a function around the
@@ -53,6 +55,7 @@ function markedPrio(id) {
     changeBg(id);
     document.getElementById("hidden-prio-input").value = '.';
 }
+
 
 /**
  * activates a function with the selected id
@@ -74,6 +77,7 @@ function changeBg(id) {
     }
 }
 
+
 /**
  * marks the priority of the task by changing the classes
  *
@@ -89,6 +93,7 @@ function changeBgUrgent(urgent, medium, low) {
     medium.classList.remove('bg-yellow');
     low.classList.remove('bg-green');
 }
+
 
 /**
  * marks the priority of the task by changing the classes
@@ -106,6 +111,7 @@ function changeBgMedium(urgent, medium, low) {
     low.classList.remove('bg-green');
 }
 
+
 /**
  * marks the priority of the task by changing the classes
  * 
@@ -122,6 +128,7 @@ function changeBgLow(urgent, medium, low) {
     low.classList.add('bg-green');
 }
 
+
 /**
  * triggered by a button, the information entered is bundled in a JSON
  * pushed and functions for storing the JSON on the server are triggered
@@ -130,41 +137,21 @@ function changeBgLow(urgent, medium, low) {
 async function addTask() {
     let title = document.getElementById('title');
     let descripton = document.getElementById('descripton');
-    let sector = liCategory;
-    if (document.getElementById('checkbox-contact-1').checked) {
-        contacts.push(document.getElementById('contact-1').innerHTML);
-    }
-
-    if (document.getElementById('checkbox-contact-2').checked) {
-        contacts.push(document.getElementById('contact-2').innerHTML);
-    }
-
-    if (document.getElementById('checkbox-contact-3').checked) {
-        contacts.push(document.getElementById('contact-3').innerHTML);
-    }
-
-
     let dueDate = document.getElementById('dueDate');
-
-    let urgent = document.getElementById('prio-urgent');
-    let medium = document.getElementById('prio-medium');
-    let low = document.getElementById('prio-low');
-
-    if (urgent.classList.contains('bg-orange')) {
-        actualPrio = 'Urgent';
-        prio.push(actualPrio);
-    }
-    if (medium.classList.contains('bg-yellow')) {
-        actualPrio = 'Medium';
-        prio.push(actualPrio);
-    }
-    if (low.classList.contains('bg-green')) {
-        actualPrio = 'Low';
-        prio.push(actualPrio);
-    }
-
+    let sector = liCategory;
+    pushContacts();
+    pushPrio();
     addSubtaskJSON();
+    setNewTask(title, descripton, sector, dueDate);
+    saveOnServer();
+    forwardToBoard();
+    clearPage(descripton, title);
+    createdTasks++;
+}
 
+
+
+function setNewTask(title, descripton, sector, dueDate) {
     newTask = {
         "category": 'to-do',
         "id": '',
@@ -176,15 +163,42 @@ async function addTask() {
         "prio": actualPrio,
         "subtasks": substasksJSON
     };
-
     downloadedTasks.push(newTask);
-
-    saveOnServer();
-    forwardToBoard();
-    clearContacts();
-    clearPage();
-    createdTasks++;
 }
+
+
+function pushPrio() {
+    let urgent = document.getElementById('prio-urgent');
+    let medium = document.getElementById('prio-medium');
+    let low = document.getElementById('prio-low');
+    if (urgent.classList.contains('bg-orange')) {
+        actualPrio = 'Urgent';
+    }
+    if (medium.classList.contains('bg-yellow')) {
+        actualPrio = 'Medium';
+    }
+    if (low.classList.contains('bg-green')) {
+        actualPrio = 'Low';
+    }
+    prio.push(actualPrio);
+}
+
+
+
+function pushContacts() {
+    if (document.getElementById('checkbox-contact-1').checked) {
+        contacts.push(document.getElementById('contact-1').innerHTML);
+    }
+
+    if (document.getElementById('checkbox-contact-2').checked) {
+        contacts.push(document.getElementById('contact-2').innerHTML);
+    }
+
+    if (document.getElementById('checkbox-contact-3').checked) {
+        contacts.push(document.getElementById('contact-3').innerHTML);
+    }
+}
+
 
 /**
  * deletes the marking of the contact
@@ -220,6 +234,7 @@ async function loadTasksFromServer() {
     downloadedTasks = JSON.parse(backend.getItem('downloadedTasks')) || [];
 }
 
+
 /**
  * save function on the server
  * 
@@ -230,30 +245,45 @@ async function saveOnServer() {
 }
 
 
-
 /**
  * clears the input fields and entries
  * 
  */
-function clearPage() {
-    document.getElementById('urgent-img').src = "../img/arrow_urgent.svg";
-    document.getElementById('medium-img').src = "../img/medium.svg";
-    document.getElementById('low-img').src = "../img/arrow_low.svg";
-    document.getElementById('prio-urgent').classList.remove('bg-orange');
-    document.getElementById('prio-medium').classList.remove('bg-yellow');
-    document.getElementById('prio-low').classList.remove('bg-green');
-
-    title.value = '';
-    descripton.value = '';
-    document.getElementById("hidden-category-input").value = '';
-    document.getElementById("hidden-contact-input").value = '';
-    document.getElementById("hidden-prio-input").value = '';
+function clearPage(descripton, title) {
+    showDefaultPrioImgs();
+    removeBgPrio();
+    setValuesEmpty(descripton, title);
     document.getElementById('selected-category').innerHTML = 'Select task Category';
     document.getElementById('overview-subtasks').innerHTML = '';
     clearContacts();
     generateDate();
     prio = [];
     subtasks = [];
+}
+
+
+function setValuesEmpty(descripton, title) {
+    title.value = '';
+    descripton.value = '';
+    document.getElementById("hidden-category-input").value = '';
+    document.getElementById("hidden-contact-input").value = '';
+    document.getElementById("hidden-prio-input").value = '';
+}
+
+
+
+function showDefaultPrioImgs() {
+    document.getElementById('urgent-img').src = "../img/arrow_urgent.svg";
+    document.getElementById('medium-img').src = "../img/medium.svg";
+    document.getElementById('low-img').src = "../img/arrow_low.svg";
+}
+
+
+
+function removeBgPrio() {
+    document.getElementById('prio-urgent').classList.remove('bg-orange');
+    document.getElementById('prio-medium').classList.remove('bg-yellow');
+    document.getElementById('prio-low').classList.remove('bg-green');
 }
 
 
@@ -400,6 +430,11 @@ function proofCheck(id) {
     let initial2 = document.getElementById('initials-2');
     let initial3 = document.getElementById('initials-3');
 
+    setValueInitials(isChecked, initial, initial1, initial2, initial3)
+}
+
+
+function setValueInitials(isChecked, initial, initial1, initial2, initial3) {
     if (isChecked.checked == true) {
         document.getElementById(initial).classList.remove('d-none');
         document.getElementById("hidden-contact-input").value = '.';
@@ -408,10 +443,16 @@ function proofCheck(id) {
         document.getElementById(initial).classList.add('d-none');
     }
 
-    if (initial1.classList.contains('d-none') && initial2.classList.contains('d-none') && initial3.classList.contains('d-none')) {
+    if (noPersonSelected(initial1, initial2, initial3)) {
         document.getElementById("hidden-contact-input").value = '';
     }
 }
+
+
+function noPersonSelected(initial1, initial2, initial3) {
+    return initial1.classList.contains('d-none') && initial2.classList.contains('d-none') && initial3.classList.contains('d-none')
+}
+
 
 
 /**

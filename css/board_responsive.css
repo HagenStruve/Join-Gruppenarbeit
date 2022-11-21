@@ -69,11 +69,11 @@
 
 @media(max-width: 570px) {
 
-    
+
     .clicked-task-bg {
         display: none !important;
     }
-    
+
     .add-task-left-side {
         margin-left: 0px !important;
     }
