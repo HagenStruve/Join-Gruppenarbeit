@@ -9,7 +9,6 @@ async function init() {
 //function to display header and sidebar in any-* site
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
-
     for (let i = 0; i < includeElements.length; i++) {
         const element = includeElements[i];
         let file = element.getAttribute("w3-include-html"); // includes/header.html
