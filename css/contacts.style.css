@@ -613,6 +613,24 @@ body {
     z-index: -1;
 }
 
+.delete-contact {
+    width: 25%;
+    margin-top: 3%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: calc(10px + (16 - 10) * ((100vw - 320px) / (1600 - 320)));
+    line-height: 120%;
+    color: red;
+    border-radius: 10px;
+    border-color: #2A3647;
+    border: 2px solid;
+    background-color: white;
+    cursor: pointer;
+    position: absolute;
+    bottom: 15%;
+}
+
 
 @media(max-width: 1200px) {
     .fontsice-21 {
@@ -1068,6 +1086,13 @@ body {
 
     b {
         font-size: 16;
+    }
+
+    .delete-contact {
+        width: 16%;
+        bottom: 3%;
+        right: 3%;
+        font-size: calc(10px + (10 - 8) * ((100vw - 320px) / (1600 - 320)));
     }
 }
 

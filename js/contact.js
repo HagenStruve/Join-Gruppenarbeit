@@ -226,12 +226,7 @@ function showMemberInfo(i) {
         document.getElementById('member-box' + idNumberMemberBox[y]).classList.remove('blue-background');
     }
         idNumberMemberBox = [];
-        document.getElementById('member-info').innerHTML = ``;
-        document.getElementById('member-info').innerHTML = /*HTML*/`
-        <button onclick="newConatct()" class="new-contact">
-        <span>New contact</span>
-        <img src="../img/new-contact-icon.png">
-    </button>`;
+        memberInfoClear();
     } else {
         idNumberMemberBox.push(i);
         backgroundMemberBox(i);
@@ -354,6 +349,20 @@ function closeContactInfo() {
 }
 
 
+function deleteContact(i) {
+    contact.splice(i, 1);
+    idNumberMemberBox.splice(i, 1);
+   
+    clearContentLeft();
+    pushFirstLetterJSON();
+    loadABCContainer();
+    idNumberMemberBox = [];
+    memberInfoClear();
+    closeEdit();
+    saveOnServer();
+}
+
+
 /////////////////////////////////////////// HTML /////////////////////////////////////////////////////////////
 
 
@@ -444,6 +453,17 @@ function editContactHTML(i, letters) {
             <button class="creat-button">Save<img src="../img/checkmark.png"></button>
         </div>
     </form>
+    <button onclick="deleteContact(${i})" class="delete-contact">Delete Contact</button>
 </div>
 `;
+}
+
+
+function memberInfoClear() {
+    document.getElementById('member-info').innerHTML = ``;
+    document.getElementById('member-info').innerHTML = /*HTML*/`
+    <button onclick="newConatct()" class="new-contact">
+    <span>New contact</span>
+    <img src="../img/new-contact-icon.png">
+</button>`;
 }
