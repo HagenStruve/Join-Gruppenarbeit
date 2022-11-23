@@ -17,9 +17,7 @@ function updateStatus() {
     let status = ``;
     const today = new Date();
     const currentTime = today.getHours();
-
-
-
+    
     if (currentTime < 12) {
         status = "Good morning,";
     } else if (currentTime < 18) {
