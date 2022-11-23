@@ -215,10 +215,18 @@
                     </div>
                 </div>
     <div class="c-t-ok-edit-button-div"> 
-        <button class="c-t-ok-edit-button" >
+        <button class="c-t-ok-edit-button" type="submit" name="action" value="edit" >
             <span> Ok </span> 
             <img src="../img/done-icon.png">
         </button>
+    </div>
+    
+    
+    <div class="c-t-remove-edit-button-div"> 
+        <div class="c-t-remove-edit-button" onclick="deleteTask()" >
+            <span> Remove Task </span> 
+            <img src="../img/delete-icon.png">
+        </div>
     </div> 
     <form> 
     `;

@@ -502,6 +502,11 @@ a::-webkit-scrollbar {
     justify-content: flex-end;
 }
 
+.c-t-remove-edit-button-div {
+    display: flex;
+    justify-content: flex-start;
+}
+
 
 .c-t-edit-button {
     display: flex;
@@ -510,6 +515,39 @@ a::-webkit-scrollbar {
     position: fixed;
     bottom: 5%;
     right: 5%;
+}
+
+
+.c-t-remove-edit-button {
+    width: 150px;
+    height: 51px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2A3647;
+    border-radius: 10px;
+    padding: 0px 10px;
+    color: white;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 120%;
+    position: fixed;
+    left: 11%;
+    bottom: 5%;
+    gap: 10px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonborder;
+    border-image: initial;
+}
+
+
+.c-t-remove-edit-button img {
+    width: 40px;
+}
+
+.c-t-remove-edit-button:hover {
+    cursor: pointer;
 }
 
 .c-t-edit-button:hover {

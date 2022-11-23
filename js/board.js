@@ -486,6 +486,7 @@ function CheckCheckboxandCreateSubtasks(id, arrayOfSubtasks) {
  * 
  */
 function getNewValueFromEditedTask() {
+
     let newTitle = document.getElementById('c-t-title-edit').value;
     let newDescription = document.getElementById('c-t-description-edit').value;
     let newDate = document.getElementById('c-t-date-edit').value;
@@ -498,6 +499,17 @@ function getNewValueFromEditedTask() {
     let id = currentClickedTask;
     displayClickedTask(id);
     displayAllTasks();
+}
+
+
+/** removes clicked Task, callable in edit menu 
+ * 
+ */
+function deleteTask() {
+    downloadedTasks.splice(currentClickedTask, 1);
+    saveNewOnServer(); 
+    displayAllTasks(); 
+    hideClickedTask(); 
 }
 
 
