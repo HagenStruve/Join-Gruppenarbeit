@@ -72,6 +72,12 @@ function cancel() {
     document.getElementById('name').value = "";
     document.getElementById('email').value = "";
     document.getElementById('phone').value = "";
+
+    cancelSetTimeOut();
+}
+
+
+function cancelSetTimeOut() {
     setTimeout(() => {
         document.getElementById('add-contact').classList.add('d-none');
         document.getElementById('add-contact').classList.remove('animate-reverse-edit-contact');
@@ -91,15 +97,12 @@ function addContact() {
     let name = document.getElementById('name');
     let email = document.getElementById('email');
     let phone = document.getElementById('phone');
-
     let addContact = {
         "name": name.value,
         "email": email.value,
         "phone": phone.value,
     };
-
     contact.push(addContact);
-
     getRandomColor();
     contactCreatedSuccessfuly();
     addAndSaveContact();
@@ -222,22 +225,32 @@ function getFirstLetters(j) {
  */
 function showMemberInfo(i) {
     if (idNumberMemberBox.includes(i, 0)) {
-        for (let y = 0; y < idNumberMemberBox.length; y++) {
+        showMemberInfoIf(i)
+    } else {
+        showMemberInfoElse(i)
+    }
+}
+
+
+function showMemberInfoIf(i) {
+    for (let y = 0; y < idNumberMemberBox.length; y++) {
         document.getElementById('member-box' + idNumberMemberBox[y]).classList.remove('blue-background');
     }
-        idNumberMemberBox = [];
-        memberInfoClear();
-    } else {
-        idNumberMemberBox.push(i);
-        backgroundMemberBox(i);
-
-        let letters = document.getElementById('shortcut-name' + i).innerHTML;
-        let infoBox = document.getElementById('member-info');
-        infoBox.innerHTML = ``;
-        infoBox.innerHTML = memberInfoHtml(i, letters);
-        document.getElementById('content-right').classList.add('z-index-99');
-        $("#shortcut-name-info" + i).css("background-color", backgroundColor[i]);
+    idNumberMemberBox = [];
+    memberInfoClear();
 }
+
+
+function showMemberInfoElse(i) {
+    idNumberMemberBox.push(i);
+    backgroundMemberBox(i);
+
+    let letters = document.getElementById('shortcut-name' + i).innerHTML;
+    let infoBox = document.getElementById('member-info');
+    infoBox.innerHTML = ``;
+    infoBox.innerHTML = memberInfoHtml(i, letters);
+    document.getElementById('content-right').classList.add('z-index-99');
+    $("#shortcut-name-info" + i).css("background-color", backgroundColor[i]);
 }
 
 
@@ -360,7 +373,7 @@ function closeContactInfo() {
 function deleteContact(i) {
     contact.splice(i, 1);
     idNumberMemberBox.splice(i, 1);
-   
+    
     clearContentLeft();
     pushFirstLetterJSON();
     loadABCContainer();
