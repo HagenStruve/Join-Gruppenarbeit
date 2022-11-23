@@ -124,10 +124,10 @@
         transform: translate(-50%);
         animation: fadeIn 0.8s ease-in-out;
     }
-  /* out comment!  to set background gray when task is clicked
-    .clicked-task-bg {
-         position: unset;
-    } */
+
+    .clicked-addtask-window {
+        z-index: 201;
+    }
 
     @keyframes fadeIn {
         from {
