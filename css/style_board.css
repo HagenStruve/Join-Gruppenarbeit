@@ -311,8 +311,8 @@
     padding: 11px 21px;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
-    width: 100%;
 }
+
 
 
 .clicked-task-window textarea {
@@ -343,6 +343,13 @@
     gap: 10px;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+}
+
+.clicked-task-window-edit-input {
+    padding: 11px 21px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    width: 100%;
 }
 
 .c-t-ok-edit-button {
@@ -731,7 +738,7 @@ a::-webkit-scrollbar {
         gap: 10px;
     }
 
-    .clicked-task-window input {
+    .clicked-task-window-edit-input {
         width: 90%;
     }
 
@@ -752,4 +759,14 @@ a::-webkit-scrollbar {
     .c-t-first-row {
         width: 80%;
     }
+
+
+    .c-t-remove-edit-button {
+        position: fixed;
+        left: 6%;
+        bottom: 20%;
+    }
 }
+
+
+

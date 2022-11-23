@@ -170,11 +170,11 @@
     document.getElementById('c-t-window').innerHTML = /*html*/`
     <form onsubmit="getNewValueFromEditedTask(); return false;">
         <h4> Title </h4> 
-        <input placeholder="Enter a title" required id="c-t-title-edit"> 
+        <input placeholder="Enter a title" required id="c-t-title-edit" class="clicked-task-window-edit-input"> 
         <h4> Description</h4> 
         <textarea type="text" required placeholder="Enter a Description" id="c-t-description-edit"></textarea> 
         <h4> Due date </h4> 
-        <input type="date" id="c-t-date-edit" > 
+        <input type="date" id="c-t-date-edit" class="clicked-task-window-edit-input" > 
         <h4> Prio </h4> 
         <div class="c-t-prio-divs-head"> 
             <div class="c-t-prio-divs" onclick="markedPrioCT('Urgent')" id="prio-urgent-c-t-edit">Urgent <img src="../img/arrow_urgent.svg" id="prio-urgent-c-t-edit-img"> </div>  
@@ -185,7 +185,7 @@
 
         <div onclick="showContacts()" id="select-div-contact" class="select-div no-margin-bottom">
                     <span id="selected-contact">Select contacts to assign</span>
-                    <input class="hidden-input" id="hidden-contact-input" type="text" required>
+                    <input class="hidden-input" id="hidden-contact-input" type="text" required class="clicked-task-window-edit-input">
                     <img src="../img/dropdown_arrow.svg" alt="dropdown_arrow">
                 </div>
                 <ul id="ul-contact" class="d-none">
