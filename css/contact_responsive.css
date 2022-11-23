@@ -1,0 +1,515 @@
+@media(max-width: 1200px) {
+    .fontsice-21 {
+        font-size: calc(10px + (21 - 10) * ((100vw - 320px) / (1600 - 320)));
+    }
+
+    .email {
+        font-size: calc(10px + (16 - 14) * ((100vw - 320px) / (1600 - 320)));
+    }
+}
+
+
+@media(max-width: 990px) {
+    .content-right {
+        left: 23%;
+        width: 100vw;
+        height: 100vh;
+        background-color: #F5F5F5;
+    }
+
+    .content-back-arrow {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 70%;
+        border: none;
+        margin-top: 0px;
+        margin-left: 0px;
+    }
+
+    .back-arrow {
+        display: flex;
+        height: 30px;
+        width: 30px;
+        cursor: pointer;
+    }
+
+    .text {
+        display: flex;
+        margin-top: 10px;
+    }
+
+    .render {
+        flex-direction: column;
+    }
+
+    .content-left {
+        width: 80%;
+        justify-content: center;
+        z-index: 2;
+    }
+
+    .member-container {
+        width: 60%;
+        margin-top: 50px;
+    }
+
+    .new-contact-responsiv {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 18px 10px;
+        gap: 10px;
+        position: fixed;
+        width: 162px;
+        height: 30px;
+        right: 15px;
+        top: 100px;
+        background: #2A3647;
+        border: 1px solid #2A3647;
+        border-radius: 10px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        color: #FFFFFF;
+        cursor: pointer;
+    }
+
+    .abc {
+        font-size: 16px;
+        margin-left: 18px;
+        padding-bottom: 12px;
+        width: 80%;
+    }
+
+    .member-box {
+        margin-top: 22px;
+        padding-top: 10px;
+        margin-left: 18px;
+        margin-bottom: 40px;
+        width: 80%;
+    }
+
+    .email {
+        width: 80%;
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+
+    .team-text {
+        width: 52%;
+        margin-top: 0px;
+        margin-bottom: 10px;
+        font-size: 16px;
+        height: auto;
+    }
+
+    .border {
+        display: flex;
+        margin-top: 10px;
+        border-bottom: 3px solid #29ABE2;
+        width: 10%;
+        margin-left: 71px;
+    }
+
+    .content-right-header {
+        align-items: flex-start;
+        flex-direction: column;
+        margin-left: 71px;
+    }
+
+    .shortcut-name {
+        width: 34px;
+        height: 34px;
+        margin-right: 10px;
+    }
+
+    .border-container {
+        width: 2px;
+    }
+
+    .new-contact {
+        display: none;
+    }
+
+    .header-edit-contact {
+        font-size: 30px;
+    }
+
+    .text-edit-contact {
+        font-size: 16px;
+    }
+
+    .member-img-container {
+        width: 90px;
+        height: 90px;
+    }
+
+    .member-firstLetter-container {
+        width: 90px;
+        height: 90px;
+    }
+
+    .member-img {
+        width: auto;
+        height: 50px;
+    }
+
+    .cancel-button {
+        font-size: 12px;
+    }
+
+    .cancel-button-img {
+        height: 20px;
+        width: 20px;
+    }
+
+    .creat-button {
+        font-size: 12px;
+    }
+
+    .contacts {
+        border-right: none;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 0;
+        height: auto;
+    }
+
+    .member-info {
+        margin-top: 35px;
+    }
+
+    .shortcut-name-info {
+        width: 75px;
+        height: 75px;
+        font-size: 32px;
+    }
+}
+
+@media(max-width: 770px) {
+    .content-right {
+        left: 0;
+    }
+
+    .name-info {
+        margin-bottom: 5px;
+        font-size: 25px;
+    }
+
+    .content-back-arrow {
+        width: 85%;
+        height: 50px;
+    }
+
+    .text {
+        font-size: 16px;
+    }
+
+    .contacts {
+        height: 51px;
+        font-size: 31px;
+        margin-top: 10px;
+        width: 35%;
+        display: flex;
+        align-items: center;
+    }
+
+    .contact-created {
+        bottom: 20%;
+    }
+
+    .render {
+        height: 120vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cancel-button-responsiv {
+        display: flex;
+        width: 50px;
+        height: 50px;
+        position: fixed;
+        z-index: 102;
+        right: -14px;
+        top: 43px;
+    }
+
+    .close-withe {
+        transform: rotate(45deg);
+        object-fit: cover;
+        cursor: pointer;
+        width: 25px;
+        height: 25px;
+    }
+
+    .content-left {
+        height: 70vh;
+        width: 100vw;
+    }
+
+    .logo {
+        display: none !important;
+    }
+
+    .header-edit-contact {
+        font-size: 41px;
+    }
+
+    .text-edit-contact {
+        font-size: 17px;
+    }
+
+    .blue-border {
+        border: 1px solid #29ABE2;
+    }
+
+    .abc {
+        width: 85%;
+        margin-left: 24px;
+    }
+
+    .member-box {
+        width: 85%;
+        margin-top: 25px;
+        padding-top: 0px;
+        margin-left: 24px;
+        margin-bottom: 0px;
+        align-items: center;
+    }
+
+    .fontsice-21 {
+        font-size: 18px;
+    }
+
+    .email {
+        width: 14px;
+        font-size: 16px;
+        margin-bottom: 8px;
+        margin-top: 5px;
+    }
+
+    .shortcut-name {
+        width: 35px;
+        height: 35px;
+    }
+
+    .new-contact-responsiv {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 18px 10px;
+        gap: 10px;
+        position: fixed;
+        width: 32%;
+        height: 30px;
+        right: 15px;
+        top: 100px;
+        background: #2A3647;
+        border: 1px solid #2A3647;
+        border-radius: 10px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        color: #FFFFFF;
+        cursor: pointer;
+    }
+
+    .member-container {
+        margin-top: 15px;
+    }
+
+    .edit-contact {
+        flex-direction: column;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .edit-contact-left {
+        width: 100vw;
+        height: 50%;
+        margin-top: 0;
+        margin-left: 0;
+        border-radius: 0px 0px 0px 0px;
+    }
+
+    .edit-contact-right {
+        width: 100vw;
+        height: 50%;
+        margin-top: 0;
+        border-radius: 0px 0px 0px 0px;
+        justify-content: center;
+    }
+
+    .member-img-container {
+        position: absolute;
+        top: 50%;
+        left: 43%;
+        transform: translate(-50%, -50%);
+        width: 70px;
+        height: 70px;
+    }
+
+    .member-firstLetter-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 70px;
+        height: 70px;
+    }
+
+    .member-img {
+        height: 36px;
+    }
+
+    .inputs-name {
+        width: 100%;
+        height: 29px;
+        margin-bottom: 20px;
+        margin-top: 70px;
+    }
+
+    .inputs-email {
+        width: 100%;
+        height: 29px;
+        margin-bottom: 20px;
+    }
+
+    .inputs-phone {
+        width: 100%;
+        height: 29px;
+        margin-bottom: 20px;
+    }
+
+    .edit-contact-input {
+        align-items: center;
+        justify-content: space-between;
+        width: 75%;
+    }
+
+    .cancel-button {
+        display: none;
+    }
+
+    .button-box {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .creat-button {
+        width: 70%;
+        height: 40px;
+        font-size: 14px;
+    }
+
+    .fontsice-21 {
+        font-size: 12px;
+    }
+
+    .email {
+        font-size: 10px;
+    }
+
+    .team-text {
+        font-size: 16px;
+        margin-top: 0px;
+        width: 45%;
+    }
+
+    .member-info {
+        display: flex;
+        margin-top: 5px;
+    }
+
+    .shortcut-name-info {
+        width: 50px;
+        height: 50px;
+        font-size: 29px;
+        margin-right: 47px;
+        margin-bottom: 1px;
+    }
+
+    .member {
+        margin-top: 10px;
+    }
+
+    .edit-contact-pencil {
+        display: none;
+    }
+
+    .edit-contact-icon {
+        display: flex;
+        position: fixed;
+        right: 10%;
+        bottom: 20%;
+    }
+
+    b {
+        font-size: 16;
+    }
+
+    .delete-contact {
+        width: 16%;
+        bottom: 3%;
+        right: 3%;
+        font-size: calc(10px + (10 - 8) * ((100vw - 320px) / (1600 - 320)));
+    }
+}
+
+@media(max-width: 460px) {
+    .content-left {
+        height: 70vh;
+        width: 100vw;
+    }
+
+    .name-info {
+        margin-bottom: 0px;
+        font-size: 16px;
+    }
+
+    .edit-contact-icon-img {
+        height: 50px;
+        width: 50px;
+    }
+}
+
+@media (max-width: 380px) {
+    .contacts {
+        font-size: 25px;
+        margin-top: 10px;
+    }
+
+    .back-arrow {
+        height: 15px;
+        width: 15px;
+    }
+
+    .text {
+        font-size: 12px;
+    }
+
+    .team-text {
+        font-size: 12px;
+    }
+
+    b {
+        font-size: 12px;
+    }
+
+    .shortcut-name-info {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .edit-contact-icon-img {
+        height: 35px;
+        width: 35px;
+    }
+}

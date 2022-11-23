@@ -344,11 +344,19 @@ function getRandomColor() {
 }
 
 
+/**
+ * Closes the contact's notification area via a black arrow on smaller screens.
+ */
 function closeContactInfo() {
     document.getElementById('content-right').classList.remove('z-index-99');
 }
 
 
+/**
+ * Deletes the selected contact and then displays the default contact page.
+ * 
+ * @param {string} i Index of the selected contact
+ */
 function deleteContact(i) {
     contact.splice(i, 1);
     idNumberMemberBox.splice(i, 1);
