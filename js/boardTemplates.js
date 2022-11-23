@@ -60,7 +60,7 @@
         </div>
 
         <div class="c-t-exit-arrow" onclick="hideClickedTask()"> 
-            <img src="/Join-Gruppenarbeit/img/black-back-arrow.png"> 
+            <img src="../img/black-back-arrow.png"> 
         </div> 
     </div> 
 
