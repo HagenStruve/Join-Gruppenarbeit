@@ -169,6 +169,12 @@
 
     document.getElementById('c-t-window').innerHTML = /*html*/`
     <form onsubmit="getNewValueFromEditedTask(); return false;">
+
+        <div class="c-t-exit-arrow-edit" onclick="displayClickedTask(currentClickedTask)"> 
+            <img src="../img/black-back-arrow.png"> 
+        </div> 
+
+
         <h4> Title </h4> 
         <input placeholder="Enter a title" required id="c-t-title-edit" class="clicked-task-window-edit-input"> 
         <h4> Description</h4> 

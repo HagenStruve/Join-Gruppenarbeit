@@ -497,6 +497,7 @@ function getNewValueFromEditedTask() {
     downloadedTasks[currentClickedTask]['assingedTo'] = editedNames;
     editedNames = []; // clears array for new edit 
     let id = currentClickedTask;
+    saveNewOnServer();
     displayClickedTask(id);
     displayAllTasks();
 }

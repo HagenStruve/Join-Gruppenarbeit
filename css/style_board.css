@@ -296,6 +296,7 @@
     overflow: auto;
 }
 
+
 /* Edit window */
 .clicked-task-window h4 {
     font-weight: 400;
@@ -305,6 +306,7 @@
     font-family: 'Inter';
     font-style: normal;
     margin-bottom: 6px;
+    margin-top: 19px;
 }
 
 .clicked-task-window input {
@@ -366,7 +368,7 @@
     font-size: 21px;
     line-height: 120%;
     position: fixed;
-    bottom: 5%;
+    bottom: 4%;
     right: 5%;
 }
 
@@ -388,6 +390,18 @@ a::-webkit-scrollbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+
+.c-t-exit-arrow-edit {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: -32px;
+    margin-top: 7px;
+}
+
+.c-t-exit-arrow-edit:hover {
+    cursor: pointer;
 }
 
 .c-t-exit-arrow:hover {
@@ -520,7 +534,7 @@ a::-webkit-scrollbar {
     align-items: flex-end;
     justify-content: flex-end;
     position: fixed;
-    bottom: 5%;
+    bottom: 4%;
     right: 5%;
 }
 
@@ -540,7 +554,7 @@ a::-webkit-scrollbar {
     line-height: 120%;
     position: fixed;
     left: 11%;
-    bottom: 5%;
+    bottom: 4%;
     gap: 10px;
     border-width: 2px;
     border-style: outset;
@@ -610,6 +624,10 @@ a::-webkit-scrollbar {
     animation: fadeInAddTask 1s ease-in-out;
 
 }
+
+
+
+
 
 .d-none {
     display: none !important;
