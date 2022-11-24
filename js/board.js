@@ -384,7 +384,7 @@ function hideSelectionContacts(ulContact) {
 
 
 /**
- * verifies which contact has that box checked
+ * verifies which contact has  checkbox checked
  * @param {string} id - selected contact
  */
 function proofCheck(id) {
