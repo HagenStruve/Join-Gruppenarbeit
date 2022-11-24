@@ -1,5 +1,3 @@
-
-
 async function init() {
     await includeHTML();
     sidebarBgPage();
@@ -16,7 +14,6 @@ async function includeHTML() {
         if (response.ok) {
             element.innerHTML = await response.text();
         }
-
         else {
             element.innerHTML = "Page not found.";
         }
@@ -67,6 +64,7 @@ function sidebarBgPage() {
         document.getElementById('privacy').style = 'background: #091931; !important';
     }
 }
+
 
 window.addEventListener('resize', setCreateButton);
 

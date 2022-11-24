@@ -1,3 +1,6 @@
+let urgentTasks = [];
+
+
 
 async function initSummary() {
     await includeHTML();
@@ -6,6 +9,7 @@ async function initSummary() {
     updateSummary();
     sidebarBgPage();
     helloUser();
+    showMostUrgentTaskDate();
 }
 
 
@@ -17,7 +21,7 @@ function updateStatus() {
     let status = ``;
     const today = new Date();
     const currentTime = today.getHours();
-    
+
     if (currentTime < 12) {
         status = "Good morning,";
     } else if (currentTime < 18) {
@@ -32,6 +36,7 @@ function updateStatus() {
     setInterval(updateStatus, 1000 * 60);
 }
 
+
 /** gets an overview JSON of all tasks created, so function "updateSummary()"" can display them on summary
  * 
  * 
@@ -39,8 +44,42 @@ function updateStatus() {
 async function loadTasksFromServerSummary() {
     setURL("https://gruppe-313.developerakademie.net/Join-Gruppenarbeit/smallest_backend_ever-master");
     await downloadFromServer();
-    tasksOverview = JSON.parse(backend.getItem('tasksOverview')) || [];
-    users = JSON.parse(backend.getItem('users')) || [];
+    tasksOverview = await JSON.parse(backend.getItem('tasksOverview')) || [];
+    downloadedTasks = await JSON.parse(backend.getItem('downloadedTasks')) || [];
+    users = await JSON.parse(backend.getItem('users')) || [];
+}
+
+
+/**
+ * get all urgentTask and pushs them into a own urgentTask array
+ * then they will be sorted, the smallest date is first
+ */
+function getUrgentTasks() {
+    for (let i = 0; i < downloadedTasks.length; i++) {
+        const task = downloadedTasks[i];
+        if (task.prio === 'Urgent') {
+            urgentTasks.push(task);
+        }
+    }
+    urgentTasks.sort(function (a, b) {
+        // Turn your strings into dates, and then subtract them
+        // to get a value that is either negative, positive, or zero.
+        return new Date(b.date) - new Date(a.date);
+    });
+}
+
+
+/**
+ * date of the most urgent task will be showed
+ */
+function showMostUrgentTaskDate() {
+    getUrgentTasks();
+    if (urgentTasks.length > 0) {
+        document.getElementById('newDate').innerHTML = urgentTasks[0].dueDate;
+    }
+    else {
+        document.getElementById('newDate').innerHTML = 'No urgent Tasks';
+    }
 }
 
 
@@ -58,11 +97,15 @@ function updateSummary() {
 }
 
 
+/**
+ * if you're registered and you login with email an password you will be greeted by your registered name
+ */
 function helloUser() {
-    let userEmail = localStorage.getItem('userEmail');  
-    let emailIndex = users.filter(u => u.email == userEmail);
-    if (emailIndex) {
-        document.getElementById('name').innerHTML = emailIndex[0].name;
+    let userEmail = localStorage.getItem('userEmail');
+    let userData = users.find(u => u.email == userEmail);
+    if (userData) {
+        let name = document.getElementById('name');
+        name.innerHTML = userData.name;
     }
     else {
         document.getElementById('name').innerHTML = `Guest`;
