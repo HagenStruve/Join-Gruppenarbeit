@@ -610,6 +610,7 @@ a::-webkit-scrollbar {
     overflow-y: scroll;
     position: fixed;
     display: flex;
+    justify-content: center;
     transform: translateX(0px);
     padding-top: 15px;
     padding-bottom: 15px;
