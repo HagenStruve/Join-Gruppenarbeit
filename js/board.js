@@ -493,13 +493,27 @@ function getNewValueFromEditedTask() {
 
     downloadedTasks[currentClickedTask]['title'] = newTitle;
     downloadedTasks[currentClickedTask]['description'] = newDescription;
-    downloadedTasks[currentClickedTask]['dueDate'] = newDate;
+    checkIfDateEmpty(newDate); 
     downloadedTasks[currentClickedTask]['assingedTo'] = editedNames;
     editedNames = []; // clears array for new edit 
     let id = currentClickedTask;
     saveNewOnServer();
     displayClickedTask(id);
     displayAllTasks();
+}
+
+
+/** function sets new selected date or not, if no new date was selected
+ * 
+ * @param {string} newDate - contains new selected Date from edit menu 
+ */
+function checkIfDateEmpty(newDate)  {
+    if (!newDate == '') {
+        downloadedTasks[currentClickedTask]['dueDate'] = newDate;
+    }
+    else {
+        console.log('Das Datum wird nicht verändert'); 
+    }
 }
 
 
@@ -834,113 +848,5 @@ function editContacts(name) {
 }
 
 
-
-
-
-
-/* ||| Functions below are copied from addTask.js // JS wollte sich nicht mit der anderen Datei verbinden
-    \/
-    ||
-    \/
-
-
-/**
-* by clicking on a button, a list with selections is shown
- * or hidden
- * 
- */
-function showContacts() {
-    let ulContact = document.getElementById("ul-contact");
-    if (ulContact.classList.contains('d-none')) {
-        document.getElementById('all-contacts-initials').classList.add('d-none');
-        showSelectionContacts(ulContact);
-    }
-    else {
-        hideSelectionContacts(ulContact);
-        document.getElementById('all-contacts-initials').classList.remove('d-none');
-        if (noSelectedContacts()) {
-            document.getElementById('all-contacts-initials').classList.add('d-none');
-        }
-    }
-}
-
-function noSelectedContacts() {
-    return document.getElementById("hidden-contact-input").value == ''
-}
-
-
-/**
- * a selection of contacts is shown
- * 
- * @param {string} ulContact -id of the contact container
- */
-function showSelectionContacts(ulContact) {
-    ulContact.classList.remove('d-none');
-    document.getElementById("select-div-contact").classList.add('no-border-bottom');
-}
-
-
-/**
- * the selection of contacts disappears
- * 
- * @param {string} ulContact -id of the contact container
- */
-function hideSelectionContacts(ulContact) {
-    ulContact.classList.add('d-none');
-    document.getElementById("select-div-contact").classList.remove('no-border-bottom');
-}
-
-
-/**
- * verifies which contact has that box checked
- * @param {string} id - selected contact
- */
-function proofCheck(id) {
-    let isChecked = document.getElementById(id);
-    let initial = id.replace('checkbox-contact', 'initials');
-
-    let initial1 = document.getElementById('initials-1');
-    let initial2 = document.getElementById('initials-2');
-    let initial3 = document.getElementById('initials-3');
-
-    showOrHideInitials(isChecked, initial, initial1, initial2, initial3);
-}
-
-
-function showOrHideInitials(isChecked, initial, initial1, initial2, initial3) {
-    if (isChecked.checked == true) {
-        showInitials(initial);
-    }
-    else {
-        hideInitials(initial);
-    }
-
-    if (initial1.classList.contains('d-none') && initial2.classList.contains('d-none') && initial3.classList.contains('d-none')) {
-        document.getElementById("hidden-contact-input").value = '';
-    }
-}
-
-
-function showInitials(initial) {
-    document.getElementById(initial).classList.remove('d-none');
-    document.getElementById("hidden-contact-input").value = '.';
-}
-
-
-function hideInitials(initial) {
-    document.getElementById(initial).classList.add('d-none');
-}
-
-
-/**
- * function for selecting the contact
- * 
- * @param {string} id - selected contact
- */
-function selectContact(id) {
-    liContact = id.replace('div-', '');
-    let ulContact = document.getElementById("ul-contact");
-    showSelectionContacts(ulContact);
-}
 
 
