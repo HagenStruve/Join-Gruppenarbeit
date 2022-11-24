@@ -59,7 +59,7 @@ async function saveNewOnServer() {
  * @param {string} id - contains id for add icon on boardview aside categorys (to-do / inProgres...) 
  */
 function switchAddIcon(id) {
-    document.getElementById(id).src = "../img/blue-plus.png"; 
+    document.getElementById(id).src = "../img/blue-plus.png";
 }
 
 
@@ -68,7 +68,7 @@ function switchAddIcon(id) {
  * @param {string} id - contains id for add icon on boardview aside categorys (to-do / inProgres...) 
  */
 function switchAddIconBack(id) {
-    document.getElementById(id).src = "../img/plus-icon-with-border.png"; 
+    document.getElementById(id).src = "../img/plus-icon-with-border.png";
 }
 
 
@@ -79,7 +79,6 @@ function pushIDtoTasks() {
     downloadedTasks[existTasks]['id'] = existTasks;
     existTasks++;
 }
-
 
 
 // function to allow dragging 
@@ -160,6 +159,7 @@ function setColor(categoryID, classID, c) {
     }
 }
 
+
 /** responsible to set the correct color for the specific Categor
  * 
  * ** setColor -CT - stands for "clicked task"
@@ -200,7 +200,7 @@ function searchTask() {
     let search = document.getElementById('input-search').value;
     search = search.toLowerCase();
 
-    displayAllTasks(search); 
+    displayAllTasks(search);
 }
 
 
@@ -219,10 +219,6 @@ function getFirstLetter(id, i) {
     let initials = assignedContact[i].split(' ').map(word => word.charAt(0)).join('');
     document.getElementById(`c-t-initials${i}`).innerHTML = `${initials}`;
 }
-
-
-
-
 
 
 /** filters the first letter of first and last name to display it on profilpictures on board site 
@@ -292,10 +288,10 @@ function checkResponsive() {
     if (myMediaQuery1400.matches) { //if higher than 1400px
         let id = '';
         let id2 = '-responsive';
-       // startResponsiveBoardView(id, id2);
-       generateSearchFieldHTML(id);
-       deleteSearchFíeldHTML(id2); 
-       document.getElementById("kanban-overview").style.flexDirection = "row";
+        // startResponsiveBoardView(id, id2);
+        generateSearchFieldHTML(id);
+        deleteSearchFíeldHTML(id2);
+        document.getElementById("kanban-overview").style.flexDirection = "row";
     }
 
     else {  //if not
@@ -303,13 +299,14 @@ function checkResponsive() {
         let id2 = '';
         //startResponsiveBoardView(id, id2);
         generateSearchFieldHTML(id);
-        deleteSearchFíeldHTML(id2); 
+        deleteSearchFíeldHTML(id2);
         document.getElementById("kanban-overview").style.flexDirection = "column";
     }
 
 }
 
 
+// generates the search field HTML from board
 function generateSearchFieldHTML(id) {
     return document.getElementById(`find-task${id}`).innerHTML = `
         <div class="find-task-div">
@@ -322,7 +319,7 @@ function generateSearchFieldHTML(id) {
 /** deletes content for responsive, so that only the desktop or mobile content is displayed
  * 
  */
- function deleteSearchFíeldHTML(id2) {
+function deleteSearchFíeldHTML(id2) {
     document.getElementById(`find-task${id2}`).innerHTML = '';
 }
 
@@ -333,11 +330,7 @@ function editContacts(name) {
 }
 
 
-
-
-
-
-/* ||| Functions below are copied from addTask.js // JS wollte sich nicht mit der anderen Datei verbinden
+/* ||| Functions below are copied from addTask.js // Somehow AddTask contacts board is not working without this code in here
     \/
     ||
     \/
