@@ -145,7 +145,7 @@ async function addTask() {
     setNewTask(title, descripton, sector, dueDate);
     saveOnServer();
     forwardToBoard();
-    clearPage(descripton, title);
+    clearPage();
     createdTasks++;
 }
 
@@ -249,10 +249,10 @@ async function saveOnServer() {
  * clears the input fields and entries
  * 
  */
-function clearPage(descripton, title) {
+function clearPage() {
     showDefaultPrioImgs();
     removeBgPrio();
-    setValuesEmpty(descripton, title);
+    setValuesEmpty();
     document.getElementById('selected-category').innerHTML = 'Select task Category';
     document.getElementById('overview-subtasks').innerHTML = '';
     clearContacts();
@@ -262,12 +262,17 @@ function clearPage(descripton, title) {
 }
 
 
-function setValuesEmpty(descripton, title) {
+function setValuesEmpty() {
+    let title = document.getElementById('title');
+    let descripton = document.getElementById('descripton');
+    let category = document.getElementById("hidden-category-input");
+    let contact = document.getElementById("hidden-contact-input");
+    let prio = document.getElementById("hidden-prio-input");
     title.value = '';
     descripton.value = '';
-    document.getElementById("hidden-category-input").value = '';
-    document.getElementById("hidden-contact-input").value = '';
-    document.getElementById("hidden-prio-input").value = '';
+    category.value = '';
+    contact.value = '';
+    prio.value = '';
 }
 
 

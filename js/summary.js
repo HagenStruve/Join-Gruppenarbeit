@@ -52,7 +52,7 @@ async function loadTasksFromServerSummary() {
 
 /**
  * get all urgentTask and pushs them into a own urgentTask array
- * then they will be sorted, the smallest date is first
+ * then they will be sorted, the smallest date is last
  */
 function getUrgentTasks() {
     for (let i = 0; i < downloadedTasks.length; i++) {
@@ -64,7 +64,7 @@ function getUrgentTasks() {
     urgentTasks.sort(function (a, b) {
         // Turn your strings into dates, and then subtract them
         // to get a value that is either negative, positive, or zero.
-        return new Date(b.date) - new Date(a.date);
+        return new Date(b.dueDate) - new Date(a.dueDate);
     });
 }
 
@@ -75,7 +75,8 @@ function getUrgentTasks() {
 function showMostUrgentTaskDate() {
     getUrgentTasks();
     if (urgentTasks.length > 0) {
-        document.getElementById('newDate').innerHTML = urgentTasks[0].dueDate;
+        let lastIndex = urgentTasks.length - 1;
+        document.getElementById('newDate').innerHTML = urgentTasks[lastIndex].dueDate;
     }
     else {
         document.getElementById('newDate').innerHTML = 'No urgent Tasks';

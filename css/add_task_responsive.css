@@ -93,7 +93,7 @@
         position: fixed;
         top: 15px;
         right: 25px;
-        z-index: 2;
+        z-index: 205;
     }
 
     .added-subtasks:last-child {
@@ -109,7 +109,7 @@
     }
 
     .task-added-to-board {
-        transform: translate(-20%);
+        transform: translate(-50%);
     }
 }
 
@@ -121,7 +121,6 @@
 
     .task-added-to-board {
         bottom: 15%;
-        transform: translate(-50%);
         animation: fadeIn 0.8s ease-in-out;
     }
 
