@@ -88,13 +88,15 @@ function showMostUrgentTaskDate() {
  * 
  */
 function updateSummary() {
-    let overview = tasksOverview[0];
-    document.getElementById('tasks-in-board').innerHTML = overview['tasksOnBoard'];
-    document.getElementById('tasks-in-progress').innerHTML = overview['tasksInProgress'];
-    document.getElementById('tasks-awaiting-feedback').innerHTML = overview['tasksInAwaitingFeedback'];
-    document.getElementById('urgent-tasks').innerHTML = overview['urgentTasks'];
-    document.getElementById('tasks-in-todo').innerHTML = overview['tasksInTodo'];
-    document.getElementById('tasks-in-done').innerHTML = overview['tasksInDone'];
+    if (tasksOverview.length > 0) {
+        let overview = tasksOverview[0];
+        document.getElementById('tasks-in-board').innerHTML = overview['tasksOnBoard'];
+        document.getElementById('tasks-in-progress').innerHTML = overview['tasksInProgress'];
+        document.getElementById('tasks-awaiting-feedback').innerHTML = overview['tasksInAwaitingFeedback'];
+        document.getElementById('urgent-tasks').innerHTML = overview['urgentTasks'];
+        document.getElementById('tasks-in-todo').innerHTML = overview['tasksInTodo'];
+        document.getElementById('tasks-in-done').innerHTML = overview['tasksInDone'];
+    }
 }
 
 
