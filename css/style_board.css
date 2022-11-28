@@ -394,6 +394,7 @@ a::-webkit-scrollbar {
 
 
 .c-t-exit-arrow-edit {
+
     display: flex;
     justify-content: flex-end;
     margin-bottom: -32px;
@@ -784,6 +785,11 @@ a::-webkit-scrollbar {
         position: fixed;
         left: 6%;
         bottom: 20%;
+    }
+
+    .c-t-exit-arrow-edit {
+        width: 90%;
+        margin-bottom: 0px;
     }
 }
 
