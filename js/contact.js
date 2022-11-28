@@ -64,11 +64,10 @@ function newConatct() {
  * 
  */
 function cancel() {
-    // document.getElementById('add-contact').classList.remove('edit-contact');
-    document.getElementById('add-contact').classList.remove('edit-contact');
     document.getElementById('add-contact').classList.add('animate-reverse-edit-contact');
-    document.getElementById('background-grey').classList.remove('background-grey');
     document.getElementById('background-grey').classList.add('animate-reverse-background-grey');
+    // document.getElementById('add-contact').classList.remove('edit-contact');
+    document.getElementById('background-grey').classList.remove('background-grey');
     document.getElementById('name').value = "";
     document.getElementById('email').value = "";
     document.getElementById('phone').value = "";
@@ -276,11 +275,15 @@ function backgroundMemberBox(i) {
 function editContact(i) {
     let letters = document.getElementById('shortcut-name' + i).innerHTML;
     document.getElementById('edit-contact').classList.remove('d-none');
-    document.getElementById('edit-contact').classList.add('edit-contact');
+    document.getElementById('edit-contact').classList.add('edit-contact', 'add-animation-edit-contact');
     document.getElementById('background-grey').classList.remove('d-none');
-    document.getElementById('background-grey').classList.add('background-grey');
+    document.getElementById('background-grey').classList.add('background-grey', 'add-animation-background-grey');
     document.getElementById('edit-contact').innerHTML += editContactHTML(i, letters);
     $("#member-firstLetter-container" + i).css("background-color", backgroundColor[i]);
+    setTimeout(() => {
+        document.getElementById('edit-contact').classList.remove('add-animation-edit-contact');
+        document.getElementById('background-grey').classList.remove('add-animation-background-grey');
+    }, 1000);
 }
 
 
@@ -290,11 +293,22 @@ function editContact(i) {
  * @param {string} i - Variable to pass the affiliation of the contact test.
  */
 function closeEdit(i) {
-    document.getElementById('edit-contact').innerHTML = ``;
-    document.getElementById('edit-contact').classList.remove('edit-contact');
-    document.getElementById('edit-contact').classList.add('d-none');
+    document.getElementById('edit-contact').classList.add('animate-reverse-edit-contact');
     document.getElementById('background-grey').classList.remove('background-grey');
-    document.getElementById('background-grey').classList.add('d-none');
+    document.getElementById('background-grey').classList.add('animate-reverse-background-grey');
+
+    closeEditSetTimeOut();
+}
+
+
+function closeEditSetTimeOut() {
+    setTimeout(() => {
+        document.getElementById('edit-contact').classList.add('d-none');
+        document.getElementById('edit-contact').classList.remove('animate-reverse-edit-contact');
+        document.getElementById('background-grey').classList.remove('animate-reverse-background-grey');
+        document.getElementById('background-grey').classList.add('d-none');
+        document.getElementById('edit-contact').innerHTML = ``;
+    }, 900);
 }
 
 
