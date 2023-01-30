@@ -310,9 +310,9 @@ a {
         background-color: #F5F5F5;
         z-index: 2;
 
-        animation: seconds 3.0s forwards;
+        animation: seconds 1.0s forwards;
         animation-iteration-count: 1;
-        animation-delay: 2s;
+        animation-delay: 0.5s;
     }
 
     @keyframes seconds {

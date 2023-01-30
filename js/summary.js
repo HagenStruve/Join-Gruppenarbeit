@@ -42,7 +42,7 @@ function updateStatus() {
  * 
  */
 async function loadTasksFromServerSummary() {
-    setURL("https://gruppe-313.developerakademie.net/Join-Gruppenarbeit/smallest_backend_ever-master");
+    setURL("https://sinan-fischer.developerakademie.net/Join-Gruppenarbeit/smallest_backend_ever-master");
     await downloadFromServer();
     tasksOverview = await JSON.parse(backend.getItem('tasksOverview')) || [];
     downloadedTasks = await JSON.parse(backend.getItem('downloadedTasks')) || [];

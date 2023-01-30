@@ -160,7 +160,6 @@
     `
 }
 
-
  
 /** HTML function to create the editMenu from clickedTask
  * 
@@ -176,11 +175,11 @@
 
 
         <h4> Title </h4> 
-        <input placeholder="Enter a title" required id="c-t-title-edit" class="clicked-task-window-edit-input"> 
+        <input placeholder="Enter a title" required id="c-t-title-edit" class="clicked-task-window-edit-input" value="${downloadedTasks[currentClickedTask]['title']}"> 
         <h4> Description</h4> 
-        <textarea type="text" required placeholder="Enter a Description" id="c-t-description-edit"></textarea> 
+        <textarea type="text" required placeholder="Enter a Description" id="c-t-description-edit" > ${downloadedTasks[currentClickedTask]['description']}</textarea> 
         <h4> Due date </h4> 
-        <input type="date" id="c-t-date-edit" class="clicked-task-window-edit-input" > 
+        <input type="date" id="c-t-date-edit" class="clicked-task-window-edit-input" value="${downloadedTasks[currentClickedTask]['dueDate']}" min="${downloadedTasks[currentClickedTask]['dueDate']}"> 
         <h4> Prio </h4> 
         <div class="c-t-prio-divs-head"> 
             <div class="c-t-prio-divs" onclick="markedPrioCT('Urgent')" id="prio-urgent-c-t-edit">Urgent <img src="../img/arrow_urgent.svg" id="prio-urgent-c-t-edit-img"> </div>  

@@ -54,6 +54,9 @@
 
 }
 
+.find-task-input:focus-visible {
+    outline: none;
+}
 
 .find-task-button {
     height: 42px;

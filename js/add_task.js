@@ -229,7 +229,7 @@ function forwardToBoard() {
 
 
 async function loadTasksFromServer() {
-    setURL("https://gruppe-313.developerakademie.net/Join-Gruppenarbeit/smallest_backend_ever-master");
+    setURL("https://sinan-fischer.developerakademie.net/Join-Gruppenarbeit/smallest_backend_ever-master");
     await downloadFromServer();
     downloadedTasks = JSON.parse(backend.getItem('downloadedTasks')) || [];
 }
@@ -240,7 +240,7 @@ async function loadTasksFromServer() {
  * 
  */
 async function saveOnServer() {
-    setURL("https://gruppe-313.developerakademie.net/Join-Gruppenarbeit/smallest_backend_ever-master");
+    setURL("https://sinan-fischer.developerakademie.net/Join-Gruppenarbeit/smallest_backend_ever-master");
     await backend.setItem('downloadedTasks', JSON.stringify(downloadedTasks));
 }
 

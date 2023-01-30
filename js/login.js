@@ -8,7 +8,7 @@ let resetPasswordEmail;
  * load the URL and then the registered users from the backend
  */
 async function initLogin() {
-    setURL("https://gruppe-313.developerakademie.net/Join-Gruppenarbeit/smallest_backend_ever-master");
+    setURL("https://sinan-fischer.developerakademie.net/Join-Gruppenarbeit/smallest_backend_ever-master");
     await downloadFromServer();
     users = await JSON.parse(backend.getItem('users')) || [];
     pageOpenerAnimation();
